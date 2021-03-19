@@ -22,7 +22,7 @@ homeassistant:
   customize: !include customize.yaml
 
 telegram_bot:
-  - platform: broadcast
+  - platform: polling
     api_key: !secret telegram-api-key
     allowed_chat_ids:
       - !secret telegram-chat-id-user-jan
