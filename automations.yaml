@@ -1,0 +1,68 @@
+- alias: Perform Daily Backup
+  trigger:
+    - platform: time
+      at: "04:00:00"
+  action:
+    - service: auto_backup.snapshot_full
+      data:
+        name: "Daily Backup: {{ now().strftime('%Y-%m-%d %H:%M:%S') }}"
+        keep_days: 14
+
+- alias: Homematic Reconnect
+  trigger:
+    platform: state
+    entity_id: binary_sensor.homematic_up
+    to: "off"
+  action:
+    - service: homematic.reconnect
+    - service: notify.telegram_broadcast
+      data:
+        message: "Reconnected to Homematic."
+
+- alias: Update OpenWeatherMap on Homematic
+  trigger:
+    platform: state
+    entity_id: sensor.openweathermap_last_updated
+  action:
+    - service: homematic.set_variable_value
+      target:
+        entity_id: homematic.central
+      data:
+        name: "openweathermap_cloud_coverage"
+        value: "{{ states('sensor.openweathermap_cloud_coverage') | float }}"
+    - service: homematic.set_variable_value
+      target:
+        entity_id: homematic.central
+      data:
+        name: "openweathermap_humidity"
+        value: "{{ states('sensor.openweathermap_humidity') | float }}"
+    - service: homematic.set_variable_value
+      target:
+        entity_id: homematic.central
+      data:
+        name: "openweathermap_pressure"
+        value: "{{ states('sensor.openweathermap_pressure') | float }}"
+    - service: homematic.set_variable_value
+      target:
+        entity_id: homematic.central
+      data:
+        name: "openweathermap_rain"
+        value: "{{ states('sensor.openweathermap_rain') | float }}"
+    - service: homematic.set_variable_value
+      target:
+        entity_id: homematic.central
+      data:
+        name: "openweathermap_temperature"
+        value: "{{ states('sensor.openweathermap_temperature') | float }}"
+    - service: homematic.set_variable_value
+      target:
+        entity_id: homematic.central
+      data:
+        name: "openweathermap_wind_bearing"
+        value: "{{ states('sensor.openweathermap_wind_bearing') | float }}"
+    - service: homematic.set_variable_value
+      target:
+        entity_id: homematic.central
+      data:
+        name: "openweathermap_wind_speed"
+        value: "{{ states('sensor.openweathermap_wind_speed') | float }}"

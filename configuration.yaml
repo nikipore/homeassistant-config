@@ -1,0 +1,67 @@
+# Configure a default setup of Home Assistant (frontend, api, etc)
+default_config:
+
+# Text to speech
+tts:
+  - platform: google_translate
+
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+
+# personal changes
+sensor: !include sensors.yaml
+binary_sensor: !include binary_sensors.yaml
+
+http:
+  ssl_certificate: /ssl/fullchain.pem
+  ssl_key: /ssl/privkey.pem
+
+homeassistant:
+  customize: !include customize.yaml
+
+telegram_bot:
+  - platform: broadcast
+    api_key: !secret telegram-api-key
+    allowed_chat_ids:
+      - !secret telegram-chat-id-user-jan
+
+notify:
+  - platform: telegram
+    name: telegram_broadcast
+    chat_id: !secret telegram-chat-id-user-jan
+
+influxdb:
+  database: !secret influxdb-database
+  username: !secret influxdb-user
+  password: !secret influxdb-password
+  max_retries: 3
+  default_measurement: state
+
+homematic:
+  interfaces:
+    rf:
+      host: !secret homematic-host
+      username: !secret homematic-user
+      password: !secret homematic-password
+      port: 2001
+      resolvenames: json
+    ip:
+      host: !secret homematic-host
+      username: !secret homematic-user
+      password: !secret homematic-password
+      port: 2010
+      resolvenames: json
+    groups:
+      host: !secret homematic-host
+      username: !secret homematic-user
+      password: !secret homematic-password
+      port: 9292
+      resolvenames: json
+      path: /groups
+  hosts:
+    central:
+      host: !secret homematic-host
+      username: !secret homematic-user
+      password: !secret homematic-password

@@ -1,0 +1,37 @@
+- platform: dwd_weather_warnings
+  region_name: Stadt Frankfurt am Main
+  name: Frankfurt am Main
+
+- platform: time_date
+  display_options:
+    - 'time'
+    - 'date'
+    - 'date_time'
+    - 'date_time_utc'
+    - 'date_time_iso'
+    - 'time_date'
+    - 'time_utc'
+    - 'beat'
+
+- platform: template
+  sensors:
+    homematic_last_reboot:
+      friendly_name: "letzter Neustart (Homematic)"
+      value_template: "{{ strptime(state_attr('homematic.central', 'last_reboot') or '1970-01-01 00:00:00', '%Y-%m-%d %H:%M:%S').isoformat() }}"
+      device_class: "timestamp"
+      icon_template: "mdi:clock"
+    sun_elevation:
+      friendly_name: "Sonnenstand (Höhe)"
+      unit_of_measurement: "°"
+      value_template: "{{ state_attr('homematic.central', 'sun_elevation') | round(2) }}"
+      icon_template: "mdi:weather-sunny"
+    sun_azimuth:
+      friendly_name: "Sonnenstand (Azimuth)"
+      unit_of_measurement: "°"
+      value_template: "{{ state_attr('homematic.central', 'sun_azimuth') | round(2) }}"
+      icon_template: "mdi:weather-sunny"
+    openweathermap_last_updated:
+      friendly_name: "OpenWeatherMap Last Updated"
+      value_template: "{{ states.weather.openweathermap.last_updated.isoformat() }}"
+      device_class: "timestamp"
+      icon_template: "mdi:clock"

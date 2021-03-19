@@ -1,0 +1,5 @@
+- platform: template
+  sensors:
+    homematic_up:
+      friendly_name: "Homematic is sending updates"
+      value_template: "{{ as_timestamp(states('sensor.date_time_iso')) - as_timestamp(states.sensor['0001dbe9a628d5_energy_counter'].last_changed) < 600 }}"
