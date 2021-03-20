@@ -15,9 +15,9 @@
     to: "off"
   action:
     - service: homematic.reconnect
-    - service: notify.telegram_broadcast
+    - service: notify.telegram_admin
       data:
-        message: "Reconnected to Homematic."
+        message: "[WARNING] Homematic has been down – reconnected."
 
 - alias: Update OpenWeatherMap on Homematic
   trigger:

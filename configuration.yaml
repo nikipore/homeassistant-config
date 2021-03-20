@@ -24,13 +24,12 @@ homeassistant:
 telegram_bot:
   - platform: polling
     api_key: !secret telegram-api-key
-    allowed_chat_ids:
-      - !secret telegram-chat-id-user-jan
+    allowed_chat_ids: !secret telegram-allowed-chat-ids
 
 notify:
-  - platform: telegram
-    name: telegram_broadcast
-    chat_id: !secret telegram-chat-id-user-jan
+  - name: telegram_admin
+    platform: telegram
+    chat_id: !secret telegram-chat-id-admin
 
 influxdb:
   database: !secret influxdb-database
