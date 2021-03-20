@@ -1,7 +1,6 @@
 # Configure a default setup of Home Assistant (frontend, api, etc)
 default_config:
 
-# Text to speech
 tts:
   - platform: google_translate
 
@@ -9,17 +8,16 @@ group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
 scene: !include scenes.yaml
-
-# personal changes
 sensor: !include sensors.yaml
 binary_sensor: !include binary_sensors.yaml
+timer: !include timers.yaml
+
+homeassistant:
+  customize: !include customize.yaml
 
 http:
   ssl_certificate: /ssl/fullchain.pem
   ssl_key: /ssl/privkey.pem
-
-homeassistant:
-  customize: !include customize.yaml
 
 telegram_bot:
   - platform: polling

@@ -8,16 +8,29 @@
         name: "Daily Backup: {{ now().strftime('%Y-%m-%d %H:%M:%S') }}"
         keep_days: 14
 
-- alias: Homematic Reconnect
+- alias: "Homematic Watchdog"
   trigger:
-    platform: state
-    entity_id: binary_sensor.homematic_up
-    to: "off"
+    - platform: homeassistant
+      event: start
+    - platform: event # Homematic keepalive at periods < timer.homematic_watchdog_timeout.duration
+      event_type: homematic.keypress
+      event_data:
+        name: HM-RCV-50 BidCoS-RF
+        channel: 1
+        param: PRESS_SHORT
+    - platform: event
+      event_type: timer.finished
+      event_data:
+        entity_id: timer.homematic_watchdog_timeout
   action:
+    - service: timer.start
+      entity_id: timer.homematic_watchdog_timeout
+    - condition: and
+      conditions: "{{ trigger.event.event_type == 'timer.finished' }}"
     - service: homematic.reconnect
     - service: notify.telegram_admin
       data:
-        message: "[WARNING] Homematic has been down – reconnected."
+        message: "Homematic dead. Attempting to reconnect ..."
 
 - alias: Update OpenWeatherMap on Homematic
   trigger:
