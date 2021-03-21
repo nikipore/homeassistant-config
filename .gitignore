@@ -1,15 +1,17 @@
-# Example .gitignore file for your config dir.
-# An * ensures that everything will be ignored.
-*
-# You can whitelist files/folders with !, these will not be ignored.
-!*.yaml
-!.gitignore
-!*.md
-
 # Ignore folders.
 .storage
 .cloud
 .google.token
+custom_components
+node-red
+tts
+
+# Ignore files.
+__pycache__
+.HA_VERSION
+*.log
+*.db
+harmony_*.conf
 
 # Ensure these YAML files are ignored, otherwise your secret data/credentials will leak.
 ip_bans.yaml
