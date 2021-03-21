@@ -1,21 +1,51 @@
-import appdaemon.plugins.hass.hassapi as hass
+from collections import namedtuple
+from appdaemon.plugins.hass import hassapi
 
+TELEGRAM_BOT = 'telegram_bot/%s'
 
-class TelegramBot(hass.Hass):
+class TelegramBot(hassapi.Hass):
+    COMMANDS = {'/menu'}
+
     def initialize(self):
         self.listen_event(self.receive_telegram_callback, 'telegram_callback')
         self.listen_event(self.receive_telegram_command, 'telegram_command')
         self.listen_event(self.receive_telegram_text, 'telegram_text')
 
-    def receive_telegram_callback(self, event_id, payload_event, *args):
-        self.log('%s [%s]' % (payload_event, event_id))
-
     def receive_telegram_command(self, event_id, payload_event, *args):
         self.log('%s [%s]' % (payload_event, event_id))
+        if payload_event['command'] not in self.COMMANDS:
+            return
+        
+        inline_keyboard = [[
+            ('Ping', '/ping')
+            , ('Pong', '/pong')
+        ]]
+        self.send_message(
+            'Please choose:'
+            , inline_keyboard=inline_keyboard
+            , target=payload_event['user_id']
+        )
+
+    def receive_telegram_callback(self, event_id, payload_event, *args):
+        self.log('%s [%s]' % (payload_event, event_id))
+        self.answer_callback_query(
+            'You chose: `%s`' % payload_event['command']
+            , payload_event['id']
+        )
 
     def receive_telegram_text(self, event_id, payload_event, *args):
         self.log('%s [%s]' % (payload_event, event_id))
-        self.call_service('telegram_bot/send_message', target=payload_event['user_id'], message='You wrote: %s' % payload_event['text'])
+        self.send_message(
+            payload_event['text']
+            , title='You wrote:'
+            , target=payload_event['user_id']
+        )
+    
+    def send_message(self, message, **kwargs):
+        self.call_service(TELEGRAM_BOT % 'send_message', message=message, **kwargs)
+
+    def answer_callback_query(self, message, callback_query_id, **kwargs):
+        self.call_service(TELEGRAM_BOT % 'send_message', message=message, callback_query_id=callback_query_id, **kwargs)
 
 """
 Cheatsheet
@@ -50,19 +80,6 @@ user_id: "<id of the sender>"
 chat_id: "<origin chat id>"
 chat: "<chat info>"
 
-telegram_text
--------------
-
-Any other message not starting with / will be processed as simple text,
-firing a telegram_text event on the event bus with the following event_data:
-
-text: "some text received"
-from_first: "<first name of the sender>"
-from_last: "<last name of the sender>"
-user_id: "<id of the sender>"
-chat_id: "<origin chat id>"
-chat: "<chat info>"
-
 telegram_callback
 -----------------
 
@@ -78,4 +95,18 @@ user_id: "<id of the sender>"
 id: "<unique id of the callback>"
 chat_instance: "<chat instance>"
 chat_id: "<origin chat id>"
+
+telegram_text
+-------------
+
+Any other message not starting with / will be processed as simple text,
+firing a telegram_text event on the event bus with the following event_data:
+
+text: "some text received"
+from_first: "<first name of the sender>"
+from_last: "<last name of the sender>"
+user_id: "<id of the sender>"
+chat_id: "<origin chat id>"
+chat: "<chat info>"
+
 """
