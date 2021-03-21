@@ -1,0 +1,8 @@
+---
+#hello_world:
+#  module: hello
+#  class: HelloWorld
+
+bot:
+  module: telegram
+  class: TelegramBot
