@@ -3,6 +3,11 @@ from appdaemon.plugins.hass import hassapi
 
 TELEGRAM_BOT = 'telegram_bot/%s'
 
+"""
+- TODO: dispatch commands
+- TODO: implement UPS alert
+"""
+
 class TelegramBot(hassapi.Hass):
     COMMANDS = {'/menu'}
 
@@ -12,7 +17,7 @@ class TelegramBot(hassapi.Hass):
         self.listen_event(self.receive_telegram_text, 'telegram_text')
 
     def receive_telegram_command(self, event_id, payload_event, *args):
-        self.log('%s [%s]' % (payload_event, event_id))
+        self.log('%s [%s]' % (payload_event, event_id), level='INFO')
         if payload_event['command'] not in self.COMMANDS:
             return
         
@@ -27,14 +32,14 @@ class TelegramBot(hassapi.Hass):
         )
 
     def receive_telegram_callback(self, event_id, payload_event, *args):
-        self.log('%s [%s]' % (payload_event, event_id))
+        self.log('%s [%s]' % (payload_event, event_id), level='INFO')
         self.answer_callback_query(
             'You chose: `%s`' % payload_event['command']
             , payload_event['id']
         )
 
     def receive_telegram_text(self, event_id, payload_event, *args):
-        self.log('%s [%s]' % (payload_event, event_id))
+        self.log('%s [%s]' % (payload_event, event_id), level='INFO')
         self.send_message(
             payload_event['text']
             , title='You wrote:'
@@ -109,4 +114,8 @@ user_id: "<id of the sender>"
 chat_id: "<origin chat id>"
 chat: "<chat info>"
 
+telegram_sent
+-------------
+
+- TODO: <Fill in, not yet documented ...>
 """
