@@ -1,8 +1,6 @@
 from collections import namedtuple
 from appdaemon.plugins.hass import hassapi
 
-TELEGRAM_BOT = 'telegram_bot/%s'
-
 """
 - TODO: dispatch commands
 - TODO: implement UPS alert
@@ -41,16 +39,18 @@ class TelegramBot(hassapi.Hass):
     def receive_telegram_text(self, event_id, payload_event, *args):
         self.log('%s [%s]' % (payload_event, event_id), level='INFO')
         self.send_message(
-            payload_event['text']
-            , title='You wrote:'
+            'Hello %s! Please type `/menu` for list of available commands.' % payload_event['from_first']
             , target=payload_event['user_id']
         )
     
     def send_message(self, message, **kwargs):
-        self.call_service(TELEGRAM_BOT % 'send_message', message=message, **kwargs)
+        self._call_service('send_message', message=message, **kwargs)
 
     def answer_callback_query(self, message, callback_query_id, **kwargs):
-        self.call_service(TELEGRAM_BOT % 'send_message', message=message, callback_query_id=callback_query_id, **kwargs)
+        self._call_service('answer_callback_query', message=message, callback_query_id=callback_query_id, **kwargs)
+
+    def _call_service(self, service, **kwargs):
+        self.call_service('telegram_bot/%s' % service, **kwargs)
 
 """
 Cheatsheet
