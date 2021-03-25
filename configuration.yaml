@@ -8,6 +8,9 @@ script: !include scripts.yaml
 sensor: !include sensors.yaml
 timer: !include timers.yaml
 
+logger:
+  default: warning
+
 homeassistant:
   customize: !include customize.yaml
   packages: !include_dir_named packages
