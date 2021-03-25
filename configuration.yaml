@@ -1,15 +1,11 @@
-# Configure a default setup of Home Assistant (frontend, api, etc)
 default_config:
 
-tts:
-  - platform: google_translate
-
-group: !include groups.yaml
 automation: !include automations.yaml
-script: !include scripts.yaml
-scene: !include scenes.yaml
-sensor: !include sensors.yaml
 binary_sensor: !include binary_sensors.yaml
+group: !include groups.yaml
+scene: !include scenes.yaml
+script: !include scripts.yaml
+sensor: !include sensors.yaml
 timer: !include timers.yaml
 
 homeassistant:
@@ -26,3 +22,6 @@ influxdb:
   password: !secret influxdb-password
   max_retries: 3
   default_measurement: state
+
+tts:
+  - platform: google_translate
