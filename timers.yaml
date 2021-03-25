@@ -1,3 +1,0 @@
-homematic_watchdog_timeout:
-  name: "Homematic Watchdog: Timeout"
-  duration: 00:10:00
