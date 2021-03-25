@@ -38,6 +38,21 @@ sensor:
         value_template: "{{ strptime(state_attr('homematic.central', 'last_reboot') or '1970-01-01 00:00:00', '%Y-%m-%d %H:%M:%S').isoformat() }}"
         device_class: "timestamp"
         icon_template: "mdi:clock"
+      openweathermap_last_updated:
+        friendly_name: "OpenWeatherMap Last Updated"
+        value_template: "{{ states.weather.openweathermap.last_updated.isoformat() }}"
+        device_class: "timestamp"
+        icon_template: "mdi:clock"
+      sun_azimuth:
+        friendly_name: "Sonnenstand (Azimuth)"
+        unit_of_measurement: "°"
+        value_template: "{{ state_attr('homematic.central', 'sun_azimuth') | round(2) }}"
+        icon_template: "mdi:weather-sunny"
+      sun_elevation:
+        friendly_name: "Sonnenstand (Höhe)"
+        unit_of_measurement: "°"
+        value_template: "{{ state_attr('homematic.central', 'sun_elevation') | round(2) }}"
+        icon_template: "mdi:weather-sunny"
 
 automation:
   - alias: "Homematic Watchdog"
@@ -111,3 +126,19 @@ automation:
         data:
           name: "openweathermap_wind_speed"
           value: "{{ states('sensor.openweathermap_wind_speed') | float }}"
+
+homeassistant:
+  customize:
+    sensor.0001dbe9a628d5_current:
+      friendly_name: Schalt-/Mess-Steckdose USV (Strom)
+    sensor.0001dbe9a628d5_energy_counter:
+      friendly_name: Schalt-/Mess-Steckdose USV (Energieverbrauch)
+    sensor.0001dbe9a628d5_frequency:
+      friendly_name: Schalt-/Mess-Steckdose USV (Frequenz)
+    sensor.0001dbe9a628d5_power:
+      friendly_name: Schalt-/Mess-Steckdose USV (Leistung)
+    sensor.0001dbe9a628d5_voltage:
+      friendly_name: Schalt-/Mess-Steckdose USV (Spannung)
+    switch.0001dbe9a628d5:
+      friendly_name: Schalt-/Mess-Steckdose USV
+
