@@ -14,23 +14,11 @@ timer: !include timers.yaml
 
 homeassistant:
   customize: !include customize.yaml
-
-  packages:
-    homematic: !include packages/homematic.yaml
+  packages: !include packages.yaml
 
 http:
   ssl_certificate: /ssl/fullchain.pem
   ssl_key: /ssl/privkey.pem
-
-telegram_bot:
-  - platform: polling
-    api_key: !secret telegram-api-key
-    allowed_chat_ids: !secret telegram-allowed-chat-ids
-
-notify:
-  - name: telegram_admin
-    platform: telegram
-    chat_id: !secret telegram-chat-id-admin
 
 influxdb:
   database: !secret influxdb-database

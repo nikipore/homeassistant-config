@@ -1,0 +1,2 @@
+homematic: !include packages/homematic.yaml
+telegram: !include packages/telegram.yaml
