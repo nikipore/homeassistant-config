@@ -11,6 +11,9 @@ timer: !include timers.yaml
 logger:
   default: warning
 
+recorder:
+  purge_keep_days: 30
+
 homeassistant:
   customize: !include customize.yaml
   packages: !include_dir_named packages
