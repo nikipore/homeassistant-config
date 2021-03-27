@@ -36,31 +36,17 @@ sensor:
       homematic_last_reboot:
         friendly_name: "letzter Neustart (Homematic)"
         value_template: "{{ strptime(state_attr('homematic.central', 'last_reboot') or '1970-01-01 00:00:00', '%Y-%m-%d %H:%M:%S').isoformat() }}"
-        device_class: "timestamp"
-        icon_template: "mdi:clock"
-      dwd_hourly_forecast_index:
-        friendly_name: "DWD Hourly Forecast Index"
-        value_template: "{{ (((utcnow() - state_attr('weather.dwd_weather_frankfurt_m_1h', 'forecast_time_utc')).total_seconds() // 3600) - 1) | int }}"
-      dwd_hourly_last_updated:
-        friendly_name: "DWD Hourly Last Updated"
-        value_template: "{{ state_attr('weather.dwd_weather_frankfurt_m_1h', 'forecast_time_utc') }}"
-        device_class: "timestamp"
-        icon_template: "mdi:clock"
-      openweathermap_last_updated:
-        friendly_name: "OpenWeatherMap Last Updated"
-        value_template: "{{ states.weather.openweathermap.last_updated.isoformat() }}"
-        device_class: "timestamp"
-        icon_template: "mdi:clock"
+        device_class: timestamp
       sun_azimuth:
         friendly_name: "Sonnenstand (Azimuth)"
         unit_of_measurement: "°"
         value_template: "{{ state_attr('homematic.central', 'sun_azimuth') | round(2) }}"
-        icon_template: "mdi:weather-sunny"
+        icon_template: mdi:weather-sunny
       sun_elevation:
         friendly_name: "Sonnenstand (Höhe)"
         unit_of_measurement: "°"
         value_template: "{{ state_attr('homematic.central', 'sun_elevation') | round(2) }}"
-        icon_template: "mdi:weather-sunny"
+        icon_template: mdi:weather-sunny
 
 automation:
   - alias: Homematic Watchdog
@@ -90,65 +76,69 @@ automation:
   - alias: Update Weather on Homematic
     trigger:
       - platform: state
-        entity_id: sensor.openweathermap_last_updated
+        entity_id: sensor.weather_last_updated
       - platform: state
-        entity_id: sensor.dwd_hourly_last_updated
+        entity_id: sensor.weather_hourly_forecast_index
     action:
-      - delay: "00:00:05"
+      - condition: and
+        conditions: # TODO: Check überflüssig machen und Forecast Index in weather.yaml kapseln
+          - condition: numeric_state
+            entity_id: sensor.weather_hourly_forecast_index
+            above: -1
       - service: homematic.set_variable_value
         target:
           entity_id: homematic.central
         data:
-          name: "weather_cloud_coverage"
-          value: "{{ states('sensor.openweathermap_cloud_coverage') | float }}"
+          name: "weather_forecast_cloud_coverage"
+          value: "{{ states('sensor.weather_forecast_cloud_coverage') }}"
       - service: homematic.set_variable_value
         target:
           entity_id: homematic.central
         data:
           name: "weather_forecast_dewpoint"
-          value: "{{ state_attr('sensor.dewpoint_frankfurt_m_1h', 'data')[states('sensor.dwd_hourly_forecast_index') | int]['value'] | float }}"
+          value: "{{ states('sensor.weather_forecast_dewpoint') }}"
       - service: homematic.set_variable_value
         target:
           entity_id: homematic.central
         data:
           name: "weather_forecast_precipitation"
-          value: "{{ state_attr('weather.dwd_weather_frankfurt_m_1h', 'forecast')[0]['precipitation'] | float }}"
+          value: "{{ states('sensor.weather_forecast_precipitation') }}"
       - service: homematic.set_variable_value
         target:
           entity_id: homematic.central
         data:
           name: "weather_forecast_wind_gusts"
-          value: "{{ state_attr('sensor.wind_gusts_frankfurt_m_1h', 'data')[states('sensor.dwd_hourly_forecast_index') | int]['value'] | float }}"
+          value: "{{ states('sensor.weather_forecast_wind_gusts') }}"
       - service: homematic.set_variable_value
         target:
           entity_id: homematic.central
         data:
           name: "weather_humidity"
-          value: "{{ states('sensor.openweathermap_humidity') | float }}"
+          value: "{{ states('sensor.weather_humidity') }}"
       - service: homematic.set_variable_value
         target:
           entity_id: homematic.central
         data:
           name: "weather_pressure"
-          value: "{{ states('sensor.openweathermap_pressure') | float }}"
+          value: "{{ states('sensor.weather_pressure') }}"
       - service: homematic.set_variable_value
         target:
           entity_id: homematic.central
         data:
           name: "weather_temperature"
-          value: "{{ states('sensor.openweathermap_temperature') | float }}"
+          value: "{{ states('sensor.weather_temperature') }}"
       - service: homematic.set_variable_value
         target:
           entity_id: homematic.central
         data:
           name: "weather_wind_bearing"
-          value: "{{ states('sensor.openweathermap_wind_bearing') | float }}"
+          value: "{{ states('sensor.weather_wind_bearing') }}"
       - service: homematic.set_variable_value
         target:
           entity_id: homematic.central
         data:
           name: "weather_wind_speed"
-          value: "{{ states('sensor.openweathermap_wind_speed') | float }}"
+          value: "{{ states('sensor.weather_wind_speed') }}"
 
 homeassistant:
   customize:
@@ -164,4 +154,3 @@ homeassistant:
       friendly_name: Schalt-/Mess-Steckdose USV (Spannung)
     switch.0001dbe9a628d5:
       friendly_name: Schalt-/Mess-Steckdose USV
-

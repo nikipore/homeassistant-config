@@ -4,7 +4,9 @@
 .google.token
 custom_components
 node-red
+themes
 tts
+www
 
 # Ignore files.
 __pycache__

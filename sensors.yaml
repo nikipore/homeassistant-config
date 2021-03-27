@@ -1,7 +1,6 @@
 - platform: dwd_weather_warnings
   region_name: Stadt Frankfurt am Main
   name: Frankfurt am Main
-
 - platform: time_date
   display_options:
     - "time"
