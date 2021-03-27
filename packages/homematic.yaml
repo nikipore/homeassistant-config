@@ -38,6 +38,14 @@ sensor:
         value_template: "{{ strptime(state_attr('homematic.central', 'last_reboot') or '1970-01-01 00:00:00', '%Y-%m-%d %H:%M:%S').isoformat() }}"
         device_class: "timestamp"
         icon_template: "mdi:clock"
+      dwd_hourly_forecast_index:
+        friendly_name: "DWD Hourly Forecast Index"
+        value_template: "{{ (((utcnow() - state_attr('weather.dwd_weather_frankfurt_m_1h', 'forecast_time_utc')).total_seconds() // 3600) - 1) | int }}"
+      dwd_hourly_last_updated:
+        friendly_name: "DWD Hourly Last Updated"
+        value_template: "{{ state_attr('weather.dwd_weather_frankfurt_m_1h', 'forecast_time_utc') }}"
+        device_class: "timestamp"
+        icon_template: "mdi:clock"
       openweathermap_last_updated:
         friendly_name: "OpenWeatherMap Last Updated"
         value_template: "{{ states.weather.openweathermap.last_updated.isoformat() }}"
@@ -55,7 +63,7 @@ sensor:
         icon_template: "mdi:weather-sunny"
 
 automation:
-  - alias: "Homematic Watchdog"
+  - alias: Homematic Watchdog
     trigger:
       - platform: homeassistant
         event: start
@@ -79,52 +87,61 @@ automation:
         data:
           message: "Homematic dead. Attempting to reconnect ..."
 
-  - alias: Update OpenWeatherMap on Homematic
+  - alias: Update Weather on Homematic
     trigger:
-      platform: state
-      entity_id: sensor.openweathermap_last_updated
+      - platform: state
+        entity_id: sensor.openweathermap_last_updated
+      - platform: state
+        entity_id: sensor.dwd_hourly_last_updated
     action:
+      - delay: "00:00:05"
       - service: homematic.set_variable_value
         target:
           entity_id: homematic.central
         data:
-          name: "openweathermap_cloud_coverage"
+          name: "weather_cloud_coverage"
           value: "{{ states('sensor.openweathermap_cloud_coverage') | float }}"
       - service: homematic.set_variable_value
         target:
           entity_id: homematic.central
         data:
-          name: "openweathermap_humidity"
+          name: "weather_forecast_precipitation"
+          value: "{{ state_attr('weather.dwd_weather_frankfurt_m_1h', 'forecast')[0]['precipitation'] | float }}"
+      - service: homematic.set_variable_value
+        target:
+          entity_id: homematic.central
+        data:
+          name: "weather_forecast_wind_gusts"
+          value: "{{ state_attr('sensor.wind_gusts_frankfurt_m_1h', 'data')[states('sensor.dwd_hourly_forecast_index') | int]['value'] | float }}"
+      - service: homematic.set_variable_value
+        target:
+          entity_id: homematic.central
+        data:
+          name: "weather_humidity"
           value: "{{ states('sensor.openweathermap_humidity') | float }}"
       - service: homematic.set_variable_value
         target:
           entity_id: homematic.central
         data:
-          name: "openweathermap_pressure"
+          name: "weather_pressure"
           value: "{{ states('sensor.openweathermap_pressure') | float }}"
       - service: homematic.set_variable_value
         target:
           entity_id: homematic.central
         data:
-          name: "openweathermap_rain"
-          value: "{{ states('sensor.openweathermap_rain') | float }}"
-      - service: homematic.set_variable_value
-        target:
-          entity_id: homematic.central
-        data:
-          name: "openweathermap_temperature"
+          name: "weather_temperature"
           value: "{{ states('sensor.openweathermap_temperature') | float }}"
       - service: homematic.set_variable_value
         target:
           entity_id: homematic.central
         data:
-          name: "openweathermap_wind_bearing"
+          name: "weather_wind_bearing"
           value: "{{ states('sensor.openweathermap_wind_bearing') | float }}"
       - service: homematic.set_variable_value
         target:
           entity_id: homematic.central
         data:
-          name: "openweathermap_wind_speed"
+          name: "weather_wind_speed"
           value: "{{ states('sensor.openweathermap_wind_speed') | float }}"
 
 homeassistant:
