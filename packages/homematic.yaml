@@ -105,6 +105,12 @@ automation:
         target:
           entity_id: homematic.central
         data:
+          name: "weather_forecast_dewpoint"
+          value: "{{ state_attr('sensor.dewpoint_frankfurt_m_1h', 'data')[states('sensor.dwd_hourly_forecast_index') | int]['value'] | float }}"
+      - service: homematic.set_variable_value
+        target:
+          entity_id: homematic.central
+        data:
           name: "weather_forecast_precipitation"
           value: "{{ state_attr('weather.dwd_weather_frankfurt_m_1h', 'forecast')[0]['precipitation'] | float }}"
       - service: homematic.set_variable_value
