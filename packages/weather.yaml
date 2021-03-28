@@ -3,6 +3,9 @@ sensor:
     sensors:
       weather_hourly_forecast_index:
         friendly_name: "Wettervorhersage: Index der aktuellen Stunde"
+        value_template: "{{ (((utcnow() - state_attr('weather.dwd_weather_frankfurt_m_1h', 'forecast_time_utc')).total_seconds() // 3600) - 1) | max(0) | int }}"
+      weather_hourly_forecast_debug:
+        friendly_name: "Wettervorhersage: Index der aktuellen Stunde (Debug)"
         value_template: "{{ (((utcnow() - state_attr('weather.dwd_weather_frankfurt_m_1h', 'forecast_time_utc')).total_seconds() // 3600) - 1) | int }}"
       weather_forecast_time:
         friendly_name: "Wetter: Zeitpunkt der Vorhersage"

@@ -80,11 +80,6 @@ automation:
       - platform: state
         entity_id: sensor.weather_hourly_forecast_index
     action:
-      - condition: and
-        conditions: # TODO: Check überflüssig machen und Forecast Index in weather.yaml kapseln
-          - condition: numeric_state
-            entity_id: sensor.weather_hourly_forecast_index
-            above: -1
       - service: homematic.set_variable_value
         target:
           entity_id: homematic.central
