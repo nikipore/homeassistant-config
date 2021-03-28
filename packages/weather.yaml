@@ -1,4 +1,7 @@
 sensor:
+  - platform: dwd_weather_warnings
+    region_name: Stadt Frankfurt am Main
+    name: Frankfurt am Main
   - platform: template
     sensors:
       weather_hourly_forecast_index:
