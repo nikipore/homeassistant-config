@@ -7,6 +7,7 @@ node-red
 themes
 tts
 www
+zigbee2mqtt
 
 # Ignore files.
 __pycache__
