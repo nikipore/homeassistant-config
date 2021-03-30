@@ -102,6 +102,18 @@ automation:
         target:
           entity_id: homematic.central
         data:
+          name: "weather_forecast_temperature_high"
+          value: "{{ states('sensor.weather_forecast_temperature_high') }}"
+      - service: homematic.set_variable_value
+        target:
+          entity_id: homematic.central
+        data:
+          name: "weather_forecast_temperature_low"
+          value: "{{ states('sensor.weather_forecast_temperature_low') }}"
+      - service: homematic.set_variable_value
+        target:
+          entity_id: homematic.central
+        data:
           name: "weather_forecast_wind_gusts"
           value: "{{ states('sensor.weather_forecast_wind_gusts') }}"
       - service: homematic.set_variable_value
