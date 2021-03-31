@@ -4,15 +4,12 @@ sensor:
     name: Frankfurt am Main
   - platform: template
     sensors:
-      weather_hourly_forecast_index:
-        friendly_name: "Wettervorhersage: Index der aktuellen Stunde"
-        value_template: "{{ (((as_timestamp(utcnow()) - as_timestamp(state_attr('weather.dwd_weather_frankfurt_m_1h', 'forecast_time_utc'))) // 3600) - 1) | max(0) }}"
       weather_hourly_forecast_index_next_rising:
         friendly_name: "Wettervorhersage: Index des nächsten Sonnenaufgangs"
-        value_template: "{{ (((as_timestamp(state_attr('sun.sun', 'next_rising')) - as_timestamp(state_attr('weather.dwd_weather_frankfurt_m_1h', 'forecast_time_utc'))) // 3600) - 1) | max(0) }}"
+        value_template: "{{ ((as_timestamp(state_attr('sun.sun', 'next_rising')) - as_timestamp(state_attr('weather.dwd_weather_frankfurt_m_1h', 'forecast')[0]['datetime'])) // 3600) | max(0) }}"
       weather_hourly_forecast_index_next_setting:
         friendly_name: "Wettervorhersage: Index des nächsten Sonnenuntergangs"
-        value_template: "{{ (((as_timestamp(state_attr('sun.sun', 'next_setting')) - as_timestamp(state_attr('weather.dwd_weather_frankfurt_m_1h', 'forecast_time_utc'))) // 3600) - 1) | max(0) }}"
+        value_template: "{{ ((as_timestamp(state_attr('sun.sun', 'next_setting')) - as_timestamp(state_attr('weather.dwd_weather_frankfurt_m_1h', 'forecast')[0]['datetime'])) // 3600) | max(0) }}"
       weather_forecast_time:
         friendly_name: "Wetter: Zeitpunkt der Vorhersage"
         value_template: "{{ state_attr('weather.dwd_weather_frankfurt_m_1h', 'forecast_time_utc') }}"
@@ -24,32 +21,32 @@ sensor:
       weather_forecast_cloud_coverage:
         friendly_name: "Wolkenbedeckung"
         unit_of_measurement: "%"
-        value_template: "{{ state_attr('sensor.cloud_coverage_frankfurt_m_1h', 'data')[states('sensor.weather_hourly_forecast_index') | int]['value'] | float }}"
+        value_template: "{{ states('sensor.cloud_coverage_frankfurt_m_1h') | float }}"
         icon_template: mdi:cloud-outline
       weather_forecast_dewpoint:
         friendly_name: "Taupunkt"
         unit_of_measurement: "°C"
-        value_template: "{{ state_attr('sensor.dewpoint_frankfurt_m_1h', 'data')[states('sensor.weather_hourly_forecast_index') | int]['value'] | float }}"
+        value_template: "{{ states('sensor.dewpoint_frankfurt_m_1h') | float }}"
         device_class: temperature
       weather_forecast_precipitation:
         friendly_name: "Niederschlag"
         unit_of_measurement: "mm"
-        value_template: "{{ state_attr('sensor.precipitation_frankfurt_m_1h', 'data')[states('sensor.weather_hourly_forecast_index') | int]['value'] | float }}"
+        value_template: "{{ states('sensor.precipitation_frankfurt_m_1h') | float }}"
         icon_template: mdi:weather-rainy
       weather_forecast_wind_gusts:
         friendly_name: "Windböen"
         unit_of_measurement: "km/h"
-        value_template: "{{ state_attr('sensor.wind_gusts_frankfurt_m_1h', 'data')[states('sensor.weather_hourly_forecast_index') | int]['value'] | float * 3.6 }}"
+        value_template: "{{ states('sensor.wind_gusts_frankfurt_m_1h') | float * 3.6 }}"
         icon_template: mdi:weather-rainy
       weather_forecast_temperature_high:
         friendly_name: "Temperatur (max.)"
         unit_of_measurement: "°C"
-        value_template: "{{ state_attr('sensor.temperature_frankfurt_m_1h', 'data')[(states('sensor.weather_hourly_forecast_index') | int):(states('sensor.weather_hourly_forecast_index_next_setting') | int) + 1] | map(attribute='value') | max | float }}"
+        value_template: "{{ state_attr('sensor.temperature_frankfurt_m_1h', 'data')[:(states('sensor.weather_hourly_forecast_index_next_setting') | int) + 1] | map(attribute='value') | max | float }}"
         device_class: temperature
       weather_forecast_temperature_low:
         friendly_name: "Temperatur (min.)"
         unit_of_measurement: "°C"
-        value_template: "{{ state_attr('sensor.temperature_frankfurt_m_1h', 'data')[(states('sensor.weather_hourly_forecast_index') | int):(states('sensor.weather_hourly_forecast_index_next_rising') | int) + 1] | map(attribute='value') | min | float }}"
+        value_template: "{{ state_attr('sensor.temperature_frankfurt_m_1h', 'data')[:(states('sensor.weather_hourly_forecast_index_next_rising') | int) + 1] | map(attribute='value') | min | float }}"
         device_class: temperature
       weather_humidity:
         friendly_name: "relative Luftfeuchtigkeit"

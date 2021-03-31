@@ -77,8 +77,6 @@ automation:
     trigger:
       - platform: state
         entity_id: sensor.weather_last_updated
-      - platform: state
-        entity_id: sensor.weather_hourly_forecast_index
     action:
       - service: homematic.set_variable_value
         target:
