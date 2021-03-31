@@ -76,7 +76,7 @@ automation:
   - alias: Update Weather on Homematic
     trigger:
       - platform: state
-        entity_id: sensor.weather_last_updated
+        entity_id: sensor.weather_latest_update
     action:
       - service: homematic.set_variable_value
         target:
