@@ -1,0 +1,9 @@
+- platform: group
+  name: Deckenlampe
+  entities:
+    - light.0x0017880103b80c1f
+    - light.0x0017880103b80c3b
+    - light.0x0017880103f9e5e7
+    - light.0x0017880103f9eaaf
+    - light.0x0017880103f9e587
+    - light.0x0017880103b80be0
