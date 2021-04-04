@@ -7,7 +7,11 @@ node-red
 themes
 tts
 www
-zigbee2mqtt
+zigbee2mqtt/*
+
+# Select files.
+!zigbee2mqtt/devices.yaml
+!zigbee2mqtt/groups.yaml
 
 # Ignore files.
 __pycache__

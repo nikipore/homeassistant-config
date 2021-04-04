@@ -78,6 +78,7 @@ automation:
       - platform: state
         entity_id: sensor.weather_latest_update
     action:
+      - delay: "00:00:15"
       - service: homematic.set_variable_value
         target:
           entity_id: homematic.central
