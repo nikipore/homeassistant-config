@@ -1,0 +1,16 @@
+automation:
+  - alias: Music in Living Room
+    trigger:
+      - platform: state
+        entity_id: media_player.wohnzimmer
+        to: playing
+    action:
+      - condition: and
+        conditions: "{{ is_state('switch.wohnzimmer_musik', 'off') }}"
+      - service: media_player.media_pause
+        entity_id: media_player.wohnzimmer
+      - service: switch.turn_on
+        entity_id: switch.wohnzimmer_musik
+      - service: media_player.media_play
+        entity_id: media_player.wohnzimmer
+
