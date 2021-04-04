@@ -22,10 +22,6 @@ homeassistant:
   customize: !include customize.yaml
   packages: !include_dir_named packages
 
-#http:
-#  ssl_certificate: /ssl/fullchain.pem
-#  ssl_key: /ssl/privkey.pem
-
 influxdb:
   database: !secret influxdb-database
   username: !secret influxdb-user
