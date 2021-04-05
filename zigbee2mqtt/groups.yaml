@@ -1,5 +1,5 @@
 '1':
-  friendly_name: Deckenlampe
+  friendly_name: group-wohnzimmer-decke
   devices:
     - 0x0017880103b80c1f/11
     - 0x0017880103b80c3b/11
@@ -7,3 +7,9 @@
     - 0x0017880103f9eaaf/11
     - 0x0017880103f9e587/11
     - 0x0017880103b80be0/11
+'2':
+  friendly_name: group-schlafzimmer
+  devices:
+    - 0x00178801038746d4/11
+    - 0x00178801035073df/11
+    - 0x0017880103204d45/11

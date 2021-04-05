@@ -7,3 +7,9 @@
     - light.0x0017880103f9eaaf
     - light.0x0017880103f9e587
     - light.0x0017880103b80be0
+- platform: group
+  name: Schlafzimmer
+  entities:
+    - light.0x00178801038746d4
+    - light.0x00178801035073df
+    - light.0x0017880103204d45

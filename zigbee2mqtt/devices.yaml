@@ -1,18 +1,26 @@
-'0x84182600000ed948':
-  friendly_name: Luftreiniger
-'0x84182600000ed8a1':
-  friendly_name: Flur
-'0x0017880103b80c1f':
-  friendly_name: Deckenlampe 1
-'0x0017880103b80be0':
-  friendly_name: Deckenlampe 6
-'0x0017880103b80c3b':
-  friendly_name: Deckenlampe 2
 '0x0017880103f9eaaf':
-  friendly_name: Deckenlampe 4
-'0x0017880103f9e5e7':
-  friendly_name: Deckenlampe 3
+  friendly_name: wohnzimmer-decke-4
 '0x0017880103f9e587':
-  friendly_name: Deckenlampe 5
+  friendly_name: wohnzimmer-decke-5
+'0x0017880103f9e5e7':
+  friendly_name: wohnzimmer-decke-3
+'0x0017880103b80be0':
+  friendly_name: wohnzimmer-decke-6
+'0x0017880103b80c3b':
+  friendly_name: wohnzimmer-decke-2
+'0x84182600000ed948':
+  friendly_name: flur-lampe
+'0x0017880103b80c1f':
+  friendly_name: wohnzimmer-decke-1
 '0x0017880102c20295':
-  friendly_name: Deckenlampe Dimmer
+  friendly_name: wohnzimmer-decke-dimmer
+'0x84182600000ed8a1':
+  friendly_name: wohnzimmer-luftreiniger
+'0x0017880103204d45':
+  friendly_name: schlafzimmer-3
+'0x00178801038746d4':
+  friendly_name: schlafzimmer-1
+'0x00178801035073df':
+  friendly_name: schlafzimmer-2
+'0x0017880103e7b1fc':
+  friendly_name: schlafzimmer-dimmer
