@@ -1460,183 +1460,140 @@
             }
         }
     },
-    "node-red-contrib-zigbee2mqtt-devices": {
-        "name": "node-red-contrib-zigbee2mqtt-devices",
-        "version": "0.19.2",
-        "local": true,
+    "node-red-contrib-huemagic": {
+        "name": "node-red-contrib-huemagic",
+        "version": "3.0.0",
+        "local": false,
         "nodes": {
-            "api": {
-                "name": "api",
-                "types": [],
-                "enabled": false,
-                "local": true,
-                "module": "node-red-contrib-zigbee2mqtt-devices",
-                "file": "/config/node-red/node_modules/node-red-contrib-zigbee2mqtt-devices/dist/_api.js"
-            },
-            "brdige-log": {
-                "name": "brdige-log",
+            "hue-bridge": {
+                "name": "hue-bridge",
                 "types": [
-                    "bridge-log"
-                ],
-                "enabled": false,
-                "local": true,
-                "module": "node-red-contrib-zigbee2mqtt-devices",
-                "file": "/config/node-red/node_modules/node-red-contrib-zigbee2mqtt-devices/dist/bridge-log.js"
-            },
-            "config": {
-                "name": "config",
-                "types": [
-                    "zigbee2mqtt-bridge-config",
-                    "zigbee2mqtt-device-config"
+                    "hue-bridge"
                 ],
                 "enabled": true,
                 "local": true,
-                "module": "node-red-contrib-zigbee2mqtt-devices",
-                "file": "/config/node-red/node_modules/node-red-contrib-zigbee2mqtt-devices/dist/zigbee2mqtt-config.js"
+                "module": "node-red-contrib-huemagic",
+                "file": "/config/node-red/node_modules/node-red-contrib-huemagic/huemagic/hue-bridge-config.js"
             },
-            "devices-eurotronics": {
-                "name": "devices-eurotronics",
+            "hue-bridge-node": {
+                "name": "hue-bridge-node",
                 "types": [
-                    "eurotronic-spirit"
+                    "hue-bridge-node"
                 ],
                 "enabled": true,
                 "local": true,
-                "module": "node-red-contrib-zigbee2mqtt-devices",
-                "file": "/config/node-red/node_modules/node-red-contrib-zigbee2mqtt-devices/dist/nodes/devices-eurotronic.js"
+                "module": "node-red-contrib-huemagic",
+                "file": "/config/node-red/node_modules/node-red-contrib-huemagic/huemagic/hue-bridge.js"
             },
-            "devices-hue": {
-                "name": "devices-hue",
+            "hue-magic": {
+                "name": "hue-magic",
                 "types": [
-                    "hue-dimmer-switch"
+                    "hue-magic"
                 ],
                 "enabled": true,
                 "local": true,
-                "module": "node-red-contrib-zigbee2mqtt-devices",
-                "file": "/config/node-red/node_modules/node-red-contrib-zigbee2mqtt-devices/dist/nodes/hue-dimmer/devices-hue.js"
+                "module": "node-red-contrib-huemagic",
+                "file": "/config/node-red/node_modules/node-red-contrib-huemagic/huemagic/hue-magic.js"
             },
-            "devices-ikea": {
-                "name": "devices-ikea",
+            "hue-light": {
+                "name": "hue-light",
                 "types": [
-                    "ikea-dimmer",
-                    "ikea-remote",
-                    "ikea-dimmer-v2"
+                    "hue-light"
                 ],
                 "enabled": true,
                 "local": true,
-                "module": "node-red-contrib-zigbee2mqtt-devices",
-                "file": "/config/node-red/node_modules/node-red-contrib-zigbee2mqtt-devices/dist/nodes/devices-ikea.js"
+                "module": "node-red-contrib-huemagic",
+                "file": "/config/node-red/node_modules/node-red-contrib-huemagic/huemagic/hue-light.js"
             },
-            "devices-scenic": {
-                "name": "devices-scenic",
+            "hue-group": {
+                "name": "hue-group",
                 "types": [
-                    "scenic-foh-switch"
+                    "hue-group"
                 ],
                 "enabled": true,
                 "local": true,
-                "module": "node-red-contrib-zigbee2mqtt-devices",
-                "file": "/config/node-red/node_modules/node-red-contrib-zigbee2mqtt-devices/dist/nodes/devices-scenic.js"
+                "module": "node-red-contrib-huemagic",
+                "file": "/config/node-red/node_modules/node-red-contrib-huemagic/huemagic/hue-group.js"
             },
-            "devices-sonoff": {
-                "name": "devices-sonoff",
+            "hue-scene": {
+                "name": "hue-scene",
                 "types": [
-                    "sonoff-button"
+                    "hue-scene"
                 ],
                 "enabled": true,
                 "local": true,
-                "module": "node-red-contrib-zigbee2mqtt-devices",
-                "file": "/config/node-red/node_modules/node-red-contrib-zigbee2mqtt-devices/dist/nodes/devices-sonoff.js"
+                "module": "node-red-contrib-huemagic",
+                "file": "/config/node-red/node_modules/node-red-contrib-huemagic/huemagic/hue-scene.js"
             },
-            "devices-tasmota": {
-                "name": "devices-tasmota",
+            "hue-tap": {
+                "name": "hue-tap",
                 "types": [
-                    "tasmota"
+                    "hue-tap"
                 ],
                 "enabled": true,
                 "local": true,
-                "module": "node-red-contrib-zigbee2mqtt-devices",
-                "file": "/config/node-red/node_modules/node-red-contrib-zigbee2mqtt-devices/dist/nodes/devices-tasmota.js"
+                "module": "node-red-contrib-huemagic",
+                "file": "/config/node-red/node_modules/node-red-contrib-huemagic/huemagic/hue-tap.js"
             },
-            "devices-tint": {
-                "name": "devices-tint",
+            "hue-switch": {
+                "name": "hue-switch",
                 "types": [
-                    "tint-remote"
+                    "hue-switch"
                 ],
                 "enabled": true,
                 "local": true,
-                "module": "node-red-contrib-zigbee2mqtt-devices",
-                "file": "/config/node-red/node_modules/node-red-contrib-zigbee2mqtt-devices/dist/nodes/devices-tint.js"
+                "module": "node-red-contrib-huemagic",
+                "file": "/config/node-red/node_modules/node-red-contrib-huemagic/huemagic/hue-switch.js"
             },
-            "generic-lamp": {
-                "name": "generic-lamp",
+            "hue-button": {
+                "name": "hue-button",
                 "types": [
-                    "generic-lamp",
-                    "send-messages",
-                    "button-switch",
-                    "device-status",
-                    "get-lamp-state"
+                    "hue-button"
                 ],
                 "enabled": true,
                 "local": true,
-                "module": "node-red-contrib-zigbee2mqtt-devices",
-                "file": "/config/node-red/node_modules/node-red-contrib-zigbee2mqtt-devices/dist/zigbee2mqtt.js"
+                "module": "node-red-contrib-huemagic",
+                "file": "/config/node-red/node_modules/node-red-contrib-huemagic/huemagic/hue-button.js"
             },
-            "non-z2m-devices-shelly-25": {
-                "name": "non-z2m-devices-shelly-25",
+            "hue-motion": {
+                "name": "hue-motion",
                 "types": [
-                    "shelly-config",
-                    "shelly-25"
+                    "hue-motion"
                 ],
                 "enabled": true,
                 "local": true,
-                "module": "node-red-contrib-zigbee2mqtt-devices",
-                "file": "/config/node-red/node_modules/node-red-contrib-zigbee2mqtt-devices/dist/non-z2m-nodes/devices-shelly-25.js"
+                "module": "node-red-contrib-huemagic",
+                "file": "/config/node-red/node_modules/node-red-contrib-huemagic/huemagic/hue-motion.js"
             },
-            "ota": {
-                "name": "ota",
+            "hue-temperature": {
+                "name": "hue-temperature",
                 "types": [
-                    "ota-update"
+                    "hue-temperature"
                 ],
                 "enabled": true,
                 "local": true,
-                "module": "node-red-contrib-zigbee2mqtt-devices",
-                "file": "/config/node-red/node_modules/node-red-contrib-zigbee2mqtt-devices/dist/ota.js"
+                "module": "node-red-contrib-huemagic",
+                "file": "/config/node-red/node_modules/node-red-contrib-huemagic/huemagic/hue-temperature.js"
             },
-            "override": {
-                "name": "override",
+            "hue-brightness": {
+                "name": "hue-brightness",
                 "types": [
-                    "override-state",
-                    "override-brightness",
-                    "override-temperature",
-                    "override-color",
-                    "override-action"
+                    "hue-brightness"
                 ],
                 "enabled": true,
                 "local": true,
-                "module": "node-red-contrib-zigbee2mqtt-devices",
-                "file": "/config/node-red/node_modules/node-red-contrib-zigbee2mqtt-devices/dist/nodes/override/override-nodes.js"
+                "module": "node-red-contrib-huemagic",
+                "file": "/config/node-red/node_modules/node-red-contrib-huemagic/huemagic/hue-brightness.js"
             },
-            "scenes": {
-                "name": "scenes",
+            "hue-rules": {
+                "name": "hue-rules",
                 "types": [
-                    "scene-in",
-                    "scene-selector"
+                    "hue-rules"
                 ],
                 "enabled": true,
                 "local": true,
-                "module": "node-red-contrib-zigbee2mqtt-devices",
-                "file": "/config/node-red/node_modules/node-red-contrib-zigbee2mqtt-devices/dist/nodes/scenes.js"
-            },
-            "sensors": {
-                "name": "sensors",
-                "types": [
-                    "contact-sensor",
-                    "occupancy-sensor",
-                    "climate-sensor"
-                ],
-                "enabled": true,
-                "local": true,
-                "module": "node-red-contrib-zigbee2mqtt-devices",
-                "file": "/config/node-red/node_modules/node-red-contrib-zigbee2mqtt-devices/dist/nodes/sensors.js"
+                "module": "node-red-contrib-huemagic",
+                "file": "/config/node-red/node_modules/node-red-contrib-huemagic/huemagic/hue-rules.js"
             }
         }
     }
