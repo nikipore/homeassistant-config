@@ -8,6 +8,12 @@
     - light.0x0017880103f9e587
     - light.0x0017880103b80be0
 - platform: group
+  name: Garderobe
+  entities:
+    - light.0x0017880103b9624b
+    - light.0x0017880103b83ba1
+    - light.0x00178801038929b4
+- platform: group
   name: Schlafzimmer
   entities:
     - light.0x00178801038746d4

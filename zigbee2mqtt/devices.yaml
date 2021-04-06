@@ -24,3 +24,12 @@
   friendly_name: schlafzimmer-2
 '0x0017880103e7b1fc':
   friendly_name: schlafzimmer-dimmer
+'0x0017880103b83ba1':
+  friendly_name: garderobe-2
+'0x00178801038929b4':
+  friendly_name: garderobe-3
+'0x0017880103b9624b':
+  friendly_name: garderobe-1
+'0x001788010329dfc5':
+  friendly_name: garderobe-motion-sensor
+  retain: true
