@@ -3,7 +3,6 @@
 .cloud
 .google.token
 custom_components
-node-red
 themes
 tts
 www
