@@ -19,3 +19,12 @@
     - light.0x00178801038746d4
     - light.0x00178801035073df
     - light.0x0017880103204d45
+- platform: group
+  name: Wohnzimmer
+  entities:
+    - light.0x001788010359b0f2
+    - light.0x00178801038909e6
+    - light.0x0017880103892bd7
+    - light.0x0017880103e185e6
+    - light.0x00178801047a8f0f
+    - light.0x00178801067ccfea
