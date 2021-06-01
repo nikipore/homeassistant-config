@@ -17,6 +17,7 @@ __pycache__
 .HA_VERSION
 *.log
 *.db
+*.db-*
 harmony_*.conf
 
 # Ensure these YAML files are ignored, otherwise your secret data/credentials will leak.

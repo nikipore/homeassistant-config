@@ -1,14 +1,14 @@
 homeassistant:
   customize:
     sensor.0x00158d000412f308_temperature:
-      friendly_name: Temperatur
+      friendly_name: Temperatur Wohnzimmer
     sensor.0x00158d000412f308_humidity:
-      friendly_name: rel. Luftfeuchtigkeit
+      friendly_name: rel. Luftfeuchtigkeit Wohnzimmer
     sensor.0x00158d000412f308_pressure:
-      friendly_name: Luftdruck
+      friendly_name: Luftdruck Wohnzimmer
     sensor.0x00158d00041da63b_temperature:
-      friendly_name: Temperatur
+      friendly_name: Temperatur Badezimmer
     sensor.0x00158d00041da63b_humidity:
-      friendly_name: rel. Luftfeuchtigkeit
+      friendly_name: rel. Luftfeuchtigkeit Badezimmer
     sensor.0x00158d00041da63b_pressure:
-      friendly_name: Luftdruck
+      friendly_name: Luftdruck Badezimmer
