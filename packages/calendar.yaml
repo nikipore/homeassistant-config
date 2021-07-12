@@ -1,0 +1,24 @@
+binary_sensor:
+  - platform: workday
+    name: is_workday_today
+    country: DE
+    province: HE
+  - platform: workday
+    name: is_workday_tomorrow
+    days_offset: 1
+    country: DE
+    province: HE
+  - platform: workday
+    name: is_workday_yesterday
+    days_offset: -1
+    country: DE
+    province: HE
+
+homeassistant:
+  customize:
+    binary_sensor.is_workday_today:
+      friendly_name: Werktag (heute)
+    binary_sensor.is_workday_tomorrow:
+      friendly_name: Werktag (morgen)
+    binary_sensor.is_workday_yesterday:
+      friendly_name: Werktag (gestern)

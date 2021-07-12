@@ -1,0 +1,25 @@
+input_boolean:
+  blind_control_active:
+    name: "Rolladensteuerung: aktiv"
+    icon: mdi:window-shutter
+
+input_select:
+  blind_control_mode:
+    name: "Rolladensteuerung: Sonnenstandautomatik"
+    icon: mdi:weather-partly-snowy
+    options:
+      - aus
+      - Winter
+      - Sommer
+
+input_datetime:
+  blind_control_from_earliest:
+    name: "Rolladensteuerung: frühestens um"
+    icon: mdi:weather-sunset-up
+    has_time: true
+    initial: "08:00"
+  blind_control_until_latest:
+    name: "Rolladensteuerung: spätestens bis"
+    icon: mdi:weather-sunset-down
+    has_time: true
+    initial: "22:30"
