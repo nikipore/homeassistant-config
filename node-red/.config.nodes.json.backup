@@ -1455,5 +1455,112 @@
                 "file": "/opt/node_modules/node-red-node-twitter/27-twitter.js"
             }
         }
+    },
+    "node-red-contrib-sun-position": {
+        "name": "node-red-contrib-sun-position",
+        "version": "1.2.4",
+        "local": true,
+        "user": true,
+        "nodes": {
+            "position-config": {
+                "name": "position-config",
+                "types": [
+                    "position-config"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-sun-position",
+                "file": "/config/node-red/node_modules/node-red-contrib-sun-position/nodes/position-config.js"
+            },
+            "time-inject": {
+                "name": "time-inject",
+                "types": [
+                    "time-inject"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-sun-position",
+                "file": "/config/node-red/node_modules/node-red-contrib-sun-position/nodes/time-inject.js"
+            },
+            "within-time-switch": {
+                "name": "within-time-switch",
+                "types": [
+                    "within-time-switch"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-sun-position",
+                "file": "/config/node-red/node_modules/node-red-contrib-sun-position/nodes/within-time-switch.js"
+            },
+            "clock-timer": {
+                "name": "clock-timer",
+                "types": [
+                    "clock-timer"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-sun-position",
+                "file": "/config/node-red/node_modules/node-red-contrib-sun-position/nodes/clock-timer.js"
+            },
+            "time-comp": {
+                "name": "time-comp",
+                "types": [
+                    "time-comp"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-sun-position",
+                "file": "/config/node-red/node_modules/node-red-contrib-sun-position/nodes/time-comp.js"
+            },
+            "time-span": {
+                "name": "time-span",
+                "types": [
+                    "time-span"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-sun-position",
+                "file": "/config/node-red/node_modules/node-red-contrib-sun-position/nodes/time-span.js"
+            },
+            "blind-control": {
+                "name": "blind-control",
+                "types": [
+                    "blind-control"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-sun-position",
+                "file": "/config/node-red/node_modules/node-red-contrib-sun-position/nodes/blind-control.js"
+            },
+            "sun-position": {
+                "name": "sun-position",
+                "types": [
+                    "sun-position"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-sun-position",
+                "file": "/config/node-red/node_modules/node-red-contrib-sun-position/nodes/sun-position.js"
+            },
+            "moon-position": {
+                "name": "moon-position",
+                "types": [
+                    "moon-position"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-sun-position",
+                "file": "/config/node-red/node_modules/node-red-contrib-sun-position/nodes/moon-position.js"
+            }
+        }
     }
 }

@@ -8,6 +8,9 @@
                 "view-node-status": true,
                 "view-node-show-label": true,
                 "view-show-tips": true
+            },
+            "context": {
+                "flowRefresh": false
             }
         },
         "menu-menu-item-sidebar": true

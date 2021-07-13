@@ -4,6 +4,7 @@
     "version": "0.0.1",
     "private": true,
     "dependencies": {
+        "node-red-contrib-noop": "~1.1.0",
         "node-red-contrib-sun-position": "~1.2.4"
     }
 }
