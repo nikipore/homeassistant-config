@@ -72,25 +72,28 @@ sensor:
 
 template:
   binary_sensor:
-    - unique_id: weather_raining
+    - name: weather_raining
       state: >
         {{ is_state("input_boolean.blind_control_raining", "on") }}
       icon: >
-        {% if is_state("binary_sensor.template_weather_raining", "on") %}
+        {% if is_state("binary_sensor.weather_raining", "on") %}
           mdi:weather-pouring
         {% else %}
           mdi:circle-outline
         {% endif %}
-      attributes:
-        friendly_name: "Wettersensor: Regen"
-    - unique_id: weather_storm
+    - name: weather_storm
       state: >
         {{ is_state("input_boolean.blind_control_storm", "on") }}
       icon: >
-        {% if is_state("binary_sensor.template_weather_storm", "on") %}
+        {% if is_state("binary_sensor.weather_storm", "on") %}
           mdi:weather-windy
         {% else %}
           mdi:circle-outline
         {% endif %}
-      attributes:
-        friendly_name: "Wettersensor: Sturm"
+
+homeassistant: 
+  customize:
+    binary_sensor.weather_raining:
+      friendly_name: "Wettersensor: Regen"
+    binary_sensor.weather_storm:
+      friendly_name: "Wettersensor: Sturm"
