@@ -2,24 +2,40 @@ input_boolean:
   blind_control_active:
     name: "Rolladensteuerung: aktiv"
     icon: mdi:window-shutter
+  blind_control_raining:
+    name: "Rolladensteuerung: Regen"
+    icon: mdi:weather-pouring
+  blind_control_storm:
+    name: "Rolladensteuerung: Sturm"
+    icon: mdi:weather-windy
+  blind_control_marquee_open:
+    name: "Rolladensteuerung: Markise offen"
+  blind_control_window_open:
+    name: "Rolladensteuerung: Fenster offen"
 
 input_select:
   blind_control_mode:
     name: "Rolladensteuerung: Sonnenstandautomatik"
     icon: mdi:weather-partly-snowy
     options:
-      - aus
-      - Winter
-      - Sommer
+      - "0 (aus)"
+      - "1 (Winter)"
+      - "2 (Sommer)"
 
 input_datetime:
-  blind_control_from_earliest:
-    name: "Rolladensteuerung: frühestens um"
+  blind_control_from_earliest_workday:
+    name: "Rolladensteuerung: frühestens um (Werktag)"
     icon: mdi:weather-sunset-up
     has_time: true
-    initial: "08:00"
-  blind_control_until_latest:
-    name: "Rolladensteuerung: spätestens bis"
+  blind_control_until_latest_workday:
+    name: "Rolladensteuerung: spätestens bis (Werktag)"
     icon: mdi:weather-sunset-down
     has_time: true
-    initial: "22:30"
+  blind_control_from_earliest_holiday:
+    name: "Rolladensteuerung: frühestens um (Feiertag)"
+    icon: mdi:weather-sunset-up
+    has_time: true
+  blind_control_until_latest_holiday:
+    name: "Rolladensteuerung: spätestens bis (Feiertag)"
+    icon: mdi:weather-sunset-down
+    has_time: true
