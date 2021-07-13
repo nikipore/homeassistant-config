@@ -69,3 +69,28 @@ sensor:
         unit_of_measurement: "km/h"
         value_template: "{{ state_attr('weather.dwd_weather_frankfurt_m_1h', 'wind_speed') | float }}"
         icon_template: mdi:weather-windy
+
+template:
+  binary_sensor:
+    - unique_id: weather_raining
+      state: >
+        {{ is_state("input_boolean.blind_control_raining", "on") }}
+      icon: >
+        {% if is_state("binary_sensor.template_weather_raining", "on") %}
+          mdi:weather-pouring
+        {% else %}
+          mdi:circle-outline
+        {% endif %}
+      attributes:
+        friendly_name: "Wettersensor: Regen"
+    - unique_id: weather_storm
+      state: >
+        {{ is_state("input_boolean.blind_control_storm", "on") }}
+      icon: >
+        {% if is_state("binary_sensor.template_weather_storm", "on") %}
+          mdi:weather-windy
+        {% else %}
+          mdi:circle-outline
+        {% endif %}
+      attributes:
+        friendly_name: "Wettersensor: Sturm"
