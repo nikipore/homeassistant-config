@@ -22,6 +22,16 @@ input_select:
       - "1 (Winter)"
       - "2 (Sommer)"
 
+input_number:
+  blind_control_trigger_interval:
+    name: "Rolladensteuerung: Auslöseintervall (s)"
+    icon: mdi:timer-outline
+    initial: 5
+    min: 5
+    max: 900
+    step: 5
+    mode: box
+
 input_datetime:
   blind_control_from_earliest_workday:
     name: "Rolladensteuerung: frühestens um (Werktag)"
