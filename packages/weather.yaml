@@ -2,73 +2,6 @@ sensor:
   - platform: dwd_weather_warnings
     region_name: Stadt Frankfurt am Main
     name: Frankfurt am Main
-  - platform: template
-    sensors:
-      weather_hourly_forecast_index_next_rising:
-        friendly_name: "Wettervorhersage: Index des nächsten Sonnenaufgangs"
-        value_template: "{{ ((as_timestamp(state_attr('sun.sun', 'next_rising')) - as_timestamp(state_attr('weather.dwd_weather_frankfurt_m_1h', 'forecast')[0]['datetime'])) // 3600) | max(0) }}"
-      weather_hourly_forecast_index_next_setting:
-        friendly_name: "Wettervorhersage: Index des nächsten Sonnenuntergangs"
-        value_template: "{{ ((as_timestamp(state_attr('sun.sun', 'next_setting')) - as_timestamp(state_attr('weather.dwd_weather_frankfurt_m_1h', 'forecast')[0]['datetime'])) // 3600) | max(0) }}"
-      weather_latest_update:
-        friendly_name: "Wetter: zuletzt aktualisiert"
-        value_template: "{{ state_attr('weather.dwd_weather_frankfurt_m_1h', 'latest_update_utc') }}"
-        device_class: timestamp
-      weather_forecast_cloud_coverage:
-        friendly_name: "Wolkenbedeckung"
-        unit_of_measurement: "%"
-        value_template: "{{ states('sensor.cloud_coverage_frankfurt_m_1h') | float }}"
-        icon_template: mdi:cloud-outline
-      weather_forecast_dewpoint:
-        friendly_name: "Taupunkt"
-        unit_of_measurement: "°C"
-        value_template: "{{ states('sensor.dewpoint_frankfurt_m_1h') | float }}"
-        device_class: temperature
-      weather_forecast_precipitation:
-        friendly_name: "Niederschlag"
-        unit_of_measurement: "mm"
-        value_template: "{{ states('sensor.precipitation_frankfurt_m_1h') | float }}"
-        icon_template: mdi:weather-rainy
-      weather_forecast_wind_gusts:
-        friendly_name: "Windböen"
-        unit_of_measurement: "km/h"
-        value_template: "{{ states('sensor.wind_gusts_frankfurt_m_1h') | float * 3.6 }}"
-        icon_template: mdi:weather-rainy
-      weather_forecast_temperature_high:
-        friendly_name: "Temperatur (max.)"
-        unit_of_measurement: "°C"
-        value_template: "{{ state_attr('sensor.temperature_frankfurt_m_1h', 'data')[:(states('sensor.weather_hourly_forecast_index_next_setting') | int) + 1] | map(attribute='value') | max | float }}"
-        device_class: temperature
-      weather_forecast_temperature_low:
-        friendly_name: "Temperatur (min.)"
-        unit_of_measurement: "°C"
-        value_template: "{{ state_attr('sensor.temperature_frankfurt_m_1h', 'data')[:(states('sensor.weather_hourly_forecast_index_next_rising') | int) + 1] | map(attribute='value') | min | float }}"
-        device_class: temperature
-      weather_humidity:
-        friendly_name: "relative Luftfeuchtigkeit"
-        unit_of_measurement: "%"
-        value_template: "{{ state_attr('weather.dwd_weather_frankfurt_m_1h', 'humidity') | float }}"
-        device_class: humidity
-      weather_pressure:
-        friendly_name: "Luftdruck"
-        unit_of_measurement: "mbar"
-        value_template: "{{ state_attr('weather.dwd_weather_frankfurt_m_1h', 'pressure') | float }}"
-        device_class: pressure
-      weather_temperature:
-        friendly_name: "Temperatur"
-        unit_of_measurement: "°C"
-        value_template: "{{ state_attr('weather.dwd_weather_frankfurt_m_1h', 'temperature') | float }}"
-        device_class: temperature
-      weather_wind_bearing:
-        friendly_name: "Windrichtung"
-        unit_of_measurement: "°"
-        value_template: "{{ state_attr('weather.dwd_weather_frankfurt_m_1h', 'wind_bearing') | float }}"
-        icon_template: mdi:compass-outline
-      weather_wind_speed:
-        friendly_name: "Windgeschwindigkeit"
-        unit_of_measurement: "km/h"
-        value_template: "{{ state_attr('weather.dwd_weather_frankfurt_m_1h', 'wind_speed') | float }}"
-        icon_template: mdi:weather-windy
 
 template:
   binary_sensor:
@@ -90,6 +23,73 @@ template:
         {% else %}
           mdi:circle-outline
         {% endif %}
+  sensor:
+    - name: weather_hourly_forecast_index_next_rising
+      state: >
+        {{ ((as_timestamp(state_attr('sun.sun', 'next_rising')) - as_timestamp(state_attr('weather.dwd_weather_frankfurt_m_1h', 'forecast')[0]['datetime'])) // 3600) | max(0) }}
+    - name: weather_hourly_forecast_index_next_setting
+      state: >
+        {{ ((as_timestamp(state_attr('sun.sun', 'next_setting')) - as_timestamp(state_attr('weather.dwd_weather_frankfurt_m_1h', 'forecast')[0]['datetime'])) // 3600) | max(0) }}
+    - name: weather_latest_update
+      state: >
+        {{ state_attr('weather.dwd_weather_frankfurt_m_1h', 'latest_update_utc') }}
+      device_class: timestamp
+    - name: weather_forecast_cloud_coverage
+      unit_of_measurement: "%"
+      state: >
+        {{ states('sensor.cloud_coverage_frankfurt_m_1h') | float }}
+      icon: mdi:cloud-outline
+    - name: weather_forecast_dewpoint
+      unit_of_measurement: "°C"
+      state: >
+        {{ states('sensor.dewpoint_frankfurt_m_1h') | float }}
+      device_class: temperature
+    - name: weather_forecast_precipitation
+      unit_of_measurement: "mm"
+      state: >
+        {{ states('sensor.precipitation_frankfurt_m_1h') | float }}
+      icon: mdi:weather-rainy
+    - name: weather_forecast_wind_gusts
+      unit_of_measurement: "km/h"
+      state: >
+        {{ states('sensor.wind_gusts_frankfurt_m_1h') | float }}
+      icon: mdi:weather-rainy
+    - name: weather_forecast_temperature_high
+      unit_of_measurement: "°C"
+      state: >
+        {{ state_attr('sensor.temperature_frankfurt_m_1h', 'data')[:(states('sensor.weather_hourly_forecast_index_next_setting') | int) + 1] | map(attribute='value') | max | float }}
+      device_class: temperature
+    - name: weather_forecast_temperature_low
+      unit_of_measurement: "°C"
+      state: >
+        {{ state_attr('sensor.temperature_frankfurt_m_1h', 'data')[:(states('sensor.weather_hourly_forecast_index_next_rising') | int) + 1] | map(attribute='value') | min | float }}
+      device_class: temperature
+    - name: weather_humidity
+      unit_of_measurement: "%"
+      state: >
+        {{ state_attr('weather.dwd_weather_frankfurt_m_1h', 'humidity') | float }}
+      device_class: humidity
+    - name: weather_pressure
+      unit_of_measurement: "mbar"
+      state: >
+        {{ state_attr('weather.dwd_weather_frankfurt_m_1h', 'pressure') | float }}
+      device_class: pressure
+    - name: weather_temperature
+      unit_of_measurement: "°C"
+      state: >
+        {{ state_attr('weather.dwd_weather_frankfurt_m_1h', 'temperature') | float }}
+      device_class: temperature
+    - name: weather_wind_bearing
+      unit_of_measurement: "°"
+      state: >
+        {{ state_attr('weather.dwd_weather_frankfurt_m_1h', 'wind_bearing') | float }}
+      icon: mdi:compass-outline
+    - name: weather_wind_speed
+      unit_of_measurement: "km/h"
+      state: >
+        {{ state_attr('weather.dwd_weather_frankfurt_m_1h', 'wind_speed') | float }}
+      icon: mdi:weather-windy
+
 
 homeassistant: 
   customize:
@@ -97,3 +97,31 @@ homeassistant:
       friendly_name: "Wettersensor: Regen"
     binary_sensor.weather_storm:
       friendly_name: "Wettersensor: Sturm"
+    sensor.weather_hourly_forecast_index_next_rising:
+      friendly_name: "Wettervorhersage: Index des nächsten Sonnenaufgangs"
+    sensor.weather_hourly_forecast_index_next_setting:
+      friendly_name: "Wettervorhersage: Index des nächsten Sonnenuntergangs"
+    sensor.weather_latest_update:
+      friendly_name: "Wetter: zuletzt aktualisiert"
+    sensor.weather_forecast_cloud_coverage:
+      friendly_name: "Wolkenbedeckung"
+    sensor.weather_forecast_dewpoint:
+      friendly_name: "Taupunkt"
+    sensor.weather_forecast_precipitation:
+      friendly_name: "Niederschlag"
+    sensor.weather_forecast_wind_gusts:
+      friendly_name: "Windböen"
+    sensor.weather_forecast_temperature_high:
+      friendly_name: "Temperatur (max.)"
+    sensor.weather_forecast_temperature_low:
+      friendly_name: "Temperatur (min.)"
+    sensor.weather_humidity:
+      friendly_name: "relative Luftfeuchtigkeit"
+    sensor.weather_pressure:
+      friendly_name: "Luftdruck"
+    sensor.weather_temperature:
+      friendly_name: "Temperatur"
+    sensor.weather_wind_speed:
+      friendly_name: "Windgeschwindigkeit"
+    sensor.weather_wind_bearing:
+      friendly_name: "Windrichtung"
