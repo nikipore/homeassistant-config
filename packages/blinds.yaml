@@ -2,20 +2,23 @@ input_boolean:
   blind_control_active:
     name: "Rolladensteuerung: aktiv"
     icon: mdi:window-shutter
+  blind_control_marquee_open:
+    name: "Rolladensteuerung: Markise offen"
   blind_control_raining:
     name: "Rolladensteuerung: Regen"
     icon: mdi:weather-pouring
   blind_control_storm:
     name: "Rolladensteuerung: Sturm"
     icon: mdi:weather-windy
-  blind_control_marquee_open:
-    name: "Rolladensteuerung: Markise offen"
   blind_control_window_open:
     name: "Rolladensteuerung: Fenster offen"
+  blind_control_mode_auto:
+    name: "Rolladensteuerung: Sonnenstandsteuerung automatisch"
+    icon: mdi:cog-refresh-outline
 
 input_select:
   blind_control_mode:
-    name: "Rolladensteuerung: Sonnenstandautomatik"
+    name: "Rolladensteuerung: Sonnenstandsteuerung"
     icon: mdi:weather-partly-snowy
     options:
       - "0 (aus)"
