@@ -29,11 +29,17 @@ input_number:
   blind_control_trigger_interval:
     name: "Rolladensteuerung: Auslöseintervall (s)"
     icon: mdi:timer-outline
-    initial: 5
     min: 5
     max: 900
     step: 5
     mode: box
+  blind_control_manual_override_position:
+    name: "Rolladensteuerung: alle … % öffnen (–10 = deaktiviert)"
+    icon: mdi:arrow-split-horizontal
+    min: -10
+    max: 100
+    step: 10
+
 
 input_datetime:
   blind_control_from_earliest_workday:
