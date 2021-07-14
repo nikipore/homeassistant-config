@@ -26,70 +26,74 @@ template:
   sensor:
     - name: weather_hourly_forecast_index_next_rising
       state: >
-        {{ ((as_timestamp(state_attr('sun.sun', 'next_rising')) - as_timestamp(state_attr('weather.dwd_weather_frankfurt_m_1h', 'forecast')[0]['datetime'])) // 3600) | max(0) }}
+        {{ ((as_timestamp(state_attr('sun.sun', 'next_rising')) - as_timestamp(state_attr('weather.dwd_weather_wiesbaden_biebrich_1h', 'forecast')[0]['datetime'])) // 3600) | max(0) }}
     - name: weather_hourly_forecast_index_next_setting
       state: >
-        {{ ((as_timestamp(state_attr('sun.sun', 'next_setting')) - as_timestamp(state_attr('weather.dwd_weather_frankfurt_m_1h', 'forecast')[0]['datetime'])) // 3600) | max(0) }}
+        {{ ((as_timestamp(state_attr('sun.sun', 'next_setting')) - as_timestamp(state_attr('weather.dwd_weather_wiesbaden_biebrich_1h', 'forecast')[0]['datetime'])) // 3600) | max(0) }}
     - name: weather_latest_update
       state: >
-        {{ state_attr('weather.dwd_weather_frankfurt_m_1h', 'latest_update_utc') }}
+        {{ state_attr('weather.dwd_weather_wiesbaden_biebrich_1h', 'latest_update_utc') }}
       device_class: timestamp
     - name: weather_forecast_cloud_coverage
       unit_of_measurement: "%"
       state: >
-        {{ states('sensor.cloud_coverage_frankfurt_m_1h') | float }}
+        {{ states('sensor.cloud_coverage_wiesbaden_biebrich_1h') | float }}
       icon: mdi:cloud-outline
     - name: weather_forecast_dewpoint
       unit_of_measurement: "°C"
       state: >
-        {{ states('sensor.dewpoint_frankfurt_m_1h') | float }}
+        {{ states('sensor.dewpoint_wiesbaden_biebrich_1h') | float }}
       device_class: temperature
     - name: weather_forecast_precipitation
       unit_of_measurement: "mm"
       state: >
-        {{ states('sensor.precipitation_frankfurt_m_1h') | float }}
+        {{ states('sensor.precipitation_wiesbaden_biebrich_1h') | float }}
       icon: mdi:weather-rainy
     - name: weather_forecast_wind_gusts
       unit_of_measurement: "km/h"
       state: >
-        {{ states('sensor.wind_gusts_frankfurt_m_1h') | float }}
+        {{ states('sensor.wind_gusts_wiesbaden_biebrich_1h') | float }}
       icon: mdi:weather-rainy
+    - name: weather_forecast_sun_duration
+      unit_of_measurement: "s"
+      state: >
+        {{ states('sensor.sensor.sun_duration_wiesbaden_biebrich_1h') | float }}
+      icon: mdi:weather-sunny
     - name: weather_forecast_temperature_high
       unit_of_measurement: "°C"
       state: >
-        {{ state_attr('sensor.temperature_frankfurt_m_1h', 'data')[:(states('sensor.weather_hourly_forecast_index_next_setting') | int) + 1] | map(attribute='value') | max | float }}
+        {{ state_attr('sensor.temperature_wiesbaden_biebrich_1h', 'data')[:(states('sensor.weather_hourly_forecast_index_next_setting') | int) + 1] | map(attribute='value') | max | float }}
       device_class: temperature
     - name: weather_forecast_temperature_low
       unit_of_measurement: "°C"
       state: >
-        {{ state_attr('sensor.temperature_frankfurt_m_1h', 'data')[:(states('sensor.weather_hourly_forecast_index_next_rising') | int) + 1] | map(attribute='value') | min | float }}
+        {{ state_attr('sensor.temperature_wiesbaden_biebrich_1h', 'data')[:(states('sensor.weather_hourly_forecast_index_next_rising') | int) + 1] | map(attribute='value') | min | float }}
       device_class: temperature
     - name: weather_humidity
       unit_of_measurement: "%"
       state: >
-        {{ state_attr('weather.dwd_weather_frankfurt_m_1h', 'humidity') | float }}
+        {{ state_attr('weather.dwd_weather_wiesbaden_biebrich_1h', 'humidity') | float }}
       device_class: humidity
     - name: weather_pressure
       unit_of_measurement: "mbar"
       state: >
-        {{ state_attr('weather.dwd_weather_frankfurt_m_1h', 'pressure') | float }}
+        {{ state_attr('weather.dwd_weather_wiesbaden_biebrich_1h', 'pressure') | float }}
       device_class: pressure
     - name: weather_temperature
       unit_of_measurement: "°C"
       state: >
-        {{ state_attr('weather.dwd_weather_frankfurt_m_1h', 'temperature') | float }}
+        {{ state_attr('weather.dwd_weather_wiesbaden_biebrich_1h', 'temperature') | float }}
       device_class: temperature
     - name: weather_wind_bearing
       unit_of_measurement: "°"
       state: >
-        {{ state_attr('weather.dwd_weather_frankfurt_m_1h', 'wind_bearing') | float }}
+        {{ state_attr('weather.dwd_weather_wiesbaden_biebrich_1h', 'wind_bearing') | float }}
       icon: mdi:compass-outline
     - name: weather_wind_speed
       unit_of_measurement: "km/h"
       state: >
-        {{ state_attr('weather.dwd_weather_frankfurt_m_1h', 'wind_speed') | float }}
+        {{ state_attr('weather.dwd_weather_wiesbaden_biebrich_1h', 'wind_speed') | float }}
       icon: mdi:weather-windy
-
 
 homeassistant: 
   customize:
@@ -111,6 +115,8 @@ homeassistant:
       friendly_name: "Niederschlag"
     sensor.weather_forecast_wind_gusts:
       friendly_name: "Windböen"
+    sensor.weather_forecast_sun_duration:
+      friendly_name: "Sonnenscheindauer"
     sensor.weather_forecast_temperature_high:
       friendly_name: "Temperatur (max.)"
     sensor.weather_forecast_temperature_low:
