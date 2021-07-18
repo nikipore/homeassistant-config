@@ -2,7 +2,7 @@ input_boolean:
   blind_control_global_active:
     name: "Rolladensteuerung: aktiv"
     icon: mdi:window-shutter
-  blind_control_global_mode_auto:
+  blind_control_global_auto:
     name: "Rolladensteuerung: Sonnenstandsteuerung automatisch"
     icon: mdi:cog-refresh-outline
   blind_control_raining:
@@ -21,7 +21,7 @@ input_boolean:
   blind_control_kueche_active:
     name: "Rolladensteuerung (Küche): aktiv"
     icon: mdi:window-shutter
-  blind_control_kueche_mode_auto:
+  blind_control_kueche_auto:
     name: "Rolladensteuerung (Küche): Sonnenstandsteuerung automatisch"
     icon: mdi:cog-refresh-outline
   blind_control_wohnzimmer_specific:
@@ -30,7 +30,7 @@ input_boolean:
   blind_control_wohnzimmer_active:
     name: "Rolladensteuerung (Wohnzimmer): aktiv"
     icon: mdi:window-shutter
-  blind_control_wohnzimmer_mode_auto:
+  blind_control_wohnzimmer_auto:
     name: "Rolladensteuerung (Wohnzimmer): Sonnenstandsteuerung automatisch"
     icon: mdi:cog-refresh-outline
   blind_control_schlafzimmer_specific:
@@ -39,7 +39,7 @@ input_boolean:
   blind_control_schlafzimmer_active:
     name: "Rolladensteuerung (Schlafzimmer): aktiv"
     icon: mdi:window-shutter
-  blind_control_schlafzimmer_mode_auto:
+  blind_control_schlafzimmer_auto:
     name: "Rolladensteuerung (Schlafzimmer): Sonnenstandsteuerung automatisch"
     icon: mdi:cog-refresh-outline
   blind_control_badezimmer_specific:
@@ -48,7 +48,7 @@ input_boolean:
   blind_control_badezimmer_active:
     name: "Rolladensteuerung (Badezimmer): aktiv"
     icon: mdi:window-shutter
-  blind_control_badezimmer_mode_auto:
+  blind_control_badezimmer_auto:
     name: "Rolladensteuerung (Badezimmer): Sonnenstandsteuerung automatisch"
     icon: mdi:cog-refresh-outline
   blind_control_duschbad_specific:
@@ -57,7 +57,7 @@ input_boolean:
   blind_control_duschbad_active:
     name: "Rolladensteuerung (Duschbad): aktiv"
     icon: mdi:window-shutter
-  blind_control_duschbad_mode_auto:
+  blind_control_duschbad_auto:
     name: "Rolladensteuerung (Duschbad): Sonnenstandsteuerung automatisch"
     icon: mdi:cog-refresh-outline
   blind_control_nino_specific:
@@ -66,7 +66,7 @@ input_boolean:
   blind_control_nino_active:
     name: "Rolladensteuerung (Nino): aktiv"
     icon: mdi:window-shutter
-  blind_control_nino_mode_auto:
+  blind_control_nino_auto:
     name: "Rolladensteuerung (Nino): Sonnenstandsteuerung automatisch"
     icon: mdi:cog-refresh-outline
   blind_control_noah_specific:
@@ -75,7 +75,7 @@ input_boolean:
   blind_control_noah_active:
     name: "Rolladensteuerung (Noah): aktiv"
     icon: mdi:window-shutter
-  blind_control_noah_mode_auto:
+  blind_control_noah_auto:
     name: "Rolladensteuerung (Noah): Sonnenstandsteuerung automatisch"
     icon: mdi:cog-refresh-outline
   blind_control_arbeitszimmer_specific:
@@ -84,7 +84,7 @@ input_boolean:
   blind_control_arbeitszimmer_active:
     name: "Rolladensteuerung (Arbeitszimmer): aktiv"
     icon: mdi:window-shutter
-  blind_control_arbeitszimmer_mode_auto:
+  blind_control_arbeitszimmer_auto:
     name: "Rolladensteuerung (Arbeitszimmer): Sonnenstandsteuerung automatisch"
     icon: mdi:cog-refresh-outline
 
@@ -161,55 +161,55 @@ input_number:
     max: 900
     step: 5
     mode: box
-  blind_control_global_manual_override_position:
+  blind_control_global_position:
     name: "Rolladensteuerung: alle … % öffnen (–10 = aus)"
     icon: mdi:arrow-split-horizontal
     min: -20
     max: 100
     step: 10
-  blind_control_kueche_manual_override_position:
+  blind_control_kueche_position:
     name: "Rolladensteuerung (Küche): alle … % öffnen (–10 = aus)"
     icon: mdi:arrow-split-horizontal
     min: -20
     max: 100
     step: 10
-  blind_control_wohnzimmer_manual_override_position:
+  blind_control_wohnzimmer_position:
     name: "Rolladensteuerung (Wohnzimmer): alle … % öffnen (–10 = aus)"
     icon: mdi:arrow-split-horizontal
     min: -20
     max: 100
     step: 10
-  blind_control_schlafzimmer_manual_override_position:
+  blind_control_schlafzimmer_position:
     name: "Rolladensteuerung (Schlafzimmer): alle … % öffnen (–10 = aus)"
     icon: mdi:arrow-split-horizontal
     min: -20
     max: 100
     step: 10
-  blind_control_badezimmer_manual_override_position:
+  blind_control_badezimmer_position:
     name: "Rolladensteuerung (Badezimmer): alle … % öffnen (–10 = aus)"
     icon: mdi:arrow-split-horizontal
     min: -20
     max: 100
     step: 10
-  blind_control_duschbad_manual_override_position:
+  blind_control_duschbad_position:
     name: "Rolladensteuerung (Duschbad): alle … % öffnen (–10 = aus)"
     icon: mdi:arrow-split-horizontal
     min: -20
     max: 100
     step: 10
-  blind_control_nino_manual_override_position:
+  blind_control_nino_position:
     name: "Rolladensteuerung (Nino): alle … % öffnen (–10 = aus)"
     icon: mdi:arrow-split-horizontal
     min: -20
     max: 100
     step: 10
-  blind_control_noah_manual_override_position:
+  blind_control_noah_position:
     name: "Rolladensteuerung (Noah): alle … % öffnen (–10 = aus)"
     icon: mdi:arrow-split-horizontal
     min: -20
     max: 100
     step: 10
-  blind_control_arbeitszimmer_manual_override_position:
+  blind_control_arbeitszimmer_position:
     name: "Rolladensteuerung (Arbeitszimmer): alle … % öffnen (–10 = aus)"
     icon: mdi:arrow-split-horizontal
     min: -20
