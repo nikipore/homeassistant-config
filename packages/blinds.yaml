@@ -54,7 +54,7 @@ input_boolean:
     name: "Rolladensteuerung: Sonnenstandsteuerung automatisch (Arbeitszimmer)"
     icon: mdi:cog-refresh-outline
   blind_control_specific_global:
-    name: "Rolladensteuerung: Räume gesondert steuern"
+    name: "Rolladensteuerung: gesondert gesteuerte Räume zurücksetzen"
     icon: mdi:car-cruise-control
   blind_control_specific_kueche:
     name: "Rolladensteuerung: gesondert steuern (Küche)"
