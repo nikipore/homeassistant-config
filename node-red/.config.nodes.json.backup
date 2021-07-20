@@ -1562,5 +1562,24 @@
                 "file": "/config/node-red/node_modules/node-red-contrib-sun-position/nodes/moon-position.js"
             }
         }
+    },
+    "node-red-contrib-noop": {
+        "name": "node-red-contrib-noop",
+        "version": "1.1.0",
+        "local": true,
+        "user": true,
+        "nodes": {
+            "no-op": {
+                "name": "no-op",
+                "types": [
+                    "no-op"
+                ],
+                "enabled": true,
+                "local": true,
+                "user": false,
+                "module": "node-red-contrib-noop",
+                "file": "/config/node-red/node_modules/node-red-contrib-noop/noop/noop.js"
+            }
+        }
     }
 }
