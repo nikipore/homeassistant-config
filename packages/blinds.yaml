@@ -220,19 +220,147 @@ input_number:
     step: 10
 
 input_datetime:
-  blind_control_from_earliest_workday:
-    name: "Rolladensteuerung: frühestens um (Werktag)"
+  blind_control_from_earliest_workday_global:
+    name: "Rolladensteuerung: an Werktagen frühestens"
     icon: mdi:weather-sunset-up
     has_time: true
-  blind_control_until_latest_workday:
-    name: "Rolladensteuerung: spätestens bis (Werktag)"
+  blind_control_until_latest_workday_global:
+    name: "Rolladensteuerung: vor Werktagen spätestens"
     icon: mdi:weather-sunset-down
     has_time: true
-  blind_control_from_earliest_holiday:
-    name: "Rolladensteuerung: frühestens um (Feiertag)"
+  blind_control_from_earliest_holiday_global:
+    name: "Rolladensteuerung: an Feiertagen frühestens"
     icon: mdi:weather-sunset-up
     has_time: true
-  blind_control_until_latest_holiday:
-    name: "Rolladensteuerung: spätestens bis (Feiertag)"
+  blind_control_until_latest_holiday_global:
+    name: "Rolladensteuerung: vor Feiertagen spätestens"
+    icon: mdi:weather-sunset-down
+    has_time: true
+  blind_control_from_earliest_workday_badezimmer:
+    name: "Rolladensteuerung: an Werktagen frühestens (Badezimmer)"
+    icon: mdi:weather-sunset-up
+    has_time: true
+  blind_control_until_latest_workday_badezimmer:
+    name: "Rolladensteuerung: vor Werktagen spätestens (Badezimmer)"
+    icon: mdi:weather-sunset-down
+    has_time: true
+  blind_control_from_earliest_holiday_badezimmer:
+    name: "Rolladensteuerung: an Feiertagen frühestens (Badezimmer)"
+    icon: mdi:weather-sunset-up
+    has_time: true
+  blind_control_until_latest_holiday_badezimmer:
+    name: "Rolladensteuerung: vor Feiertagen spätestens (Badezimmer)"
+    icon: mdi:weather-sunset-down
+    has_time: true
+  blind_control_from_earliest_workday_duschbad:
+    name: "Rolladensteuerung: an Werktagen frühestens (Duschbad)"
+    icon: mdi:weather-sunset-up
+    has_time: true
+  blind_control_until_latest_workday_duschbad:
+    name: "Rolladensteuerung: vor Werktagen spätestens (Duschbad)"
+    icon: mdi:weather-sunset-down
+    has_time: true
+  blind_control_from_earliest_holiday_duschbad:
+    name: "Rolladensteuerung: an Feiertagen frühestens (Duschbad)"
+    icon: mdi:weather-sunset-up
+    has_time: true
+  blind_control_until_latest_holiday_duschbad:
+    name: "Rolladensteuerung: vor Feiertagen spätestens (Duschbad)"
+    icon: mdi:weather-sunset-down
+    has_time: true
+  blind_control_from_earliest_workday_nino:
+    name: "Rolladensteuerung: an Werktagen frühestens (Nino)"
+    icon: mdi:weather-sunset-up
+    has_time: true
+  blind_control_until_latest_workday_nino:
+    name: "Rolladensteuerung: vor Werktagen spätestens (Nino)"
+    icon: mdi:weather-sunset-down
+    has_time: true
+  blind_control_from_earliest_holiday_nino:
+    name: "Rolladensteuerung: an Feiertagen frühestens (Nino)"
+    icon: mdi:weather-sunset-up
+    has_time: true
+  blind_control_until_latest_holiday_nino:
+    name: "Rolladensteuerung: vor Feiertagen spätestens (Nino)"
+    icon: mdi:weather-sunset-down
+    has_time: true
+  blind_control_from_earliest_workday_noah:
+    name: "Rolladensteuerung: an Werktagen frühestens (Noah)"
+    icon: mdi:weather-sunset-up
+    has_time: true
+  blind_control_until_latest_workday_noah:
+    name: "Rolladensteuerung: vor Werktagen spätestens (Noah)"
+    icon: mdi:weather-sunset-down
+    has_time: true
+  blind_control_from_earliest_holiday_noah:
+    name: "Rolladensteuerung: an Feiertagen frühestens (Noah)"
+    icon: mdi:weather-sunset-up
+    has_time: true
+  blind_control_until_latest_holiday_noah:
+    name: "Rolladensteuerung: vor Feiertagen spätestens (Noah)"
+    icon: mdi:weather-sunset-down
+    has_time: true
+  blind_control_from_earliest_workday_arbeitszimmer:
+    name: "Rolladensteuerung: an Werktagen frühestens (Arbeitszimmer)"
+    icon: mdi:weather-sunset-up
+    has_time: true
+  blind_control_until_latest_workday_arbeitszimmer:
+    name: "Rolladensteuerung: vor Werktagen spätestens (Arbeitszimmer)"
+    icon: mdi:weather-sunset-down
+    has_time: true
+  blind_control_from_earliest_holiday_arbeitszimmer:
+    name: "Rolladensteuerung: an Feiertagen frühestens (Arbeitszimmer)"
+    icon: mdi:weather-sunset-up
+    has_time: true
+  blind_control_until_latest_holiday_arbeitszimmer:
+    name: "Rolladensteuerung: vor Feiertagen spätestens (Arbeitszimmer)"
+    icon: mdi:weather-sunset-down
+    has_time: true
+  blind_control_from_earliest_workday_kueche:
+    name: "Rolladensteuerung: an Werktagen frühestens (Küche)"
+    icon: mdi:weather-sunset-up
+    has_time: true
+  blind_control_until_latest_workday_kueche:
+    name: "Rolladensteuerung: vor Werktagen spätestens (Küche)"
+    icon: mdi:weather-sunset-down
+    has_time: true
+  blind_control_from_earliest_holiday_kueche:
+    name: "Rolladensteuerung: an Feiertagen frühestens (Küche)"
+    icon: mdi:weather-sunset-up
+    has_time: true
+  blind_control_until_latest_holiday_kueche:
+    name: "Rolladensteuerung: vor Feiertagen spätestens (Küche)"
+    icon: mdi:weather-sunset-down
+    has_time: true
+  blind_control_from_earliest_workday_wohnzimmer:
+    name: "Rolladensteuerung: an Werktagen frühestens (Wohnzimmer)"
+    icon: mdi:weather-sunset-up
+    has_time: true
+  blind_control_until_latest_workday_wohnzimmer:
+    name: "Rolladensteuerung: vor Werktagen spätestens (Wohnzimmer)"
+    icon: mdi:weather-sunset-down
+    has_time: true
+  blind_control_from_earliest_holiday_wohnzimmer:
+    name: "Rolladensteuerung: an Feiertagen frühestens (Wohnzimmer)"
+    icon: mdi:weather-sunset-up
+    has_time: true
+  blind_control_until_latest_holiday_wohnzimmer:
+    name: "Rolladensteuerung: vor Feiertagen spätestens (Wohnzimmer)"
+    icon: mdi:weather-sunset-down
+    has_time: true
+  blind_control_from_earliest_workday_schlafzimmer:
+    name: "Rolladensteuerung: an Werktagen frühestens (Schlafzimmer)"
+    icon: mdi:weather-sunset-up
+    has_time: true
+  blind_control_until_latest_workday_schlafzimmer:
+    name: "Rolladensteuerung: vor Werktagen spätestens (Schlafzimmer)"
+    icon: mdi:weather-sunset-down
+    has_time: true
+  blind_control_from_earliest_holiday_schlafzimmer:
+    name: "Rolladensteuerung: an Feiertagen frühestens (Schlafzimmer)"
+    icon: mdi:weather-sunset-up
+    has_time: true
+  blind_control_until_latest_holiday_schlafzimmer:
+    name: "Rolladensteuerung: vor Feiertagen spätestens (Schlafzimmer)"
     icon: mdi:weather-sunset-down
     has_time: true
