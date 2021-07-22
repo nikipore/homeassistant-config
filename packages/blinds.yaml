@@ -55,31 +55,31 @@ input_boolean:
     icon: mdi:cog-refresh-outline
   blind_control_specific_global:
     name: "Rolladensteuerung: gesondert gesteuerte Räume zurücksetzen"
-    icon: mdi:car-cruise-control
-  blind_control_specific_kueche:
-    name: "Rolladensteuerung: gesondert steuern (Küche)"
-    icon: mdi:car-cruise-control
-  blind_control_specific_wohnzimmer:
-    name: "Rolladensteuerung: gesondert steuern (Wohnzimmer)"
-    icon: mdi:car-cruise-control
-  blind_control_specific_schlafzimmer:
-    name: "Rolladensteuerung: gesondert steuern (Schlafzimmer)"
-    icon: mdi:car-cruise-control
+    icon: mdi:lock-alert-outline
   blind_control_specific_badezimmer:
     name: "Rolladensteuerung: gesondert steuern (Badezimmer)"
-    icon: mdi:car-cruise-control
+    icon: mdi:lock-open-outline
   blind_control_specific_duschbad:
     name: "Rolladensteuerung: gesondert steuern (Duschbad)"
-    icon: mdi:car-cruise-control
+    icon: mdi:lock-open-outline
   blind_control_specific_nino:
     name: "Rolladensteuerung: gesondert steuern (Nino)"
-    icon: mdi:car-cruise-control
+    icon: mdi:lock-open-outline
   blind_control_specific_noah:
     name: "Rolladensteuerung: gesondert steuern (Noah)"
-    icon: mdi:car-cruise-control
+    icon: mdi:lock-open-outline
   blind_control_specific_arbeitszimmer:
     name: "Rolladensteuerung: gesondert steuern (Arbeitszimmer)"
-    icon: mdi:car-cruise-control
+    icon: mdi:lock-open-outline
+  blind_control_specific_kueche:
+    name: "Rolladensteuerung: gesondert steuern (Küche)"
+    icon: mdi:lock-open-outline
+  blind_control_specific_wohnzimmer:
+    name: "Rolladensteuerung: gesondert steuern (Wohnzimmer)"
+    icon: mdi:lock-open-outline
+  blind_control_specific_schlafzimmer:
+    name: "Rolladensteuerung: gesondert steuern (Schlafzimmer)"
+    icon: mdi:lock-open-outline
   blind_control_raining:
     name: "Rolladensteuerung: Regen"
     icon: mdi:weather-pouring
