@@ -157,13 +157,6 @@ input_select:
       - "2 (Sommer)"
 
 input_number:
-  blind_control_trigger_interval:
-    name: "Rolladensteuerung: Auslöseintervall (s)"
-    icon: mdi:timer-outline
-    min: 5
-    max: 900
-    step: 5
-    mode: box
   blind_control_position_global:
     name: "Rolladensteuerung: alle … % öffnen (–10 = aus)"
     icon: mdi:arrow-split-horizontal
