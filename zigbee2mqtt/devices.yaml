@@ -5,11 +5,11 @@
 '0x00158d0006ca2875':
   friendly_name: flur-temperature-sensor
 '0x0017880103b9624b':
-  friendly_name: garderobe-1
+  friendly_name: nino-1
 '0x0017880103b83ba1':
-  friendly_name: garderobe-2
+  friendly_name: nino-2
 '0x00178801038929b4':
-  friendly_name: garderobe-3
+  friendly_name: nino-3
 '0x001788010329dfc5':
   friendly_name: garderobe-motion-sensor
 '0x00158d0006ca2806':
@@ -17,29 +17,17 @@
 '0x00158d0006c6e77c':
   friendly_name: noah-temperature-sensor
 '0x00178801038746d4':
-  friendly_name: schlafzimmer-1
+  friendly_name: noah-1
 '0x00178801035073df':
-  friendly_name: schlafzimmer-2
+  friendly_name: noah-2
 '0x0017880103204d45':
-  friendly_name: schlafzimmer-3
+  friendly_name: noah-3
 '0x0017880103e7b1fc':
-  friendly_name: schlafzimmer-dimmer
+  friendly_name: noah-dimmer
 '0x00158d0006c6e6ed':
   friendly_name: schlafzimmer-temperature-sensor
 '0x00178801067ccfea':
   friendly_name: wohnzimmer-ecke
-'0x0017880103b80c1f':
-  friendly_name: wohnzimmer-decke-1
-'0x0017880103b80c3b':
-  friendly_name: wohnzimmer-decke-2
-'0x0017880103f9e5e7':
-  friendly_name: wohnzimmer-decke-3
-'0x0017880103f9eaaf':
-  friendly_name: wohnzimmer-decke-4
-'0x0017880103f9e587':
-  friendly_name: wohnzimmer-decke-5
-'0x0017880103b80be0':
-  friendly_name: wohnzimmer-decke-6
 '0x0017880102c20295':
   friendly_name: wohnzimmer-dimmer
 '0x00178801047a8f0f':
@@ -59,4 +47,4 @@
 '0x00158d00058a39d5':
   friendly_name: wuerfel-schalter
 '0x0017880102c3143f':
-  friendly_name: wohnzimmer-decke-dimmer
+  friendly_name: nino-dimmer

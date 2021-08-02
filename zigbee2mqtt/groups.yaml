@@ -1,20 +1,11 @@
-'1':
-  friendly_name: group-wohnzimmer-decke
-  devices:
-    - 0x0017880103b80c1f/11
-    - 0x0017880103b80c3b/11
-    - 0x0017880103f9e5e7/11
-    - 0x0017880103f9eaaf/11
-    - 0x0017880103f9e587/11
-    - 0x0017880103b80be0/11
 '2':
-  friendly_name: group-schlafzimmer
+  friendly_name: group-noah
   devices:
     - 0x00178801038746d4/11
     - 0x00178801035073df/11
     - 0x0017880103204d45/11
 '3':
-  friendly_name: group-garderobe
+  friendly_name: group-nino
   devices:
     - 0x0017880103b9624b/11
     - 0x0017880103b83ba1/11
