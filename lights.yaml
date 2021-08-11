@@ -1,24 +1,21 @@
 - platform: group
-  name: Deckenlampe
-  entities:
-    - light.0x0017880103b80c1f
-    - light.0x0017880103b80c3b
-    - light.0x0017880103f9e5e7
-    - light.0x0017880103f9eaaf
-    - light.0x0017880103f9e587
-    - light.0x0017880103b80be0
-- platform: group
-  name: Garderobe
+  name: Nino
   entities:
     - light.0x0017880103b9624b
     - light.0x0017880103b83ba1
     - light.0x00178801038929b4
 - platform: group
-  name: Schlafzimmer
+  name: Noah
   entities:
     - light.0x00178801038746d4
     - light.0x00178801035073df
     - light.0x0017880103204d45
+- platform: group
+  name: Schlafzimmer
+  entities:
+    - light.0x00178801039462d5
+    - light.0x0017880103946a27
+    - light.0x0017880104e2a1a3
 - platform: group
   name: Wohnzimmer
   entities:

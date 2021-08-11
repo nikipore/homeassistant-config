@@ -12,3 +12,5 @@ homeassistant:
       friendly_name: rel. Luftfeuchtigkeit Badezimmer
     sensor.0x00158d00041da63b_pressure:
       friendly_name: Luftdruck Badezimmer
+    binary_sensor.0x001788010329dfc5_occupancy:
+      friendly_name: Bewegungssensor Küche
