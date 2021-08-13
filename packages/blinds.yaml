@@ -88,8 +88,6 @@ input_boolean:
     icon: mdi:weather-windy
   blind_control_marquee_open:
     name: "Rolladensteuerung: Markise offen"
-  blind_control_window_open:
-    name: "Rolladensteuerung: Fenster offen"
 
 input_select:
   blind_control_mode_global:
