@@ -16,7 +16,7 @@ template:
         {% endif %}
     - name: weather_storm
       state: >
-        {{ is_state("input_boolean.blind_control_storm", "on") }}
+        {{ states('sensor.weather_wind_speed') | float > 6 }}
       icon: >
         {% if is_state("binary_sensor.weather_storm", "on") %}
           mdi:weather-windy
@@ -92,7 +92,7 @@ template:
     - name: weather_wind_speed
       unit_of_measurement: "km/h"
       state: >
-        {{ state_attr('weather.dwd_weather_wiesbaden_biebrich_1h', 'wind_speed') | float }}
+        {{ states('sensor.z_weather_velocity') | float }}
       icon: mdi:weather-windy
 
 homeassistant: 
@@ -131,3 +131,16 @@ homeassistant:
       friendly_name: "Windgeschwindigkeit"
     sensor.weather_wind_bearing:
       friendly_name: "Windrichtung"
+
+#alert:
+#  wind:
+#    name: Wind is stronger than 8 m/s
+#    done_message: Garage is closed
+#    entity_id: input_boolean.garage_door
+#    state: "on"
+#    repeat: 30
+#    can_acknowledge: true
+#    skip_first: true
+#    notifiers:
+#      - ryans_phone
+#      - kristens_phone

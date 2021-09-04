@@ -1,4 +1,9 @@
 - platform: group
+  name: Küche
+  entities:
+    - light.0x00158d0005bcb6d2
+    - light.0x001788010359b0f2
+- platform: group
   name: Nino
   entities:
     - light.0x0017880103b9624b
@@ -19,7 +24,6 @@
 - platform: group
   name: Wohnzimmer
   entities:
-    - light.0x001788010359b0f2
     - light.0x00178801038909e6
     - light.0x0017880103892bd7
     - light.0x0017880103e185e6

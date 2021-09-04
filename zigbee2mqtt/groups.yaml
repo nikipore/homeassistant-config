@@ -21,7 +21,6 @@
   devices:
     - 0x00178801067ccfea/11
     - 0x00178801047a8f0f/11
-    - 0x001788010359b0f2/11
     - 0x00178801038909e6/11
     - 0x0017880103e185e6/11
     - 0x0017880103892bd7/11
@@ -33,4 +32,7 @@
   friendly_name: group-kueche
   devices:
     - 0x00158d0005bcb6d2/1
-    - 0x84182600000ed948/3
+    - 0x001788010359b0f2/11
+'7':
+  friendly_name: group-garderobe
+  devices: []

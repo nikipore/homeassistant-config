@@ -10,6 +10,8 @@
   friendly_name: arbeitszimmer-fernbedienung
 '0x00158d00041da63b':
   friendly_name: badezimmer-temperature-sensor
+'0x84182600000ed948':
+  friendly_name: duschbad-steckdose
 '0x00158d0006f12e6f':
   friendly_name: duschbad-temperature-sensor
 '0x00158d0006ca2875':
@@ -20,8 +22,8 @@
   friendly_name: kueche-fernbedienung
 '0x001788010329dfc5':
   friendly_name: kueche-motion-sensor
-'0x84182600000ed948':
-  friendly_name: wohnzimmer-vitrine-steckdose
+'0x001788010359b0f2':
+  friendly_name: kueche-schirmleuchte
 '0x0017880103b9624b':
   friendly_name: nino-1
 '0x0017880103b83ba1':
@@ -50,6 +52,8 @@
   friendly_name: schlafzimmer-3
 '0x001788010968cebb':
   friendly_name: schlafzimmer-dimmer-1
+'0x001788010968cec1':
+  friendly_name: schlafzimmer-dimmer-2
 '0x00158d0006c6e6ed':
   friendly_name: schlafzimmer-temperature-sensor
 '0x00178801067ccfea':
@@ -58,8 +62,6 @@
   friendly_name: wohnzimmer-dimmer
 '0x00178801047a8f0f':
   friendly_name: wohnzimmer-kommode
-'0x001788010359b0f2':
-  friendly_name: wohnzimmer-schirmleuchte
 '0x00178801038909e6':
   friendly_name: wohnzimmer-kugel
 '0x0017880103e185e6':
@@ -70,5 +72,5 @@
   friendly_name: wohnzimmer-wagenfeld
 '0x00158d00058a39d5':
   friendly_name: wuerfel-schalter
-'0x001788010968cec1':
-  friendly_name: schlafzimmer-dimmer-2
+'0x00158d0001fe573e':
+  friendly_name: luftfilter
