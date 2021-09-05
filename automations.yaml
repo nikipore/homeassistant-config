@@ -10,3 +10,14 @@
     - service: hassio.addon_start
       data:
         addon: 2caa1d32_rsync_backups # you can get the addon id from URL when you go to the addon info
+
+- alias: Restart Node-RED on (re)start of Home Assistant # Node-RED doesn't connect to HA properly otherwise …
+  trigger:
+    - platform: homeassistant
+      event: start
+  action:
+    - delay:
+        seconds: 15
+    - service: hassio.addon_restart
+      data:
+        addon: a0d7b954_nodered

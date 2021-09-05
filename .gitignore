@@ -16,6 +16,7 @@ zigbee2mqtt/*
 __pycache__
 .HA_VERSION
 *.log
+*.log.*
 *.db
 *.db-*
 harmony_*.conf

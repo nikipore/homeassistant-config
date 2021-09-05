@@ -90,9 +90,14 @@ template:
         {{ state_attr('weather.dwd_weather_wiesbaden_biebrich_1h', 'wind_bearing') | float }}
       icon: mdi:compass-outline
     - name: weather_wind_speed
-      unit_of_measurement: "km/h"
+      unit_of_measurement: "m/s"
       state: >
-        {{ states('sensor.z_weather_velocity') | float }}
+        {{ (states('sensor.z_weather_velocity') | float) }}
+      icon: mdi:weather-windy
+    - name: weather_wind_force
+      unit_of_measurement: "bft"
+      state: >
+        {{ ([0, 0.3, 1.6, 3.4, 5.5, 8.0, 10.8, 13.9, 17.2, 20.8, 24.5, 28.5, 32.7] | select("<=", states('sensor.weather_wind_speed') | float) | list | length) - 1 }}
       icon: mdi:weather-windy
 
 homeassistant: 
@@ -129,18 +134,18 @@ homeassistant:
       friendly_name: "Temperatur"
     sensor.weather_wind_speed:
       friendly_name: "Windgeschwindigkeit"
+    sensor.weather_wind_force:
+      friendly_name: "Windstärke"
     sensor.weather_wind_bearing:
       friendly_name: "Windrichtung"
 
-#alert:
-#  wind:
-#    name: Wind is stronger than 8 m/s
-#    done_message: Garage is closed
-#    entity_id: input_boolean.garage_door
-#    state: "on"
-#    repeat: 30
-#    can_acknowledge: true
-#    skip_first: true
-#    notifiers:
-#      - ryans_phone
-#      - kristens_phone
+alert:
+  wind:
+    name: Storm alert
+    message: Storm alert – wind speed > 6 m/s. Close marquee and windows! Either fully open or fully close blinds!
+    done_message: Storm alert done.
+    entity_id: binary_sensor.weather_storm
+    repeat: 30
+    can_acknowledge: true
+    notifiers:
+      - telegram_admin
