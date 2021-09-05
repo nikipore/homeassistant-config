@@ -7,3 +7,39 @@ notify:
   - name: telegram_admin
     platform: telegram
     chat_id: !secret telegram-chat-id-admin
+
+alert:
+  storm:
+    name: Storm alert
+    message: Storm alert – wind speed > 6 m/s. Close marquee and windows! Either fully open or fully close blinds!
+    done_message: Storm alert done.
+    entity_id: binary_sensor.weather_storm
+    repeat: 30
+    can_acknowledge: true
+    data:
+      inline_keyboard:
+        - 'Close marquee:/close_marquee, Acknowledge:/storm_acknowledge'    
+    notifiers:
+      - telegram_admin
+
+automation:
+  - alias: "Telegram callback to acknowledge storm alerts"
+    trigger:
+      - platform: event
+        event_type: telegram_callback
+        event_data:
+          data: "/storm_acknowledge"
+    action:
+      - service: alert.turn_off
+        target:
+          entity_id: alert.storm
+  - alias: "Telegram callback to close marquee"
+    trigger:
+      - platform: event
+        event_type: telegram_callback
+        event_data:
+          data: "/close_marquee"
+    action:
+      - service: cover.close_cover
+        target:
+          entity_id: cover.roller_shutter_3_15

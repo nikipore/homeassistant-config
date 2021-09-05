@@ -138,14 +138,3 @@ homeassistant:
       friendly_name: "Windstärke"
     sensor.weather_wind_bearing:
       friendly_name: "Windrichtung"
-
-alert:
-  wind:
-    name: Storm alert
-    message: Storm alert – wind speed > 6 m/s. Close marquee and windows! Either fully open or fully close blinds!
-    done_message: Storm alert done.
-    entity_id: binary_sensor.weather_storm
-    repeat: 30
-    can_acknowledge: true
-    notifiers:
-      - telegram_admin
