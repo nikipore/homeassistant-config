@@ -8,13 +8,22 @@ notify:
     platform: telegram
     chat_id: !secret telegram-chat-id-admin
 
+input_boolean:
+  alert_test:
+    name: "Alarm (Test)"
+    icon: mdi:alert
+
 alert:
   storm:
     name: Storm alert
-    message: Storm alert – wind speed > 6 m/s. Close marquee and windows! Either fully open or fully close blinds!
-    done_message: Storm alert done.
+    message: >
+      *Storm alert* (wind speed {{ states('sensor.weather_wind_speed') }} m/s). Check marquee ({{ states('cover.roller_shutter_3_15') }}), windows, and blinds!
+    done_message: Storm alert deactivated.
     entity_id: binary_sensor.weather_storm
-    repeat: 30
+    skip_first: true
+    repeat:
+      - 1
+      - 30
     can_acknowledge: true
     data:
       inline_keyboard:
