@@ -24,6 +24,16 @@ template:
           mdi:circle-outline
         {% endif %}
   sensor:
+    - name: sun_azimuth
+      unit_of_measurement: "°"
+      state: >
+        {{ state_attr('sun.sun', 'azimuth') }}
+      icon: mdi:weather-sunny
+    - name: sun_elevation
+      unit_of_measurement: "°"
+      state: >
+        {{ state_attr('sun.sun', 'elevation') }}
+      icon: mdi:weather-sunset-up
     - name: weather_hourly_forecast_index_next_rising
       state: >
         {{ ((as_timestamp(state_attr('sun.sun', 'next_rising')) - as_timestamp(state_attr('weather.dwd_weather_wiesbaden_biebrich_1h', 'forecast')[0]['datetime'])) // 3600) | max(0) }}
@@ -102,6 +112,10 @@ template:
 
 homeassistant: 
   customize:
+    sensor.sun_azimuth:
+      friendly_name: "Sonnenstand (Azimut)"
+    sensor.sun_elevation:
+      friendly_name: "Sonnenstand (Höhe)"
     binary_sensor.weather_raining:
       friendly_name: "Wettersensor: Regen"
     binary_sensor.weather_storm:
@@ -132,9 +146,9 @@ homeassistant:
       friendly_name: "Luftdruck"
     sensor.weather_temperature:
       friendly_name: "Temperatur"
-    sensor.weather_wind_speed:
-      friendly_name: "Windgeschwindigkeit"
-    sensor.weather_wind_force:
-      friendly_name: "Windstärke"
     sensor.weather_wind_bearing:
       friendly_name: "Windrichtung"
+    sensor.weather_wind_force:
+      friendly_name: "Windstärke"
+    sensor.weather_wind_speed:
+      friendly_name: "Windgeschwindigkeit"
