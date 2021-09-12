@@ -16,7 +16,7 @@ template:
         {% endif %}
     - name: weather_storm
       state: >
-        {{ states('sensor.weather_wind_speed') | float > 6 }}
+        {{ states('sensor.weather_wind_speed') | float >= 8.0 }}
       icon: >
         {% if is_state("binary_sensor.weather_storm", "on") %}
           mdi:weather-windy
@@ -94,10 +94,14 @@ template:
       state: >
         {{ state_attr('weather.dwd_weather_wiesbaden_biebrich_1h', 'temperature') | float }}
       device_class: temperature
-    - name: weather_wind_bearing
+    - name: weather_wind_direction
       unit_of_measurement: "°"
       state: >
         {{ state_attr('weather.dwd_weather_wiesbaden_biebrich_1h', 'wind_bearing') | float }}
+      icon: mdi:compass-outline
+    - name: weather_wind_direction_text
+      state: >
+        {{ ['N','NNE','NE','ENE','E','ESE','SE','SSE','S','SSW','SW','WSW','W','WNW','NW','NNW'][((((states('sensor.weather_wind_direction') | float) + 11.25) % 360) / 22.5) | int] }}
       icon: mdi:compass-outline
     - name: weather_wind_speed
       unit_of_measurement: "m/s"
@@ -146,8 +150,10 @@ homeassistant:
       friendly_name: "Luftdruck"
     sensor.weather_temperature:
       friendly_name: "Temperatur"
-    sensor.weather_wind_bearing:
+    sensor.weather_wind_direction:
       friendly_name: "Windrichtung"
+    sensor.weather_wind_direction_text:
+      friendly_name: "Windrichtung (Kompass)"
     sensor.weather_wind_force:
       friendly_name: "Windstärke"
     sensor.weather_wind_speed:
