@@ -1,23 +1,43 @@
 - alias: Perform Daily Backup
   trigger:
-    - platform: time
-      at: "04:00:00"
+  - platform: time
+    at: 04:00:00
   action:
-    - service: auto_backup.snapshot_full
-      data:
-        name: "Daily Backup: {{ now().strftime('%Y-%m-%d %H:%M:%S') }}"
-        keep_days: 14
-    - service: hassio.addon_start
-      data:
-        addon: 2caa1d32_rsync_backups # you can get the addon id from URL when you go to the addon info
-
-- alias: Restart Node-RED on (re)start of Home Assistant # Node-RED doesn't connect to HA properly otherwise …
+  - service: auto_backup.snapshot_full
+    data:
+      name: 'Daily Backup: {{ now().strftime(''%Y-%m-%d %H:%M:%S'') }}'
+      keep_days: 14
+  - service: hassio.addon_start
+    data:
+      addon: 2caa1d32_rsync_backups
+  id: a170d1f68ad3458aaef5f8876c6aad09
+- alias: Restart Node-RED on (re)start of Home Assistant
   trigger:
-    - platform: homeassistant
-      event: start
+  - platform: homeassistant
+    event: start
   action:
-    - delay:
-        seconds: 15
-    - service: hassio.addon_restart
-      data:
-        addon: a0d7b954_nodered
+  - delay:
+      seconds: 15
+  - service: hassio.addon_restart
+    data:
+      addon: a0d7b954_nodered
+  id: 6c2e88a9f2e446608f51800f4c642d17
+- id: '1631688345035'
+  alias: Window open, climate off after a defined time (Badezimmer)
+  description: ''
+  use_blueprint:
+    path: local/window-open-climate-off.yaml
+    input:
+      window_entity: binary_sensor.door_window_sensor_7_access_control_window_door_is_open_5
+      climate_target: climate.room_climate_badezimmer
+      minimum_open_time: 300
+- id: '1631694664177'
+  alias: Motion-activated Switch (Küche)
+  description: ''
+  use_blueprint:
+    path: local/motion_switch.yaml
+    input:
+      motion_entity: binary_sensor.0x001788010329dfc5_occupancy
+      switch_target:
+        entity_id: switch.smart_switch_7
+      no_motion_wait: 120
