@@ -14,6 +14,6 @@ homeassistant:
       friendly_name: Luftdruck Badezimmer
     binary_sensor.0x001788010329dfc5_occupancy:
       friendly_name: Bewegungssensor Küche
-    binary_sensor.door_window_sensor_7_access_control_window_door_is_open_5:
+    binary_sensor.window_sensor_badezimmer_window_is_open:
       friendly_name: Fenster Badezimmer
       device_class: window

@@ -22,15 +22,6 @@
     data:
       addon: a0d7b954_nodered
   id: 6c2e88a9f2e446608f51800f4c642d17
-- id: '1631688345035'
-  alias: Window open, climate off after a defined time (Badezimmer)
-  description: ''
-  use_blueprint:
-    path: local/window-open-climate-off.yaml
-    input:
-      window_entity: binary_sensor.door_window_sensor_7_access_control_window_door_is_open_5
-      climate_target: climate.room_climate_badezimmer
-      minimum_open_time: 300
 - id: '1631694664177'
   alias: Motion-activated Switch (Küche)
   description: ''
@@ -39,5 +30,14 @@
     input:
       motion_entity: binary_sensor.0x001788010329dfc5_occupancy
       switch_target:
-        entity_id: switch.smart_switch_7
+        entity_id: switch.steckdose_kueche_oberschrank
       no_motion_wait: 120
+- id: '1631688345035'
+  alias: Window open, climate off after a defined time (Badezimmer)
+  description: ''
+  use_blueprint:
+    path: local/window-open-climate-off.yaml
+    input:
+      window_entity: binary_sensor.window_sensor_badezimmer_window_is_open
+      climate_target: climate.room_climate_badezimmer
+      minimum_open_time: 300
