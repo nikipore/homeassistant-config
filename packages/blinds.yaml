@@ -415,3 +415,31 @@ homeassistant:
   customize:
     binary_sensor.marquee_is_open:
       friendly_name: "Markise ist"
+
+automation:
+  - alias: Turn off Lichtkuppel switches after startup
+    trigger:
+      - platform: homeassistant
+        event: start
+    action:
+      - service: switch.turn_off
+        target:
+          entity_id:
+            - switch.double_relay_switch_2x1_5kw
+            - switch.double_relay_switch_2x1_5kw_2
+            - switch.double_relay_switch_2x1_5kw_3
+            - switch.double_relay_switch_2x1_5kw_2_2
+  - alias: Turn off Lichtkuppel switches after 45 s
+    trigger:
+      - platform: state
+        entity_id:
+          - switch.double_relay_switch_2x1_5kw
+          - switch.double_relay_switch_2x1_5kw_2
+          - switch.double_relay_switch_2x1_5kw_3
+          - switch.double_relay_switch_2x1_5kw_2_2
+        to: "on"
+        for: "00:00:45"
+    action:
+      - service: switch.turn_off
+        target:
+          entity_id: "{{ trigger.entity_id }}"
