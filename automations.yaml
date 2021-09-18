@@ -28,7 +28,7 @@
   use_blueprint:
     path: local/motion_switch.yaml
     input:
-      motion_entity: binary_sensor.0x001788010329dfc5_occupancy
+      motion_entity: binary_sensor.motion_sensor_kueche_home_security_motion_detection
       switch_target:
         entity_id: switch.steckdose_kueche_oberschrank
       no_motion_wait: 120
@@ -40,4 +40,77 @@
     input:
       window_entity: binary_sensor.window_sensor_badezimmer_window_is_open
       climate_target: climate.room_climate_badezimmer
-      minimum_open_time: 300
+      minimum_open_time: 15
+- id: '1631917708796'
+  alias: Window open, climate off after a defined time (Duschbad)
+  description: ''
+  use_blueprint:
+    path: local/window-open-climate-off.yaml
+    input:
+      window_entity: binary_sensor.window_sensor_duschbad_window_is_open
+      climate_target: climate.room_climate_duschbad
+      minimum_open_time: 15
+- id: '1631917756048'
+  alias: Window open, climate off after a defined time (Arbeitszimmer)
+  description: ''
+  use_blueprint:
+    path: local/window-open-climate-off.yaml
+    input:
+      window_entity: binary_sensor.window_sensor_arbeitszimmer_window_is_open
+      minimum_open_time: 15
+      climate_target: climate.room_climate_arbeitszimmer
+- id: '1631917792995'
+  alias: Window open, climate off after a defined time (Schlafzimmer)
+  description: ''
+  use_blueprint:
+    path: local/window-open-climate-off.yaml
+    input:
+      window_entity: binary_sensor.window_sensor_schlafzimmer_window_is_open
+      climate_target: climate.room_climate_schlafzimmer
+      minimum_open_time: 15
+- id: '1631917834801'
+  alias: Window open, climate off after a defined time (Wohnzimmer)
+  description: ''
+  use_blueprint:
+    path: local/window-open-climate-off.yaml
+    input:
+      window_entity: binary_sensor.window_sensor_wohnzimmer_any_window_is_open
+      climate_target: climate.room_climate_wohnzimmer
+      minimum_open_time: 15
+- id: '1631918221399'
+  alias: Window open, climate off after a defined time (Nino)
+  description: ''
+  use_blueprint:
+    path: local/window-open-climate-off.yaml
+    input:
+      window_entity: binary_sensor.window_sensor_nino_any_window_is_open
+      climate_target: climate.room_climate_nino
+      minimum_open_time: 15
+- id: '1631918255632'
+  alias: Window open, climate off after a defined time (Noah)
+  description: ''
+  use_blueprint:
+    path: local/window-open-climate-off.yaml
+    input:
+      window_entity: binary_sensor.window_sensor_noah_any_window_is_open
+      climate_target: climate.room_climate_noah
+      minimum_open_time: 15
+- id: '1631985058532'
+  alias: Window open, climate off after a defined time
+  description: ''
+  use_blueprint:
+    path: local/window-open-climate-off.yaml
+    input:
+      window_entity: binary_sensor.window_sensor_kueche_any_window_is_open
+      climate_target: climate.room_climate_kuche
+      minimum_open_time: 15
+- id: '1631993327255'
+  alias: Motion-activated Switch (Ankleide)
+  description: ''
+  use_blueprint:
+    path: local/motion_switch.yaml
+    input:
+      motion_entity: binary_sensor.0x001788010329dfc5_occupancy
+      no_motion_wait: 60
+      switch_target:
+        entity_id: switch.licht_ankleide

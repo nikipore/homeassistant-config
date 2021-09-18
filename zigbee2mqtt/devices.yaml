@@ -16,12 +16,10 @@
   friendly_name: duschbad-temperature-sensor
 '0x00158d0006ca2875':
   friendly_name: flur-temperature-sensor
-'0x00158d0005bcb6d2':
-  friendly_name: kueche-deckenlampe
 '0x00158d0005bd3f50':
   friendly_name: kueche-fernbedienung
 '0x001788010329dfc5':
-  friendly_name: kueche-motion-sensor
+  friendly_name: ankleide-motion-sensor
 '0x001788010359b0f2':
   friendly_name: kueche-schirmleuchte
 '0x0017880103b9624b':
@@ -30,8 +28,6 @@
   friendly_name: nino-2
 '0x00178801038929b4':
   friendly_name: nino-3
-'0x0017880102c3143f':
-  friendly_name: nino-dimmer
 '0x00158d0006ca2806':
   friendly_name: nino-temperature-sensor
 '0x00178801038746d4':
@@ -74,3 +70,7 @@
   friendly_name: wuerfel-schalter
 '0x00158d0001fe573e':
   friendly_name: luftfilter
+'0x0017880102c3143f':
+  friendly_name: nino-dimmer
+'0x00158d0005bcb6d2':
+  friendly_name: kueche-deckenlampe
