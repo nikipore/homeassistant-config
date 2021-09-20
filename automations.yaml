@@ -1,7 +1,7 @@
 - alias: Perform Daily Backup
   trigger:
   - platform: time
-    at: 04:00:00
+    at: "04:00:00"
   action:
   - service: auto_backup.snapshot_full
     data:
@@ -114,3 +114,11 @@
       no_motion_wait: 60
       switch_target:
         entity_id: switch.licht_ankleide
+- alias: Turn off light Terrasse at night
+  trigger:
+  - platform: time
+    at: "23:00:00"
+  action:
+  - service: switch.turn_off
+    target:
+      entity_id: switch.licht_terrasse

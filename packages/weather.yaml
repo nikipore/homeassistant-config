@@ -92,7 +92,7 @@ template:
     - name: weather_temperature
       unit_of_measurement: "°C"
       state: >
-        {{ state_attr('weather.dwd_weather_wiesbaden_biebrich_1h', 'temperature') | float }}
+        {{ states('sensor.temperature_sensor_outdoor_air_temperature') | float }}
       device_class: temperature
     - name: weather_wind_direction
       unit_of_measurement: "°"
