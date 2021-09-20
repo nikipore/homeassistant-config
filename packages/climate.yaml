@@ -1,0 +1,49 @@
+input_select:
+  climate_mode_arbeitszimmer:
+    name: "Thermostat: Modus (Arbeitszimmer)"
+    options:
+      - "auto"
+      - "heat"
+      - "off"
+  climate_mode_badezimmer:
+    name: "Thermostat: Modus (Badezimmer)"
+    options:
+      - "auto"
+      - "heat"
+      - "off"
+  climate_mode_duschbad:
+    name: "Thermostat: Modus (Duschbad)"
+    options:
+      - "auto"
+      - "heat"
+      - "off"
+  climate_mode_kueche:
+    name: "Thermostat: Modus (Küche)"
+    options:
+      - "auto"
+      - "heat"
+      - "off"
+  climate_mode_nino:
+    name: "Thermostat: Modus (Nino)"
+    options:
+      - "auto"
+      - "heat"
+      - "off"
+  climate_mode_noah:
+    name: "Thermostat: Modus (Noah)"
+    options:
+      - "auto"
+      - "heat"
+      - "off"
+  climate_mode_schlafzimmer:
+    name: "Thermostat: Modus (Schlafzimmer)"
+    options:
+      - "auto"
+      - "heat"
+      - "off"
+  climate_mode_wohnzimmer:
+    name: "Thermostat: Modus (Wohnzimmer)"
+    options:
+      - "auto"
+      - "heat"
+      - "off"

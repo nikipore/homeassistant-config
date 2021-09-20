@@ -13,6 +13,12 @@ blueprint:
         entity:
           domain: binary_sensor
           device_class: window
+    input_select_entity:
+      name: Input Select
+      description: The input select that saves the state of the climate device.
+      selector:
+        entity:
+          domain: input_select
     minimum_open_time:
       name: Minimum time the window is open
       description: Time in seconds to wait until the automation is triggered
@@ -30,6 +36,9 @@ blueprint:
       selector:
         entity:
           domain: climate
+trigger_variables:
+  input_select_entity: !input 'input_select_entity'
+  climate_target: !input 'climate_target'
 trigger:
 - platform: state
   entity_id: !input 'window_entity'
@@ -42,6 +51,11 @@ condition:
     entity_id: !input 'climate_target'
     state: 'off'
 action:
+- service: input_select.select_option
+  entity_id: !input 'input_select_entity'
+  data:
+    option: >
+      {{ states(climate_target) | string }}
 - service: climate.turn_off
   entity_id: !input 'climate_target'
 - wait_for_trigger:
@@ -49,5 +63,8 @@ action:
     entity_id: !input 'window_entity'
     to: 'off'
   continue_on_timeout: false
-- service: climate.turn_on
+- service: climate.set_hvac_mode
   entity_id: !input 'climate_target'
+  data:
+    hvac_mode: >
+      {{ states(input_select_entity) | string }}
