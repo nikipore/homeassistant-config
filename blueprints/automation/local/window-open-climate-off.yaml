@@ -36,7 +36,7 @@ blueprint:
       selector:
         entity:
           domain: climate
-trigger_variables:
+variables:
   input_select_entity: !input 'input_select_entity'
   climate_target: !input 'climate_target'
 trigger:
@@ -46,10 +46,8 @@ trigger:
   for: !input 'minimum_open_time'
 condition:
 - condition: not
-  conditions:
-  - condition: state
-    entity_id: !input 'climate_target'
-    state: 'off'
+  conditions: >
+    {{ is_state(climate_target, 'off') or is_state_attr(climate_target, 'temperature', 5) }}
 action:
 - service: input_select.select_option
   entity_id: !input 'input_select_entity'
