@@ -1,0 +1,63 @@
+light:
+- platform: group
+  name: Küche
+  entities:
+    - light.0x00158d0005bcb6d2
+    - light.0x001788010359b0f2
+- platform: group
+  name: Nino
+  entities:
+    - light.0x0017880103b9624b
+    - light.0x0017880103b83ba1
+    - light.0x00178801038929b4
+- platform: group
+  name: Noah
+  entities:
+    - light.0x00178801038746d4
+    - light.0x00178801035073df
+    - light.0x0017880103204d45
+- platform: group
+  name: Schlafzimmer
+  entities:
+    - light.0x00178801039462d5
+    - light.0x0017880103946a27
+    - light.0x0017880104e2a1a3
+- platform: group
+  name: Wohnzimmer
+  entities:
+    - light.0x00178801038909e6
+    - light.0x0017880103892bd7
+    - light.0x0017880103e185e6
+    - light.0x00178801047a8f0f
+    - light.0x00178801067ccfea
+
+automation:
+- alias: Turn off light Terrasse at night
+  trigger:
+  - platform: time
+    at: '23:00:00'
+  action:
+  - service: switch.turn_off
+    target:
+      entity_id: switch.licht_terrasse
+  id: 5d15ac34081241e5a8bd709424da664f
+- alias: Motion-activated Switch (Küche)
+  description: ''
+  use_blueprint:
+    path: local/motion_switch.yaml
+    input:
+      motion_entity: binary_sensor.motion_sensor_kueche_home_security_motion_detection
+      switch_target:
+        entity_id: switch.steckdose_kueche_oberschrank
+      no_motion_wait: 120
+  id: '1631694664177'
+- alias: Motion-activated Switch (Ankleide)
+  description: ''
+  use_blueprint:
+    path: local/motion_switch.yaml
+    input:
+      motion_entity: binary_sensor.0x001788010329dfc5_occupancy
+      no_motion_wait: 60
+      switch_target:
+        entity_id: switch.licht_ankleide
+  id: '1631993327255'

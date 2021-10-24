@@ -34,5 +34,5 @@ tts:
 
 http:
   use_x_forwarded_for: true
-  trusted_proxies:
+  trusted_proxies: # Docker containers
     - 172.30.33.0/24

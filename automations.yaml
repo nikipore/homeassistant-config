@@ -22,32 +22,3 @@
     data:
       addon: a0d7b954_nodered
   id: 6c2e88a9f2e446608f51800f4c642d17
-- id: '1631694664177'
-  alias: Motion-activated Switch (Küche)
-  description: ''
-  use_blueprint:
-    path: local/motion_switch.yaml
-    input:
-      motion_entity: binary_sensor.motion_sensor_kueche_home_security_motion_detection
-      switch_target:
-        entity_id: switch.steckdose_kueche_oberschrank
-      no_motion_wait: 120
-- alias: Turn off light Terrasse at night
-  trigger:
-  - platform: time
-    at: '23:00:00'
-  action:
-  - service: switch.turn_off
-    target:
-      entity_id: switch.licht_terrasse
-  id: 5d15ac34081241e5a8bd709424da664f
-- id: '1631993327255'
-  alias: Motion-activated Switch (Ankleide)
-  description: ''
-  use_blueprint:
-    path: local/motion_switch.yaml
-    input:
-      motion_entity: binary_sensor.0x001788010329dfc5_occupancy
-      no_motion_wait: 60
-      switch_target:
-        entity_id: switch.licht_ankleide
