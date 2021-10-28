@@ -56,6 +56,34 @@ input_select:
       - "off"
 
 automation:
+- alias: Protect floor heating ventiles
+  mode: single
+  trigger:
+    - platform: time
+      at: "18:00:00"
+  condition:
+    - condition: time
+      weekday:
+      - fri
+    - "{{ not (states.climate | selectattr('state', '!=', 'off') | selectattr('state', '!=', 'unavailable') | list) }}"
+  action:
+  - service: climate.set_hvac_mode
+    entity_id: all
+    data:
+      hvac_mode: "heat"
+  - service: climate.set_temperature
+    entity_id: all
+    data:
+      temperature: 30
+  - delay: '00:05:00'
+  - service: climate.set_temperature
+    entity_id: all
+    data:
+      temperature: 5
+  - service: climate.set_hvac_mode
+    entity_id: all
+    data:
+      hvac_mode: "off"
 - alias: Set global thermostat mode
   trigger:
     - platform: state
