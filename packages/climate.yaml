@@ -55,128 +55,142 @@ input_select:
       - "heat"
       - "off"
 
+input_text:
+  climate_protect_floor_heating_entities:
+    name: "Thermostat: Ventilschutz aktiv"
+
 automation:
-- alias: Protect floor heating ventiles
-  mode: single
-  trigger:
-    - platform: time
-      at: "18:00:00"
-  condition:
-    - condition: time
-      weekday:
-      - fri
-    - "{{ not (states.climate | selectattr('state', '!=', 'off') | selectattr('state', '!=', 'unavailable') | list) }}"
-  action:
-  - service: climate.set_hvac_mode
-    entity_id: all
-    data:
-      hvac_mode: "heat"
-  - service: climate.set_temperature
-    entity_id: all
-    data:
-      temperature: 30
-  - delay: '00:05:00'
-  - service: climate.set_temperature
-    entity_id: all
-    data:
-      temperature: 5
-  - service: climate.set_hvac_mode
-    entity_id: all
-    data:
-      hvac_mode: "off"
-- alias: Set global thermostat mode
-  trigger:
-    - platform: state
-      entity_id: input_select.climate_mode_global
-  condition:
-  - condition: not
-    conditions: >
-      {{ is_state('input_select.climate_mode_global', '<bitte wählen>') }}
-  action:
-  - service: climate.set_hvac_mode
-    entity_id: all
-    data:
-      hvac_mode: >
-        {{ states('input_select.climate_mode_global') | string }}
-  - service: input_select.select_first
-    entity_id: input_select.climate_mode_global
-- id: '1631917756048'
-  alias: Window open, climate off after a defined time (Arbeitszimmer)
-  description: ''
-  use_blueprint:
-    path: local/window-open-climate-off.yaml
-    input:
-      window_entity: binary_sensor.window_sensor_arbeitszimmer_window_is_open
-      input_select_entity: input_select.climate_mode_arbeitszimmer
-      minimum_open_time: 15
-      climate_target: climate.room_climate_arbeitszimmer
-- id: '1631688345035'
-  alias: Window open, climate off after a defined time (Badezimmer)
-  description: ''
-  use_blueprint:
-    path: local/window-open-climate-off.yaml
-    input:
-      window_entity: binary_sensor.window_sensor_badezimmer_window_is_open
-      input_select_entity: input_select.climate_mode_badezimmer
-      climate_target: climate.room_climate_badezimmer
-      minimum_open_time: 15
-- id: '1631917708796'
-  alias: Window open, climate off after a defined time (Duschbad)
-  description: ''
-  use_blueprint:
-    path: local/window-open-climate-off.yaml
-    input:
-      window_entity: binary_sensor.window_sensor_duschbad_window_is_open
-      input_select_entity: input_select.climate_mode_duschbad
-      climate_target: climate.room_climate_duschbad
-      minimum_open_time: 15
-- id: '1631985058532'
-  alias: Window open, climate off after a defined time (Küche)
-  description: ''
-  use_blueprint:
-    path: local/window-open-climate-off.yaml
-    input:
-      window_entity: binary_sensor.window_sensor_kueche_any_window_is_open
-      input_select_entity: input_select.climate_mode_kueche
-      climate_target: climate.room_climate_kuche
-      minimum_open_time: 15
-- id: '1631918221399'
-  alias: Window open, climate off after a defined time (Nino)
-  description: ''
-  use_blueprint:
-    path: local/window-open-climate-off.yaml
-    input:
-      window_entity: binary_sensor.window_sensor_nino_any_window_is_open
-      input_select_entity: input_select.climate_mode_nino
-      climate_target: climate.room_climate_nino
-      minimum_open_time: 15
-- id: '1631918255632'
-  alias: Window open, climate off after a defined time (Noah)
-  description: ''
-  use_blueprint:
-    path: local/window-open-climate-off.yaml
-    input:
-      window_entity: binary_sensor.window_sensor_noah_any_window_is_open
-      input_select_entity: input_select.climate_mode_noah
-      climate_target: climate.room_climate_noah
-      minimum_open_time: 15
-- id: '1631917792995'
-  alias: Window open, climate off after a defined time (Schlafzimmer)
-  description: ''
-  use_blueprint:
-    path: local/window-open-climate-off.yaml
-    input:
-      window_entity: binary_sensor.window_sensor_schlafzimmer_window_is_open
-      input_select_entity: input_select.climate_mode_schlafzimmer
-      climate_target: climate.room_climate_schlafzimmer
-      minimum_open_time: 15
-- id: '1631917834801'
-  alias: Window open, climate off after a defined time (Wohnzimmer)
-  description: ''
-  use_blueprint:
-    path: local/window-open-climate-off.yaml
-    input:
-      window_entity: binary_sensor.window_sensor_wohnzimmer_any_window_is_open
-      input_select_entity: input_select.climate_mode_wohnzimmer
-      climate_target: climate.room_climate_wohnzimmer
-      minimum_open_time: 15
+  - alias: Protect floor heating ventiles
+    mode: single
+    trigger:
+      - platform: time
+        at: "18:00:00"
+    condition:
+      - condition: time
+        weekday:
+          - fri
+    action:
+      - service: input_text.set_value
+        data:
+          entity_id: input_text.climate_protect_floor_heating_entities
+          value: "{{ states.climate | selectattr('state', '==', 'off') | map(attribute='entity_id') | join('|') | replace('climate.room_climate_', '@') }}" # pack entity IDs (max length 255)
+      - condition: and
+        conditions:
+          - "{{ states('input_text.climate_protect_floor_heating_entities') != '' }}"
+      - service: climate.set_hvac_mode
+        target:
+          entity_id: "{{ states('input_text.climate_protect_floor_heating_entities') | replace('|', ', ') | replace('@', 'climate.room_climate_') }}"
+        data:
+          hvac_mode: "heat"
+      - service: climate.set_temperature
+        target:
+          entity_id: "{{ states('input_text.climate_protect_floor_heating_entities') | replace('|', ', ') | replace('@', 'climate.room_climate_') }}"
+        data:
+          temperature: 30
+      - delay: "00:07:30"
+      - service: climate.set_temperature
+        target:
+          entity_id: "{{ states('input_text.climate_protect_floor_heating_entities') | replace('|', ', ') | replace('@', 'climate.room_climate_') }}"
+        data:
+          temperature: 5
+      - service: climate.set_hvac_mode
+        target:
+          entity_id: "{{ states('input_text.climate_protect_floor_heating_entities') | replace('|', ', ') | replace('@', 'climate.room_climate_') }}"
+        data:
+          hvac_mode: "off"
+  - alias: Set global thermostat mode
+    trigger:
+      - platform: state
+        entity_id: input_select.climate_mode_global
+    condition:
+      - condition: not
+        conditions: >
+          {{ is_state('input_select.climate_mode_global', '<bitte wählen>') }}
+    action:
+      - service: climate.set_hvac_mode
+        entity_id: all
+        data:
+          hvac_mode: >
+            {{ states('input_select.climate_mode_global') | string }}
+      - service: input_select.select_first
+        entity_id: input_select.climate_mode_global
+  - id: "1631917756048"
+    alias: Window open, climate off after a defined time (Arbeitszimmer)
+    description: ""
+    use_blueprint:
+      path: local/window-open-climate-off.yaml
+      input:
+        window_entity: binary_sensor.window_sensor_arbeitszimmer_window_is_open
+        input_select_entity: input_select.climate_mode_arbeitszimmer
+        minimum_open_time: 15
+        climate_target: climate.room_climate_arbeitszimmer
+  - id: "1631688345035"
+    alias: Window open, climate off after a defined time (Badezimmer)
+    description: ""
+    use_blueprint:
+      path: local/window-open-climate-off.yaml
+      input:
+        window_entity: binary_sensor.window_sensor_badezimmer_window_is_open
+        input_select_entity: input_select.climate_mode_badezimmer
+        climate_target: climate.room_climate_badezimmer
+        minimum_open_time: 15
+  - id: "1631917708796"
+    alias: Window open, climate off after a defined time (Duschbad)
+    description: ""
+    use_blueprint:
+      path: local/window-open-climate-off.yaml
+      input:
+        window_entity: binary_sensor.window_sensor_duschbad_window_is_open
+        input_select_entity: input_select.climate_mode_duschbad
+        climate_target: climate.room_climate_duschbad
+        minimum_open_time: 15
+  - id: "1631985058532"
+    alias: Window open, climate off after a defined time (Küche)
+    description: ""
+    use_blueprint:
+      path: local/window-open-climate-off.yaml
+      input:
+        window_entity: binary_sensor.window_sensor_kueche_any_window_is_open
+        input_select_entity: input_select.climate_mode_kueche
+        climate_target: climate.room_climate_kuche
+        minimum_open_time: 15
+  - id: "1631918221399"
+    alias: Window open, climate off after a defined time (Nino)
+    description: ""
+    use_blueprint:
+      path: local/window-open-climate-off.yaml
+      input:
+        window_entity: binary_sensor.window_sensor_nino_any_window_is_open
+        input_select_entity: input_select.climate_mode_nino
+        climate_target: climate.room_climate_nino
+        minimum_open_time: 15
+  - id: "1631918255632"
+    alias: Window open, climate off after a defined time (Noah)
+    description: ""
+    use_blueprint:
+      path: local/window-open-climate-off.yaml
+      input:
+        window_entity: binary_sensor.window_sensor_noah_any_window_is_open
+        input_select_entity: input_select.climate_mode_noah
+        climate_target: climate.room_climate_noah
+        minimum_open_time: 15
+  - id: "1631917792995"
+    alias: Window open, climate off after a defined time (Schlafzimmer)
+    description: ""
+    use_blueprint:
+      path: local/window-open-climate-off.yaml
+      input:
+        window_entity: binary_sensor.window_sensor_schlafzimmer_window_is_open
+        input_select_entity: input_select.climate_mode_schlafzimmer
+        climate_target: climate.room_climate_schlafzimmer
+        minimum_open_time: 15
+  - id: "1631917834801"
+    alias: Window open, climate off after a defined time (Wohnzimmer)
+    description: ""
+    use_blueprint:
+      path: local/window-open-climate-off.yaml
+      input:
+        window_entity: binary_sensor.window_sensor_wohnzimmer_any_window_is_open
+        input_select_entity: input_select.climate_mode_wohnzimmer
+        climate_target: climate.room_climate_wohnzimmer
+        minimum_open_time: 15
