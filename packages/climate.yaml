@@ -1,6 +1,13 @@
 input_select:
-  climate_mode_global:
-    name: "Thermostat: Modus"
+  climate_mode_global_reset:
+    name: "Thermostat: Modus zurücksetzen"
+    options:
+      - "<bitte wählen>"
+      - "auto"
+      - "heat"
+      - "off"
+  climate_mode_global_reset_daily:
+    name: "Thermostat: Modus zurücksetzen (täglich)"
     options:
       - "<bitte wählen>"
       - "auto"
@@ -98,22 +105,39 @@ automation:
           entity_id: "{{ states('input_text.climate_protect_floor_heating_entities') | replace('|', ', ') | replace('@', 'climate.room_climate_') }}"
         data:
           hvac_mode: "off"
-  - alias: Set global thermostat mode
+  - alias: Reset global thermostat mode
     trigger:
       - platform: state
-        entity_id: input_select.climate_mode_global
+        entity_id: input_select.climate_mode_global_reset
     condition:
       - condition: not
         conditions: >
-          {{ is_state('input_select.climate_mode_global', '<bitte wählen>') }}
+          {{ is_state(trigger.entity_id, '<bitte wählen>') }}
     action:
       - service: climate.set_hvac_mode
         entity_id: all
         data:
           hvac_mode: >
-            {{ states('input_select.climate_mode_global') | string }}
+            {{ states(trigger.entity_id) | string }}
       - service: input_select.select_first
-        entity_id: input_select.climate_mode_global
+        target:
+          entity_id: "{{ trigger.entity_id }}"
+  - alias: Reset global thermostat mode (daily)
+    trigger:
+      - platform: time
+        at: "00:00:00"
+    variables:
+      input_select_entity: input_select.climate_mode_global_reset_daily
+    condition:
+      - condition: not
+        conditions: >
+          {{ is_state(input_select_entity, '<bitte wählen>') }}
+    action:
+      - service: climate.set_hvac_mode
+        entity_id: all
+        data:
+          hvac_mode: >
+            {{ states(input_select_entity) | string }}
   - id: "1631917756048"
     alias: Window open, climate off after a defined time (Arbeitszimmer)
     description: ""
