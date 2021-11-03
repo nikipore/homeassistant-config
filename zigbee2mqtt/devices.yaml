@@ -74,3 +74,9 @@
   friendly_name: nino-dimmer
 '0x00158d0005bcb6d2':
   friendly_name: kueche-deckenlampe
+'0x00158d0006e48e21':
+  friendly_name: ankleide-temperature-sensor
+'0x00158d0006e48d09':
+  friendly_name: terrasse-abstellkammer-temperature-sensor
+'0x00158d0006e4e5aa':
+  friendly_name: kueche-temperature-sensor
