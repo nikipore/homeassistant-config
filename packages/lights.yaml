@@ -35,7 +35,7 @@ automation:
 - alias: Turn off light Terrasse at night
   trigger:
   - platform: time
-    at: '23:00:00'
+    at: '00:00:00'
   action:
   - service: switch.turn_off
     target:
