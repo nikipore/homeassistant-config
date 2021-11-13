@@ -125,7 +125,7 @@ automation:
   - alias: Reset global thermostat mode (daily)
     trigger:
       - platform: time
-        at: "00:00:00"
+        at: "17:45:00"
     variables:
       input_select_entity: input_select.climate_mode_global_reset_daily
     condition:
