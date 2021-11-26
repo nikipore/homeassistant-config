@@ -407,7 +407,7 @@ template:
   binary_sensor:
     - name: marquee_is_open
       state: >
-        {{ states("cover.roller_shutter_markise") }}
+        {{ states("binary_sensor.strips_mazw_access_control_window_door_is_open") }}
       device_class: opening
       icon: mdi:window-closed
 
