@@ -1,18 +1,32 @@
+google:
+  client_id: 89574597060-e9auigpmcc7nk8h080c4akp6k4v4vlva.apps.googleusercontent.com
+  client_secret: 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
+
 binary_sensor:
   - platform: workday
-    name: is_workday_today
+    name: is_workday_today_builtin
     country: DE
     province: HE
   - platform: workday
-    name: is_workday_tomorrow
+    name: is_workday_tomorrow_builtin
     days_offset: 1
     country: DE
     province: HE
-  - platform: workday
-    name: is_workday_yesterday
-    days_offset: -1
-    country: DE
-    province: HE
+
+template:
+  binary_sensor:
+    - name: is_workday_today_user
+      state: >
+        {{ is_state('calendar.ha_feiertage', 'off') }}
+    - name: is_workday_tomorrow_user
+      state: >
+        {{ as_timestamp(now().date() + timedelta(days=1)) != as_timestamp(state_attr('calendar.ha_feiertage', 'start_time')) }}
+    - name: is_workday_today
+      state: >
+        {{ is_state('binary_sensor.is_workday_today_builtin', 'on') and is_state('binary_sensor.is_workday_today_user', 'on') }}
+    - name: is_workday_tomorrow
+      state: >
+        {{ is_state('binary_sensor.is_workday_tomorrow_builtin', 'on') and is_state('binary_sensor.is_workday_tomorrow_user', 'on') }}
 
 homeassistant:
   customize:
@@ -20,5 +34,3 @@ homeassistant:
       friendly_name: Werktag (heute)
     binary_sensor.is_workday_tomorrow:
       friendly_name: Werktag (morgen)
-    binary_sensor.is_workday_yesterday:
-      friendly_name: Werktag (gestern)

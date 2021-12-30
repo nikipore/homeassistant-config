@@ -15,13 +15,13 @@ blueprint:
           device_class: window
     input_select_entity:
       name: Input Select
-      description: The input select that saves the state of the climate device.
+      description: The input select entity that saves the state of the climate device.
       selector:
         entity:
           domain: input_select
     minimum_open_time:
       name: Minimum time the window is open
-      description: Time in seconds to wait until the automation is triggered
+      description: Time in seconds to wait until the automation is triggered.
       default: 300
       selector:
         number:
