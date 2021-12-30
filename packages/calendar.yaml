@@ -1,6 +1,6 @@
 google:
-  client_id: 89574597060-e9auigpmcc7nk8h080c4akp6k4v4vlva.apps.googleusercontent.com
-  client_secret: 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
+  client_id: !secret google-calendar-api-client-id
+  client_secret: !secret google-calendar-api-client-secret
 
 binary_sensor:
   - platform: workday
