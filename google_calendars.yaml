@@ -18,7 +18,7 @@
   - device_id: feiertage_in_deutschland
     ignore_availability: true
     name: Feiertage in Deutschland
-    track: true
+    track: false
 
 - cal_id: o9b93kqp6hc69fstqnhia5u0719glk4h@import.calendar.google.com
   entities:
