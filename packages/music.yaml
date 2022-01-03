@@ -13,4 +13,3 @@ automation:
         entity_id: switch.wohnzimmer_musik
       - service: media_player.media_play
         entity_id: media_player.wohnzimmer
-

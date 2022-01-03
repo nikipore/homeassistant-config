@@ -1,24 +1,24 @@
 - id: a170d1f68ad3458aaef5f8876c6aad09
   alias: Perform Daily Backup
   trigger:
-  - platform: time
-    at: 04:00
+    - platform: time
+      at: 04:00
   action:
-  - service: auto_backup.snapshot_full
-    data:
-      name: 'Daily Backup: {{ now().strftime(''%Y-%m-%d %H:%M:%S'') }}'
-      keep_days: 7
-  - service: hassio.addon_start
-    data:
-      addon: 2caa1d32_rsync_backups
-- alias: Restart Node-RED on (re)start of Home Assistant
+    - service: auto_backup.snapshot_full
+      data:
+        name: "Daily Backup: {{ now().strftime('%Y-%m-%d %H:%M:%S') }}"
+        keep_days: 7
+    - service: hassio.addon_start
+      data:
+        addon: 2caa1d32_rsync_backups
+- alias: Restart Node-RED on (re)start of Home Assistant (with a delay)
   trigger:
-  - platform: homeassistant
-    event: start
+    - platform: homeassistant
+      event: start
   action:
-  - delay:
-      seconds: 15
-  - service: hassio.addon_restart
-    data:
-      addon: a0d7b954_nodered
+    - delay:
+        seconds: 15
+    - service: hassio.addon_restart
+      data:
+        addon: a0d7b954_nodered
   id: 6c2e88a9f2e446608f51800f4c642d17
