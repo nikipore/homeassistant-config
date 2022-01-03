@@ -17,7 +17,7 @@ alert:
   storm:
     name: Storm alert
     message: >
-      *Storm alert* (wind speed {{ states('sensor.weather_wind_speed') }} m/s). Check marquee ({{ states('cover.roller_shutter_3_15') }}), windows, and blinds!
+      *Storm alert* (wind speed {{ states('sensor.weather_wind_speed') }} m/s). Check marquee ({{ states('cover.roller_shutter_markise') }}), windows, and blinds!
     done_message: Storm alert deactivated.
     entity_id: binary_sensor.weather_storm
     skip_first: true
@@ -51,4 +51,4 @@ automation:
     action:
       - service: cover.close_cover
         target:
-          entity_id: cover.roller_shutter_3_15
+          entity_id: cover.roller_shutter_markise
