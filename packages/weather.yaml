@@ -7,7 +7,7 @@ template:
   binary_sensor:
     - name: weather_raining
       state: >
-        {{ is_state("input_boolean.blind_control_raining", "on") }}
+        {{ states('sensor.weather_rain_rate') | float > 2.0 }}
       icon: >
         {% if is_state("binary_sensor.weather_raining", "on") %}
           mdi:weather-pouring
@@ -89,6 +89,11 @@ template:
       state: >
         {{ state_attr('weather.dwd_weather_wiesbaden_biebrich_1h', 'pressure') | float }}
       device_class: pressure
+    - name: weather_rain_rate
+      unit_of_measurement: "mm/h"
+      state: >
+        {{ states('sensor.popp_rain_sensor_rain_rate') | float }} 
+      icon: mdi:weather-pouring
     - name: weather_temperature
       unit_of_measurement: "°C"
       state: >

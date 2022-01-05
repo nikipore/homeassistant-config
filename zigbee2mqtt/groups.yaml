@@ -32,6 +32,3 @@
   friendly_name: group-kueche
   devices:
     - 0x001788010359b0f2/11
-'7':
-  friendly_name: group-garderobe
-  devices: []
