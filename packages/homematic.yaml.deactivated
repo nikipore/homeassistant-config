@@ -1,0 +1,162 @@
+homematic:
+  interfaces:
+    rf:
+      host: !secret homematic-host
+      username: !secret homematic-user
+      password: !secret homematic-password
+      port: 2001
+      resolvenames: json
+    ip:
+      host: !secret homematic-host
+      username: !secret homematic-user
+      password: !secret homematic-password
+      port: 2010
+      resolvenames: json
+    groups:
+      host: !secret homematic-host
+      username: !secret homematic-user
+      password: !secret homematic-password
+      port: 9292
+      resolvenames: json
+      path: /groups
+  hosts:
+    central:
+      host: !secret homematic-host
+      username: !secret homematic-user
+      password: !secret homematic-password
+
+timer:
+  homematic_watchdog_timeout:
+    name: "Homematic Watchdog: Timeout"
+    duration: "00:10:00"
+
+sensor:
+  - platform: template
+    sensors:
+      homematic_last_reboot:
+        friendly_name: "letzter Neustart (Homematic)"
+        value_template: "{{ strptime(state_attr('homematic.central', 'last_reboot') or '1970-01-01 00:00:00', '%Y-%m-%d %H:%M:%S').isoformat() }}"
+        device_class: timestamp
+      sun_azimuth:
+        friendly_name: "Sonnenstand (Azimuth)"
+        unit_of_measurement: "°"
+        value_template: "{{ state_attr('homematic.central', 'sun_azimuth') | round(2) }}"
+        icon_template: mdi:weather-sunny
+      sun_elevation:
+        friendly_name: "Sonnenstand (Höhe)"
+        unit_of_measurement: "°"
+        value_template: "{{ state_attr('homematic.central', 'sun_elevation') | round(2) }}"
+        icon_template: mdi:weather-sunny
+
+automation:
+  - alias: Homematic Watchdog
+    trigger:
+      - platform: homeassistant
+        event: start
+      - platform: event Homematic keepalive at periods < timer.homematic_watchdog_timeout.duration
+        event_type: homematic.keypress
+        event_data:
+          name: HM-RCV-50 BidCoS-RF
+          channel: 1
+          param: PRESS_SHORT
+      - platform: event
+        event_type: timer.finished
+        event_data:
+          entity_id: timer.homematic_watchdog_timeout
+    action:
+      - service: timer.start
+        entity_id: timer.homematic_watchdog_timeout
+      - condition: and
+        conditions: "{{ trigger.event.event_type == 'timer.finished' }}"
+      - service: homematic.reconnect
+      - service: notify.telegram_admin
+        data:
+          message: "Homematic dead. Attempting to reconnect ..."
+
+  - alias: Update Weather on Homematic
+    trigger:
+      - platform: state
+        entity_id: sensor.weather_latest_update
+    action:
+      - delay: "00:00:15"
+      - service: homematic.set_variable_value
+        target:
+          entity_id: homematic.central
+        data:
+          name: "weather_forecast_cloud_coverage"
+          value: "{{ states('sensor.weather_forecast_cloud_coverage') }}"
+      - service: homematic.set_variable_value
+        target:
+          entity_id: homematic.central
+        data:
+          name: "weather_forecast_dewpoint"
+          value: "{{ states('sensor.weather_forecast_dewpoint') }}"
+      - service: homematic.set_variable_value
+        target:
+          entity_id: homematic.central
+        data:
+          name: "weather_forecast_precipitation"
+          value: "{{ states('sensor.weather_forecast_precipitation') }}"
+      - service: homematic.set_variable_value
+        target:
+          entity_id: homematic.central
+        data:
+          name: "weather_forecast_temperature_high"
+          value: "{{ states('sensor.weather_forecast_temperature_high') }}"
+      - service: homematic.set_variable_value
+        target:
+          entity_id: homematic.central
+        data:
+          name: "weather_forecast_temperature_low"
+          value: "{{ states('sensor.weather_forecast_temperature_low') }}"
+      - service: homematic.set_variable_value
+        target:
+          entity_id: homematic.central
+        data:
+          name: "weather_forecast_wind_gusts"
+          value: "{{ states('sensor.weather_forecast_wind_gusts') }}"
+      - service: homematic.set_variable_value
+        target:
+          entity_id: homematic.central
+        data:
+          name: "weather_humidity"
+          value: "{{ states('sensor.weather_humidity') }}"
+      - service: homematic.set_variable_value
+        target:
+          entity_id: homematic.central
+        data:
+          name: "weather_pressure"
+          value: "{{ states('sensor.weather_pressure') }}"
+      - service: homematic.set_variable_value
+        target:
+          entity_id: homematic.central
+        data:
+          name: "weather_temperature"
+          value: "{{ states('sensor.weather_temperature') }}"
+      - service: homematic.set_variable_value
+        target:
+          entity_id: homematic.central
+        data:
+          name: "weather_wind_bearing"
+          value: "{{ states('sensor.weather_wind_bearing') }}"
+      - service: homematic.set_variable_value
+        target:
+          entity_id: homematic.central
+        data:
+          name: "weather_wind_speed"
+          value: "{{ states('sensor.weather_wind_speed') }}"
+
+homeassistant:
+  customize:
+    sensor.0001dbe9a628d5_current:
+      friendly_name: Schalt-/Mess-Steckdose USV (Strom)
+    sensor.0001dbe9a628d5_energy_counter:
+      friendly_name: Schalt-/Mess-Steckdose USV (Energieverbrauch)
+    sensor.0001dbe9a628d5_frequency:
+      friendly_name: Schalt-/Mess-Steckdose USV (Frequenz)
+    sensor.0001dbe9a628d5_power:
+      friendly_name: Schalt-/Mess-Steckdose USV (Leistung)
+    sensor.0001dbe9a628d5_voltage:
+      friendly_name: Schalt-/Mess-Steckdose USV (Spannung)
+    switch.0001dbe9a628d5:
+      friendly_name: Schalt-/Mess-Steckdose USV

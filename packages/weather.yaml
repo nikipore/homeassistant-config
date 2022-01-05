@@ -128,9 +128,9 @@ homeassistant:
     sensor.sun_elevation:
       friendly_name: "Sonnenstand (Höhe)"
     binary_sensor.weather_raining:
-      friendly_name: "Wettersensor: Regen"
+      friendly_name: "Wetteralarm: Regen"
     binary_sensor.weather_storm:
-      friendly_name: "Wettersensor: Sturm"
+      friendly_name: "Wetteralarm: Sturm"
     sensor.weather_hourly_forecast_index_next_rising:
       friendly_name: "Wettervorhersage: Index des nächsten Sonnenaufgangs"
     sensor.weather_hourly_forecast_index_next_setting:

@@ -8,11 +8,6 @@ notify:
     platform: telegram
     chat_id: !secret telegram-chat-id-admin
 
-input_boolean:
-  alert_test:
-    name: "Alarm (Test)"
-    icon: mdi:alert
-
 alert:
   storm:
     name: Storm alert
@@ -27,7 +22,7 @@ alert:
     can_acknowledge: true
     data:
       inline_keyboard:
-        - 'Close marquee:/close_marquee, Acknowledge:/storm_acknowledge'    
+        - "Close marquee:/close_marquee, Acknowledge:/storm_acknowledge"
     notifiers:
       - telegram_admin
 
