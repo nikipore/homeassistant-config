@@ -18,6 +18,14 @@
             }
         },
         "menu-menu-item-sidebar": true,
-        "menu-menu-item-palette": false
+        "menu-menu-item-palette": true,
+        "debug": {
+            "filter": "filterAll",
+            "filteredNodes": [
+                "b7461eaa.f9dbc",
+                "6eebcb1.38fce34"
+            ],
+            "clearType": "all"
+        }
     }
 }

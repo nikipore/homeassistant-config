@@ -7,22 +7,24 @@ template:
   binary_sensor:
     - name: weather_raining
       state: >
-        {{ states('sensor.weather_rain_rate') | float > 2.0 }}
+        {{ states('sensor.weather_rain_rate') | float(0) >= 2.0 }}
       icon: >
         {% if is_state("binary_sensor.weather_raining", "on") %}
           mdi:weather-pouring
         {% else %}
           mdi:circle-outline
         {% endif %}
+      delay_off: "00:15:00"
     - name: weather_storm
       state: >
-        {{ states('sensor.weather_wind_speed') | float >= 9.0 }}
+        {{ states('sensor.weather_wind_speed') | float(0) >= 9.0 }}
       icon: >
         {% if is_state("binary_sensor.weather_storm", "on") %}
           mdi:weather-windy
         {% else %}
           mdi:circle-outline
         {% endif %}
+      delay_off: "00:15:00"
   sensor:
     - name: sun_azimuth
       unit_of_measurement: "°"
@@ -47,27 +49,27 @@ template:
     - name: weather_forecast_cloud_coverage
       unit_of_measurement: "%"
       state: >
-        {{ states('sensor.cloud_coverage_wiesbaden_biebrich_1h') | float }}
+        {{ states('sensor.cloud_coverage_wiesbaden_biebrich_1h') }}
       icon: mdi:cloud-outline
     - name: weather_forecast_dewpoint
       unit_of_measurement: "°C"
       state: >
-        {{ states('sensor.dewpoint_wiesbaden_biebrich_1h') | float }}
+        {{ states('sensor.dewpoint_wiesbaden_biebrich_1h') }}
       device_class: temperature
     - name: weather_forecast_precipitation
       unit_of_measurement: "mm"
       state: >
-        {{ states('sensor.precipitation_wiesbaden_biebrich_1h') | float }}
+        {{ states('sensor.precipitation_wiesbaden_biebrich_1h') }}
       icon: mdi:weather-rainy
     - name: weather_forecast_wind_gusts
       unit_of_measurement: "km/h"
       state: >
-        {{ states('sensor.wind_gusts_wiesbaden_biebrich_1h') | float }}
+        {{ states('sensor.wind_gusts_wiesbaden_biebrich_1h') }}
       icon: mdi:weather-rainy
     - name: weather_forecast_sun_duration
       unit_of_measurement: "s"
       state: >
-        {{ states('sensor.sensor.sun_duration_wiesbaden_biebrich_1h') | float }}
+        {{ states('sensor.sensor.sun_duration_wiesbaden_biebrich_1h') }}
       icon: mdi:weather-sunny
     - name: weather_forecast_temperature_high
       unit_of_measurement: "°C"
@@ -82,44 +84,44 @@ template:
     - name: weather_humidity
       unit_of_measurement: "%"
       state: >
-        {{ state_attr('weather.dwd_weather_wiesbaden_biebrich_1h', 'humidity') | float }}
+        {{ state_attr('weather.dwd_weather_wiesbaden_biebrich_1h', 'humidity') }}
       device_class: humidity
     - name: weather_pressure
       unit_of_measurement: "mbar"
       state: >
-        {{ state_attr('weather.dwd_weather_wiesbaden_biebrich_1h', 'pressure') | float }}
+        {{ state_attr('weather.dwd_weather_wiesbaden_biebrich_1h', 'pressure') }}
       device_class: pressure
     - name: weather_rain_rate
       unit_of_measurement: "mm/h"
       state: >
-        {{ states('sensor.popp_rain_sensor_rain_rate') | float }} 
+        {{ states('sensor.popp_rain_sensor_rain_rate') }}
       icon: mdi:weather-pouring
     - name: weather_temperature
       unit_of_measurement: "°C"
       state: >
-        {{ states('sensor.temperature_sensor_outdoor_air_temperature') | float }}
+        {{ states('sensor.temperature_sensor_outdoor_air_temperature') }}
       device_class: temperature
     - name: weather_wind_direction
       unit_of_measurement: "°"
       state: >
-        {{ state_attr('weather.dwd_weather_wiesbaden_biebrich_1h', 'wind_bearing') | float }}
+        {{ state_attr('weather.dwd_weather_wiesbaden_biebrich_1h', 'wind_bearing') }}
       icon: mdi:compass-outline
     - name: weather_wind_direction_text
       state: >
-        {{ ['N','NNE','NE','ENE','E','ESE','SE','SSE','S','SSW','SW','WSW','W','WNW','NW','NNW'][((((states('sensor.weather_wind_direction') | float) + 11.25) % 360) / 22.5) | int] }}
+        {{ ['N','NNE','NE','ENE','E','ESE','SE','SSE','S','SSW','SW','WSW','W','WNW','NW','NNW'][((((states('sensor.weather_wind_direction') | float(0)) + 11.25) % 360) / 22.5) | int] }}
       icon: mdi:compass-outline
     - name: weather_wind_speed
       unit_of_measurement: "m/s"
       state: >
-        {{ (states('sensor.z_weather_velocity') | float) }}
+        {{ states('sensor.z_weather_velocity') }}
       icon: mdi:weather-windy
     - name: weather_wind_force
       unit_of_measurement: "bft"
       state: >
-        {{ ([0, 0.3, 1.6, 3.4, 5.5, 8.0, 10.8, 13.9, 17.2, 20.8, 24.5, 28.5, 32.7] | select("<=", states('sensor.weather_wind_speed') | float) | list | length) - 1 }}
+        {{ ([0, 0.3, 1.6, 3.4, 5.5, 8.0, 10.8, 13.9, 17.2, 20.8, 24.5, 28.5, 32.7] | select("<=", states('sensor.weather_wind_speed') | float(0)) | list | length) - 1 }}
       icon: mdi:weather-windy
 
-homeassistant: 
+homeassistant:
   customize:
     sensor.sun_azimuth:
       friendly_name: "Sonnenstand (Azimut)"
