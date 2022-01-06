@@ -18,7 +18,8 @@ alert:
     skip_first: true
     repeat:
       - 1
-      - 30
+      - 60
+      - 480
     can_acknowledge: true
     data:
       inline_keyboard:

@@ -7,14 +7,14 @@ template:
   binary_sensor:
     - name: weather_raining
       state: >
-        {{ states('sensor.weather_rain_rate') | float(0) >= 2.0 }}
+        {{ states('sensor.weather_rain_rate') | float(0) >= 10.0 }}
       icon: >
         {% if is_state("binary_sensor.weather_raining", "on") %}
           mdi:weather-pouring
         {% else %}
           mdi:circle-outline
         {% endif %}
-      delay_off: "00:15:00"
+      #delay_off: "00:15:00"
     - name: weather_storm
       state: >
         {{ states('sensor.weather_wind_speed') | float(0) >= 9.0 }}
