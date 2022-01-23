@@ -411,10 +411,49 @@ template:
       device_class: opening
       icon: mdi:window-closed
 
-homeassistant: 
+homeassistant:
   customize:
     binary_sensor.marquee_is_open:
       friendly_name: "Markise ist"
+    sensor.blind_control_badezimmer:
+      friendly_name: "Badezimmer"
+      icon: hass:arrow-split-horizontal
+    sensor.blind_control_duschbad:
+      friendly_name: "Duschbad"
+      icon: hass:arrow-split-horizontal
+    sensor.blind_control_nino_rechts:
+      friendly_name: "Nino (rechts)"
+      icon: hass:arrow-split-horizontal
+    sensor.blind_control_nino_links:
+      friendly_name: "Nino (links)"
+      icon: hass:arrow-split-horizontal
+    sensor.blind_control_noah_rechts:
+      friendly_name: "Noah (rechts)"
+      icon: hass:arrow-split-horizontal
+    sensor.blind_control_noah_links:
+      friendly_name: "Noah (links)"
+      icon: hass:arrow-split-horizontal
+    sensor.blind_control_arbeitszimmer:
+      friendly_name: "Arbeitszimmer"
+      icon: hass:arrow-split-horizontal
+    sensor.blind_control_kueche_rechts:
+      friendly_name: "Küche (rechts)"
+      icon: hass:arrow-split-horizontal
+    sensor.blind_control_kueche_links:
+      friendly_name: "Küche (links)"
+      icon: hass:arrow-split-horizontal
+    sensor.blind_control_wohnzimmer:
+      friendly_name: "Wohnzimmer"
+      icon: hass:arrow-split-horizontal
+    sensor.blind_control_terrasse_rechts:
+      friendly_name: "Terrasse (rechts)"
+      icon: hass:arrow-split-horizontal
+    sensor.blind_control_terrasse_links:
+      friendly_name: "Terrasse (links)"
+      icon: hass:arrow-split-horizontal
+    sensor.blind_control_schlafzimmer:
+      friendly_name: "Schlafzimmer"
+      icon: hass:arrow-split-horizontal
 
 automation:
   - alias: Turn off Lichtkuppel switches after startup

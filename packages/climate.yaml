@@ -218,3 +218,26 @@ automation:
         input_select_entity: input_select.climate_mode_wohnzimmer
         climate_target: climate.room_climate_wohnzimmer
         minimum_open_time: 15
+
+homeassistant:
+  customize:
+    sensor.thermostat_ankleide_humidity:
+      friendly_name: "Ankleide"
+    sensor.thermostat_arbeitszimmer_humidity:
+      friendly_name: "Arbeitszimmer"
+    sensor.thermostat_badezimmer_humidity:
+      friendly_name: "Badezimmer"
+    sensor.thermostat_duschbad_humidity:
+      friendly_name: "Duschbad"
+    sensor.thermostat_flur_humidity:
+      friendly_name: "Flur"
+    sensor.thermostat_kuche_humidity:
+      friendly_name: "Küche"
+    sensor.thermostat_nino_humidity:
+      friendly_name: "Nino"
+    sensor.thermostat_noah_humidity:
+      friendly_name: "Noah"
+    sensor.thermostat_schlafzimmer_humidity:
+      friendly_name: "Schlafzimmer"
+    sensor.thermostat_wohnzimmer_humidity:
+      friendly_name: "Wohnzimmer"
