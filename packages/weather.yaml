@@ -2,6 +2,12 @@ sensor:
   - platform: dwd_weather_warnings
     region_name: Stadt Frankfurt am Main
     name: Frankfurt am Main
+  - platform: statistics
+    name: weather_wind_speed_max_recent_statistics
+    entity_id: sensor.weather_wind_speed
+    state_characteristic: value_max
+    max_age:
+      minutes: 15
 
 template:
   binary_sensor:
@@ -115,6 +121,10 @@ template:
       state: >
         {{ states('sensor.z_weather_velocity') }}
       icon: mdi:weather-windy
+    - name: weather_wind_speed_max_recent
+      unit_of_measurement: "m/s"
+      state: >
+        {{ states('sensor.weather_wind_speed_max_recent_statistics') | float(states('sensor.weather_wind_speed')) }}
     - name: weather_wind_force
       unit_of_measurement: "bft"
       state: >
@@ -165,3 +175,6 @@ homeassistant:
       friendly_name: "Windstärke"
     sensor.weather_wind_speed:
       friendly_name: "Windgeschwindigkeit"
+    sensor.weather_wind_speed_max_recent:
+      friendly_name: "Windgeschwindigkeit (max. letzte 15')"
+      icon: mdi:weather-windy
