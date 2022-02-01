@@ -7,7 +7,7 @@ sensor:
     entity_id: sensor.weather_wind_speed
     state_characteristic: value_max
     max_age:
-      minutes: 15
+      minutes: 30
 
 template:
   binary_sensor:
@@ -176,5 +176,5 @@ homeassistant:
     sensor.weather_wind_speed:
       friendly_name: "Windgeschwindigkeit"
     sensor.weather_wind_speed_max_recent:
-      friendly_name: "Windgeschwindigkeit (max. letzte 15')"
+      friendly_name: "Windgeschwindigkeit (letzte Bö)"
       icon: mdi:weather-windy
