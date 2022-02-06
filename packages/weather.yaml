@@ -20,7 +20,6 @@ template:
         {% else %}
           mdi:circle-outline
         {% endif %}
-      #delay_off: "00:15:00"
     - name: weather_storm
       state: >
         {{ states('sensor.weather_wind_speed') | float(0) >= 9.0 }}
@@ -30,7 +29,8 @@ template:
         {% else %}
           mdi:circle-outline
         {% endif %}
-      delay_off: "00:15:00"
+      delay_off:
+        minutes: 15
   sensor:
     - name: sun_azimuth
       unit_of_measurement: "°"
@@ -44,10 +44,10 @@ template:
       icon: mdi:weather-sunset-up
     - name: weather_hourly_forecast_index_next_rising
       state: >
-        {{ ((as_timestamp(state_attr('sun.sun', 'next_rising')) - as_timestamp(state_attr('weather.dwd_weather_wiesbaden_biebrich_1h', 'forecast')[0]['datetime'])) // 3600) | max(0) }}
+        {{ max(0, (as_timestamp(state_attr('sun.sun', 'next_rising')) - as_timestamp(state_attr('weather.dwd_weather_wiesbaden_biebrich_1h', 'forecast')[0]['datetime'])) // 3600) }}
     - name: weather_hourly_forecast_index_next_setting
       state: >
-        {{ ((as_timestamp(state_attr('sun.sun', 'next_setting')) - as_timestamp(state_attr('weather.dwd_weather_wiesbaden_biebrich_1h', 'forecast')[0]['datetime'])) // 3600) | max(0) }}
+        {{ max(0, (as_timestamp(state_attr('sun.sun', 'next_setting')) - as_timestamp(state_attr('weather.dwd_weather_wiesbaden_biebrich_1h', 'forecast')[0]['datetime'])) // 3600) }}
     - name: weather_latest_update
       state: >
         {{ state_attr('weather.dwd_weather_wiesbaden_biebrich_1h', 'latest_update_utc') }}
@@ -80,12 +80,12 @@ template:
     - name: weather_forecast_temperature_high
       unit_of_measurement: "°C"
       state: >
-        {{ state_attr('sensor.temperature_wiesbaden_biebrich_1h', 'data')[:(states('sensor.weather_hourly_forecast_index_next_setting') | int) + 1] | map(attribute='value') | max | float }}
+        {{ state_attr('sensor.temperature_wiesbaden_biebrich_1h', 'data')[:(states('sensor.weather_hourly_forecast_index_next_setting') | int(0)) + 1] | map(attribute='value') | max | float(0) }}
       device_class: temperature
     - name: weather_forecast_temperature_low
       unit_of_measurement: "°C"
       state: >
-        {{ state_attr('sensor.temperature_wiesbaden_biebrich_1h', 'data')[:(states('sensor.weather_hourly_forecast_index_next_rising') | int) + 1] | map(attribute='value') | min | float }}
+        {{ state_attr('sensor.temperature_wiesbaden_biebrich_1h', 'data')[:(states('sensor.weather_hourly_forecast_index_next_rising') | int(0)) + 1] | map(attribute='value') | min | float(0) }}
       device_class: temperature
     - name: weather_humidity
       unit_of_measurement: "%"
