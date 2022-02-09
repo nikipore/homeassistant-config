@@ -20,6 +20,8 @@ template:
         {% else %}
           mdi:circle-outline
         {% endif %}
+      delay_off:
+        minutes: 15
     - name: weather_storm
       state: >
         {{ states('sensor.weather_wind_speed') | float(0) >= 9.0 }}
@@ -30,7 +32,7 @@ template:
           mdi:circle-outline
         {% endif %}
       delay_off:
-        minutes: 15
+        minutes: 30
   sensor:
     - name: sun_azimuth
       unit_of_measurement: "°"
