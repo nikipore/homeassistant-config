@@ -1,12 +1,10 @@
 '1':
   friendly_name: group-kueche
   devices:
-    - 0x00158d0005bcb6d2/1
     - 0x001788010359b0f2/11
 '2':
   friendly_name: group-arbeitszimmer
-  devices:
-    - 0x00158d0003ffd17f/1
+  devices: []
 '3':
   friendly_name: group-3
 '4':

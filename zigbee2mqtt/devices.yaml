@@ -1,82 +1,26 @@
 '0x00158d0006f12e1d':
   friendly_name: abstellkammer-temperature-sensor
-'0x001788010329dfc5':
-  friendly_name: ankleide-motion-sensor
-'0x84182600000ed8a1':
-  friendly_name: ankleide-steckdose
 '0x00158d0006e48e21':
   friendly_name: ankleide-temperature-sensor
-'0x00158d0003ffd17f':
-  friendly_name: arbeitszimmer-deckenleuchte
 '0x00158d0006e4ceee':
   friendly_name: arbeitszimmer-temperature-sensor
-'0x00158d0005bd3f50':
-  friendly_name: arbeitszimmer-fernbedienung
 '0x00158d00041da63b':
   friendly_name: badezimmer-temperature-sensor
-'0x84182600000ed948':
-  friendly_name: duschbad-steckdose
 '0x00158d0006f12e6f':
   friendly_name: duschbad-temperature-sensor
 '0x00158d0006ca2875':
   friendly_name: flur-temperature-sensor
-'0x00158d0005bcb6d2':
-  friendly_name: kueche-deckenleuchte
-'0x00158d00040525e7':
-  friendly_name: kueche-fernbedienung
-'0x001788010359b0f2':
-  friendly_name: kueche-schirmleuchte
 '0x00158d0006e4e5aa':
   friendly_name: kueche-temperature-sensor
-'0x00158d0001fe573e':
-  friendly_name: luftfilter
-'0x0017880103b9624b':
-  friendly_name: nino-1
-'0x0017880103b83ba1':
-  friendly_name: nino-2
-'0x00178801038929b4':
-  friendly_name: nino-3
-'0x0017880102c3143f':
-  friendly_name: nino-dimmer
 '0x00158d0006ca2806':
   friendly_name: nino-temperature-sensor
-'0x00178801038746d4':
-  friendly_name: noah-1
-'0x00178801035073df':
-  friendly_name: noah-2
-'0x0017880103204d45':
-  friendly_name: noah-3
-'0x0017880103e7b1fc':
-  friendly_name: noah-dimmer
 '0x00158d0006c6e77c':
   friendly_name: noah-temperature-sensor
-'0x00178801039462d5':
-  friendly_name: schlafzimmer-1
-'0x0017880103946a27':
-  friendly_name: schlafzimmer-2
-'0x0017880104e2a1a3':
-  friendly_name: schlafzimmer-3
-'0x001788010968cebb':
-  friendly_name: schlafzimmer-dimmer-1
-'0x001788010968cec1':
-  friendly_name: schlafzimmer-dimmer-2
 '0x00158d0006c6e6ed':
   friendly_name: schlafzimmer-temperature-sensor
 '0x00158d0006e48d09':
   friendly_name: terrasse-abstellkammer-temperature-sensor
-'0x00178801067ccfea':
-  friendly_name: wohnzimmer-ecke
-'0x0017880102c20295':
-  friendly_name: wohnzimmer-dimmer
-'0x00178801047a8f0f':
-  friendly_name: wohnzimmer-kommode
-'0x00178801038909e6':
-  friendly_name: wohnzimmer-kugel
-'0x0017880103e185e6':
-  friendly_name: wohnzimmer-regal
 '0x00158d000412f308':
   friendly_name: wohnzimmer-temperature-sensor
-'0x0017880103892bd7':
-  friendly_name: wohnzimmer-wagenfeld
 '0x00158d00058a39d5':
   friendly_name: wuerfel-schalter
