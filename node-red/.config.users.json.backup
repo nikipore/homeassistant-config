@@ -19,8 +19,8 @@
                 "welcome": "2.2.0"
             }
         },
-        "menu-menu-item-sidebar": false,
-        "menu-menu-item-palette": true,
+        "menu-menu-item-sidebar": true,
+        "menu-menu-item-palette": false,
         "debug": {
             "filter": "filterSelected",
             "filteredNodes": [
