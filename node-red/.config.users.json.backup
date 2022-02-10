@@ -19,13 +19,14 @@
                 "welcome": "2.2.0"
             }
         },
-        "menu-menu-item-sidebar": true,
-        "menu-menu-item-palette": false,
+        "menu-menu-item-sidebar": false,
+        "menu-menu-item-palette": true,
         "debug": {
-            "filter": "filterAll",
+            "filter": "filterSelected",
             "filteredNodes": [
                 "b7461eaa.f9dbc",
-                "6eebcb1.38fce34"
+                "6eebcb1.38fce34",
+                "7824e7a7193677ea"
             ],
             "clearType": "all"
         }

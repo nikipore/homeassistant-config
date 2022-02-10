@@ -52,7 +52,9 @@ input_boolean:
     icon: mdi:cog-refresh-outline
   blind_control_auto_arbeitszimmer:
     name: "Rolladensteuerung: Sonnenstandsteuerung automatisch (Arbeitszimmer)"
-    icon: mdi:cog-refresh-outline
+  blind_control_simulation:
+    name: "Rolladensteuerung: Notausschalter (Simulation)"
+    icon: mdi:cog-off
   blind_control_specific_global:
     name: "Rolladensteuerung: gesondert gesteuerte Räume zurücksetzen"
     icon: mdi:lock-alert-outline
@@ -376,8 +378,8 @@ cover:
         stop_cover:
           service: switch.turn_off
           entity_id:
-              - switch.double_relay_switch_2x1_5kw_3
-              - switch.double_relay_switch_2x1_5kw_2_2
+            - switch.double_relay_switch_2x1_5kw_3
+            - switch.double_relay_switch_2x1_5kw_2_2
       lichtkuppel_ankleide:
         device_class: window
         friendly_name: Lichtkuppel Ankleide
@@ -400,8 +402,8 @@ cover:
         stop_cover:
           service: switch.turn_off
           entity_id:
-              - switch.double_relay_switch_2x1_5kw
-              - switch.double_relay_switch_2x1_5kw_2
+            - switch.double_relay_switch_2x1_5kw
+            - switch.double_relay_switch_2x1_5kw_2
 
 template:
   binary_sensor:
