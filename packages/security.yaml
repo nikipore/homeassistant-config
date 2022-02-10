@@ -7,7 +7,7 @@ template:
   sensor:
     - name: cert_expiry_days_left
       state: >
-        {{ (as_timestamp(states('sensor.cert_expiry_timestamp_nikipore_duckdns_org')) - as_timestamp(now())) // (24 * 3600) }}
+        {{ (as_timestamp(states('sensor.cert_expiry_timestamp_nikipore_duckdns_org'), 0) - as_timestamp(now())) // (24 * 3600) }}
       unit_of_measurement: "days"
       icon: mdi:clock-end
 
