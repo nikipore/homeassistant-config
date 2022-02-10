@@ -1,0 +1,19 @@
+template:
+  binary_sensor:
+    - name: cert_expiry_close
+      state: >
+        {{ states('sensor.cert_expiry_days_left') | int(0) <= 7 }}
+      icon: mdi:clock-alert-outline
+  sensor:
+    - name: cert_expiry_days_left
+      state: >
+        {{ (as_timestamp(states('sensor.cert_expiry_timestamp_nikipore_duckdns_org')) - as_timestamp(now())) // (24 * 3600) }}
+      unit_of_measurement: "days"
+      icon: mdi:clock-end
+
+homeassistant:
+  customize:
+    binary_sensor.cert_expiry_close:
+      friendly_name: "Zertifikat läuft bald ab"
+    sensor.cert_expiry_days_left:
+      friendly_name: "Zertifikat gültig für"

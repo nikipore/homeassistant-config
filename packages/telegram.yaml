@@ -9,11 +9,25 @@ notify:
     chat_id: !secret telegram-chat-id-admin
 
 alert:
+  certificate_expiry:
+    name: Certificate expiry close
+    message: >
+      *Certificate expiry close* (valid for {{ states('sensor.cert_expiry_days_left') | int(0) }} days). Check renewal routine!
+    done_message: >
+      Certificate renewed.
+    entity_id: binary_sensor.cert_expiry_close
+    skip_first: true
+    repeat:
+      - 1
+      - 86400
+    notifiers:
+      - telegram_admin
   storm:
     name: Storm alert
     message: >
-      *Storm alert* (wind speed {{ states('sensor.weather_wind_speed_max_recent') }} m/s). Check marquee ({{ states('cover.roller_shutter_markise') }}), windows, and blinds!
-    done_message: Storm alert deactivated.
+      *Storm alert* (wind speed {{ states('sensor.weather_wind_speed_max_recent') | int(0) }} m/s). Check marquee ({{ states('cover.roller_shutter_markise') }}), windows, and blinds!
+    done_message: >
+      Storm alert deactivated.
     entity_id: binary_sensor.weather_storm
     skip_first: true
     repeat:
