@@ -1,9 +1,12 @@
 light:
   - platform: group
+    name: Arbeitszimmer
+    entities:
+      - light.color_temperature_light_1
+  - platform: group
     name: Küche
     entities:
       - light.color_temperature_light_1_2
-      - light.hue_ambiance_lamp_1_2
   - platform: group
     name: Nino
     entities:

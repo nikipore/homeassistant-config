@@ -22,7 +22,7 @@
         "menu-menu-item-sidebar": true,
         "menu-menu-item-palette": true,
         "debug": {
-            "filter": "filterSelected",
+            "filter": "filterAll",
             "filteredNodes": [
                 "b7461eaa.f9dbc",
                 "6eebcb1.38fce34",
