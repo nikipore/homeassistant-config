@@ -1,0 +1,6 @@
+notify:
+  - name: all_mobiles
+    platform: group
+    services:
+      - service: mobile_app_iphone
+      - service: mobile_app_galaxy_bella

@@ -1,0 +1,52 @@
+input_select:
+  washing_machine_status:
+    name: Waschmaschine Status
+    options:
+      - aus
+      - arbeitet
+      - fertig
+    initial: aus
+
+automation:
+  - alias: "Waschmaschine arbeitet"
+    trigger:
+      - platform: numeric_state
+        entity_id: sensor.steckdose_waschmaschine_current_consumption
+        above: 10
+        for: "00:00:30"
+    action:
+      - service: input_select.select_option
+        entity_id: input_select.washing_machine_status
+        data:
+          option: "arbeitet"
+  - alias: "Waschmaschine fertig"
+    trigger:
+      - platform: numeric_state
+        entity_id: sensor.steckdose_waschmaschine_current_consumption
+        above: 0.5
+        below: 5
+        for: "00:01:30"
+    condition:
+      - condition: state
+        entity_id: input_select.washing_machine_status
+        state: "arbeitet"
+    action:
+      - service: input_select.select_option
+        entity_id: input_select.washing_machine_status
+        data:
+          option: "fertig"
+      - service: notify.all_mobiles
+        data:
+          title: "Waschmaschine fertig!"
+          message: "Du kannst sie nun ausräumen."
+  - alias: "Waschmaschine aus"
+    trigger:
+      - platform: numeric_state
+        entity_id: sensor.steckdose_waschmaschine_current_consumption
+        below: 0.5
+        for: "00:00:30"
+    action:
+      - service: input_select.select_option
+        entity_id: input_select.washing_machine_status
+        data:
+          option: "aus"
