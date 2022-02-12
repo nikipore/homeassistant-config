@@ -506,7 +506,7 @@
     },
     "node-red-contrib-home-assistant-websocket": {
         "name": "node-red-contrib-home-assistant-websocket",
-        "version": "0.41.3",
+        "version": "0.42.0",
         "local": false,
         "user": false,
         "nodes": {
@@ -519,8 +519,8 @@
                     "server",
                     "api-current-state",
                     "ha-device",
-                    "ha-entity-config",
                     "ha-entity",
+                    "ha-entity-config",
                     "server-events",
                     "server-state-changed",
                     "ha-fire-event",
@@ -1695,25 +1695,6 @@
                 "user": false,
                 "module": "node-red-contrib-huemagic",
                 "file": "/config/node-red/node_modules/node-red-contrib-huemagic/huemagic/hue-rules.js"
-            }
-        }
-    },
-    "node-red-contrib-simple-gate": {
-        "name": "node-red-contrib-simple-gate",
-        "version": "0.5.2",
-        "local": true,
-        "user": true,
-        "nodes": {
-            "gate": {
-                "name": "gate",
-                "types": [
-                    "gate"
-                ],
-                "enabled": true,
-                "local": true,
-                "user": false,
-                "module": "node-red-contrib-simple-gate",
-                "file": "/config/node-red/node_modules/node-red-contrib-simple-gate/gate.js"
             }
         }
     }
