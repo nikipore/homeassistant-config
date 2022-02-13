@@ -9,6 +9,19 @@ blueprint:
         entity:
           domain: binary_sensor
           device_class: motion
+    illuminance_entity:
+      name: Illuminance Sensor
+      selector:
+        entity:
+          domain: sensor
+          device_class: illuminance
+    min_illuminance:
+      name: Minimal Illuminance
+      selector:
+        number:
+          min: 0
+          max: 1000
+          unit_of_measurement: lx
     switch_target:
       name: Switch
       selector:
@@ -34,6 +47,11 @@ trigger:
   entity_id: !input motion_entity
   from: "off"
   to: "on"
+
+condition:
+  condition: numeric_state
+  entity_id: !input illuminance_entity
+  below: !input min_illuminance
 
 action:
   - service: switch.turn_on

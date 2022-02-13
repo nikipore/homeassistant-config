@@ -127,6 +127,7 @@ template:
       unit_of_measurement: "m/s"
       state: >
         {{ states('sensor.weather_wind_speed_max_recent_statistics') | float(states('sensor.weather_wind_speed')) }}
+      icon: mdi:weather-windy
     - name: weather_wind_force
       unit_of_measurement: "bft"
       state: >
@@ -179,4 +180,3 @@ homeassistant:
       friendly_name: "Windgeschwindigkeit"
     sensor.weather_wind_speed_max_recent:
       friendly_name: "Windgeschwindigkeit (letzte Bö)"
-      icon: mdi:weather-windy

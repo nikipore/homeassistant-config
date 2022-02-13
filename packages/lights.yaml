@@ -49,9 +49,11 @@ automation:
       path: local/motion_switch.yaml
       input:
         motion_entity: binary_sensor.motion_sensor_kueche_home_security_motion_detection
+        illuminance_entity: sensor.motion_sensor_kueche_illuminance
+        min_illuminance: 400
+        no_motion_wait: 120
         switch_target:
           entity_id: switch.steckdose_kueche_oberschrank
-        no_motion_wait: 120
     id: "1631694664177"
   - alias: Motion-activated Switch (Ankleide)
     description: ""
@@ -59,6 +61,8 @@ automation:
       path: local/motion_switch.yaml
       input:
         motion_entity: binary_sensor.hue_motion_sensor_1_motion
+        illuminance_entity: sensor.hue_motion_sensor_1_illuminance
+        min_illuminance: 200
         no_motion_wait: 60
         switch_target:
           entity_id: switch.licht_ankleide
