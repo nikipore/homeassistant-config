@@ -22,6 +22,7 @@ __pycache__
 *.db-*
 harmony_*.conf
 *.pem
+node-red/node-red-contrib-home-assistant-websocket.json
 
 # Ensure these YAML files are ignored, otherwise your secret data/credentials will leak.
 ip_bans.yaml
