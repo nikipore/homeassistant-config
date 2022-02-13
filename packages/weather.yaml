@@ -125,6 +125,7 @@ template:
       icon: mdi:weather-windy
     - name: weather_wind_speed_max_recent
       unit_of_measurement: "m/s"
+      state_class: "measurement"
       state: >
         {{ states('sensor.weather_wind_speed_max_recent_statistics') | float(states('sensor.weather_wind_speed')) }}
       icon: mdi:weather-windy
