@@ -1,19 +1,32 @@
 input_select:
   washing_machine_status:
-    name: Waschmaschine Status
+    name: "Waschmaschine: Status"
     options:
       - aus
       - arbeitet
       - fertig
     initial: aus
 
+sensor:
+  - platform: average
+    name: washing_machine_power
+    entities:
+      - sensor.steckdose_waschmaschine_current_consumption
+    duration:
+      seconds: 60
+    precision: 1
+
+homeassistant:
+  customize:
+    sensor.washing_machine_power:
+      friendly_name: "Waschmaschine: Leistung"
+
 automation:
   - alias: "Waschmaschine arbeitet"
     trigger:
       - platform: numeric_state
-        entity_id: sensor.steckdose_waschmaschine_current_consumption
-        above: 2.75
-        for: "00:30:00"
+        entity_id: sensor.washing_machine_power
+        above: 3.0
     action:
       - service: input_select.select_option
         entity_id: input_select.washing_machine_status
@@ -22,10 +35,9 @@ automation:
   - alias: "Waschmaschine fertig"
     trigger:
       - platform: numeric_state
-        entity_id: sensor.steckdose_waschmaschine_current_consumption
+        entity_id: sensor.washing_machine_power
         above: 0.5
-        below: 2.75
-        for: "00:30:00"
+        below: 3.0
     condition:
       - condition: state
         entity_id: input_select.washing_machine_status
@@ -42,9 +54,8 @@ automation:
   - alias: "Waschmaschine aus"
     trigger:
       - platform: numeric_state
-        entity_id: sensor.steckdose_waschmaschine_current_consumption
+        entity_id: sensor.washing_machine_power
         below: 0.5
-        for: "00:30:00"
     action:
       - service: input_select.select_option
         entity_id: input_select.washing_machine_status
