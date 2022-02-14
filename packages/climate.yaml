@@ -1,3 +1,216 @@
+thermal_comfort:
+  - sensor:
+      - name: Abstellkammer
+        temperature_sensor: sensor.0x00158d0006f12e1d_temperature
+        humidity_sensor: sensor.0x00158d0006f12e1d_humidity
+        custom_icons: true
+        sensor_types:
+          - absolute_humidity
+          - dew_point
+      - name: Abstellkammer Terrasse
+        temperature_sensor: sensor.multisensor_6_air_temperature
+        humidity_sensor: sensor.multisensor_6_humidity
+        custom_icons: true
+        sensor_types:
+          - absolute_humidity
+          - dew_point
+      - name: Ankleide
+        temperature_sensor: sensor.thermostat_ankleide_temperature
+        humidity_sensor: sensor.thermostat_ankleide_humidity
+        custom_icons: true
+        sensor_types:
+          - absolute_humidity
+          - dew_point
+          - simmer_index
+          - simmer_zone
+      - name: Arbeitszimmer
+        temperature_sensor: sensor.thermostat_arbeitszimmer_temperature
+        humidity_sensor: sensor.thermostat_arbeitszimmer_humidity
+        custom_icons: true
+        sensor_types:
+          - absolute_humidity
+          - dew_point
+          - simmer_index
+          - simmer_zone
+      - name: Badezimmer
+        temperature_sensor: sensor.thermostat_badezimmer_temperature
+        humidity_sensor: sensor.thermostat_badezimmer_humidity
+        custom_icons: true
+        sensor_types:
+          - absolute_humidity
+          - dew_point
+          - simmer_index
+          - simmer_zone
+      - name: Duschbad
+        temperature_sensor: sensor.thermostat_duschbad_temperature
+        humidity_sensor: sensor.thermostat_duschbad_humidity
+        custom_icons: true
+        sensor_types:
+          - absolute_humidity
+          - dew_point
+          - simmer_index
+          - simmer_zone
+      - name: Flur
+        temperature_sensor: sensor.thermostat_flur_temperature
+        humidity_sensor: sensor.thermostat_flur_humidity
+        custom_icons: true
+        sensor_types:
+          - absolute_humidity
+          - dew_point
+          - simmer_index
+          - simmer_zone
+      - name: Küche
+        temperature_sensor: sensor.thermostat_kuche_temperature
+        humidity_sensor: sensor.thermostat_kuche_humidity
+        custom_icons: true
+        sensor_types:
+          - absolute_humidity
+          - dew_point
+          - simmer_index
+          - simmer_zone
+      - name: Nino
+        temperature_sensor: sensor.thermostat_nino_temperature
+        humidity_sensor: sensor.thermostat_nino_humidity
+        custom_icons: true
+        sensor_types:
+          - absolute_humidity
+          - dew_point
+          - simmer_index
+          - simmer_zone
+      - name: Noah
+        temperature_sensor: sensor.thermostat_noah_temperature
+        humidity_sensor: sensor.thermostat_noah_humidity
+        custom_icons: true
+        sensor_types:
+          - absolute_humidity
+          - dew_point
+          - simmer_index
+          - simmer_zone
+      - name: Schlafzimmer
+        temperature_sensor: sensor.thermostat_schlafzimmer_temperature
+        humidity_sensor: sensor.thermostat_schlafzimmer_humidity
+        custom_icons: true
+        sensor_types:
+          - absolute_humidity
+          - dew_point
+          - simmer_index
+          - simmer_zone
+      - name: Wetter
+        temperature_sensor: sensor.weather_forecast_temperature
+        humidity_sensor: sensor.weather_humidity
+        custom_icons: true
+        sensor_types:
+          - absolute_humidity
+          - heat_index
+          - dew_point
+          - thermal_perception
+          - frost_point
+          - frost_risk
+          - simmer_index
+          - simmer_zone
+      - name: Wohnzimmer
+        temperature_sensor: sensor.thermostat_wohnzimmer_temperature
+        humidity_sensor: sensor.thermostat_wohnzimmer_humidity
+        custom_icons: true
+        sensor_types:
+          - absolute_humidity
+          - dew_point
+          - simmer_index
+          - simmer_zone
+
+template:
+  binary_sensor:
+    - name: ankleide_ventilate
+      state: >
+        {{ states('sensor.ankleide_absolutehumidity') | float(0) > states('sensor.wetter_absolutehumidity') | float(0) }}
+      icon: >
+        {% if is_state("binary_sensor.ankleide_ventilate", "on") %}
+          mdi:fan
+        {% else %}
+          mdi:fan-off
+        {% endif %}
+    - name: arbeitszimmer_ventilate
+      state: >
+        {{ states('sensor.arbeitszimmer_absolutehumidity') | float(0) > states('sensor.wetter_absolutehumidity') | float(0) }}
+      icon: >
+        {% if is_state("binary_sensor.arbeitszimmer_ventilate", "on") %}
+          mdi:fan
+        {% else %}
+          mdi:fan-off
+        {% endif %}
+    - name: badezimmer_ventilate
+      state: >
+        {{ states('sensor.badezimmer_absolutehumidity') | float(0) > states('sensor.wetter_absolutehumidity') | float(0) }}
+      icon: >
+        {% if is_state("binary_sensor.badezimmer_ventilate", "on") %}
+          mdi:fan
+        {% else %}
+          mdi:fan-off
+        {% endif %}
+    - name: duschbad_ventilate
+      state: >
+        {{ states('sensor.duschbad_absolutehumidity') | float(0) > states('sensor.wetter_absolutehumidity') | float(0) }}
+      icon: >
+        {% if is_state("binary_sensor.duschbad_ventilate", "on") %}
+          mdi:fan
+        {% else %}
+          mdi:fan-off
+        {% endif %}
+    - name: flur_ventilate
+      state: >
+        {{ states('sensor.flur_absolutehumidity') | float(0) > states('sensor.wetter_absolutehumidity') | float(0) }}
+      icon: >
+        {% if is_state("binary_sensor.flur_ventilate", "on") %}
+          mdi:fan
+        {% else %}
+          mdi:fan-off
+        {% endif %}
+    - name: kuche_ventilate
+      state: >
+        {{ states('sensor.kuche_absolutehumidity') | float(0) > states('sensor.wetter_absolutehumidity') | float(0) }}
+      icon: >
+        {% if is_state("binary_sensor.kuche_ventilate", "on") %}
+          mdi:fan
+        {% else %}
+          mdi:fan-off
+        {% endif %}
+    - name: nino_ventilate
+      state: >
+        {{ states('sensor.nino_absolutehumidity') | float(0) > states('sensor.wetter_absolutehumidity') | float(0) }}
+      icon: >
+        {% if is_state("binary_sensor.nino_ventilate", "on") %}
+          mdi:fan
+        {% else %}
+          mdi:fan-off
+        {% endif %}
+    - name: noah_ventilate
+      state: >
+        {{ states('sensor.noah_absolutehumidity') | float(0) > states('sensor.wetter_absolutehumidity') | float(0) }}
+      icon: >
+        {% if is_state("binary_sensor.noah_ventilate", "on") %}
+          mdi:fan
+        {% else %}
+          mdi:fan-off
+        {% endif %}
+    - name: schlafzimmer_ventilate
+      state: >
+        {{ states('sensor.schlafzimmer_absolutehumidity') | float(0) > states('sensor.wetter_absolutehumidity') | float(0) }}
+      icon: >
+        {% if is_state("binary_sensor.schlafzimmer_ventilate", "on") %}
+          mdi:fan
+        {% else %}
+          mdi:fan-off
+        {% endif %}
+    - name: wohnzimmer_ventilate
+      state: >
+        {{ states('sensor.wohnzimmer_absolutehumidity') | float(0) > states('sensor.wetter_absolutehumidity') | float(0) }}
+      icon: >
+        {% if is_state("binary_sensor.wohnzimmer_ventilate", "on") %}
+          mdi:fan
+        {% else %}
+          mdi:fan-off
+        {% endif %}
+
 input_select:
   climate_mode_global_reset:
     name: "Thermostat: Modus zurücksetzen"
@@ -10,6 +223,12 @@ input_select:
     name: "Thermostat: Modus zurücksetzen (täglich)"
     options:
       - "<bitte wählen>"
+      - "auto"
+      - "heat"
+      - "off"
+  climate_mode_ankleide:
+    name: "Thermostat: Modus (Ankleide)"
+    options:
       - "auto"
       - "heat"
       - "off"
@@ -27,6 +246,12 @@ input_select:
       - "off"
   climate_mode_duschbad:
     name: "Thermostat: Modus (Duschbad)"
+    options:
+      - "auto"
+      - "heat"
+      - "off"
+  climate_mode_flur:
+    name: "Thermostat: Modus (Flur)"
     options:
       - "auto"
       - "heat"
@@ -221,6 +446,26 @@ automation:
 
 homeassistant:
   customize:
+    binary_sensor.ankleide_ventilate:
+      friendly_name: "Ankleide"
+    binary_sensor.arbeitszimmer_ventilate:
+      friendly_name: "Arbeitszimmer"
+    binary_sensor.badezimmer_ventilate:
+      friendly_name: "Badezimmer"
+    binary_sensor.duschbad_ventilate:
+      friendly_name: "Duschbad"
+    binary_sensor.flur_ventilate:
+      friendly_name: "Flur"
+    binary_sensor.kuche_ventilate:
+      friendly_name: "Küche"
+    binary_sensor.nino_ventilate:
+      friendly_name: "Nino"
+    binary_sensor.noah_ventilate:
+      friendly_name: "Noah"
+    binary_sensor.schlafzimmer_ventilate:
+      friendly_name: "Schlafzimmer"
+    binary_sensor.wohnzimmer_ventilate:
+      friendly_name: "Wohnzimmer"
     sensor.thermostat_ankleide_humidity:
       friendly_name: "Ankleide"
     sensor.thermostat_ankleide_temperature:

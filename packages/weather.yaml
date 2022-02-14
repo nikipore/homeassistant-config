@@ -77,8 +77,13 @@ template:
     - name: weather_forecast_sun_duration
       unit_of_measurement: "s"
       state: >
-        {{ states('sensor.sensor.sun_duration_wiesbaden_biebrich_1h') }}
+        {{ states('sensor.sun_duration_wiesbaden_biebrich_1h') }}
       icon: mdi:weather-sunny
+    - name: weather_forecast_temperature
+      unit_of_measurement: "°C"
+      state: >
+        {{ states('sensor.temperature_wiesbaden_biebrich_1h') }}
+      device_class: temperature
     - name: weather_forecast_temperature_high
       unit_of_measurement: "°C"
       state: >
