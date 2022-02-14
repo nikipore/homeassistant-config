@@ -12,8 +12,8 @@ automation:
     trigger:
       - platform: numeric_state
         entity_id: sensor.steckdose_waschmaschine_current_consumption
-        above: 10
-        for: "00:00:30"
+        above: 2.75
+        for: "00:30:00"
     action:
       - service: input_select.select_option
         entity_id: input_select.washing_machine_status
@@ -24,8 +24,8 @@ automation:
       - platform: numeric_state
         entity_id: sensor.steckdose_waschmaschine_current_consumption
         above: 0.5
-        below: 5
-        for: "00:01:30"
+        below: 2.75
+        for: "00:30:00"
     condition:
       - condition: state
         entity_id: input_select.washing_machine_status
@@ -44,7 +44,7 @@ automation:
       - platform: numeric_state
         entity_id: sensor.steckdose_waschmaschine_current_consumption
         below: 0.5
-        for: "00:00:30"
+        for: "00:30:00"
     action:
       - service: input_select.select_option
         entity_id: input_select.washing_machine_status
