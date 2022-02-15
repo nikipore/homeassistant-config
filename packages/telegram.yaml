@@ -18,8 +18,8 @@ alert:
     entity_id: binary_sensor.cert_expiry_close
     skip_first: true
     repeat:
-      - 1
-      - 86400
+      - 60
+      - 2880
     notifiers:
       - telegram_admin
   storm:
