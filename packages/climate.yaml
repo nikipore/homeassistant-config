@@ -1,3 +1,55 @@
+cover:
+  - platform: template
+    covers:
+      lichtkuppel_flur:
+        device_class: window
+        friendly_name: Lichtkuppel Flur
+        availability_template: >
+          {{ states('switch.double_relay_switch_2x1_5kw_3') != 'unknown' and states('switch.double_relay_switch_2x1_5kw_2_2') != 'unknown' }}
+        open_cover:
+          - service: switch.turn_off
+            entity_id:
+              - switch.double_relay_switch_2x1_5kw_3
+              - switch.double_relay_switch_2x1_5kw_2_2
+          - service: switch.turn_on
+            entity_id: switch.double_relay_switch_2x1_5kw_3
+        close_cover:
+          - service: switch.turn_off
+            entity_id:
+              - switch.double_relay_switch_2x1_5kw_3
+              - switch.double_relay_switch_2x1_5kw_2_2
+          - service: switch.turn_on
+            entity_id: switch.double_relay_switch_2x1_5kw_2_2
+        stop_cover:
+          service: switch.turn_off
+          entity_id:
+            - switch.double_relay_switch_2x1_5kw_3
+            - switch.double_relay_switch_2x1_5kw_2_2
+      lichtkuppel_ankleide:
+        device_class: window
+        friendly_name: Lichtkuppel Ankleide
+        availability_template: >
+          {{ states('switch.double_relay_switch_2x1_5kw') != 'unknown' and states('switch.double_relay_switch_2x1_5kw_2') != 'unknown' }}
+        open_cover:
+          - service: switch.turn_off
+            entity_id:
+              - switch.double_relay_switch_2x1_5kw
+              - switch.double_relay_switch_2x1_5kw_2
+          - service: switch.turn_on
+            entity_id: switch.double_relay_switch_2x1_5kw
+        close_cover:
+          - service: switch.turn_off
+            entity_id:
+              - switch.double_relay_switch_2x1_5kw
+              - switch.double_relay_switch_2x1_5kw_2
+          - service: switch.turn_on
+            entity_id: switch.double_relay_switch_2x1_5kw_2
+        stop_cover:
+          service: switch.turn_off
+          entity_id:
+            - switch.double_relay_switch_2x1_5kw
+            - switch.double_relay_switch_2x1_5kw_2
+
 thermal_comfort:
   - sensor:
       - name: Abstellkammer
@@ -535,6 +587,14 @@ input_select:
       - "auto"
       - "heat"
       - "off"
+
+input_boolean:
+  auto_cooling_ankleide:
+    name: "Kühlautomatik (Lichtkuppel Ankleide)"
+    icon: mdi:snowflake
+  auto_cooling_flur:
+    name: "Kühlautomatik (Lichtkuppel Flur)"
+    icon: mdi:snowflake
 
 input_text:
   climate_protect_floor_heating_entities:
