@@ -7,6 +7,8 @@ thermal_comfort:
         sensor_types:
           - absolute_humidity
           - dew_point
+          - simmer_index
+          - simmer_zone
       - name: Abstellkammer Terrasse
         temperature_sensor: sensor.multisensor_6_air_temperature
         humidity_sensor: sensor.multisensor_6_humidity
@@ -14,6 +16,8 @@ thermal_comfort:
         sensor_types:
           - absolute_humidity
           - dew_point
+          - simmer_index
+          - simmer_zone
       - name: Ankleide
         temperature_sensor: sensor.thermostat_ankleide_temperature
         humidity_sensor: sensor.thermostat_ankleide_humidity
@@ -53,6 +57,15 @@ thermal_comfort:
       - name: Flur
         temperature_sensor: sensor.thermostat_flur_temperature
         humidity_sensor: sensor.thermostat_flur_humidity
+        custom_icons: true
+        sensor_types:
+          - absolute_humidity
+          - dew_point
+          - simmer_index
+          - simmer_zone
+      - name: Keller
+        temperature_sensor: sensor.temperature_sensor_keller_temperature
+        humidity_sensor: sensor.temperature_sensor_keller_humidity
         custom_icons: true
         sensor_types:
           - absolute_humidity
@@ -120,9 +133,18 @@ thermal_comfort:
 
 template:
   binary_sensor:
+    - name: abstellkammer_terrasse_ventilate
+      state: >
+        {{ is_state('binary_sensor.abstellkammer_terrasse_ventilate_humidity', 'on') and is_state('binary_sensor.abstellkammer_terrasse_ventilate_temperature', 'on') }}
+      icon: >
+        {% if is_state("binary_sensor.abstellkammer_terrasse_ventilate", "on") %}
+          mdi:fan
+        {% else %}
+          mdi:fan-off
+        {% endif %}
     - name: ankleide_ventilate
       state: >
-        {{ states('sensor.ankleide_absolutehumidity') | float(0) > states('sensor.wetter_absolutehumidity') | float(0) }}
+        {{ is_state('binary_sensor.ankleide_ventilate_humidity', 'on') and is_state('binary_sensor.ankleide_ventilate_temperature', 'on') }}
       icon: >
         {% if is_state("binary_sensor.ankleide_ventilate", "on") %}
           mdi:fan
@@ -131,7 +153,7 @@ template:
         {% endif %}
     - name: arbeitszimmer_ventilate
       state: >
-        {{ states('sensor.arbeitszimmer_absolutehumidity') | float(0) > states('sensor.wetter_absolutehumidity') | float(0) }}
+        {{ is_state('binary_sensor.arbeitszimmer_ventilate_humidity', 'on') and is_state('binary_sensor.arbeitszimmer_ventilate_temperature', 'on') }}
       icon: >
         {% if is_state("binary_sensor.arbeitszimmer_ventilate", "on") %}
           mdi:fan
@@ -140,7 +162,7 @@ template:
         {% endif %}
     - name: badezimmer_ventilate
       state: >
-        {{ states('sensor.badezimmer_absolutehumidity') | float(0) > states('sensor.wetter_absolutehumidity') | float(0) }}
+        {{ is_state('binary_sensor.badezimmer_ventilate_humidity', 'on') and is_state('binary_sensor.badezimmer_ventilate_temperature', 'on') }}
       icon: >
         {% if is_state("binary_sensor.badezimmer_ventilate", "on") %}
           mdi:fan
@@ -149,7 +171,7 @@ template:
         {% endif %}
     - name: duschbad_ventilate
       state: >
-        {{ states('sensor.duschbad_absolutehumidity') | float(0) > states('sensor.wetter_absolutehumidity') | float(0) }}
+        {{ is_state('binary_sensor.duschbad_ventilate_humidity', 'on') and is_state('binary_sensor.duschbad_ventilate_temperature', 'on') }}
       icon: >
         {% if is_state("binary_sensor.duschbad_ventilate", "on") %}
           mdi:fan
@@ -158,16 +180,25 @@ template:
         {% endif %}
     - name: flur_ventilate
       state: >
-        {{ states('sensor.flur_absolutehumidity') | float(0) > states('sensor.wetter_absolutehumidity') | float(0) }}
+        {{ is_state('binary_sensor.flur_ventilate_humidity', 'on') and is_state('binary_sensor.flur_ventilate_temperature', 'on') }}
       icon: >
         {% if is_state("binary_sensor.flur_ventilate", "on") %}
           mdi:fan
         {% else %}
           mdi:fan-off
         {% endif %}
+    - name: keller_ventilate
+      state: >
+        {{ is_state('binary_sensor.keller_ventilate_humidity', 'on') and is_state('binary_sensor.keller_ventilate_temperature', 'on') }}
+      icon: >
+        {% if is_state("binary_sensor.keller_ventilate", "on") %}
+          mdi:fan
+        {% else %}
+          mdi:fan-off
+        {% endif %}
     - name: kuche_ventilate
       state: >
-        {{ states('sensor.kuche_absolutehumidity') | float(0) > states('sensor.wetter_absolutehumidity') | float(0) }}
+        {{ is_state('binary_sensor.kuche_ventilate_humidity', 'on') and is_state('binary_sensor.kuche_ventilate_temperature', 'on') }}
       icon: >
         {% if is_state("binary_sensor.kuche_ventilate", "on") %}
           mdi:fan
@@ -176,7 +207,7 @@ template:
         {% endif %}
     - name: nino_ventilate
       state: >
-        {{ states('sensor.nino_absolutehumidity') | float(0) > states('sensor.wetter_absolutehumidity') | float(0) }}
+        {{ is_state('binary_sensor.nino_ventilate_humidity', 'on') and is_state('binary_sensor.nino_ventilate_temperature', 'on') }}
       icon: >
         {% if is_state("binary_sensor.nino_ventilate", "on") %}
           mdi:fan
@@ -185,7 +216,7 @@ template:
         {% endif %}
     - name: noah_ventilate
       state: >
-        {{ states('sensor.noah_absolutehumidity') | float(0) > states('sensor.wetter_absolutehumidity') | float(0) }}
+        {{ is_state('binary_sensor.noah_ventilate_humidity', 'on') and is_state('binary_sensor.noah_ventilate_temperature', 'on') }}
       icon: >
         {% if is_state("binary_sensor.noah_ventilate", "on") %}
           mdi:fan
@@ -194,7 +225,7 @@ template:
         {% endif %}
     - name: schlafzimmer_ventilate
       state: >
-        {{ states('sensor.schlafzimmer_absolutehumidity') | float(0) > states('sensor.wetter_absolutehumidity') | float(0) }}
+        {{ is_state('binary_sensor.schlafzimmer_ventilate_humidity', 'on') and is_state('binary_sensor.schlafzimmer_ventilate_temperature', 'on') }}
       icon: >
         {% if is_state("binary_sensor.schlafzimmer_ventilate", "on") %}
           mdi:fan
@@ -203,9 +234,227 @@ template:
         {% endif %}
     - name: wohnzimmer_ventilate
       state: >
-        {{ states('sensor.wohnzimmer_absolutehumidity') | float(0) > states('sensor.wetter_absolutehumidity') | float(0) }}
+        {{ is_state('binary_sensor.wohnzimmer_ventilate_humidity', 'on') and is_state('binary_sensor.wohnzimmer_ventilate_temperature', 'on') }}
       icon: >
         {% if is_state("binary_sensor.wohnzimmer_ventilate", "on") %}
+          mdi:fan
+        {% else %}
+          mdi:fan-off
+        {% endif %}
+
+    - name: abstellkammer_terrasse_ventilate_humidity
+      state: >
+        {{ states('sensor.multisensor_6_humidity') | float(0) > states('sensor.wetter_absolutehumidity') | float(0) }}
+      icon: >
+        {% if is_state("binary_sensor.abstellkammer_terrasse_ventilate_humidity", "on") %}
+          mdi:fan
+        {% else %}
+          mdi:fan-off
+        {% endif %}
+    - name: ankleide_ventilate_humidity
+      state: >
+        {{ states('sensor.ankleide_absolutehumidity') | float(0) > states('sensor.wetter_absolutehumidity') | float(0) }}
+      icon: >
+        {% if is_state("binary_sensor.ankleide_ventilate_humidity", "on") %}
+          mdi:fan
+        {% else %}
+          mdi:fan-off
+        {% endif %}
+    - name: arbeitszimmer_ventilate_humidity
+      state: >
+        {{ states('sensor.arbeitszimmer_absolutehumidity') | float(0) > states('sensor.wetter_absolutehumidity') | float(0) }}
+      icon: >
+        {% if is_state("binary_sensor.arbeitszimmer_ventilate_humidity", "on") %}
+          mdi:fan
+        {% else %}
+          mdi:fan-off
+        {% endif %}
+    - name: badezimmer_ventilate_humidity
+      state: >
+        {{ states('sensor.badezimmer_absolutehumidity') | float(0) > states('sensor.wetter_absolutehumidity') | float(0) }}
+      icon: >
+        {% if is_state("binary_sensor.badezimmer_ventilate_humidity", "on") %}
+          mdi:fan
+        {% else %}
+          mdi:fan-off
+        {% endif %}
+    - name: duschbad_ventilate_humidity
+      state: >
+        {{ states('sensor.duschbad_absolutehumidity') | float(0) > states('sensor.wetter_absolutehumidity') | float(0) }}
+      icon: >
+        {% if is_state("binary_sensor.duschbad_ventilate_humidity", "on") %}
+          mdi:fan
+        {% else %}
+          mdi:fan-off
+        {% endif %}
+    - name: flur_ventilate_humidity
+      state: >
+        {{ states('sensor.flur_absolutehumidity') | float(0) > states('sensor.wetter_absolutehumidity') | float(0) }}
+      icon: >
+        {% if is_state("binary_sensor.flur_ventilate_humidity", "on") %}
+          mdi:fan
+        {% else %}
+          mdi:fan-off
+        {% endif %}
+    - name: keller_ventilate_humidity
+      state: >
+        {{ states('sensor.keller_absolutehumidity') | float(0) > states('sensor.wetter_absolutehumidity') | float(0) }}
+      icon: >
+        {% if is_state("binary_sensor.keller_ventilate_humidity", "on") %}
+          mdi:fan
+        {% else %}
+          mdi:fan-off
+        {% endif %}
+    - name: kuche_ventilate_humidity
+      state: >
+        {{ states('sensor.kuche_absolutehumidity') | float(0) > states('sensor.wetter_absolutehumidity') | float(0) }}
+      icon: >
+        {% if is_state("binary_sensor.kuche_ventilate_humidity", "on") %}
+          mdi:fan
+        {% else %}
+          mdi:fan-off
+        {% endif %}
+    - name: nino_ventilate_humidity
+      state: >
+        {{ states('sensor.nino_absolutehumidity') | float(0) > states('sensor.wetter_absolutehumidity') | float(0) }}
+      icon: >
+        {% if is_state("binary_sensor.nino_ventilate_humidity", "on") %}
+          mdi:fan
+        {% else %}
+          mdi:fan-off
+        {% endif %}
+    - name: noah_ventilate_humidity
+      state: >
+        {{ states('sensor.noah_absolutehumidity') | float(0) > states('sensor.wetter_absolutehumidity') | float(0) }}
+      icon: >
+        {% if is_state("binary_sensor.noah_ventilate_humidity", "on") %}
+          mdi:fan
+        {% else %}
+          mdi:fan-off
+        {% endif %}
+    - name: schlafzimmer_ventilate_humidity
+      state: >
+        {{ states('sensor.schlafzimmer_absolutehumidity') | float(0) > states('sensor.wetter_absolutehumidity') | float(0) }}
+      icon: >
+        {% if is_state("binary_sensor.schlafzimmer_ventilate_humidity", "on") %}
+          mdi:fan
+        {% else %}
+          mdi:fan-off
+        {% endif %}
+    - name: wohnzimmer_ventilate_humidity
+      state: >
+        {{ states('sensor.wohnzimmer_absolutehumidity') | float(0) > states('sensor.wetter_absolutehumidity') | float(0) }}
+      icon: >
+        {% if is_state("binary_sensor.wohnzimmer_ventilate_humidity", "on") %}
+          mdi:fan
+        {% else %}
+          mdi:fan-off
+        {% endif %}
+
+    - name: abstellkammer_terrasse_ventilate_temperature
+      state: >
+        {{ states('sensor.multisensor_6_air_temperature') | float(0) > states('sensor.weather_forecast_temperature') | float(0) }}
+      icon: >
+        {% if is_state("binary_sensor.abstellkammer_terrasse_ventilate_temperature", "on") %}
+          mdi:fan
+        {% else %}
+          mdi:fan-off
+        {% endif %}
+    - name: ankleide_ventilate_temperature
+      state: >
+        {{ states('sensor.thermostat_ankleide_temperature') | float(0) > states('sensor.weather_forecast_temperature') | float(0) }}
+      icon: >
+        {% if is_state("binary_sensor.ankleide_ventilate_temperature", "on") %}
+          mdi:fan
+        {% else %}
+          mdi:fan-off
+        {% endif %}
+    - name: arbeitszimmer_ventilate_temperature
+      state: >
+        {{ states('sensor.thermostat_arbeitszimmer_temperature') | float(0) > states('sensor.weather_forecast_temperature') | float(0) }}
+      icon: >
+        {% if is_state("binary_sensor.arbeitszimmer_ventilate_temperature", "on") %}
+          mdi:fan
+        {% else %}
+          mdi:fan-off
+        {% endif %}
+    - name: badezimmer_ventilate_temperature
+      state: >
+        {{ states('sensor.thermostat_badezimmer_temperature') | float(0) > states('sensor.weather_forecast_temperature') | float(0) }}
+      icon: >
+        {% if is_state("binary_sensor.badezimmer_ventilate_temperature", "on") %}
+          mdi:fan
+        {% else %}
+          mdi:fan-off
+        {% endif %}
+    - name: duschbad_ventilate_temperature
+      state: >
+        {{ states('sensor.thermostat_duschbad_temperature') | float(0) > states('sensor.weather_forecast_temperature') | float(0) }}
+      icon: >
+        {% if is_state("binary_sensor.duschbad_ventilate_temperature", "on") %}
+          mdi:fan
+        {% else %}
+          mdi:fan-off
+        {% endif %}
+    - name: flur_ventilate_temperature
+      state: >
+        {{ states('sensor.thermostat_flur_temperature') | float(0) > states('sensor.weather_forecast_temperature') | float(0) }}
+      icon: >
+        {% if is_state("binary_sensor.flur_ventilate_temperature", "on") %}
+          mdi:fan
+        {% else %}
+          mdi:fan-off
+        {% endif %}
+    - name: keller_ventilate_temperature
+      state: >
+        {{ states('sensor.temperature_sensor_keller_temperature') | float(0) > states('sensor.weather_forecast_temperature') | float(0) }}
+      icon: >
+        {% if is_state("binary_sensor.keller_ventilate_temperature", "on") %}
+          mdi:fan
+        {% else %}
+          mdi:fan-off
+        {% endif %}
+    - name: kuche_ventilate_temperature
+      state: >
+        {{ states('sensor.thermostat_kuche_temperature') | float(0) > states('sensor.weather_forecast_temperature') | float(0) }}
+      icon: >
+        {% if is_state("binary_sensor.kuche_ventilate_temperature", "on") %}
+          mdi:fan
+        {% else %}
+          mdi:fan-off
+        {% endif %}
+    - name: nino_ventilate_temperature
+      state: >
+        {{ states('sensor.thermostat_noah_temperature') | float(0) > states('sensor.weather_forecast_temperature') | float(0) }}
+      icon: >
+        {% if is_state("binary_sensor.nino_ventilate_temperature", "on") %}
+          mdi:fan
+        {% else %}
+          mdi:fan-off
+        {% endif %}
+    - name: noah_ventilate_temperature
+      state: >
+        {{ states('sensor.thermostat_noah_temperature') | float(0) > states('sensor.weather_forecast_temperature') | float(0) }}
+      icon: >
+        {% if is_state("binary_sensor.noah_ventilate_temperature", "on") %}
+          mdi:fan
+        {% else %}
+          mdi:fan-off
+        {% endif %}
+    - name: schlafzimmer_ventilate_temperature
+      state: >
+        {{ states('sensor.thermostat_schlafzimmer_temperature') | float(0) > states('sensor.weather_forecast_temperature') | float(0) }}
+      icon: >
+        {% if is_state("binary_sensor.schlafzimmer_ventilate_temperature", "on") %}
+          mdi:fan
+        {% else %}
+          mdi:fan-off
+        {% endif %}
+    - name: wohnzimmer_ventilate_temperature
+      state: >
+        {{ states('sensor.thermostat_wohnzimmer_temperature') | float(0) > states('sensor.weather_forecast_temperature') | float(0) }}
+      icon: >
+        {% if is_state("binary_sensor.wohnzimmer_ventilate_temperature", "on") %}
           mdi:fan
         {% else %}
           mdi:fan-off
@@ -446,25 +695,77 @@ automation:
 
 homeassistant:
   customize:
+    binary_sensor.abstellkammer_terrasse_ventilate:
+      friendly_name: "Abstellkammer Terrasse"
+    binary_sensor.abstellkammer_terrasse_ventilate_humidity:
+      friendly_name: "Abstellkammer Terrasse"
+    binary_sensor.abstellkammer_terrasse_ventilate_temperature:
+      friendly_name: "Abstellkammer Terrasse"
     binary_sensor.ankleide_ventilate:
+      friendly_name: "Ankleide"
+    binary_sensor.ankleide_ventilate_humidity:
+      friendly_name: "Ankleide"
+    binary_sensor.ankleide_ventilate_temperature:
       friendly_name: "Ankleide"
     binary_sensor.arbeitszimmer_ventilate:
       friendly_name: "Arbeitszimmer"
+    binary_sensor.arbeitszimmer_ventilate_humidity:
+      friendly_name: "Arbeitszimmer"
+    binary_sensor.arbeitszimmer_ventilate_temperature:
+      friendly_name: "Arbeitszimmer"
     binary_sensor.badezimmer_ventilate:
+      friendly_name: "Badezimmer"
+    binary_sensor.badezimmer_ventilate_humidity:
+      friendly_name: "Badezimmer"
+    binary_sensor.badezimmer_ventilate_temperature:
       friendly_name: "Badezimmer"
     binary_sensor.duschbad_ventilate:
       friendly_name: "Duschbad"
+    binary_sensor.duschbad_ventilate_humidity:
+      friendly_name: "Duschbad"
+    binary_sensor.duschbad_ventilate_temperature:
+      friendly_name: "Duschbad"
     binary_sensor.flur_ventilate:
       friendly_name: "Flur"
+    binary_sensor.flur_ventilate_humidity:
+      friendly_name: "Flur"
+    binary_sensor.flur_ventilate_temperature:
+      friendly_name: "Flur"
+    binary_sensor.keller_ventilate:
+      friendly_name: "Keller"
+    binary_sensor.keller_ventilate_humidity:
+      friendly_name: "Keller"
+    binary_sensor.keller_ventilate_temperature:
+      friendly_name: "Keller"
     binary_sensor.kuche_ventilate:
+      friendly_name: "Küche"
+    binary_sensor.kuche_ventilate_humidity:
+      friendly_name: "Küche"
+    binary_sensor.kuche_ventilate_temperature:
       friendly_name: "Küche"
     binary_sensor.nino_ventilate:
       friendly_name: "Nino"
+    binary_sensor.nino_ventilate_humidity:
+      friendly_name: "Nino"
+    binary_sensor.nino_ventilate_temperature:
+      friendly_name: "Nino"
     binary_sensor.noah_ventilate:
+      friendly_name: "Noah"
+    binary_sensor.noah_ventilate_humidity:
+      friendly_name: "Noah"
+    binary_sensor.noah_ventilate_temperature:
       friendly_name: "Noah"
     binary_sensor.schlafzimmer_ventilate:
       friendly_name: "Schlafzimmer"
+    binary_sensor.schlafzimmer_ventilate_humidity:
+      friendly_name: "Schlafzimmer"
+    binary_sensor.schlafzimmer_ventilate_temperature:
+      friendly_name: "Schlafzimmer"
     binary_sensor.wohnzimmer_ventilate:
+      friendly_name: "Wohnzimmer"
+    binary_sensor.wohnzimmer_ventilate_humidity:
+      friendly_name: "Wohnzimmer"
+    binary_sensor.wohnzimmer_ventilate_temperature:
       friendly_name: "Wohnzimmer"
     sensor.thermostat_ankleide_humidity:
       friendly_name: "Ankleide"
@@ -486,6 +787,10 @@ homeassistant:
       friendly_name: "Flur"
     sensor.thermostat_flur_temperature:
       friendly_name: "Flur"
+    sensor.temperature_sensor_keller_humidity:
+      friendly_name: "Keller"
+    sensor.temperature_sensor_keller_temperature:
+      friendly_name: "Keller"
     sensor.thermostat_kuche_humidity:
       friendly_name: "Küche"
     sensor.thermostat_kuche_temperature:
