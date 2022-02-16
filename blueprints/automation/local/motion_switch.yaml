@@ -15,8 +15,9 @@ blueprint:
         entity:
           domain: sensor
           device_class: illuminance
-    min_illuminance:
-      name: Minimal Illuminance
+    max_illuminance:
+      name: Maximal Illuminance
+      description: Only turn on the swich when illuminance is below this threshold.
       selector:
         number:
           min: 0
@@ -51,7 +52,7 @@ trigger:
 condition:
   condition: numeric_state
   entity_id: !input illuminance_entity
-  below: !input min_illuminance
+  below: !input max_illuminance
 
 action:
   - service: switch.turn_on

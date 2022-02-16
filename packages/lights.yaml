@@ -50,8 +50,8 @@ automation:
       input:
         motion_entity: binary_sensor.motion_sensor_kueche_home_security_motion_detection
         illuminance_entity: sensor.motion_sensor_kueche_illuminance
-        min_illuminance: 400
-        no_motion_wait: 120
+        max_illuminance: 200
+        no_motion_wait: 170 # total: 180 seconds
         switch_target:
           entity_id: switch.steckdose_kueche_oberschrank
     id: "1631694664177"
@@ -62,8 +62,8 @@ automation:
       input:
         motion_entity: binary_sensor.hue_motion_sensor_1_motion
         illuminance_entity: sensor.hue_motion_sensor_1_illuminance
-        min_illuminance: 200
-        no_motion_wait: 60
+        max_illuminance: 150
+        no_motion_wait: 30 # total: 60 seconds
         switch_target:
           entity_id: switch.licht_ankleide
     id: "1631993327255"
