@@ -831,6 +831,10 @@ homeassistant:
       friendly_name: "Ankleide"
     sensor.thermostat_ankleide_temperature:
       friendly_name: "Ankleide"
+    sensor.multisensor_6_air_temperature:
+      friendly_name: "Abstellkammer Terrasse"
+    sensor.multisensor_6_humidity:
+      friendly_name: "Abstellkammer Terrasse"
     sensor.thermostat_arbeitszimmer_humidity:
       friendly_name: "Arbeitszimmer"
     sensor.thermostat_arbeitszimmer_temperature:
