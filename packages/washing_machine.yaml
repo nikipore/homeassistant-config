@@ -5,7 +5,6 @@ input_select:
       - aus
       - arbeitet
       - fertig
-    initial: aus
 
 sensor:
   - platform: average
@@ -20,44 +19,3 @@ homeassistant:
   customize:
     sensor.washing_machine_power:
       friendly_name: "Waschmaschine: Leistung"
-
-automation:
-  - alias: "Waschmaschine arbeitet"
-    trigger:
-      - platform: numeric_state
-        entity_id: sensor.washing_machine_power
-        above: 3.0
-    action:
-      - service: input_select.select_option
-        entity_id: input_select.washing_machine_status
-        data:
-          option: "arbeitet"
-  - alias: "Waschmaschine fertig"
-    trigger:
-      - platform: numeric_state
-        entity_id: sensor.washing_machine_power
-        above: 0.5
-        below: 3.0
-    condition:
-      - condition: state
-        entity_id: input_select.washing_machine_status
-        state: "arbeitet"
-    action:
-      - service: input_select.select_option
-        entity_id: input_select.washing_machine_status
-        data:
-          option: "fertig"
-      - service: notify.all_mobiles
-        data:
-          title: "Waschmaschine fertig!"
-          message: "Du kannst sie nun ausräumen."
-  - alias: "Waschmaschine aus"
-    trigger:
-      - platform: numeric_state
-        entity_id: sensor.washing_machine_power
-        below: 0.5
-    action:
-      - service: input_select.select_option
-        entity_id: input_select.washing_machine_status
-        data:
-          option: "aus"

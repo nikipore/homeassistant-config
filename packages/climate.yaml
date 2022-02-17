@@ -164,6 +164,15 @@ thermal_comfort:
           - dew_point
           - simmer_index
           - simmer_zone
+      - name: Waschraum
+        temperature_sensor: sensor.temperature_sensor_waschraum_temperature
+        humidity_sensor: sensor.temperature_sensor_waschraum_humidity
+        custom_icons: true
+        sensor_types:
+          - absolute_humidity
+          - dew_point
+          - simmer_index
+          - simmer_zone
       - name: Wetter
         temperature_sensor: sensor.weather_forecast_temperature
         humidity_sensor: sensor.weather_humidity
@@ -288,6 +297,15 @@ template:
         {% else %}
           mdi:fan-off
         {% endif %}
+    - name: waschraum_ventilate
+      state: >
+        {{ is_state('binary_sensor.waschraum_ventilate_humidity', 'on') and is_state('binary_sensor.keller_waschraum_temperature', 'on') }}
+      icon: >
+        {% if is_state("binary_sensor.waschraum_ventilate", "on") %}
+          mdi:fan
+        {% else %}
+          mdi:fan-off
+        {% endif %}
     - name: wohnzimmer_ventilate
       state: >
         {{ is_state('binary_sensor.wohnzimmer_ventilate_humidity', 'on') and is_state('binary_sensor.wohnzimmer_ventilate_temperature', 'on') }}
@@ -397,6 +415,15 @@ template:
         {% else %}
           mdi:fan-off
         {% endif %}
+    - name: waschraum_ventilate_humidity
+      state: >
+        {{ states('sensor.waschraum_absolutehumidity') | float(0) > states('sensor.wetter_absolutehumidity') | float(0) }}
+      icon: >
+        {% if is_state("binary_sensor.keller_ventilate_humidity", "on") %}
+          mdi:fan
+        {% else %}
+          mdi:fan-off
+        {% endif %}
     - name: wohnzimmer_ventilate_humidity
       state: >
         {{ states('sensor.wohnzimmer_absolutehumidity') | float(0) > states('sensor.wetter_absolutehumidity') | float(0) }}
@@ -502,6 +529,15 @@ template:
         {{ states('sensor.thermostat_schlafzimmer_temperature') | float(0) > states('sensor.weather_forecast_temperature') | float(0) }}
       icon: >
         {% if is_state("binary_sensor.schlafzimmer_ventilate_temperature", "on") %}
+          mdi:fan
+        {% else %}
+          mdi:fan-off
+        {% endif %}
+    - name: waschraum_ventilate_temperature
+      state: >
+        {{ states('sensor.temperature_sensor_waschraum_temperature') | float(0) > states('sensor.weather_forecast_temperature') | float(0) }}
+      icon: >
+        {% if is_state("binary_sensor.waschraum_ventilate_temperature", "on") %}
           mdi:fan
         {% else %}
           mdi:fan-off
@@ -825,6 +861,12 @@ homeassistant:
       friendly_name: "Schlafzimmer"
     binary_sensor.schlafzimmer_ventilate_temperature:
       friendly_name: "Schlafzimmer"
+    binary_sensor.waschraum_ventilate:
+      friendly_name: "Waschraum"
+    binary_sensor.waschraum_ventilate_humidity:
+      friendly_name: "Waschraum"
+    binary_sensor.waschraum_ventilate_temperature:
+      friendly_name: "Waschraum"
     binary_sensor.wohnzimmer_ventilate:
       friendly_name: "Wohnzimmer"
     binary_sensor.wohnzimmer_ventilate_humidity:
@@ -875,6 +917,10 @@ homeassistant:
       friendly_name: "Schlafzimmer"
     sensor.thermostat_schlafzimmer_temperature:
       friendly_name: "Schlafzimmer"
+    sensor.temperature_sensor_waschraum_humidity:
+      friendly_name: "Waschraum"
+    sensor.temperature_sensor_waschraum_temperature:
+      friendly_name: "Waschraum"
     sensor.thermostat_wohnzimmer_humidity:
       friendly_name: "Wohnzimmer"
     sensor.thermostat_wohnzimmer_temperature:
