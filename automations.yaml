@@ -11,14 +11,3 @@
     - service: hassio.addon_start
       data:
         addon: 2caa1d32_rsync_backups
-- alias: Restart Node-RED on (re)start of Home Assistant (with a delay)
-  trigger:
-    - platform: homeassistant
-      event: start
-  action:
-    - delay:
-        seconds: 15
-    - service: hassio.addon_restart
-      data:
-        addon: a0d7b954_nodered
-  id: 6c2e88a9f2e446608f51800f4c642d17

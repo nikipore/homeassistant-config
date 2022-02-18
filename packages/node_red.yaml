@@ -1,0 +1,24 @@
+input_button:
+  node_red_restart:
+    name: "starte Node-RED neu"
+    icon: mdi:reload
+
+automation:
+  - alias: Restart Node-RED
+    trigger:
+      - platform: state
+        entity_id: input_button.node_red_restart
+    action:
+      - service: hassio.addon_restart
+        data:
+          addon: a0d7b954_nodered
+  - alias: Restart Node-RED on (re)start of Home Assistant (with a delay)
+    trigger:
+      - platform: homeassistant
+        event: start
+    action:
+      - delay:
+          seconds: 15
+      - service: input_button.press
+        target:
+          entity_id: input_button.node_red_restart
