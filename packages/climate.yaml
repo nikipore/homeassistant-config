@@ -419,7 +419,7 @@ template:
       state: >
         {{ states('sensor.waschraum_absolutehumidity') | float(0) > states('sensor.wetter_absolutehumidity') | float(0) }}
       icon: >
-        {% if is_state("binary_sensor.keller_ventilate_humidity", "on") %}
+        {% if is_state("binary_sensor.waschraum_ventilate_humidity", "on") %}
           mdi:fan
         {% else %}
           mdi:fan-off
@@ -551,6 +551,86 @@ template:
         {% else %}
           mdi:fan-off
         {% endif %}
+
+  sensor:
+    - name: ankleide_ventilate_relative_humidity_simulated
+      unit_of_measurement: "%"
+      state: >
+        {{ (states('sensor.thermostat_ankleide_temperature') | float(0) / states('sensor.ankleide_absolutehumidity') | float(0) * states('sensor.wetter_absolutehumidity') | float(0) ) | round(1) }}
+      device_class: humidity
+      state_class: measurement
+    - name: abstellkammer_terrasse_ventilate_relative_humidity_simulated
+      unit_of_measurement: "%"
+      state: >
+        {{ (states('sensor.multisensor_6_air_temperature') | float(0) / states('sensor.abstellkammer_terrasse_absolutehumidity') | float(0) * states('sensor.wetter_absolutehumidity') | float(0) ) | round(1) }}
+      device_class: humidity
+      state_class: measurement
+    - name: arbeitszimmer_ventilate_relative_humidity_simulated
+      unit_of_measurement: "%"
+      state: >
+        {{ (states('sensor.thermostat_arbeitszimmer_temperature') | float(0) / states('sensor.arbeitszimmer_absolutehumidity') | float(0) * states('sensor.wetter_absolutehumidity') | float(0) ) | round(1) }}
+      device_class: humidity
+      state_class: measurement
+    - name: badezimmer_ventilate_relative_humidity_simulated
+      unit_of_measurement: "%"
+      state: >
+        {{ (states('sensor.thermostat_badezimmer_temperature') | float(0) / states('sensor.badezimmer_absolutehumidity') | float(0) * states('sensor.wetter_absolutehumidity') | float(0) ) | round(1) }}
+      device_class: humidity
+      state_class: measurement
+    - name: duschbad_ventilate_relative_humidity_simulated
+      unit_of_measurement: "%"
+      state: >
+        {{ (states('sensor.thermostat_duschbad_temperature') | float(0) / states('sensor.duschbad_absolutehumidity') | float(0) * states('sensor.wetter_absolutehumidity') | float(0) ) | round(1) }}
+      device_class: humidity
+      state_class: measurement
+    - name: flur_ventilate_relative_humidity_simulated
+      unit_of_measurement: "%"
+      state: >
+        {{ (states('sensor.thermostat_flur_temperature') | float(0) / states('sensor.flur_absolutehumidity') | float(0) * states('sensor.wetter_absolutehumidity') | float(0) ) | round(1) }}
+      device_class: humidity
+      state_class: measurement
+    - name: keller_ventilate_relative_humidity_simulated
+      unit_of_measurement: "%"
+      state: >
+        {{ (states('sensor.temperature_sensor_keller_humidity') | float(0) / states('sensor.keller_absolutehumidity') | float(0) * states('sensor.wetter_absolutehumidity') | float(0) ) | round(1) }}
+      device_class: humidity
+      state_class: measurement
+    - name: kuche_ventilate_relative_humidity_simulated
+      unit_of_measurement: "%"
+      state: >
+        {{ (states('sensor.thermostat_kuche_temperature') | float(0) / states('sensor.kuche_absolutehumidity') | float(0) * states('sensor.wetter_absolutehumidity') | float(0) ) | round(1) }}
+      device_class: humidity
+      state_class: measurement
+    - name: nino_ventilate_relative_humidity_simulated
+      unit_of_measurement: "%"
+      state: >
+        {{ (states('sensor.thermostat_nino_temperature') | float(0) / states('sensor.nino_absolutehumidity') | float(0) * states('sensor.wetter_absolutehumidity') | float(0) ) | round(1) }}
+      device_class: humidity
+      state_class: measurement
+    - name: noah_ventilate_relative_humidity_simulated
+      unit_of_measurement: "%"
+      state: >
+        {{ (states('sensor.thermostat_noah_temperature') | float(0) / states('sensor.noah_absolutehumidity') | float(0) * states('sensor.wetter_absolutehumidity') | float(0) ) | round(1) }}
+      device_class: humidity
+      state_class: measurement
+    - name: schlafzimmer_ventilate_relative_humidity_simulated
+      unit_of_measurement: "%"
+      state: >
+        {{ (states('sensor.thermostat_schlafzimmer_temperature') | float(0) / states('sensor.schlafzimmer_absolutehumidity') | float(0) * states('sensor.wetter_absolutehumidity') | float(0) ) | round(1) }}
+      device_class: humidity
+      state_class: measurement
+    - name: waschraum_ventilate_relative_humidity_simulated
+      unit_of_measurement: "%"
+      state: >
+        {{ (states('sensor.temperature_sensor_waschraum_humidity') | float(0) / states('sensor.waschraum_absolutehumidity') | float(0) * states('sensor.wetter_absolutehumidity') | float(0) ) | round(1) }}
+      device_class: humidity
+      state_class: measurement
+    - name: wohnzimmer_ventilate_relative_humidity_simulated
+      unit_of_measurement: "%"
+      state: >
+        {{ (states('sensor.thermostat_wohnzimmer_temperature') | float(0) / states('sensor.wohnzimmer_absolutehumidity') | float(0) * states('sensor.wetter_absolutehumidity') | float(0) ) | round(1) }}
+      device_class: humidity
+      state_class: measurement
 
 input_select:
   climate_mode_global_reset:
@@ -873,6 +953,20 @@ homeassistant:
       friendly_name: "Wohnzimmer"
     binary_sensor.wohnzimmer_ventilate_temperature:
       friendly_name: "Wohnzimmer"
+
+    sensor.0x00158d000412f308_temperature:
+      friendly_name: Temperatur Wohnzimmer
+    sensor.0x00158d000412f308_humidity:
+      friendly_name: rel. Luftfeuchtigkeit Wohnzimmer
+    sensor.0x00158d000412f308_pressure:
+      friendly_name: Luftdruck Wohnzimmer
+    sensor.0x00158d00041da63b_temperature:
+      friendly_name: Temperatur Badezimmer
+    sensor.0x00158d00041da63b_humidity:
+      friendly_name: rel. Luftfeuchtigkeit Badezimmer
+    sensor.0x00158d00041da63b_pressure:
+      friendly_name: Luftdruck Badezimmer
+
     sensor.thermostat_ankleide_humidity:
       friendly_name: "Ankleide"
     sensor.thermostat_ankleide_temperature:
@@ -925,3 +1019,30 @@ homeassistant:
       friendly_name: "Wohnzimmer"
     sensor.thermostat_wohnzimmer_temperature:
       friendly_name: "Wohnzimmer"
+
+    sensor.abstellkammer_terrasse_ventilate_relative_humidity_simulated:
+      friendly_name: "rel. Luftfeuchtigkeit nach Lüftung (Abstellkammer Terrasse)"
+    sensor.ankleide_ventilate_relative_humidity_simulated:
+      friendly_name: "rel. Luftfeuchtigkeit nach Lüftung (Ankleide)"
+    sensor.arbeitszimmer_ventilate_relative_humidity_simulated:
+      friendly_name: "rel. Luftfeuchtigkeit nach Lüftung (Arbeitszimmer)"
+    sensor.badezimmer_ventilate_relative_humidity_simulated:
+      friendly_name: "rel. Luftfeuchtigkeit nach Lüftung (Badezimmer)"
+    sensor.duschbad_ventilate_relative_humidity_simulated:
+      friendly_name: "rel. Luftfeuchtigkeit nach Lüftung (Duschbad)"
+    sensor.flur_ventilate_relative_humidity_simulated:
+      friendly_name: "rel. Luftfeuchtigkeit nach Lüftung (Flur)"
+    sensor.keller_ventilate_relative_humidity_simulated:
+      friendly_name: "rel. Luftfeuchtigkeit nach Lüftung (Keller)"
+    sensor.kuche_ventilate_relative_humidity_simulated:
+      friendly_name: "rel. Luftfeuchtigkeit nach Lüftung (Küche)"
+    sensor.nino_ventilate_relative_humidity_simulated:
+      friendly_name: "rel. Luftfeuchtigkeit nach Lüftung (Nino)"
+    sensor.noah_ventilate_relative_humidity_simulated:
+      friendly_name: "rel. Luftfeuchtigkeit nach Lüftung (Noah)"
+    sensor.schlafzimmer_ventilate_relative_humidity_simulated:
+      friendly_name: "rel. Luftfeuchtigkeit nach Lüftung (Schlafzimmer)"
+    sensor.waschraum_ventilate_relative_humidity_simulated:
+      friendly_name: "rel. Luftfeuchtigkeit nach Lüftung (Waschraum)"
+    sensor.wohnzimmer_ventilate_relative_humidity_simulated:
+      friendly_name: "rel. Luftfeuchtigkeit nach Lüftung (Wohnzimmer)"

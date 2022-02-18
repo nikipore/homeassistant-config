@@ -360,11 +360,47 @@ template:
         {{ states("binary_sensor.strips_mazw_access_control_window_door_is_open") }}
       device_class: opening
       icon: mdi:window-closed
+    - name: window_sensor_wohnzimmer_any_window_is_open
+      state: >
+        {{ is_state("binary_sensor.window_sensor_wohnzimmer_window_is_open", "on") or is_state("binary_sensor.door_sensor_terrasse_access_control_door_is_open", "on") }}
+    - name: window_sensor_kueche_any_window_is_open
+      state: >
+        {{ is_state("binary_sensor.window_sensor_kueche_links_window_is_open", "on") or is_state("binary_sensor.window_sensor_kueche_rechts_window_is_open", "on") }}
+    - name: window_sensor_nino_any_window_is_open
+      state: >
+        {{ is_state("binary_sensor.window_sensor_nino_links_window_is_open", "on") or is_state("binary_sensor.window_sensor_nino_rechts_window_is_open", "on") }}
+    - name: window_sensor_noah_any_window_is_open
+      state: >
+        {{ is_state("binary_sensor.window_sensor_noah_links_window_is_open", "on") or is_state("binary_sensor.window_sensor_noah_rechts_window_is_open", "on") }}
 
 homeassistant:
   customize:
     binary_sensor.marquee_is_open:
       friendly_name: "Markise ist"
+    binary_sensor.window_sensor_badezimmer_window_is_open:
+      friendly_name: Fenster Badezimmer
+      device_class: window
+    binary_sensor.window_sensor_arbeitszimmer_window_is_open:
+      friendly_name: Fenster Arbeitszimmer
+      device_class: window
+    binary_sensor.window_sensor_duschbad_window_is_open:
+      friendly_name: Fenster Duschbad
+      device_class: window
+    binary_sensor.window_sensor_schlafzimmer_window_is_open:
+      friendly_name: Fenster Schlafzimmer
+      device_class: window
+    binary_sensor.window_sensor_wohnzimmer_any_window_is_open:
+      friendly_name: Fenster Wohnzimmer (mindestens eins offen)
+      device_class: window
+    binary_sensor.window_sensor_kueche_any_window_is_open:
+      friendly_name: Fenster Küche (mindestens eins offen)
+      device_class: window
+    binary_sensor.window_sensor_nino_any_window_is_open:
+      friendly_name: Fenster Nino (mindestens eins offen)
+      device_class: window
+    binary_sensor.window_sensor_noah_any_window_is_open:
+      friendly_name: Fenster Noah (mindestens eins offen)
+      device_class: window
     sensor.blind_control_badezimmer:
       friendly_name: "Badezimmer"
       icon: hass:arrow-split-horizontal

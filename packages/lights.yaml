@@ -89,3 +89,8 @@ automation:
       - service: switch.turn_off
         target:
           entity_id: switch.popp_smart_outdoor_plug_ip44_rated
+
+homeassistant:
+  customize:
+    binary_sensor.0x001788010329dfc5_occupancy:
+      friendly_name: Bewegungssensor Ankleide
