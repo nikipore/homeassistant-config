@@ -554,79 +554,66 @@ template:
 
   sensor:
     - name: ankleide_ventilate_relative_humidity_simulated
-      unit_of_measurement: "%"
       state: >
         {{ (states('sensor.thermostat_ankleide_humidity') | float(0) / states('sensor.ankleide_absolutehumidity') | float(0) * states('sensor.wetter_absolutehumidity') | float(0) ) | round(1) }}
       device_class: humidity
       state_class: measurement
     - name: abstellkammer_terrasse_ventilate_relative_humidity_simulated
-      unit_of_measurement: "%"
       state: >
         {{ (states('sensor.multisensor_6_humidity') | float(0) / states('sensor.abstellkammer_terrasse_absolutehumidity') | float(0) * states('sensor.wetter_absolutehumidity') | float(0) ) | round(1) }}
       device_class: humidity
       state_class: measurement
     - name: arbeitszimmer_ventilate_relative_humidity_simulated
-      unit_of_measurement: "%"
       state: >
         {{ (states('sensor.thermostat_arbeitszimmer_humidity') | float(0) / states('sensor.arbeitszimmer_absolutehumidity') | float(0) * states('sensor.wetter_absolutehumidity') | float(0) ) | round(1) }}
       device_class: humidity
       state_class: measurement
     - name: badezimmer_ventilate_relative_humidity_simulated
-      unit_of_measurement: "%"
       state: >
         {{ (states('sensor.thermostat_badezimmer_humidity') | float(0) / states('sensor.badezimmer_absolutehumidity') | float(0) * states('sensor.wetter_absolutehumidity') | float(0) ) | round(1) }}
       device_class: humidity
       state_class: measurement
     - name: duschbad_ventilate_relative_humidity_simulated
-      unit_of_measurement: "%"
       state: >
         {{ (states('sensor.thermostat_duschbad_humidity') | float(0) / states('sensor.duschbad_absolutehumidity') | float(0) * states('sensor.wetter_absolutehumidity') | float(0) ) | round(1) }}
       device_class: humidity
       state_class: measurement
     - name: flur_ventilate_relative_humidity_simulated
-      unit_of_measurement: "%"
       state: >
         {{ (states('sensor.thermostat_flur_humidity') | float(0) / states('sensor.flur_absolutehumidity') | float(0) * states('sensor.wetter_absolutehumidity') | float(0) ) | round(1) }}
       device_class: humidity
       state_class: measurement
     - name: keller_ventilate_relative_humidity_simulated
-      unit_of_measurement: "%"
       state: >
         {{ (states('sensor.temperature_sensor_keller_humidity') | float(0) / states('sensor.keller_absolutehumidity') | float(0) * states('sensor.wetter_absolutehumidity') | float(0) ) | round(1) }}
       device_class: humidity
       state_class: measurement
     - name: kuche_ventilate_relative_humidity_simulated
-      unit_of_measurement: "%"
       state: >
         {{ (states('sensor.thermostat_kuche_humidity') | float(0) / states('sensor.kuche_absolutehumidity') | float(0) * states('sensor.wetter_absolutehumidity') | float(0) ) | round(1) }}
       device_class: humidity
       state_class: measurement
     - name: nino_ventilate_relative_humidity_simulated
-      unit_of_measurement: "%"
       state: >
         {{ (states('sensor.thermostat_nino_humidity') | float(0) / states('sensor.nino_absolutehumidity') | float(0) * states('sensor.wetter_absolutehumidity') | float(0) ) | round(1) }}
       device_class: humidity
       state_class: measurement
     - name: noah_ventilate_relative_humidity_simulated
-      unit_of_measurement: "%"
       state: >
         {{ (states('sensor.thermostat_noah_humidity') | float(0) / states('sensor.noah_absolutehumidity') | float(0) * states('sensor.wetter_absolutehumidity') | float(0) ) | round(1) }}
       device_class: humidity
       state_class: measurement
     - name: schlafzimmer_ventilate_relative_humidity_simulated
-      unit_of_measurement: "%"
       state: >
         {{ (states('sensor.thermostat_schlafzimmer_humidity') | float(0) / states('sensor.schlafzimmer_absolutehumidity') | float(0) * states('sensor.wetter_absolutehumidity') | float(0) ) | round(1) }}
       device_class: humidity
       state_class: measurement
     - name: waschraum_ventilate_relative_humidity_simulated
-      unit_of_measurement: "%"
       state: >
         {{ (states('sensor.temperature_sensor_waschraum_humidity') | float(0) / states('sensor.waschraum_absolutehumidity') | float(0) * states('sensor.wetter_absolutehumidity') | float(0) ) | round(1) }}
       device_class: humidity
       state_class: measurement
     - name: wohnzimmer_ventilate_relative_humidity_simulated
-      unit_of_measurement: "%"
       state: >
         {{ (states('sensor.thermostat_wohnzimmer_humidity') | float(0) / states('sensor.wohnzimmer_absolutehumidity') | float(0) * states('sensor.wetter_absolutehumidity') | float(0) ) | round(1) }}
       device_class: humidity
