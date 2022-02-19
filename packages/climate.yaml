@@ -563,7 +563,7 @@ template:
           {% elif absolute_humidity_2 in ('unknown', 'unavailable') %}
             {{ absolute_humidity_2 }}
           {% elif absolute_humidity_1 == 0 %}
-            0
+            unknown
           {% else %}
             {{ (relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
           {% endif %}
@@ -582,7 +582,7 @@ template:
           {% elif absolute_humidity_2 in ('unknown', 'unavailable') %}
             {{ absolute_humidity_2 }}
           {% elif absolute_humidity_1 == 0 %}
-            0
+            unknown
           {% else %}
             {{ (relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
           {% endif %}
@@ -601,7 +601,7 @@ template:
           {% elif absolute_humidity_2 in ('unknown', 'unavailable') %}
             {{ absolute_humidity_2 }}
           {% elif absolute_humidity_1 == 0 %}
-            0
+            unknown
           {% else %}
             {{ (relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
           {% endif %}
@@ -620,7 +620,7 @@ template:
           {% elif absolute_humidity_2 in ('unknown', 'unavailable') %}
             {{ absolute_humidity_2 }}
           {% elif absolute_humidity_1 == 0 %}
-            0
+            unknown
           {% else %}
             {{ (relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
           {% endif %}
@@ -639,7 +639,7 @@ template:
           {% elif absolute_humidity_2 in ('unknown', 'unavailable') %}
             {{ absolute_humidity_2 }}
           {% elif absolute_humidity_1 == 0 %}
-            0
+            unknown
           {% else %}
             {{ (relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
           {% endif %}
@@ -658,7 +658,7 @@ template:
           {% elif absolute_humidity_2 in ('unknown', 'unavailable') %}
             {{ absolute_humidity_2 }}
           {% elif absolute_humidity_1 == 0 %}
-            0
+            unknown
           {% else %}
             {{ (relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
           {% endif %}
@@ -677,7 +677,7 @@ template:
           {% elif absolute_humidity_2 in ('unknown', 'unavailable') %}
             {{ absolute_humidity_2 }}
           {% elif absolute_humidity_1 == 0 %}
-            0
+            unknown
           {% else %}
             {{ (relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
           {% endif %}
@@ -696,7 +696,7 @@ template:
           {% elif absolute_humidity_2 in ('unknown', 'unavailable') %}
             {{ absolute_humidity_2 }}
           {% elif absolute_humidity_1 == 0 %}
-            0
+            unknown
           {% else %}
             {{ (relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
           {% endif %}
@@ -715,7 +715,7 @@ template:
           {% elif absolute_humidity_2 in ('unknown', 'unavailable') %}
             {{ absolute_humidity_2 }}
           {% elif absolute_humidity_1 == 0 %}
-            0
+            unknown
           {% else %}
             {{ (relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
           {% endif %}
@@ -734,7 +734,7 @@ template:
           {% elif absolute_humidity_2 in ('unknown', 'unavailable') %}
             {{ absolute_humidity_2 }}
           {% elif absolute_humidity_1 == 0 %}
-            0
+            unknown
           {% else %}
             {{ (relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
           {% endif %}
@@ -753,7 +753,7 @@ template:
           {% elif absolute_humidity_2 in ('unknown', 'unavailable') %}
             {{ absolute_humidity_2 }}
           {% elif absolute_humidity_1 == 0 %}
-            0
+            unknown
           {% else %}
             {{ (relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
           {% endif %}
@@ -772,7 +772,7 @@ template:
           {% elif absolute_humidity_2 in ('unknown', 'unavailable') %}
             {{ absolute_humidity_2 }}
           {% elif absolute_humidity_1 == 0 %}
-            0
+            unknown
           {% else %}
             {{ (relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
           {% endif %}
@@ -791,7 +791,7 @@ template:
           {% elif absolute_humidity_2 in ('unknown', 'unavailable') %}
             {{ absolute_humidity_2 }}
           {% elif absolute_humidity_1 == 0 %}
-            0
+            unknown
           {% else %}
             {{ (relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
           {% endif %}
