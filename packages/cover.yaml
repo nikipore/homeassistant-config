@@ -1,50 +1,50 @@
 cover:
   - platform: template
     covers:
-      lichtkuppel_flur:
-        device_class: window
-        friendly_name: Lichtkuppel Flur
-        availability_template: >
-          {{ not (is_state('switch.double_relay_switch_2x1_5kw_3', 'unknown') or is_state('switch.double_relay_switch_2x1_5kw_2_2', 'unknown')) }}
-        position_template: >
-          {{ is_state('binary_sensor.lichtkuppel_flur_access_control_window_door_is_open', 'on') * 100 }}
-        open_cover:
-          - service: cover.stop_cover
-            entity_id: cover.lichtkuppel_flur
-          - service: switch.turn_on
-            entity_id: switch.double_relay_switch_2x1_5kw_3
-        close_cover:
-          - service: cover.stop_cover
-            entity_id: cover.lichtkuppel_flur
-          - service: switch.turn_on
-            entity_id: switch.double_relay_switch_2x1_5kw_2_2
-        stop_cover:
-          service: switch.turn_off
-          entity_id:
-            - switch.double_relay_switch_2x1_5kw_3
-            - switch.double_relay_switch_2x1_5kw_2_2
       lichtkuppel_ankleide:
         device_class: window
         friendly_name: Lichtkuppel Ankleide
         availability_template: >
-          {{ not (is_state('switch.double_relay_switch_2x1_5kw', 'unknown') or is_state('switch.double_relay_switch_2x1_5kw_2', 'unknown')) }}
+          {{ not (is_state('switch.lichtkuppel_ankleide_up', 'unknown') or is_state('switch.lichtkuppel_ankleide_down', 'unknown')) }}
         position_template: >
           {{ is_state('binary_sensor.lichtkuppel_ankleide_access_control_window_door_is_open', 'on') * 100 }}
         open_cover:
           - service: cover.stop_cover
             entity_id: cover.lichtkuppel_ankleide
           - service: switch.turn_on
-            entity_id: switch.double_relay_switch_2x1_5kw
+            entity_id: switch.lichtkuppel_ankleide_up
         close_cover:
           - service: cover.stop_cover
             entity_id: cover.lichtkuppel_ankleide
           - service: switch.turn_on
-            entity_id: switch.double_relay_switch_2x1_5kw_2
+            entity_id: switch.lichtkuppel_ankleide_down
         stop_cover:
           service: switch.turn_off
           entity_id:
-            - switch.double_relay_switch_2x1_5kw
-            - switch.double_relay_switch_2x1_5kw_2
+            - switch.lichtkuppel_ankleide_up
+            - switch.lichtkuppel_ankleide_down
+      lichtkuppel_flur:
+        device_class: window
+        friendly_name: Lichtkuppel Flur
+        availability_template: >
+          {{ not (is_state('switch.lichtkuppel_flur_up', 'unknown') or is_state('switch.lichtkuppel_flur_down', 'unknown')) }}
+        position_template: >
+          {{ is_state('binary_sensor.lichtkuppel_flur_access_control_window_door_is_open', 'on') * 100 }}
+        open_cover:
+          - service: cover.stop_cover
+            entity_id: cover.lichtkuppel_flur
+          - service: switch.turn_on
+            entity_id: switch.lichtkuppel_flur_up
+        close_cover:
+          - service: cover.stop_cover
+            entity_id: cover.lichtkuppel_flur
+          - service: switch.turn_on
+            entity_id: switch.lichtkuppel_flur_down
+        stop_cover:
+          service: switch.turn_off
+          entity_id:
+            - switch.lichtkuppel_flur_up
+            - switch.lichtkuppel_flur_down
 
 automation:
   - alias: Turn off Lichtkuppel switches after startup
@@ -60,10 +60,10 @@ automation:
     trigger:
       - platform: state
         entity_id:
-          - switch.double_relay_switch_2x1_5kw
-          - switch.double_relay_switch_2x1_5kw_2
-          - switch.double_relay_switch_2x1_5kw_3
-          - switch.double_relay_switch_2x1_5kw_2_2
+          - switch.lichtkuppel_ankleide_up
+          - switch.lichtkuppel_ankleide_down
+          - switch.lichtkuppel_flur_up
+          - switch.lichtkuppel_flur_down
         to: "on"
         for: "00:00:45"
     action:
