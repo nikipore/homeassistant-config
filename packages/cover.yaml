@@ -1,0 +1,81 @@
+cover:
+  - platform: template
+    covers:
+      lichtkuppel_flur:
+        device_class: window
+        friendly_name: Lichtkuppel Flur
+        availability_template: >
+          {{ not (is_state('switch.double_relay_switch_2x1_5kw_3', 'unknown') or is_state('switch.double_relay_switch_2x1_5kw_2_2', 'unknown')) }}
+        position_template: >
+          {{ is_state('binary_sensor.lichtkuppel_flur_access_control_window_door_is_open', 'on') * 100 }}
+        open_cover:
+          - service: cover.stop_cover
+            entity_id: cover.lichtkuppel_flur
+          - service: switch.turn_on
+            entity_id: switch.double_relay_switch_2x1_5kw_3
+        close_cover:
+          - service: cover.stop_cover
+            entity_id: cover.lichtkuppel_flur
+          - service: switch.turn_on
+            entity_id: switch.double_relay_switch_2x1_5kw_2_2
+        stop_cover:
+          service: switch.turn_off
+          entity_id:
+            - switch.double_relay_switch_2x1_5kw_3
+            - switch.double_relay_switch_2x1_5kw_2_2
+      lichtkuppel_ankleide:
+        device_class: window
+        friendly_name: Lichtkuppel Ankleide
+        availability_template: >
+          {{ not (is_state('switch.double_relay_switch_2x1_5kw', 'unknown') or is_state('switch.double_relay_switch_2x1_5kw_2', 'unknown')) }}
+        position_template: >
+          {{ is_state('binary_sensor.lichtkuppel_ankleide_access_control_window_door_is_open', 'on') * 100 }}
+        open_cover:
+          - service: cover.stop_cover
+            entity_id: cover.lichtkuppel_ankleide
+          - service: switch.turn_on
+            entity_id: switch.double_relay_switch_2x1_5kw
+        close_cover:
+          - service: cover.stop_cover
+            entity_id: cover.lichtkuppel_ankleide
+          - service: switch.turn_on
+            entity_id: switch.double_relay_switch_2x1_5kw_2
+        stop_cover:
+          service: switch.turn_off
+          entity_id:
+            - switch.double_relay_switch_2x1_5kw
+            - switch.double_relay_switch_2x1_5kw_2
+
+automation:
+  - alias: Turn off Lichtkuppel switches after startup
+    trigger:
+      - platform: homeassistant
+        event: start
+    action:
+      - service: cover.stop_cover
+        entity_id:
+          - cover.lichtkuppel_ankleide
+          - cover.lichtkuppel_flur
+  - alias: Turn off Lichtkuppel switches after 45 s
+    trigger:
+      - platform: state
+        entity_id:
+          - switch.double_relay_switch_2x1_5kw
+          - switch.double_relay_switch_2x1_5kw_2
+          - switch.double_relay_switch_2x1_5kw_3
+          - switch.double_relay_switch_2x1_5kw_2_2
+        to: "on"
+        for: "00:00:45"
+    action:
+      - service: switch.turn_off
+        target:
+          entity_id: >
+            {{ trigger.entity_id }}
+
+input_boolean:
+  auto_cooling_ankleide:
+    name: "Kühlautomatik Lichtkuppel (Ankleide)"
+    icon: mdi:snowflake
+  auto_cooling_flur:
+    name: "Kühlautomatik Lichtkuppel (Flur)"
+    icon: mdi:snowflake
