@@ -555,175 +555,248 @@ template:
   sensor:
     - name: ankleide_ventilate_relative_humidity_simulated
       state: >
-        {% if states('sensor.ankleide_absolutehumidity') in ('unknown', 'unavailable') %}
-          {{ states('sensor.ankleide_absolutehumidity') }}
-        {% elif states('sensor.wetter_absolutehumidity') in ('unknown', 'unavailable') %}
-          {{ states('sensor.wetter_absolutehumidity') }}
-        {% elif states('sensor.wetter_absolutehumidity') == 0 %}
-          0
-        {% else %}
-          {{ (states('sensor.thermostat_ankleide_humidity') | float(0) / states('sensor.ankleide_absolutehumidity') | float(0) * states('sensor.wetter_absolutehumidity') | float(0) ) | round(1) }}
-        {% endif %}
+        {% macro relative_humidity_simulated(relative_humidity_1, absolute_humidity_1, absolute_humidity_2) %}
+          {% if relative_humidity_1 in ('unknown', 'unavailable') %}
+            {{ relative_humidity_1 }}
+          {% elif absolute_humidity_1 in ('unknown', 'unavailable') %}
+            {{ absolute_humidity_1 }}
+          {% elif absolute_humidity_2 in ('unknown', 'unavailable') %}
+            {{ absolute_humidity_2 }}
+          {% elif absolute_humidity_1 == 0 %}
+            0
+          {% else %}
+            {{ (relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
+          {% endif %}
+        {% endmacro %}
+        {{ relative_humidity_simulated(states('sensor.thermostat_ankleide_humidity'), states('sensor.ankleide_absolutehumidity'), states('sensor.wetter_absolutehumidity')) }}
       device_class: humidity
       unit_of_measurement: "%"
       state_class: measurement
     - name: abstellkammer_terrasse_ventilate_relative_humidity_simulated
       state: >
-        {% if states('sensor.abstellkammer_terrasse_absolutehumidity') in ('unknown', 'unavailable') %}
-          {{ states('sensor.abstellkammer_terrasse_absolutehumidity') }}
-        {% elif states('sensor.wetter_absolutehumidity') in ('unknown', 'unavailable') %}
-          {{ states('sensor.wetter_absolutehumidity') }}
-        {% elif states('sensor.wetter_absolutehumidity') == 0 %}
-          0
-        {% else %}
-          {{ (states('sensor.multisensor_6_humidity') | float(0) / states('sensor.abstellkammer_terrasse_absolutehumidity') | float(0) * states('sensor.wetter_absolutehumidity') | float(0) ) | round(1) }}
-        {% endif %}
+        {% macro relative_humidity_simulated(relative_humidity_1, absolute_humidity_1, absolute_humidity_2) %}
+          {% if relative_humidity_1 in ('unknown', 'unavailable') %}
+            {{ relative_humidity_1 }}
+          {% elif absolute_humidity_1 in ('unknown', 'unavailable') %}
+            {{ absolute_humidity_1 }}
+          {% elif absolute_humidity_2 in ('unknown', 'unavailable') %}
+            {{ absolute_humidity_2 }}
+          {% elif absolute_humidity_1 == 0 %}
+            0
+          {% else %}
+            {{ (relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
+          {% endif %}
+        {% endmacro %}
+        {{ relative_humidity_simulated(states('sensor.multisensor_6_humidity'), states('sensor.abstellkammer_terrasse_absolutehumidity'), states('sensor.wetter_absolutehumidity')) }}
       device_class: humidity
       unit_of_measurement: "%"
       state_class: measurement
     - name: arbeitszimmer_ventilate_relative_humidity_simulated
       state: >
-        {% if states('sensor.arbeitszimmer_absolutehumidity') in ('unknown', 'unavailable') %}
-          {{ states('sensor.arbeitszimmer_absolutehumidity') }}
-        {% elif states('sensor.wetter_absolutehumidity') in ('unknown', 'unavailable') %}
-          {{ states('sensor.wetter_absolutehumidity') }}
-        {% elif states('sensor.wetter_absolutehumidity') == 0 %}
-          0
-        {% else %}
-          {{ (states('sensor.thermostat_arbeitszimmer_humidity') | float(0) / states('sensor.arbeitszimmer_absolutehumidity') | float(0) * states('sensor.wetter_absolutehumidity') | float(0) ) | round(1) }}
-        {% endif %}
+        {% macro relative_humidity_simulated(relative_humidity_1, absolute_humidity_1, absolute_humidity_2) %}
+          {% if relative_humidity_1 in ('unknown', 'unavailable') %}
+            {{ relative_humidity_1 }}
+          {% elif absolute_humidity_1 in ('unknown', 'unavailable') %}
+            {{ absolute_humidity_1 }}
+          {% elif absolute_humidity_2 in ('unknown', 'unavailable') %}
+            {{ absolute_humidity_2 }}
+          {% elif absolute_humidity_1 == 0 %}
+            0
+          {% else %}
+            {{ (relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
+          {% endif %}
+        {% endmacro %}
+        {{ relative_humidity_simulated(states('sensor.thermostat_arbeitszimmer_humidity'), states('sensor.arbeitszimmer_absolutehumidity'), states('sensor.wetter_absolutehumidity')) }}
       device_class: humidity
       unit_of_measurement: "%"
       state_class: measurement
     - name: badezimmer_ventilate_relative_humidity_simulated
       state: >
-        {% if states('sensor.badezimmer_absolutehumidity') in ('unknown', 'unavailable') %}
-          {{ states('sensor.badezimmer_absolutehumidity') }}
-        {% elif states('sensor.wetter_absolutehumidity') in ('unknown', 'unavailable') %}
-          {{ states('sensor.wetter_absolutehumidity') }}
-        {% elif states('sensor.wetter_absolutehumidity') == 0 %}
-          0
-        {% else %}
-          {{ (states('sensor.thermostat_badezimmer_humidity') | float(0) / states('sensor.badezimmer_absolutehumidity') | float(0) * states('sensor.wetter_absolutehumidity') | float(0) ) | round(1) }}
-        {% endif %}
+        {% macro relative_humidity_simulated(relative_humidity_1, absolute_humidity_1, absolute_humidity_2) %}
+          {% if relative_humidity_1 in ('unknown', 'unavailable') %}
+            {{ relative_humidity_1 }}
+          {% elif absolute_humidity_1 in ('unknown', 'unavailable') %}
+            {{ absolute_humidity_1 }}
+          {% elif absolute_humidity_2 in ('unknown', 'unavailable') %}
+            {{ absolute_humidity_2 }}
+          {% elif absolute_humidity_1 == 0 %}
+            0
+          {% else %}
+            {{ (relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
+          {% endif %}
+        {% endmacro %}
+        {{ relative_humidity_simulated(states('sensor.thermostat_badezimmer_humidity'), states('sensor.badezimmer_absolutehumidity'), states('sensor.wetter_absolutehumidity')) }}
       device_class: humidity
       unit_of_measurement: "%"
       state_class: measurement
     - name: duschbad_ventilate_relative_humidity_simulated
       state: >
-        {% if states('sensor.thermostat_duschbad_humidity') in ('unknown', 'unavailable') %}
-          {{ states('sensor.thermostat_duschbad_humidity') }}
-        {% elif states('sensor.wetter_absolutehumidity') in ('unknown', 'unavailable') %}
-          {{ states('sensor.wetter_absolutehumidity') }}
-        {% elif states('sensor.wetter_absolutehumidity') == 0 %}
-          0
-        {% else %}
-          {{ (states('sensor.thermostat_duschbad_humidity') | float(0) / states('sensor.duschbad_absolutehumidity') | float(0) * states('sensor.wetter_absolutehumidity') | float(0) ) | round(1) }}
-        {% endif %}
+        {% macro relative_humidity_simulated(relative_humidity_1, absolute_humidity_1, absolute_humidity_2) %}
+          {% if relative_humidity_1 in ('unknown', 'unavailable') %}
+            {{ relative_humidity_1 }}
+          {% elif absolute_humidity_1 in ('unknown', 'unavailable') %}
+            {{ absolute_humidity_1 }}
+          {% elif absolute_humidity_2 in ('unknown', 'unavailable') %}
+            {{ absolute_humidity_2 }}
+          {% elif absolute_humidity_1 == 0 %}
+            0
+          {% else %}
+            {{ (relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
+          {% endif %}
+        {% endmacro %}
+        {{ relative_humidity_simulated(states('sensor.thermostat_duschbad_humidity'), states('sensor.duschbad_absolutehumidity'), states('sensor.wetter_absolutehumidity')) }}
       device_class: humidity
       unit_of_measurement: "%"
       state_class: measurement
     - name: flur_ventilate_relative_humidity_simulated
       state: >
-        {% if states('sensor.flur_absolutehumidity') in ('unknown', 'unavailable') %}
-          {{ states('sensor.flur_absolutehumidity') }}
-        {% elif states('sensor.wetter_absolutehumidity') in ('unknown', 'unavailable') %}
-          {{ states('sensor.wetter_absolutehumidity') }}
-        {% elif states('sensor.wetter_absolutehumidity') == 0 %}
-          0
-        {% else %}
-          {{ (states('sensor.thermostat_flur_humidity') | float(0) / states('sensor.flur_absolutehumidity') | float(0) * states('sensor.wetter_absolutehumidity') | float(0) ) | round(1) }}
-        {% endif %}
+        {% macro relative_humidity_simulated(relative_humidity_1, absolute_humidity_1, absolute_humidity_2) %}
+          {% if relative_humidity_1 in ('unknown', 'unavailable') %}
+            {{ relative_humidity_1 }}
+          {% elif absolute_humidity_1 in ('unknown', 'unavailable') %}
+            {{ absolute_humidity_1 }}
+          {% elif absolute_humidity_2 in ('unknown', 'unavailable') %}
+            {{ absolute_humidity_2 }}
+          {% elif absolute_humidity_1 == 0 %}
+            0
+          {% else %}
+            {{ (relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
+          {% endif %}
+        {% endmacro %}
+        {{ relative_humidity_simulated(states('sensor.thermostat_flur_humidity'), states('sensor.flur_absolutehumidity'), states('sensor.wetter_absolutehumidity')) }}
       device_class: humidity
       unit_of_measurement: "%"
       state_class: measurement
     - name: keller_ventilate_relative_humidity_simulated
       state: >
-        {% if states('sensor.keller_absolutehumidity') in ('unknown', 'unavailable') %}
-          {{ states('sensor.keller_absolutehumidity') }}
-        {% elif states('sensor.wetter_absolutehumidity') in ('unknown', 'unavailable') %}
-          {{ states('sensor.wetter_absolutehumidity') }}
-        {% elif states('sensor.wetter_absolutehumidity') == 0 %}
-          0
-        {% else %}
-          {{ (states('sensor.temperature_sensor_keller_humidity') | float(0) / states('sensor.keller_absolutehumidity') | float(0) * states('sensor.wetter_absolutehumidity') | float(0) ) | round(1) }}
-        {% endif %}
+        {% macro relative_humidity_simulated(relative_humidity_1, absolute_humidity_1, absolute_humidity_2) %}
+          {% if relative_humidity_1 in ('unknown', 'unavailable') %}
+            {{ relative_humidity_1 }}
+          {% elif absolute_humidity_1 in ('unknown', 'unavailable') %}
+            {{ absolute_humidity_1 }}
+          {% elif absolute_humidity_2 in ('unknown', 'unavailable') %}
+            {{ absolute_humidity_2 }}
+          {% elif absolute_humidity_1 == 0 %}
+            0
+          {% else %}
+            {{ (relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
+          {% endif %}
+        {% endmacro %}
+        {{ relative_humidity_simulated(states('sensor.temperature_sensor_keller_humidity'), states('sensor.keller_absolutehumidity'), states('sensor.wetter_absolutehumidity')) }}
       device_class: humidity
       unit_of_measurement: "%"
       state_class: measurement
     - name: kuche_ventilate_relative_humidity_simulated
       state: >
-        {% if states('sensor.kuche_absolutehumidity') in ('unknown', 'unavailable') %}
-          {{ states('sensor.kuche_absolutehumidity') }}
-        {% elif states('sensor.wetter_absolutehumidity') in ('unknown', 'unavailable') %}
-          {{ states('sensor.wetter_absolutehumidity') }}
-        {% elif states('sensor.wetter_absolutehumidity') == 0 %}
-          0
-        {% else %}
-          {{ (states('sensor.thermostat_kuche_humidity') | float(0) / states('sensor.kuche_absolutehumidity') | float(0) * states('sensor.wetter_absolutehumidity') | float(0) ) | round(1) }}
-        {% endif %}
+        {% macro relative_humidity_simulated(relative_humidity_1, absolute_humidity_1, absolute_humidity_2) %}
+          {% if relative_humidity_1 in ('unknown', 'unavailable') %}
+            {{ relative_humidity_1 }}
+          {% elif absolute_humidity_1 in ('unknown', 'unavailable') %}
+            {{ absolute_humidity_1 }}
+          {% elif absolute_humidity_2 in ('unknown', 'unavailable') %}
+            {{ absolute_humidity_2 }}
+          {% elif absolute_humidity_1 == 0 %}
+            0
+          {% else %}
+            {{ (relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
+          {% endif %}
+        {% endmacro %}
+        {{ relative_humidity_simulated(states('sensor.thermostat_kuche_humidity'), states('sensor.kuche_absolutehumidity'), states('sensor.wetter_absolutehumidity')) }}
       device_class: humidity
       unit_of_measurement: "%"
       state_class: measurement
     - name: nino_ventilate_relative_humidity_simulated
       state: >
-        {% if states('sensor.nino_absolutehumidity') in ('unknown', 'unavailable') %}
-          {{ states('sensor.nino_absolutehumidity') }}
-        {% elif states('sensor.wetter_absolutehumidity') in ('unknown', 'unavailable') %}
-          {{ states('sensor.wetter_absolutehumidity') }}
-        {% elif states('sensor.wetter_absolutehumidity') == 0 %}
-          0
-        {% else %}
-          {{ (states('sensor.thermostat_nino_humidity') | float(0) / states('sensor.nino_absolutehumidity') | float(0) * states('sensor.wetter_absolutehumidity') | float(0) ) | round(1) }}
-        {% endif %}
+        {% macro relative_humidity_simulated(relative_humidity_1, absolute_humidity_1, absolute_humidity_2) %}
+          {% if relative_humidity_1 in ('unknown', 'unavailable') %}
+            {{ relative_humidity_1 }}
+          {% elif absolute_humidity_1 in ('unknown', 'unavailable') %}
+            {{ absolute_humidity_1 }}
+          {% elif absolute_humidity_2 in ('unknown', 'unavailable') %}
+            {{ absolute_humidity_2 }}
+          {% elif absolute_humidity_1 == 0 %}
+            0
+          {% else %}
+            {{ (relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
+          {% endif %}
+        {% endmacro %}
+        {{ relative_humidity_simulated(states('sensor.thermostat_nino_humidity'), states('sensor.nino_absolutehumidity'), states('sensor.wetter_absolutehumidity')) }}
       device_class: humidity
       unit_of_measurement: "%"
       state_class: measurement
     - name: noah_ventilate_relative_humidity_simulated
       state: >
-        {% if states('sensor.noah_absolutehumidity') in ('unknown', 'unavailable') %}
-          {{ states('sensor.noah_absolutehumidity') }}
-        {% elif states('sensor.wetter_absolutehumidity') in ('unknown', 'unavailable') %}
-          {{ states('sensor.wetter_absolutehumidity') }}
-        {% elif states('sensor.wetter_absolutehumidity') == 0 %}
-          0
-        {% else %}
-          {{ (states('sensor.thermostat_noah_humidity') | float(0) / states('sensor.noah_absolutehumidity') | float(0) * states('sensor.wetter_absolutehumidity') | float(0) ) | round(1) }}
-        {% endif %}
+        {% macro relative_humidity_simulated(relative_humidity_1, absolute_humidity_1, absolute_humidity_2) %}
+          {% if relative_humidity_1 in ('unknown', 'unavailable') %}
+            {{ relative_humidity_1 }}
+          {% elif absolute_humidity_1 in ('unknown', 'unavailable') %}
+            {{ absolute_humidity_1 }}
+          {% elif absolute_humidity_2 in ('unknown', 'unavailable') %}
+            {{ absolute_humidity_2 }}
+          {% elif absolute_humidity_1 == 0 %}
+            0
+          {% else %}
+            {{ (relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
+          {% endif %}
+        {% endmacro %}
+        {{ relative_humidity_simulated(states('sensor.thermostat_noah_humidity'), states('sensor.noah_absolutehumidity'), states('sensor.wetter_absolutehumidity')) }}
       device_class: humidity
       unit_of_measurement: "%"
       state_class: measurement
     - name: schlafzimmer_ventilate_relative_humidity_simulated
       state: >
-        {% if states('sensor.schlafzimmer_absolutehumidity') in ('unknown', 'unavailable') %}
-          {{ states('sensor.schlafzimmer_absolutehumidity') }}
-        {% elif states('sensor.wetter_absolutehumidity') in ('unknown', 'unavailable') %}
-          {{ states('sensor.wetter_absolutehumidity') }}
-        {% elif states('sensor.wetter_absolutehumidity') == 0 %}
-          0
-        {% else %}
-          {{ (states('sensor.thermostat_schlafzimmer_humidity') | float(0) / states('sensor.schlafzimmer_absolutehumidity') | float(0) * states('sensor.wetter_absolutehumidity') | float(0) ) | round(1) }}
-        {% endif %}
+        {% macro relative_humidity_simulated(relative_humidity_1, absolute_humidity_1, absolute_humidity_2) %}
+          {% if relative_humidity_1 in ('unknown', 'unavailable') %}
+            {{ relative_humidity_1 }}
+          {% elif absolute_humidity_1 in ('unknown', 'unavailable') %}
+            {{ absolute_humidity_1 }}
+          {% elif absolute_humidity_2 in ('unknown', 'unavailable') %}
+            {{ absolute_humidity_2 }}
+          {% elif absolute_humidity_1 == 0 %}
+            0
+          {% else %}
+            {{ (relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
+          {% endif %}
+        {% endmacro %}
+        {{ relative_humidity_simulated(states('sensor.thermostat_schlafzimmer_humidity'), states('sensor.schlafzimmer_absolutehumidity'), states('sensor.wetter_absolutehumidity')) }}
       device_class: humidity
       unit_of_measurement: "%"
       state_class: measurement
     - name: waschraum_ventilate_relative_humidity_simulated
       state: >
-        {{ (states('sensor.temperature_sensor_waschraum_humidity') | float(0) / states('sensor.waschraum_absolutehumidity') | float(0) * states('sensor.wetter_absolutehumidity') | float(0) ) | round(1) }}
+        {% macro relative_humidity_simulated(relative_humidity_1, absolute_humidity_1, absolute_humidity_2) %}
+          {% if relative_humidity_1 in ('unknown', 'unavailable') %}
+            {{ relative_humidity_1 }}
+          {% elif absolute_humidity_1 in ('unknown', 'unavailable') %}
+            {{ absolute_humidity_1 }}
+          {% elif absolute_humidity_2 in ('unknown', 'unavailable') %}
+            {{ absolute_humidity_2 }}
+          {% elif absolute_humidity_1 == 0 %}
+            0
+          {% else %}
+            {{ (relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
+          {% endif %}
+        {% endmacro %}
+        {{ relative_humidity_simulated(states('sensor.temperature_sensor_waschraum_humidity'), states('sensor.waschraum_absolutehumidity'), states('sensor.wetter_absolutehumidity')) }}
       device_class: humidity
       unit_of_measurement: "%"
       state_class: measurement
     - name: wohnzimmer_ventilate_relative_humidity_simulated
       state: >
-        {% if states('sensor.wohnzimmer_absolutehumidity') in ('unknown', 'unavailable') %}
-          {{ states('sensor.wohnzimmer_absolutehumidity') }}
-        {% elif states('sensor.wetter_absolutehumidity') in ('unknown', 'unavailable') %}
-          {{ states('sensor.wetter_absolutehumidity') }}
-        {% elif states('sensor.wetter_absolutehumidity') == 0 %}
-          0
-        {% else %}
-          {{ (states('sensor.thermostat_wohnzimmer_humidity') | float(0) / states('sensor.wohnzimmer_absolutehumidity') | float(0) * states('sensor.wetter_absolutehumidity') | float(0) ) | round(1) }}
-        {% endif %}
+        {% macro relative_humidity_simulated(relative_humidity_1, absolute_humidity_1, absolute_humidity_2) %}
+          {% if relative_humidity_1 in ('unknown', 'unavailable') %}
+            {{ relative_humidity_1 }}
+          {% elif absolute_humidity_1 in ('unknown', 'unavailable') %}
+            {{ absolute_humidity_1 }}
+          {% elif absolute_humidity_2 in ('unknown', 'unavailable') %}
+            {{ absolute_humidity_2 }}
+          {% elif absolute_humidity_1 == 0 %}
+            0
+          {% else %}
+            {{ (relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
+          {% endif %}
+        {% endmacro %}
+        {{ relative_humidity_simulated(states('sensor.thermostat_wohnzimmer_humidity'), states('sensor.wohnzimmer_absolutehumidity'), states('sensor.wetter_absolutehumidity')) }}
       device_class: humidity
       unit_of_measurement: "%"
       state_class: measurement
