@@ -7,6 +7,7 @@ thermal_comfort:
         sensor_types:
           - absolute_humidity
           - dew_point
+          - thermal_perception
           - simmer_index
           - simmer_zone
       - name: Abstellkammer Terrasse
@@ -16,6 +17,7 @@ thermal_comfort:
         sensor_types:
           - absolute_humidity
           - dew_point
+          - thermal_perception
           - simmer_index
           - simmer_zone
       - name: Ankleide
@@ -25,6 +27,7 @@ thermal_comfort:
         sensor_types:
           - absolute_humidity
           - dew_point
+          - thermal_perception
           - simmer_index
           - simmer_zone
       - name: Arbeitszimmer
@@ -34,6 +37,7 @@ thermal_comfort:
         sensor_types:
           - absolute_humidity
           - dew_point
+          - thermal_perception
           - simmer_index
           - simmer_zone
       - name: Badezimmer
@@ -43,6 +47,7 @@ thermal_comfort:
         sensor_types:
           - absolute_humidity
           - dew_point
+          - thermal_perception
           - simmer_index
           - simmer_zone
       - name: Duschbad
@@ -52,6 +57,7 @@ thermal_comfort:
         sensor_types:
           - absolute_humidity
           - dew_point
+          - thermal_perception
           - simmer_index
           - simmer_zone
       - name: Flur
@@ -61,6 +67,7 @@ thermal_comfort:
         sensor_types:
           - absolute_humidity
           - dew_point
+          - thermal_perception
           - simmer_index
           - simmer_zone
       - name: Keller
@@ -70,6 +77,7 @@ thermal_comfort:
         sensor_types:
           - absolute_humidity
           - dew_point
+          - thermal_perception
           - simmer_index
           - simmer_zone
       - name: Küche
@@ -79,6 +87,7 @@ thermal_comfort:
         sensor_types:
           - absolute_humidity
           - dew_point
+          - thermal_perception
           - simmer_index
           - simmer_zone
       - name: Nino
@@ -88,6 +97,7 @@ thermal_comfort:
         sensor_types:
           - absolute_humidity
           - dew_point
+          - thermal_perception
           - simmer_index
           - simmer_zone
       - name: Noah
@@ -97,6 +107,7 @@ thermal_comfort:
         sensor_types:
           - absolute_humidity
           - dew_point
+          - thermal_perception
           - simmer_index
           - simmer_zone
       - name: Schlafzimmer
@@ -106,6 +117,7 @@ thermal_comfort:
         sensor_types:
           - absolute_humidity
           - dew_point
+          - thermal_perception
           - simmer_index
           - simmer_zone
       - name: Waschraum
@@ -115,6 +127,7 @@ thermal_comfort:
         sensor_types:
           - absolute_humidity
           - dew_point
+          - thermal_perception
           - simmer_index
           - simmer_zone
       - name: Wetter
@@ -137,6 +150,7 @@ thermal_comfort:
         sensor_types:
           - absolute_humidity
           - dew_point
+          - thermal_perception
           - simmer_index
           - simmer_zone
 
