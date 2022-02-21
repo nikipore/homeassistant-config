@@ -1,7 +1,7 @@
 {
     "node-red": {
         "name": "node-red",
-        "version": "2.2.0",
+        "version": "2.2.1",
         "local": false,
         "user": false,
         "nodes": {
@@ -418,7 +418,7 @@
                     "alexa-home",
                     "alexa-home-resp"
                 ],
-                "enabled": false,
+                "enabled": true,
                 "local": false,
                 "user": false,
                 "module": "node-red-contrib-alexa-home-skill",
@@ -485,7 +485,7 @@
     },
     "node-red-contrib-home-assistant-websocket": {
         "name": "node-red-contrib-home-assistant-websocket",
-        "version": "0.42.4",
+        "version": "0.42.5",
         "local": false,
         "user": false,
         "nodes": {
@@ -1405,7 +1405,7 @@
     },
     "node-red-contrib-sun-position": {
         "name": "node-red-contrib-sun-position",
-        "version": "1.2.4",
+        "version": "2.1.1",
         "local": true,
         "user": true,
         "nodes": {
@@ -1510,151 +1510,22 @@
             }
         }
     },
-    "node-red-contrib-noop": {
-        "name": "node-red-contrib-noop",
-        "version": "1.1.0",
+    "node-red-contrib-hysteresis": {
+        "name": "node-red-contrib-hysteresis",
+        "version": "0.3.0",
         "local": true,
         "user": true,
         "nodes": {
-            "no-op": {
-                "name": "no-op",
+            "hysteresis": {
+                "name": "hysteresis",
                 "types": [
-                    "no-op"
+                    "hysteresis"
                 ],
                 "enabled": true,
                 "local": true,
                 "user": false,
-                "module": "node-red-contrib-noop",
-                "file": "/config/node-red/node_modules/node-red-contrib-noop/noop/noop.js"
-            }
-        }
-    },
-    "node-red-contrib-huemagic": {
-        "name": "node-red-contrib-huemagic",
-        "version": "4.1.0",
-        "local": true,
-        "user": true,
-        "nodes": {
-            "hue-bridge": {
-                "name": "hue-bridge",
-                "types": [
-                    "hue-bridge"
-                ],
-                "enabled": true,
-                "local": true,
-                "user": false,
-                "module": "node-red-contrib-huemagic",
-                "file": "/config/node-red/node_modules/node-red-contrib-huemagic/huemagic/hue-bridge-config.js"
-            },
-            "hue-bridge-node": {
-                "name": "hue-bridge-node",
-                "types": [
-                    "hue-bridge-node"
-                ],
-                "enabled": true,
-                "local": true,
-                "user": false,
-                "module": "node-red-contrib-huemagic",
-                "file": "/config/node-red/node_modules/node-red-contrib-huemagic/huemagic/hue-bridge.js"
-            },
-            "hue-magic": {
-                "name": "hue-magic",
-                "types": [
-                    "hue-magic"
-                ],
-                "enabled": true,
-                "local": true,
-                "user": false,
-                "module": "node-red-contrib-huemagic",
-                "file": "/config/node-red/node_modules/node-red-contrib-huemagic/huemagic/hue-magic.js"
-            },
-            "hue-light": {
-                "name": "hue-light",
-                "types": [
-                    "hue-light"
-                ],
-                "enabled": true,
-                "local": true,
-                "user": false,
-                "module": "node-red-contrib-huemagic",
-                "file": "/config/node-red/node_modules/node-red-contrib-huemagic/huemagic/hue-light.js"
-            },
-            "hue-group": {
-                "name": "hue-group",
-                "types": [
-                    "hue-group"
-                ],
-                "enabled": true,
-                "local": true,
-                "user": false,
-                "module": "node-red-contrib-huemagic",
-                "file": "/config/node-red/node_modules/node-red-contrib-huemagic/huemagic/hue-group.js"
-            },
-            "hue-scene": {
-                "name": "hue-scene",
-                "types": [
-                    "hue-scene"
-                ],
-                "enabled": true,
-                "local": true,
-                "user": false,
-                "module": "node-red-contrib-huemagic",
-                "file": "/config/node-red/node_modules/node-red-contrib-huemagic/huemagic/hue-scene.js"
-            },
-            "hue-buttons": {
-                "name": "hue-buttons",
-                "types": [
-                    "hue-buttons"
-                ],
-                "enabled": true,
-                "local": true,
-                "user": false,
-                "module": "node-red-contrib-huemagic",
-                "file": "/config/node-red/node_modules/node-red-contrib-huemagic/huemagic/hue-buttons.js"
-            },
-            "hue-motion": {
-                "name": "hue-motion",
-                "types": [
-                    "hue-motion"
-                ],
-                "enabled": true,
-                "local": true,
-                "user": false,
-                "module": "node-red-contrib-huemagic",
-                "file": "/config/node-red/node_modules/node-red-contrib-huemagic/huemagic/hue-motion.js"
-            },
-            "hue-temperature": {
-                "name": "hue-temperature",
-                "types": [
-                    "hue-temperature"
-                ],
-                "enabled": true,
-                "local": true,
-                "user": false,
-                "module": "node-red-contrib-huemagic",
-                "file": "/config/node-red/node_modules/node-red-contrib-huemagic/huemagic/hue-temperature.js"
-            },
-            "hue-brightness": {
-                "name": "hue-brightness",
-                "types": [
-                    "hue-brightness"
-                ],
-                "enabled": true,
-                "local": true,
-                "user": false,
-                "module": "node-red-contrib-huemagic",
-                "file": "/config/node-red/node_modules/node-red-contrib-huemagic/huemagic/hue-brightness.js"
-            },
-            "hue-rules": {
-                "name": "hue-rules",
-                "types": [
-                    "hue-rules"
-                ],
-                "enabled": true,
-                "local": true,
-                "user": false,
-                "module": "node-red-contrib-huemagic",
-                "file": "/config/node-red/node_modules/node-red-contrib-huemagic/huemagic/hue-rules.js"
+                "module": "node-red-contrib-hysteresis",
+                "file": "/config/node-red/node_modules/node-red-contrib-hysteresis/hysteresis.js"
             }
         }
     }

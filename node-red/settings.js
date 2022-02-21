@@ -35,7 +35,6 @@
  * - logging.console.level (log_level in the add-on configuration)
  * - httpNodeAuth (http_node settings in the add-on configuration)
  * - httpStaticAuth (http_static settings in the add-on configuration)
- * - requireHttps (require_ssl setting in the add-on configuration)
  * - httpNodeRoot (set fixed to `/endpoint` )
  *
  * If you like to change those settings, some are available via the add-on
@@ -163,6 +162,7 @@ module.exports = {
   // If not set, the following default order is used:
   paletteCategories: [
     "home_assistant",
+    "home_assistant entities",
     "subflows",
     "common",
     "function",
