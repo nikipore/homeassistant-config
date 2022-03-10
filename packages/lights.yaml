@@ -42,8 +42,8 @@ automation:
       - service: switch.turn_off
         target:
           entity_id: switch.licht_terrasse
-    id: 5d15ac34081241e5a8bd709424da664f
-  - alias: Motion-activated Switch (Küche)
+    id: 986d8fc3ada8f9a3189839d2a6129d61b86ffafb
+  - alias: Motion-activated switch (Küche)
     description: ""
     use_blueprint:
       path: local/motion_switch.yaml
@@ -54,8 +54,8 @@ automation:
         no_motion_wait: 170 # total: 180 seconds
         switch_target:
           entity_id: switch.steckdose_kueche_oberschrank
-    id: "1631694664177"
-  - alias: Motion-activated Switch (Ankleide)
+    id: 1172df0cb260b2ec865568f441cd7c5777916a3e
+  - alias: Motion-activated switch (Ankleide)
     description: ""
     use_blueprint:
       path: local/motion_switch.yaml
@@ -66,8 +66,8 @@ automation:
         no_motion_wait: 30 # total: 60 seconds
         switch_target:
           entity_id: switch.licht_ankleide
-    id: "1631993327255"
-  - alias: Motion-activated Switch (Abstellkammer)
+    id: de06c94d9f653c5bec9a63f691f695d00be55ceb
+  - alias: Motion-activated switch (Abstellkammer)
     description: ""
     use_blueprint:
       path: local/motion_switch.yaml
@@ -78,7 +78,7 @@ automation:
         no_motion_wait: 50 # total: 60 seconds
         switch_target:
           entity_id: switch.licht_abstellkammer
-    id: "1631993327256"
+    id: 17d77010fb15ef2b31b998f84061ba712feae824
   - alias: Christmas lights (turn on)
     trigger:
       - platform: time
@@ -90,6 +90,7 @@ automation:
       - service: switch.turn_on
         target:
           entity_id: switch.popp_smart_outdoor_plug_ip44_rated
+    id: 9a72ce70359b6e1d631acc5ef42694d338945960
   - alias: Christmas lights (turn off)
     trigger:
       - platform: sun
@@ -101,6 +102,7 @@ automation:
       - service: switch.turn_off
         target:
           entity_id: switch.popp_smart_outdoor_plug_ip44_rated
+    id: e6be6b315bde7594302aba720ef4fcf86f54870a
 
 homeassistant:
   customize:

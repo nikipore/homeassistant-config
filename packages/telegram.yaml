@@ -52,6 +52,7 @@ automation:
       - service: alert.turn_off
         target:
           entity_id: alert.storm
+    id: 6ff31fd57341aa02d0931f1e04a72589ecdab9e5
   - alias: "Telegram callback to close marquee"
     trigger:
       - platform: event
@@ -62,3 +63,4 @@ automation:
       - service: cover.close_cover
         target:
           entity_id: cover.roller_shutter_markise
+    id: 0f0f8b39b928a528896ffdaa127f1f9ef14cea1b

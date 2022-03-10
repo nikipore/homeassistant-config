@@ -11,6 +11,17 @@ template:
       unit_of_measurement: "days"
       icon: mdi:clock-end
 
+automation:
+  - alias: Restart certificate expiry integration on (re)start of Home Assistant
+    trigger:
+      - platform: homeassistant
+        event: start
+    action:
+      - service: homeassistant.reload_config_entry
+        data:
+          entry_id: 26f0e15c2014316842e166fc7592ec11
+    id: f768b468519b5e9c43e40b3d4dbbfb28ffa6aae7
+
 homeassistant:
   customize:
     binary_sensor.cert_expiry_close:

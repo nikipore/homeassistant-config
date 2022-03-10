@@ -56,6 +56,7 @@ automation:
         entity_id:
           - cover.lichtkuppel_ankleide
           - cover.lichtkuppel_flur
+    id: 273efb2ab2a6225f5accb803d52f3441ad99e6b1
   - alias: Turn off Lichtkuppel switches after 45 s
     trigger:
       - platform: state
@@ -71,6 +72,7 @@ automation:
         target:
           entity_id: >
             {{ trigger.entity_id }}
+    id: 7c90b4caff834c3036d746a21b50807fe655b844
 
 input_boolean:
   auto_cooling_ankleide:
