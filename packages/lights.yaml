@@ -67,6 +67,18 @@ automation:
         switch_target:
           entity_id: switch.licht_ankleide
     id: "1631993327255"
+  - alias: Motion-activated Switch (Abstellkammer)
+    description: ""
+    use_blueprint:
+      path: local/motion_switch.yaml
+      input:
+        motion_entity: binary_sensor.bewegungssensor_abstellkammer_home_security_motion_detection
+        illuminance_entity: sensor.bewegungssensor_abstellkammer_illuminance
+        max_illuminance: 100
+        no_motion_wait: 50 # total: 60 seconds
+        switch_target:
+          entity_id: switch.licht_abstellkammer
+    id: "1631993327256"
   - alias: Christmas lights (turn on)
     trigger:
       - platform: time
