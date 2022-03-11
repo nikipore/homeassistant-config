@@ -51,7 +51,7 @@ automation:
         motion_entity: binary_sensor.motion_sensor_kueche_home_security_motion_detection
         illuminance_entity: sensor.motion_sensor_kueche_illuminance
         max_illuminance: 300
-        no_motion_wait: 170 # total: 180 seconds
+        no_motion_wait: 60 # total: 180 seconds
         switch_target:
           entity_id: switch.steckdose_kueche_oberschrank
     id: 1172df0cb260b2ec865568f441cd7c5777916a3e
@@ -75,10 +75,22 @@ automation:
         motion_entity: binary_sensor.bewegungssensor_abstellkammer_home_security_motion_detection
         illuminance_entity: sensor.bewegungssensor_abstellkammer_illuminance
         max_illuminance: 100
-        no_motion_wait: 50 # total: 60 seconds
+        no_motion_wait: 30 # total: 60 seconds
         switch_target:
           entity_id: switch.licht_abstellkammer
     id: 17d77010fb15ef2b31b998f84061ba712feae824
+  - alias: Motion-activated switch (Abstellkammer Terrasse)
+    description: ""
+    use_blueprint:
+      path: local/motion_switch.yaml
+      input:
+        motion_entity: binary_sensor.bewegungssensor_abstellkammer_terrasse_home_security_motion_detection
+        illuminance_entity: sensor.bewegungssensor_abstellkammer_terrasse_illuminance
+        max_illuminance: 100
+        no_motion_wait: 30 # total: 60 seconds
+        switch_target:
+          entity_id: switch.licht_abstellkammer_terrasse
+    id: 5515115774a657a7926c70b2f2d5bbc6e1fc65e4
   - alias: Christmas lights (turn on)
     trigger:
       - platform: time
