@@ -12,11 +12,13 @@ template:
       icon: mdi:clock-end
 
 automation:
-  - alias: Restart certificate expiry integration on (re)start of Home Assistant
+  - alias: Restart certificate expiry integration on (re)start of Home Assistant (with a delay)
     trigger:
       - platform: homeassistant
         event: start
     action:
+      - delay:
+          seconds: 15
       - service: homeassistant.reload_config_entry
         data:
           entry_id: 26f0e15c2014316842e166fc7592ec11
