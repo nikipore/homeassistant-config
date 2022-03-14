@@ -193,8 +193,7 @@ module.exports = {
 
   // User additions
   contextStorage: {
-    default: {
-        module: "localfilesystem"
-    }
+    store: {module: "localfilesystem"},
+    default: {module: "memory"}
   }
 };
