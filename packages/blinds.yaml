@@ -52,6 +52,7 @@ input_boolean:
     icon: mdi:cog-refresh-outline
   blind_control_auto_arbeitszimmer:
     name: "Rolladensteuerung: Sonnenstandsteuerung automatisch (Arbeitszimmer)"
+    icon: mdi:cog-refresh-outline
   blind_control_on_global:
     name: "Rolladensteuerung: an"
     icon: mdi:car-clutch
