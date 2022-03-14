@@ -190,4 +190,11 @@ module.exports = {
       enabled: false,
     },
   },
+
+  // User additions
+  contextStorage: {
+    default: {
+        module: "localfilesystem"
+    }
+  }
 };

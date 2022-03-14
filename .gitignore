@@ -3,11 +3,12 @@
 .cloud
 .google.token
 custom_components
-node-red/node_modules/*
+node-red/context/**
+node-red/node_modules/**
 themes
 tts
 www
-zigbee2mqtt/*
+zigbee2mqtt/**
 
 # Select files.
 !zigbee2mqtt/devices.yaml
@@ -22,8 +23,11 @@ __pycache__
 *.db-*
 harmony_*.conf
 *.pem
+node-red/.config.nodes.json*
 node-red/.config.users.json*
+node-red/.flows.json.backup
 node-red/node-red-contrib-home-assistant-websocket.json
+node-red/package-lock.json*
 
 # Ensure these YAML files are ignored, otherwise your secret data/credentials will leak.
 ip_bans.yaml

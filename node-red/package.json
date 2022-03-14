@@ -5,7 +5,6 @@
     "private": true,
     "dependencies": {
         "node-red-contrib-hysteresis": "~0.3.0",
-        "node-red-contrib-noop": "~1.1.0",
-        "node-red-contrib-sun-position": "~2.1.1"
+        "node-red-contrib-noop": "~1.1.0"
     }
 }
