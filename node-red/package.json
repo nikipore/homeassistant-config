@@ -4,7 +4,7 @@
     "version": "0.0.1",
     "private": true,
     "dependencies": {
-        "node-red-contrib-hysteresis": "~0.3.0",
+        "node-red-contrib-edge-trigger": "~1.0.1",
         "node-red-contrib-noop": "~1.1.0"
     }
 }
