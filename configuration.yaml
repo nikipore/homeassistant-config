@@ -9,6 +9,8 @@ script: !include scripts.yaml
 sensor: !include sensors.yaml
 timer: !include timers.yaml
 
+python_script:
+
 frontend:
   themes: !include_dir_merge_named themes
 
