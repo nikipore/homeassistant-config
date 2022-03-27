@@ -1,0 +1,79 @@
+waste_collection_schedule:
+  sources:
+    - name: ics
+      args:
+        url: "https://www.elw.de/fileadmin/elw/php/downloads.php?func=ical&obj=%7BB72AAC7D-560E-445D-841C-2AFEDAAFB099%7D&location=0"
+      customize:
+        - type: "ELW - Altpapier"
+          alias: "Altpapier"
+          icon: mdi:newspaper-variant
+        - type: "ELW - Baumsammlung"
+          alias: "Baumsammlung"
+          icon: mdi:hexagram
+        - type: "ELW - Bioabfall"
+          alias: "Bioabfall"
+          icon: mdi:spa
+        - type: "ELW - Restabfall"
+          alias: "Restabfall"
+          icon: mdi:trash-can
+        - type: "ELW - Wertstoffe"
+          alias: "Wertstoffe"
+          icon: mdi:recycle
+
+sensor:
+  - platform: waste_collection_schedule
+    name: waste_collection_next
+    details_format: "upcoming"
+    add_days_to: true
+    value_template: "{% if value.daysTo == 0 %}heute{% elif value.daysTo == 1 %}morgen{% else %}in {{value.daysTo}} Tagen{% endif %} ({{value.types|join(', ')}})"
+  - platform: waste_collection_schedule
+    name: waste_collection_paper
+    types:
+      - "Altpapier"
+    details_format: "upcoming"
+    add_days_to: true
+    value_template: "{% if value.daysTo == 0 %}heute{% elif value.daysTo == 1 %}morgen{% else %}in {{value.daysTo}} Tagen{% endif %}"
+  - platform: waste_collection_schedule
+    name: waste_collection_xmas
+    types:
+      - "Baumsammlung"
+    details_format: "upcoming"
+    add_days_to: true
+    value_template: "{% if value.daysTo == 0 %}heute{% elif value.daysTo == 1 %}morgen{% else %}in {{value.daysTo}} Tagen{% endif %} ({{value.types|join(', ')}})"
+  - platform: waste_collection_schedule
+    name: waste_collection_bio
+    types:
+      - "Bioabfall"
+    details_format: "upcoming"
+    add_days_to: true
+    value_template: "{% if value.daysTo == 0 %}heute{% elif value.daysTo == 1 %}morgen{% else %}in {{value.daysTo}} Tagen{% endif %}"
+  - platform: waste_collection_schedule
+    name: waste_collection_rest
+    types:
+      - "Restabfall"
+    details_format: "upcoming"
+    add_days_to: true
+    value_template: "{% if value.daysTo == 0 %}heute{% elif value.daysTo == 1 %}morgen{% else %}in {{value.daysTo}} Tagen{% endif %}"
+  - platform: waste_collection_schedule
+    name: waste_collection_recycling
+    types:
+      - "Wertstoffe"
+    details_format: "upcoming"
+    add_days_to: true
+    value_template: "{% if value.daysTo == 0 %}heute{% elif value.daysTo == 1 %}morgen{% else %}in {{value.daysTo}} Tagen{% endif %}"
+
+homeassistant:
+  customize:
+    sensor.waste_collection_next:
+      friendly_name: "nächste Leerung"
+      icon: mdi:calendar-clock
+    sensor.waste_collection_paper:
+      friendly_name: "Altpapier"
+    sensor.waste_collection_xmas:
+      friendly_name: "Baumsammlung"
+    sensor.waste_collection_bio:
+      friendly_name: "Bioabfall"
+    sensor.waste_collection_rest:
+      friendly_name: "Restabfall"
+    sensor.waste_collection_recycling:
+      friendly_name: "Wertstoffe"
