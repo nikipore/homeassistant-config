@@ -23,6 +23,7 @@ __pycache__
 *.db-*
 harmony_*.conf
 *.pem
+.shopping_list.json
 node-red/.config.nodes.json*
 node-red/.config.users.json*
 node-red/.flows.json.backup
