@@ -37,7 +37,7 @@ automation:
   - alias: "B-Hyve: Update next watering start & rain delay finish"
     trigger:
       - platform: state
-        entity_id: switch.bhyve_zone_terrasse, switch.bhyve_ventile_1_rain_delay
+        entity_id: switch.bhyve_zone_terrasse, switch.bhyve_ventil_1_rain_delay
       - platform: homeassistant
         event: start
     action:
