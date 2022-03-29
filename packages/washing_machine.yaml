@@ -1,11 +1,3 @@
-input_select:
-  washing_machine_status:
-    name: "Waschmaschine: Status"
-    options:
-      - aus
-      - arbeitet
-      - fertig
-
 sensor:
   - platform: average
     name: washing_machine_power
