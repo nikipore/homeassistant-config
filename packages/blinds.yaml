@@ -92,65 +92,74 @@ input_select:
     name: "Rolladensteuerung: Sonnenstandsteuerung"
     icon: mdi:weather-partly-snowy
     options:
-      - "0 (aus)"
-      - "1 (Winter)"
-      - "2 (Sommer)"
+      - "aus"
+      - "Winter"
+      - "Sonnenlicht minimieren"
+      - "Sommer"
   blind_control_mode_kueche:
     name: "Rolladensteuerung: Sonnenstandsteuerung (Küche)"
     icon: mdi:weather-partly-snowy
     options:
-      - "0 (aus)"
-      - "1 (Winter)"
-      - "2 (Sommer)"
+      - "aus"
+      - "Winter"
+      - "Sonnenlicht minimieren"
+      - "Sommer"
   blind_control_mode_wohnzimmer:
     name: "Rolladensteuerung: Sonnenstandsteuerung (Wohnzimmer)"
     icon: mdi:weather-partly-snowy
     options:
-      - "0 (aus)"
-      - "1 (Winter)"
-      - "2 (Sommer)"
+      - "aus"
+      - "Winter"
+      - "Sonnenlicht minimieren"
+      - "Sommer"
   blind_control_mode_schlafzimmer:
     name: "Rolladensteuerung: Sonnenstandsteuerung (Schlafzimmer)"
     icon: mdi:weather-partly-snowy
     options:
-      - "0 (aus)"
-      - "1 (Winter)"
-      - "2 (Sommer)"
+      - "aus"
+      - "Winter"
+      - "Sonnenlicht minimieren"
+      - "Sommer"
   blind_control_mode_badezimmer:
     name: "Rolladensteuerung: Sonnenstandsteuerung (Badezimmer)"
     icon: mdi:weather-partly-snowy
     options:
-      - "0 (aus)"
-      - "1 (Winter)"
-      - "2 (Sommer)"
+      - "aus"
+      - "Winter"
+      - "Sonnenlicht minimieren"
+      - "Sommer"
   blind_control_mode_duschbad:
     name: "Rolladensteuerung: Sonnenstandsteuerung (Duschbad)"
     icon: mdi:weather-partly-snowy
     options:
-      - "0 (aus)"
-      - "1 (Winter)"
-      - "2 (Sommer)"
+      - "aus"
+      - "Winter"
+      - "Sonnenlicht minimieren"
+      - "Sommer"
   blind_control_mode_nino:
     name: "Rolladensteuerung: Sonnenstandsteuerung (Nino)"
     icon: mdi:weather-partly-snowy
     options:
-      - "0 (aus)"
-      - "1 (Winter)"
-      - "2 (Sommer)"
+      - "aus"
+      - "Winter"
+      - "Sonnenlicht minimieren"
+      - "Sommer"
   blind_control_mode_noah:
     name: "Rolladensteuerung: Sonnenstandsteuerung (Noah)"
     icon: mdi:weather-partly-snowy
     options:
-      - "0 (aus)"
-      - "1 (Winter)"
-      - "2 (Sommer)"
+      - "aus"
+      - "Winter"
+      - "Sonnenlicht minimieren"
+      - "Sommer"
   blind_control_mode_arbeitszimmer:
     name: "Rolladensteuerung: Sonnenstandsteuerung (Arbeitszimmer)"
     icon: mdi:weather-partly-snowy
     options:
-      - "0 (aus)"
-      - "1 (Winter)"
-      - "2 (Sommer)"
+      - "aus"
+      - "Winter"
+      - "Sonnenlicht minimieren"
+      - "Sommer"
 
 input_number:
   blind_control_position_global:
