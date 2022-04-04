@@ -14,19 +14,19 @@ binary_sensor:
     province: HE
 
 template:
-  binary_sensor:
-    - name: is_workday_today_user
-      state: >
-        {{ is_state('calendar.ha_feiertage', 'off') }}
-    - name: is_workday_tomorrow_user
-      state: >
-        {{ as_timestamp(now().date() + timedelta(days=1)) != as_timestamp(state_attr('calendar.ha_feiertage', 'start_time')) }}
-    - name: is_workday_today
-      state: >
-        {{ is_state('binary_sensor.is_workday_today_builtin', 'on') and is_state('binary_sensor.is_workday_today_user', 'on') }}
-    - name: is_workday_tomorrow
-      state: >
-        {{ is_state('binary_sensor.is_workday_tomorrow_builtin', 'on') and is_state('binary_sensor.is_workday_tomorrow_user', 'on') }}
+  - binary_sensor:
+      - name: is_workday_today_user
+        state: >
+          {{ is_state('calendar.ha_feiertage', 'off') }}
+      - name: is_workday_tomorrow_user
+        state: >
+          {{ as_timestamp(now().date() + timedelta(days=1)) != as_timestamp(state_attr('calendar.ha_feiertage', 'start_time')) }}
+      - name: is_workday_today
+        state: >
+          {{ is_state('binary_sensor.is_workday_today_builtin', 'on') and is_state('binary_sensor.is_workday_today_user', 'on') }}
+      - name: is_workday_tomorrow
+        state: >
+          {{ is_state('binary_sensor.is_workday_tomorrow_builtin', 'on') and is_state('binary_sensor.is_workday_tomorrow_user', 'on') }}
 
 homeassistant:
   customize:

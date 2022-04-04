@@ -1,15 +1,15 @@
 template:
-  binary_sensor:
-    - name: cert_expiry_close
-      state: >
-        {{ states('sensor.cert_expiry_days_left') | int(0) <= 7 }}
-      icon: mdi:clock-alert-outline
-  sensor:
-    - name: cert_expiry_days_left
-      state: >
-        {{ (as_timestamp(states('sensor.cert_expiry_timestamp_nikipore_duckdns_org'), 0) - as_timestamp(now())) // (24 * 3600) }}
-      unit_of_measurement: "days"
-      icon: mdi:clock-end
+  - binary_sensor:
+      - name: cert_expiry_close
+        state: >
+          {{ states('sensor.cert_expiry_days_left') | int(0) <= 7 }}
+        icon: mdi:clock-alert-outline
+    sensor:
+      - name: cert_expiry_days_left
+        state: >
+          {{ (as_timestamp(states('sensor.cert_expiry_timestamp_nikipore_duckdns_org'), 0) - as_timestamp(now())) // (24 * 3600) }}
+        unit_of_measurement: "days"
+        icon: mdi:clock-end
 
 automation:
   - alias: Restart certificate expiry integration on (re)start of Home Assistant (with a delay)
