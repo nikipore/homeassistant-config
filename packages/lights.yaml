@@ -2,7 +2,7 @@ light:
   - platform: group
     name: Arbeitszimmer
     entities:
-      - light.color_temperature_light_1
+      - light.arbeitszimmer_deckenleuchte
   - platform: group
     name: Küche
     entities:
@@ -60,8 +60,8 @@ automation:
     use_blueprint:
       path: local/motion_switch.yaml
       input:
-        motion_entity: binary_sensor.hue_motion_sensor_1_motion
-        illuminance_entity: sensor.hue_motion_sensor_1_illuminance
+        motion_entity: binary_sensor.ankleide_motion_sensor_occupancy
+        illuminance_entity: sensor.ankleide_motion_sensor_illuminance_lux
         max_illuminance: 100
         no_motion_wait: 30 # total: 60 seconds
         switch_target:
