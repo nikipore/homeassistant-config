@@ -22,9 +22,9 @@ light:
   - platform: group
     name: Schlafzimmer
     entities:
-      - light.hue_ambiance_lamp_1
-      - light.hue_ambiance_lamp_2
-      - light.hue_ambiance_lamp_3
+      - light.schlafzimmer_1
+      - light.schlafzimmer_2
+      - light.schlafzimmer_3
   - platform: group
     name: Wohnzimmer
     entities:

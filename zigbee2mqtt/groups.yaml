@@ -1,1 +1,6 @@
-{}
+'1':
+  friendly_name: schlafzimmer
+  devices:
+    - 0x0017880104e2a1a3/11
+    - 0x0017880103946a27/11
+    - 0x00178801039462d5/11
