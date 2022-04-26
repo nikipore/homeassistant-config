@@ -19,3 +19,8 @@
 '0x001788010968cec1':
   friendly_name: schlafzimmer-dimmer-jan
   legacy: true
+'0x0017880109694ca5':
+  friendly_name: kueche-dimmer
+  legacy: true
+'0x00158d0005bcb6d2':
+  friendly_name: kueche-deckenleuchte

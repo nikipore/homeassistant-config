@@ -6,7 +6,7 @@ light:
   - platform: group
     name: Küche
     entities:
-      - light.color_temperature_light_1_2
+      - light.kueche_deckenleuchte
   - platform: group
     name: Nino
     entities:
