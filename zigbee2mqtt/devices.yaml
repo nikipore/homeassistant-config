@@ -26,3 +26,29 @@
   friendly_name: kueche-deckenleuchte
 '0x00158d0001fe573e':
   friendly_name: luftfilter
+'0x00124b0024c8bb58':
+  friendly_name: router-wohnzimmer
+'0x00124b0024c9200d':
+  friendly_name: router-noah
+'0x00124b0024ca7af1':
+  friendly_name: router-arbeitszimmer
+'0x00124b0024ca848b':
+  friendly_name: router-schlafzimmer
+'0x00178801038929b4':
+  friendly_name: nino-3
+'0x0017880103b9624b':
+  friendly_name: nino-2
+'0x0017880103b83ba1':
+  friendly_name: nino-1
+'0x0017880102c3143f':
+  friendly_name: nino-dimmer
+  legacy: true
+'0x0017880103204d45':
+  friendly_name: noah-1
+'0x00178801038746d4':
+  friendly_name: noah-2
+'0x00178801035073df':
+  friendly_name: noah-3
+'0x0017880103e7b1fc':
+  friendly_name: noah-dimmer
+  legacy: true

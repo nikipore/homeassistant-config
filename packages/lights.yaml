@@ -10,15 +10,15 @@ light:
   - platform: group
     name: Nino
     entities:
-      - light.hue_color_lamp_1_2
-      - light.hue_color_lamp_2_2
-      - light.hue_color_lamp_3_2
+      - light.nino_1
+      - light.nino_2
+      - light.nino_3
   - platform: group
     name: Noah
     entities:
-      - light.hue_color_lamp_1
-      - light.hue_color_lamp_2
-      - light.hue_color_lamp_3
+      - light.noah_1
+      - light.noah_2
+      - light.noah_3
   - platform: group
     name: Schlafzimmer
     entities:
