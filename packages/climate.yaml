@@ -75,41 +75,6 @@ input_select:
       - "off"
 
 automation:
-  - alias: Reset global thermostat mode
-    trigger:
-      - platform: state
-        entity_id: input_select.climate_mode_global_reset
-    condition:
-      - condition: not
-        conditions: >
-          {{ is_state(trigger.entity_id, '<bitte wählen>') }}
-    action:
-      - service: climate.set_hvac_mode
-        entity_id: all
-        data:
-          hvac_mode: >
-            {{ states(trigger.entity_id) | string }}
-      - service: input_select.select_first
-        target:
-          entity_id: "{{ trigger.entity_id }}"
-    id: c31754e1a7d8f5d17a13a4fff96c94c13e0d6952
-  - alias: Reset global thermostat mode (daily)
-    trigger:
-      - platform: time
-        at: "17:45:00"
-    variables:
-      input_select_entity: input_select.climate_mode_global_reset_daily
-    condition:
-      - condition: not
-        conditions: >
-          {{ is_state(input_select_entity, '<bitte wählen>') }}
-    action:
-      - service: climate.set_hvac_mode
-        entity_id: all
-        data:
-          hvac_mode: >
-            {{ states(input_select_entity) | string }}
-    id: 657da4df880291fbbc78f7647b0a478b67fd8550
   - alias: Window open, climate off after a defined time (Arbeitszimmer)
     description: ""
     use_blueprint:
