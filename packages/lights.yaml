@@ -62,7 +62,7 @@ automation:
       input:
         motion_entity: binary_sensor.ankleide_motion_sensor_occupancy
         illuminance_entity: sensor.ankleide_motion_sensor_illuminance_lux
-        max_illuminance: 100
+        max_illuminance: 50
         no_motion_wait: 30 # total: 60 seconds
         switch_target:
           entity_id: switch.licht_ankleide
@@ -74,7 +74,7 @@ automation:
       input:
         motion_entity: binary_sensor.bewegungssensor_abstellkammer_home_security_motion_detection
         illuminance_entity: sensor.bewegungssensor_abstellkammer_illuminance
-        max_illuminance: 100
+        max_illuminance: 50
         no_motion_wait: 30 # total: 60 seconds
         switch_target:
           entity_id: switch.licht_abstellkammer
@@ -86,7 +86,7 @@ automation:
       input:
         motion_entity: binary_sensor.bewegungssensor_abstellkammer_terrasse_home_security_motion_detection
         illuminance_entity: sensor.bewegungssensor_abstellkammer_terrasse_illuminance
-        max_illuminance: 100
+        max_illuminance: 50
         no_motion_wait: 30 # total: 60 seconds
         switch_target:
           entity_id: switch.licht_abstellkammer_terrasse
