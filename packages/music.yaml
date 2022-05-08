@@ -3,10 +3,12 @@ automation:
     trigger:
       - platform: state
         entity_id: media_player.wohnzimmer
-        to: playing
+        to: "playing"
+    condition:
+      condition: state
+      entity_id: switch.wohnzimmer_musik
+      state: "off"
     action:
-      - condition: and
-        conditions: "{{ is_state('switch.wohnzimmer_musik', 'off') }}"
       - service: media_player.media_pause
         entity_id: media_player.wohnzimmer
       - service: switch.turn_on
