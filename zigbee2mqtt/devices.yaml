@@ -52,3 +52,16 @@
 '0x0017880103e7b1fc':
   friendly_name: noah-dimmer
   legacy: true
+'0x0017880103e185e6':
+  friendly_name: wohnzimmer-regal
+'0x0017880103892bd7':
+  friendly_name: wohnimmer-vitrine
+'0x00178801038909e6':
+  friendly_name: wohnzimmer-tv-rechts
+'0x00178801067ccfea':
+  friendly_name: wohnzimmer-kamin
+'0x00178801047a8f0f':
+  friendly_name: wohnzimmer-tv-links
+'0x0017880102c20295':
+  friendly_name: wohnzimmer-dimmer
+  legacy: true

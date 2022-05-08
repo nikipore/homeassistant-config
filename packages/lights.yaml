@@ -28,11 +28,11 @@ light:
   - platform: group
     name: Wohnzimmer
     entities:
-      - light.hue_color_floor_1
-      - light.hue_go_1
-      - light.hue_lightstrip_plus_1
-      - light.hue_color_lamp_1_3
-      - light.hue_color_lamp_1_4
+      - light.wohnzimmer_kamin
+      - light.wohnzimmer_regal
+      - light.wohnzimmer_tv_links
+      - light.wohnzimmer_tv_rechts
+      - light.wohnimmer_vitrine
 automation:
   - alias: Turn off light at night (Terrasse)
     trigger:
