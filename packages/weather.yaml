@@ -46,12 +46,6 @@ template:
         state: >
           {{ state_attr('sun.sun', 'elevation') }}
         icon: mdi:weather-sunset-up
-      - name: weather_hourly_forecast_index_next_rising
-        state: >
-          {{ max(0, (as_timestamp(state_attr('sun.sun', 'next_rising')) - as_timestamp(state_attr('weather.dwd_weather_wiesbaden_biebrich_1h', 'forecast')[0]['datetime'])) // 3600) }}
-      - name: weather_hourly_forecast_index_next_setting
-        state: >
-          {{ max(0, (as_timestamp(state_attr('sun.sun', 'next_setting')) - as_timestamp(state_attr('weather.dwd_weather_wiesbaden_biebrich_1h', 'forecast')[0]['datetime'])) // 3600) }}
       - name: weather_latest_update
         state: >
           {{ state_attr('weather.dwd_weather_wiesbaden_biebrich_1h', 'latest_update_utc') }}
@@ -92,17 +86,35 @@ template:
         state: >
           {{ states('sensor.temperature_wiesbaden_biebrich_1h') }}
         device_class: temperature
+      - name: weather_forecast_temperature_interpolated
+        state_class: measurement
+        unit_of_measurement: "°C"
+        state: >
+          {% set temperature = state_attr('sensor.temperature_wiesbaden_biebrich_1h', 'data') %}
+          {% set t = now() %}
+          {% set index = ((as_timestamp(t) - as_timestamp(temperature[0]['datetime'])) // 3600) | int %}
+          {% if index < 0 %}
+            {% set result = temperature[0]['value'] %}
+          {% else %}
+            {% set result = temperature[index]['value'] + (temperature[index+1]['value'] - temperature[index]['value']) * t.minute / 60 %}
+          {% endif %}
+          {{ result | round(1) }}
+        device_class: temperature
       - name: weather_forecast_temperature_high
         state_class: measurement
         unit_of_measurement: "°C"
         state: >
-          {{ state_attr('sensor.temperature_wiesbaden_biebrich_1h', 'data')[:(states('sensor.weather_hourly_forecast_index_next_setting') | int(0)) + 1] | map(attribute='value') | max | float(0) }}
+          {% set temperature = state_attr('sensor.temperature_wiesbaden_biebrich_1h', 'data') %}
+          {% set i = max(0, (as_timestamp(state_attr('sun.sun', 'next_setting')) - as_timestamp(temperature[0]['datetime'])) // 3600) | int(0) %}
+          {{ temperature[:i+2] | map(attribute='value') | max | float(0) }}
         device_class: temperature
       - name: weather_forecast_temperature_low
         state_class: measurement
         unit_of_measurement: "°C"
         state: >
-          {{ state_attr('sensor.temperature_wiesbaden_biebrich_1h', 'data')[:(states('sensor.weather_hourly_forecast_index_next_rising') | int(0)) + 1] | map(attribute='value') | min | float(0) }}
+          {% set temperature = state_attr('sensor.temperature_wiesbaden_biebrich_1h', 'data') %}
+          {% set i = max(0, (as_timestamp(state_attr('sun.sun', 'next_rising')) - as_timestamp(temperature[0]['datetime'])) // 3600) | int(0) %}
+          {{ temperature[:i+2] | map(attribute='value') | min | float(0) }}
         device_class: temperature
       - name: weather_humidity
         state_class: measurement
