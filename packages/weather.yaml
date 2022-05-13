@@ -155,7 +155,7 @@ template:
         unit_of_measurement: "m/s"
         state_class: measurement
         state: >
-          {{ states('sensor.z_weather_velocity') }}
+          {{ states('sensor.windsensor_terrasse_velocity') }}
         icon: mdi:weather-windy
       - name: weather_wind_speed_max_recent
         unit_of_measurement: "m/s"
