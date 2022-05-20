@@ -1,7 +1,4 @@
 sensor:
-  - platform: dwd_weather_warnings
-    region_name: Stadt Frankfurt am Main
-    name: Frankfurt am Main
   - platform: statistics
     name: weather_wind_speed_max_recent_statistics
     entity_id: sensor.weather_wind_speed
@@ -32,22 +29,6 @@ template:
         delay_off:
           minutes: 30
   - sensor:
-      - name: sun_azimuth
-        state_class: measurement
-        unit_of_measurement: "°"
-        state: >
-          {{ state_attr('sun.sun', 'azimuth') }}
-        icon: mdi:weather-sunny
-      - name: sun_elevation
-        state_class: measurement
-        unit_of_measurement: "°"
-        state: >
-          {{ state_attr('sun.sun', 'elevation') }}
-        icon: mdi:weather-sunset-up
-      - name: weather_latest_update
-        state: >
-          {{ state_attr('weather.dwd_weather_wiesbaden_biebrich_1h', 'latest_update_utc') }}
-        device_class: timestamp
       - name: weather_forecast_cloud_coverage
         state_class: measurement
         unit_of_measurement: "%"
@@ -82,7 +63,7 @@ template:
         state_class: measurement
         unit_of_measurement: "°C"
         state: >
-          {{ states('sensor.temperature_wiesbaden_biebrich_1h') }}
+          {{ state_attr('weather.dwd_weather_wiesbaden_biebrich_1h', 'temperature') }}
         device_class: temperature
       - name: weather_forecast_temperature_interpolated
         state_class: measurement
@@ -170,20 +151,10 @@ template:
 
 homeassistant:
   customize:
-    sensor.sun_azimuth:
-      friendly_name: "Sonnenstand (Azimut)"
-    sensor.sun_elevation:
-      friendly_name: "Sonnenstand (Höhe)"
     binary_sensor.weather_raining:
       friendly_name: "Wetteralarm: Regen"
     binary_sensor.weather_storm:
       friendly_name: "Wetteralarm: Sturm"
-    sensor.weather_hourly_forecast_index_next_rising:
-      friendly_name: "Wettervorhersage: Index des nächsten Sonnenaufgangs"
-    sensor.weather_hourly_forecast_index_next_setting:
-      friendly_name: "Wettervorhersage: Index des nächsten Sonnenuntergangs"
-    sensor.weather_latest_update:
-      friendly_name: "Wetter: zuletzt aktualisiert"
     sensor.weather_forecast_cloud_coverage:
       friendly_name: "Wolkenbedeckung"
     sensor.weather_forecast_dewpoint:
