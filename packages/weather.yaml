@@ -167,6 +167,8 @@ homeassistant:
       friendly_name: "Sonnenscheindauer"
     sensor.weather_forecast_temperature_high:
       friendly_name: "Temperatur (max.)"
+    sensor.weather_forecast_temperature_interpolated:
+      friendly_name: "Temperatur (Vorhersage)"
     sensor.weather_forecast_temperature_low:
       friendly_name: "Temperatur (min.)"
     sensor.weather_humidity:

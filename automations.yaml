@@ -2,7 +2,7 @@
   alias: Perform Daily Backup
   trigger:
     - platform: time
-      at: 04:00
+      at: 03:00
   action:
     - service: auto_backup.backup_full
       data:
