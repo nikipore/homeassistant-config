@@ -30,14 +30,14 @@ automation:
     action:
       - service: bhyve.start_watering
         data:
-          entity_id: switch.bhyve_zone_terrasse
+          entity_id: switch.terrasse_zone
           minutes: >
             {{ state_attr('input_datetime.watering_time', 'timestamp') // 60 }}
     id: 038ab65ebeeb5c748074a352e57b8245a811d08f
   - alias: "B-Hyve: Update next watering start & rain delay finish"
     trigger:
       - platform: state
-        entity_id: switch.bhyve_zone_terrasse, switch.bhyve_ventil_1_rain_delay
+        entity_id: switch.terrasse_zone, switch.ventil_1_rain_delay
       - platform: homeassistant
         event: start
     action:
