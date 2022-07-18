@@ -365,11 +365,6 @@ input_datetime:
 
 template:
   - binary_sensor:
-      - name: marquee_is_open
-        state: >
-          {{ states("binary_sensor.strips_mazw_access_control_window_door_is_open") }}
-        device_class: opening
-        icon: mdi:window-closed
       - name: window_sensor_wohnzimmer_any_window_is_open
         state: >
           {{ is_state("binary_sensor.window_sensor_wohnzimmer_window_is_open", "on") or is_state("binary_sensor.door_sensor_terrasse_access_control_door_is_open", "on") }}
@@ -385,8 +380,6 @@ template:
 
 homeassistant:
   customize:
-    binary_sensor.marquee_is_open:
-      friendly_name: "Markise ist"
     binary_sensor.window_sensor_badezimmer_window_is_open:
       friendly_name: Fenster Badezimmer
       device_class: window

@@ -1,3 +1,16 @@
+template:
+  - binary_sensor:
+      - name: marquee_is_open
+        state: >
+          {{ states("binary_sensor.markise_offen_access_control_window_door_is_open") }}
+        device_class: opening
+        icon: mdi:window-closed
+
+homeassistant:
+  customize:
+    binary_sensor.marquee_is_open:
+      friendly_name: "Markise ist"
+
 cover:
   - platform: template
     covers:
