@@ -39,3 +39,10 @@
       ignore_availability: true
       name: ELW-Abfallkalender
       track: false
+
+- cal_id: family09554103709141193087@group.calendar.google.com
+  entities:
+    - device_id: familie
+      ignore_availability: true
+      name: Familie
+      track: false
