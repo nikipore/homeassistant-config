@@ -1,0 +1,78 @@
+sensor:
+  - platform: rest
+    name: "Pegel Mainz Wasserstand"
+    resource: https://www.pegelonline.wsv.de/webservices/rest-api/v2/stations/MAINZ.json?includeTimeseries=true&includeCurrentMeasurement=true
+    json_attributes_path: $.timeseries[0].currentMeasurement
+    json_attributes:
+      - timestamp
+      - trend
+      - stateMnwMhw
+      - stateNswHsw
+    value_template: "{{ ( value_json.timeseries[0].currentMeasurement.value | int / 100 ) }}"
+    unit_of_measurement: "m"
+
+  - platform: template
+    sensors:
+      pegel_mainz_wasserstand_trend:
+        friendly_name: "Pegel Mainz Wasserstand Trend"
+        value_template: "{{ {-1: 'fallend', 0: 'gleichbleibend', 1: 'steigend', 9: 'unbekannt'}[state_attr('sensor.pegel_mainz_wasserstand', 'trend') | int(9) ] }}"
+        icon_template: "{{ {-1: 'mdi:trending-down', 0: 'mdi:trending-neutral', 1: 'mdi:trending-up', 9: 'mdi:waves'}[state_attr('sensor.pegel_mainz_wasserstand', 'trend') | int(9) ] }}"
+
+  - platform: template
+    sensors:
+      pegel_mainz_wasserstand_status:
+        friendly_name: "Pegel Mainz Status"
+        value_template: "{{ {'low': 'niedrig', 'normal': 'normal', 'high': 'high', 'unknown': 'unknown'}[state_attr('sensor.pegel_mainz_wasserstand', 'stateMnwMhw') ] }}"
+        icon_template: "{{ {'low': 'mdi:arrow-down-box', 'normal': 'mdi:arrow-right-box', 'high': 'mdi:arrow-up-box', 'unknown': 'unknown'}[state_attr('sensor.pegel_mainz_wasserstand', 'stateMnwMhw') ] }}"
+
+  - platform: rest
+    name: "Pegel Mainz Abfluss"
+    resource: https://www.pegelonline.wsv.de/webservices/rest-api/v2/stations/MAINZ.json?includeTimeseries=true&includeCurrentMeasurement=true
+    json_attributes_path: $.timeseries[1].currentMeasurement
+    json_attributes:
+      - timestamp
+    value_template: "{{ value_json.timeseries[1].currentMeasurement.value }}"
+    unit_of_measurement: "m³/s"
+
+  - platform: rest
+    name: "Pegel Raunheim Wasserstand"
+    resource: https://www.pegelonline.wsv.de/webservices/rest-api/v2/stations/RAUNHEIM.json?includeTimeseries=true&includeCurrentMeasurement=true
+    json_attributes_path: $.timeseries[0].currentMeasurement
+    json_attributes:
+      - timestamp
+      - trend
+      - stateMnwMhw
+      - stateNswHsw
+    value_template: "{{ ( value_json.timeseries[0].currentMeasurement.value | int / 100 ) }}"
+    unit_of_measurement: "m"
+
+  - platform: template
+    sensors:
+      pegel_raunheim_wasserstand_trend:
+        friendly_name: "Pegel Raunheim Wasserstand Trend"
+        value_template: "{{ {-1: 'fallend', 0: 'gleichbleibend', 1: 'steigend', 9: 'unbekannt'}[state_attr('sensor.pegel_raunheim_wasserstand', 'trend') | int(9) ] }}"
+        icon_template: "{{ {-1: 'mdi:trending-down', 0: 'mdi:trending-neutral', 1: 'mdi:trending-up', 9: 'mdi:waves'}[state_attr('sensor.pegel_raunheim_wasserstand', 'trend') | int(9) ] }}"
+
+  - platform: template
+    sensors:
+      pegel_raunheim_wasserstand_status:
+        friendly_name: "Pegel Raunheim Status"
+        value_template: "{{ {'low': 'niedrig', 'normal': 'normal', 'high': 'high', 'unknown': 'unknown'}[state_attr('sensor.pegel_raunheim_wasserstand', 'stateMnwMhw') ] }}"
+        icon_template: "{{ {'low': 'mdi:arrow-down-box', 'normal': 'mdi:arrow-right-box', 'high': 'mdi:arrow-up-box', 'unknown': 'unknown'}[state_attr('sensor.pegel_raunheim_wasserstand', 'stateMnwMhw') ] }}"
+
+  - platform: rest
+    name: "Pegel Raunheim Abfluss"
+    resource: https://www.pegelonline.wsv.de/webservices/rest-api/v2/stations/RAUNHEIM.json?includeTimeseries=true&includeCurrentMeasurement=true
+    json_attributes_path: $.timeseries[5].currentMeasurement
+    json_attributes:
+      - timestamp
+    value_template: "{{ value_json.timeseries[5].currentMeasurement.value }}"
+    unit_of_measurement: "m³/s"
+#
+#input_number:
+#  pegel_test:
+#    name: "Pegel Test"
+#    icon: mdi:waves-arrow-up
+#    min: 0
+#    max: 10
+#    step: 0.1
