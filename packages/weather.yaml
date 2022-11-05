@@ -3,6 +3,7 @@ sensor:
     name: weather_wind_speed_max_recent_statistics
     entity_id: sensor.weather_wind_speed
     state_characteristic: value_max
+    sampling_size: 20
     max_age:
       minutes: 30
 
