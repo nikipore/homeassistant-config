@@ -1,19 +1,19 @@
-rest:
-  - authentication: basic
+sensor:
+  - name: powerfox_api
+    platform: rest
+    authentication: basic
     username: !secret powerfox-user
     password: !secret powerfox-password
     scan_interval: 10
     resource: "https://backend.powerfox.energy/api/2.0/my/main/current?unit=kwh"
-    sensor:
-      - name: powerfox_api
-        value_template: "OK"
-        json_attributes:
-          - "Watt"
-          - "A_Plus"
-          - "A_Plus_HT"
-          - "A_Plus_NT"
-          - "A_Minus"
-          - "Timestamp"
+    value_template: "OK"
+    json_attributes:
+      - "Watt"
+      - "A_Plus"
+      - "A_Plus_HT"
+      - "A_Plus_NT"
+      - "A_Minus"
+      - "Timestamp"
 
 template:
   - sensor:
