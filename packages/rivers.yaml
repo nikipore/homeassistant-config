@@ -15,8 +15,8 @@ sensor:
     sensors:
       pegel_mainz_wasserstand_trend:
         friendly_name: "Pegel Mainz Wasserstand Trend"
-        value_template: "{{ {-1: 'fallend', 0: 'gleichbleibend', 1: 'steigend', 9: 'unbekannt'}[state_attr('sensor.pegel_mainz_wasserstand', 'trend') | int(9) ] }}"
-        icon_template: "{{ {-1: 'mdi:trending-down', 0: 'mdi:trending-neutral', 1: 'mdi:trending-up', 9: 'mdi:waves'}[state_attr('sensor.pegel_mainz_wasserstand', 'trend') | int(9) ] }}"
+        value_template: "{{ {-1: 'fallend', 0: 'gleichbleibend', 1: 'steigend', -999: 'unbekannt'}[state_attr('sensor.pegel_mainz_wasserstand', 'trend') | int(-999) ] }}"
+        icon_template: "{{ {-1: 'mdi:trending-down', 0: 'mdi:trending-neutral', 1: 'mdi:trending-up', -999: 'mdi:waves'}[state_attr('sensor.pegel_mainz_wasserstand', 'trend') | int(-999) ] }}"
 
   - platform: template
     sensors:
@@ -50,8 +50,8 @@ sensor:
     sensors:
       pegel_raunheim_wasserstand_trend:
         friendly_name: "Pegel Raunheim Wasserstand Trend"
-        value_template: "{{ {-1: 'fallend', 0: 'gleichbleibend', 1: 'steigend', 9: 'unbekannt'}[state_attr('sensor.pegel_raunheim_wasserstand', 'trend') | int(9) ] }}"
-        icon_template: "{{ {-1: 'mdi:trending-down', 0: 'mdi:trending-neutral', 1: 'mdi:trending-up', 9: 'mdi:waves'}[state_attr('sensor.pegel_raunheim_wasserstand', 'trend') | int(9) ] }}"
+        value_template: "{{ {-1: 'fallend', 0: 'gleichbleibend', 1: 'steigend', -999: 'unbekannt'}[state_attr('sensor.pegel_raunheim_wasserstand', 'trend') | int(-999) ] }}"
+        icon_template: "{{ {-1: 'mdi:trending-down', 0: 'mdi:trending-neutral', 1: 'mdi:trending-up', -999: 'mdi:waves'}[state_attr('sensor.pegel_raunheim_wasserstand', 'trend') | int(-999) ] }}"
 
   - platform: template
     sensors:
