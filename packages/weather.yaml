@@ -11,22 +11,14 @@ template:
   - binary_sensor:
       - name: weather_raining
         state: >
-          {{ states('sensor.weather_precipitation') | float(0) >= 2.0 }}
+          {{ is_state('binary_sensor.regenradar_rainnow', 'on') }}
         icon: >
-          {% if is_state("binary_sensor.weather_raining", "on") %}
-            mdi:weather-pouring
-          {% else %}
-            mdi:circle-outline
-          {% endif %}
+          {{ is_state("binary_sensor.weather_raining", "on") | iif("mdi:weather-pouring", "mdi:circle-outline") }}
       - name: weather_storm
         state: >
           {{ states('sensor.weather_wind_speed') | float(0) >= 12.0 }}
         icon: >
-          {% if is_state("binary_sensor.weather_storm", "on") %}
-            mdi:weather-windy
-          {% else %}
-            mdi:circle-outline
-          {% endif %}
+          {{ is_state("binary_sensor.weather_storm", "on") | iif("mdi:weather-windy", "mdi:circle-outline") }}
         delay_off:
           minutes: 30
   - sensor:

@@ -18,38 +18,22 @@ template:
         state: >
           {{ state_attr('sensor.regenradar', 'rainin30min') | bool(false) }}
         icon: >
-          {% if is_state("binary_sensor.regenradar_rainin30min", "on") %}
-            mdi:weather-pouring
-          {% else %}
-            mdi:circle-outline
-          {% endif %}
+          {{ is_state("binary_sensor.regenradar_rainin30min", "on") | iif("mdi:weather-pouring", "mdi:circle-outline") }}
       - name: regenradar_rainin60min
         state: >
           {{ state_attr('sensor.regenradar', 'rainin60min') | bool(false) }}
         icon: >
-          {% if is_state("binary_sensor.regenradar_rainin60min", "on") %}
-            mdi:weather-pouring
-          {% else %}
-            mdi:circle-outline
-          {% endif %}
+          {{ is_state("binary_sensor.regenradar_rainin60min", "on") | iif("mdi:weather-pouring", "mdi:circle-outline") }}
       - name: regenradar_rainin120min
         state: >
           {{ state_attr('sensor.regenradar', 'rainin120min') | bool(false) }}
         icon: >
-          {% if is_state("binary_sensor.regenradar_rainin120min", "on") %}
-            mdi:weather-pouring
-          {% else %}
-            mdi:circle-outline
-          {% endif %}
+          {{ is_state("binary_sensor.regenradar_rainin120min", "on") | iif("mdi:weather-pouring", "mdi:circle-outline") }}
       - name: regenradar_rainnow
         state: >
           {{ state_attr('sensor.regenradar', 'rainnow') | bool(false) }}
         icon: >
-          {% if is_state("binary_sensor.regenradar_rainnow", "on") %}
-            mdi:weather-pouring
-          {% else %}
-            mdi:circle-outline
-          {% endif %}
+          {{ is_state("binary_sensor.regenradar_rainnow", "on") | iif("mdi:weather-pouring", "mdi:circle-outline") }}
   - sensor:
       - name: regenradar_minutestorain
         state_class: measurement
