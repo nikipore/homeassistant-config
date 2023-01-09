@@ -1,22 +1,15 @@
 sensor:
   - platform: rest
     name: "Pegel Mainz Wasserstand"
+    icon: mdi:waves
     resource: https://www.pegelonline.wsv.de/webservices/rest-api/v2/stations/MAINZ.json?includeTimeseries=true&includeCurrentMeasurement=true
     json_attributes_path: $.timeseries[0].currentMeasurement
     json_attributes:
       - timestamp
-      - trend
       - stateMnwMhw
       - stateNswHsw
     value_template: "{{ ( value_json.timeseries[0].currentMeasurement.value | int / 100 ) }}"
     unit_of_measurement: "m"
-
-  - platform: template
-    sensors:
-      pegel_mainz_wasserstand_trend:
-        friendly_name: "Pegel Mainz Wasserstand Trend"
-        value_template: "{{ {-1: 'fallend', 0: 'gleichbleibend', 1: 'steigend', -999: 'unbekannt'}[state_attr('sensor.pegel_mainz_wasserstand', 'trend') | int(-999) ] }}"
-        icon_template: "{{ {-1: 'mdi:trending-down', 0: 'mdi:trending-neutral', 1: 'mdi:trending-up', -999: 'mdi:waves'}[state_attr('sensor.pegel_mainz_wasserstand', 'trend') | int(-999) ] }}"
 
   - platform: template
     sensors:
@@ -27,6 +20,7 @@ sensor:
 
   - platform: rest
     name: "Pegel Mainz Abfluss"
+    icon: mdi:waves
     resource: https://www.pegelonline.wsv.de/webservices/rest-api/v2/stations/MAINZ.json?includeTimeseries=true&includeCurrentMeasurement=true
     json_attributes_path: $.timeseries[1].currentMeasurement
     json_attributes:
@@ -36,22 +30,15 @@ sensor:
 
   - platform: rest
     name: "Pegel Raunheim Wasserstand"
+    icon: mdi:waves
     resource: https://www.pegelonline.wsv.de/webservices/rest-api/v2/stations/RAUNHEIM.json?includeTimeseries=true&includeCurrentMeasurement=true
     json_attributes_path: $.timeseries[0].currentMeasurement
     json_attributes:
       - timestamp
-      - trend
       - stateMnwMhw
       - stateNswHsw
     value_template: "{{ ( value_json.timeseries[0].currentMeasurement.value | int / 100 ) }}"
     unit_of_measurement: "m"
-
-  - platform: template
-    sensors:
-      pegel_raunheim_wasserstand_trend:
-        friendly_name: "Pegel Raunheim Wasserstand Trend"
-        value_template: "{{ {-1: 'fallend', 0: 'gleichbleibend', 1: 'steigend', -999: 'unbekannt'}[state_attr('sensor.pegel_raunheim_wasserstand', 'trend') | int(-999) ] }}"
-        icon_template: "{{ {-1: 'mdi:trending-down', 0: 'mdi:trending-neutral', 1: 'mdi:trending-up', -999: 'mdi:waves'}[state_attr('sensor.pegel_raunheim_wasserstand', 'trend') | int(-999) ] }}"
 
   - platform: template
     sensors:
@@ -62,6 +49,7 @@ sensor:
 
   - platform: rest
     name: "Pegel Raunheim Abfluss"
+    icon: mdi:waves
     resource: https://www.pegelonline.wsv.de/webservices/rest-api/v2/stations/RAUNHEIM.json?includeTimeseries=true&includeCurrentMeasurement=true
     json_attributes_path: $.timeseries[5].currentMeasurement
     json_attributes:

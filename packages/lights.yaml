@@ -33,6 +33,7 @@ light:
       - light.wohnzimmer_tv_links
       - light.wohnzimmer_tv_rechts
       - light.wohnimmer_vitrine
+
 automation:
   - alias: Turn off light at night (Terrasse)
     trigger:
@@ -51,7 +52,7 @@ automation:
         motion_entity: binary_sensor.motion_sensor_kueche_home_security_motion_detection
         illuminance_entity: sensor.motion_sensor_kueche_illuminance
         max_illuminance: 500
-        no_motion_wait: 60 # total: 180 seconds
+        no_motion_wait: 60 # total: 300 seconds
         switch_target:
           entity_id: switch.steckdose_kueche_oberschrank
     id: 1172df0cb260b2ec865568f441cd7c5777916a3e

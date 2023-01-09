@@ -7,9 +7,10 @@ thermal_comfort:
         sensor_types:
           - absolute_humidity
           - dew_point
-          - thermal_perception
-          - simmer_index
-          - simmer_zone
+          - dew_point_perception
+          - summer_simmer_index
+          - summer_simmer_perception
+        unique_id: 14f410e2756a4801f5a1f3b4a49744b731ca034f
       - name: Abstellkammer Terrasse
         temperature_sensor: sensor.bewegungssensor_abstellkammer_terrasse_temperature
         humidity_sensor: sensor.bewegungssensor_abstellkammer_terrasse_humidity
@@ -17,9 +18,10 @@ thermal_comfort:
         sensor_types:
           - absolute_humidity
           - dew_point
-          - thermal_perception
-          - simmer_index
-          - simmer_zone
+          - dew_point_perception
+          - summer_simmer_index
+          - summer_simmer_perception
+        unique_id: 4dc8472ee8b5b671c0a6efbc0be0d3a31e16d1b7
       - name: Ankleide
         temperature_sensor: sensor.thermostat_ankleide_temperature
         humidity_sensor: sensor.thermostat_ankleide_humidity
@@ -27,9 +29,10 @@ thermal_comfort:
         sensor_types:
           - absolute_humidity
           - dew_point
-          - thermal_perception
-          - simmer_index
-          - simmer_zone
+          - dew_point_perception
+          - summer_simmer_index
+          - summer_simmer_perception
+        unique_id: 10ac483887930221eca7c645cab6ff22da05e0cd
       - name: Arbeitszimmer
         temperature_sensor: sensor.thermostat_arbeitszimmer_temperature
         humidity_sensor: sensor.thermostat_arbeitszimmer_humidity
@@ -37,9 +40,10 @@ thermal_comfort:
         sensor_types:
           - absolute_humidity
           - dew_point
-          - thermal_perception
-          - simmer_index
-          - simmer_zone
+          - dew_point_perception
+          - summer_simmer_index
+          - summer_simmer_perception
+        unique_id: b7ad00a3c417479e3169322b734eda3533bb1262
       - name: Badezimmer
         temperature_sensor: sensor.thermostat_badezimmer_temperature
         humidity_sensor: sensor.thermostat_badezimmer_humidity
@@ -47,9 +51,10 @@ thermal_comfort:
         sensor_types:
           - absolute_humidity
           - dew_point
-          - thermal_perception
-          - simmer_index
-          - simmer_zone
+          - dew_point_perception
+          - summer_simmer_index
+          - summer_simmer_perception
+        unique_id: 1a7b9e1ea1f8cb898ae9d8be98e58c990c6e5afd
       - name: Duschbad
         temperature_sensor: sensor.thermostat_duschbad_temperature
         humidity_sensor: sensor.thermostat_duschbad_humidity
@@ -57,9 +62,10 @@ thermal_comfort:
         sensor_types:
           - absolute_humidity
           - dew_point
-          - thermal_perception
-          - simmer_index
-          - simmer_zone
+          - dew_point_perception
+          - summer_simmer_index
+          - summer_simmer_perception
+        unique_id: 184b4f52f62fb6cc290a4b638f24e0b7b903958e
       - name: Flur
         temperature_sensor: sensor.thermostat_flur_temperature
         humidity_sensor: sensor.thermostat_flur_humidity
@@ -67,9 +73,10 @@ thermal_comfort:
         sensor_types:
           - absolute_humidity
           - dew_point
-          - thermal_perception
-          - simmer_index
-          - simmer_zone
+          - dew_point_perception
+          - summer_simmer_index
+          - summer_simmer_perception
+        unique_id: cc15a0aeed5932ef17f85d7f34984241ee44a347
       - name: Keller
         temperature_sensor: sensor.temperature_sensor_keller_temperature
         humidity_sensor: sensor.temperature_sensor_keller_humidity
@@ -77,9 +84,10 @@ thermal_comfort:
         sensor_types:
           - absolute_humidity
           - dew_point
-          - thermal_perception
-          - simmer_index
-          - simmer_zone
+          - dew_point_perception
+          - summer_simmer_index
+          - summer_simmer_perception
+        unique_id: d4309896f50c2ad70f60d59676bfe394d4f8e2fb
       - name: Küche
         temperature_sensor: sensor.thermostat_kuche_temperature
         humidity_sensor: sensor.thermostat_kuche_humidity
@@ -87,9 +95,10 @@ thermal_comfort:
         sensor_types:
           - absolute_humidity
           - dew_point
-          - thermal_perception
-          - simmer_index
-          - simmer_zone
+          - dew_point_perception
+          - summer_simmer_index
+          - summer_simmer_perception
+        unique_id: e779c72017c2e60a7fce7ac504b3ba78b05d2985
       - name: Nino
         temperature_sensor: sensor.thermostat_nino_temperature
         humidity_sensor: sensor.thermostat_nino_humidity
@@ -97,9 +106,10 @@ thermal_comfort:
         sensor_types:
           - absolute_humidity
           - dew_point
-          - thermal_perception
-          - simmer_index
-          - simmer_zone
+          - dew_point_perception
+          - summer_simmer_index
+          - summer_simmer_perception
+        unique_id: 8d2394e557d11ef8c0c43b49733b97f26d0dba49
       - name: Noah
         temperature_sensor: sensor.thermostat_noah_temperature
         humidity_sensor: sensor.thermostat_noah_humidity
@@ -107,9 +117,10 @@ thermal_comfort:
         sensor_types:
           - absolute_humidity
           - dew_point
-          - thermal_perception
-          - simmer_index
-          - simmer_zone
+          - dew_point_perception
+          - summer_simmer_index
+          - summer_simmer_perception
+        unique_id: eff008376875a0c1b234f862676ac4ada0d81585
       - name: Schlafzimmer
         temperature_sensor: sensor.thermostat_schlafzimmer_temperature
         humidity_sensor: sensor.thermostat_schlafzimmer_humidity
@@ -117,9 +128,10 @@ thermal_comfort:
         sensor_types:
           - absolute_humidity
           - dew_point
-          - thermal_perception
-          - simmer_index
-          - simmer_zone
+          - dew_point_perception
+          - summer_simmer_index
+          - summer_simmer_perception
+        unique_id: e3dd36e6fc1e6a982e824b47d586b3e9da43d1a0
       - name: Waschraum
         temperature_sensor: sensor.temperature_sensor_waschraum_temperature
         humidity_sensor: sensor.temperature_sensor_waschraum_humidity
@@ -127,9 +139,10 @@ thermal_comfort:
         sensor_types:
           - absolute_humidity
           - dew_point
-          - thermal_perception
-          - simmer_index
-          - simmer_zone
+          - dew_point_perception
+          - summer_simmer_index
+          - summer_simmer_perception
+        unique_id: 5ae4acb77b576ce7fade33cdc4044c42b48128a0
       - name: Wetter
         temperature_sensor: sensor.weather_forecast_temperature
         humidity_sensor: sensor.weather_humidity
@@ -138,11 +151,12 @@ thermal_comfort:
           - absolute_humidity
           - heat_index
           - dew_point
-          - thermal_perception
+          - dew_point_perception
           - frost_point
           - frost_risk
-          - simmer_index
-          - simmer_zone
+          - summer_simmer_index
+          - summer_simmer_perception
+        unique_id: ce55f7fe5a7f466810bfda65f79620a514815c75
       - name: Wohnzimmer
         temperature_sensor: sensor.thermostat_wohnzimmer_temperature
         humidity_sensor: sensor.thermostat_wohnzimmer_humidity
@@ -150,9 +164,10 @@ thermal_comfort:
         sensor_types:
           - absolute_humidity
           - dew_point
-          - thermal_perception
-          - simmer_index
-          - simmer_zone
+          - dew_point_perception
+          - summer_simmer_index
+          - summer_simmer_perception
+        unique_id: 99e6445199eee6a0c23c1061fb5fddc254ea8b02
 
 template:
   - binary_sensor:
@@ -224,70 +239,69 @@ template:
 
       - name: abstellkammer_terrasse_ventilate_humidity
         state: >
-          {{ states('sensor.abstellkammer_terrasse_absolutehumidity') | float(0) > states('sensor.wetter_absolutehumidity') | float(0) }}
+          {{ states('sensor.abstellkammer_terrasse_absolute_humidity') | float(0) > states('sensor.wetter_absolute_humidity') | float(0) }}
         icon: >
           {{ is_state("binary_sensor.abstellkammer_terrasse_ventilate_humidity", "on") | iif("mdi:fan", "mdi:fan-off") }}
       - name: ankleide_ventilate_humidity
         state: >
-          {{ states('sensor.ankleide_absolutehumidity') | float(0) > states('sensor.wetter_absolutehumidity') | float(0) }}
+          {{ states('sensor.ankleide_absolute_humidity') | float(0) > states('sensor.wetter_absolute_humidity') | float(0) }}
         icon: >
           {{ is_state("binary_sensor.ankleide_ventilate_humidity", "on") | iif("mdi:fan", "mdi:fan-off") }}
       - name: arbeitszimmer_ventilate_humidity
         state: >
-          {{ states('sensor.arbeitszimmer_absolutehumidity') | float(0) > states('sensor.wetter_absolutehumidity') | float(0) }}
+          {{ states('sensor.arbeitszimmer_absolute_humidity') | float(0) > states('sensor.wetter_absolute_humidity') | float(0) }}
         icon: >
           {{ is_state("binary_sensor.arbeitszimmer_ventilate_humidity", "on") | iif("mdi:fan", "mdi:fan-off") }}
       - name: badezimmer_ventilate_humidity
         state: >
-          {{ states('sensor.badezimmer_absolutehumidity') | float(0) > states('sensor.wetter_absolutehumidity') | float(0) }}
+          {{ states('sensor.badezimmer_absolute_humidity') | float(0) > states('sensor.wetter_absolute_humidity') | float(0) }}
         icon: >
           {{ is_state("binary_sensor.badezimmer_ventilate_humidity", "on") | iif("mdi:fan", "mdi:fan-off") }}
       - name: duschbad_ventilate_humidity
         state: >
-          {{ states('sensor.duschbad_absolutehumidity') | float(0) > states('sensor.wetter_absolutehumidity') | float(0) }}
+          {{ states('sensor.duschbad_absolute_humidity') | float(0) > states('sensor.wetter_absolute_humidity') | float(0) }}
         icon: >
           {{ is_state("binary_sensor.duschbad_ventilate_humidity", "on") | iif("mdi:fan", "mdi:fan-off") }}
       - name: flur_ventilate_humidity
         state: >
-          {{ states('sensor.flur_absolutehumidity') | float(0) > states('sensor.wetter_absolutehumidity') | float(0) }}
+          {{ states('sensor.flur_absolute_humidity') | float(0) > states('sensor.wetter_absolute_humidity') | float(0) }}
         icon: >
           {{ is_state("binary_sensor.flur_ventilate_humidity", "on") | iif("mdi:fan", "mdi:fan-off") }}
       - name: keller_ventilate_humidity
         state: >
-          {{ states('sensor.keller_absolutehumidity') | float(0) > states('sensor.wetter_absolutehumidity') | float(0) }}
+          {{ states('sensor.keller_absolute_humidity') | float(0) > states('sensor.wetter_absolute_humidity') | float(0) }}
         icon: >
           {{ is_state("binary_sensor.keller_ventilate_humidity", "on") | iif("mdi:fan", "mdi:fan-off") }}
       - name: kuche_ventilate_humidity
         state: >
-          {{ states('sensor.kuche_absolutehumidity') | float(0) > states('sensor.wetter_absolutehumidity') | float(0) }}
+          {{ states('sensor.kuche_absolute_humidity') | float(0) > states('sensor.wetter_absolute_humidity') | float(0) }}
         icon: >
           {{ is_state("binary_sensor.kuche_ventilate_humidity", "on") | iif("mdi:fan", "mdi:fan-off") }}
       - name: nino_ventilate_humidity
         state: >
-          {{ states('sensor.nino_absolutehumidity') | float(0) > states('sensor.wetter_absolutehumidity') | float(0) }}
+          {{ states('sensor.nino_absolute_humidity') | float(0) > states('sensor.wetter_absolute_humidity') | float(0) }}
         icon: >
           {{ is_state("binary_sensor.nino_ventilate_humidity", "on") | iif("mdi:fan", "mdi:fan-off") }}
       - name: noah_ventilate_humidity
         state: >
-          {{ states('sensor.noah_absolutehumidity') | float(0) > states('sensor.wetter_absolutehumidity') | float(0) }}
+          {{ states('sensor.noah_absolute_humidity') | float(0) > states('sensor.wetter_absolute_humidity') | float(0) }}
         icon: >
           {{ is_state("binary_sensor.noah_ventilate_humidity", "on") | iif("mdi:fan", "mdi:fan-off") }}
       - name: schlafzimmer_ventilate_humidity
         state: >
-          {{ states('sensor.schlafzimmer_absolutehumidity') | float(0) > states('sensor.wetter_absolutehumidity') | float(0) }}
+          {{ states('sensor.schlafzimmer_absolute_humidity') | float(0) > states('sensor.wetter_absolute_humidity') | float(0) }}
         icon: >
           {{ is_state("binary_sensor.schlafzimmer_ventilate_humidity", "on") | iif("mdi:fan", "mdi:fan-off") }}
       - name: waschraum_ventilate_humidity
         state: >
-          {{ states('sensor.waschraum_absolutehumidity') | float(0) > states('sensor.wetter_absolutehumidity') | float(0) }}
+          {{ states('sensor.waschraum_absolute_humidity') | float(0) > states('sensor.wetter_absolute_humidity') | float(0) }}
         icon: >
           {{ is_state("binary_sensor.waschraum_ventilate_humidity", "on") | iif("mdi:fan", "mdi:fan-off") }}
       - name: wohnzimmer_ventilate_humidity
         state: >
-          {{ states('sensor.wohnzimmer_absolutehumidity') | float(0) > states('sensor.wetter_absolutehumidity') | float(0) }}
+          {{ states('sensor.wohnzimmer_absolute_humidity') | float(0) > states('sensor.wetter_absolute_humidity') | float(0) }}
         icon: >
           {{ is_state("binary_sensor.wohnzimmer_ventilate_humidity", "on") | iif("mdi:fan", "mdi:fan-off") }}
-
       - name: abstellkammer_terrasse_ventilate_temperature
         state: >
           {{ states('sensor.bewegungssensor_abstellkammer_terrasse_temperature') | float(0) > states('sensor.weather_forecast_temperature') | float(0) }}
@@ -370,7 +384,7 @@ template:
               {{ (relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
             {% endif %}
           {% endmacro %}
-          {{ relative_humidity_simulated(states('sensor.thermostat_ankleide_humidity'), states('sensor.ankleide_absolutehumidity'), states('sensor.wetter_absolutehumidity')) }}
+          {{ relative_humidity_simulated(states('sensor.thermostat_ankleide_humidity'), states('sensor.ankleide_absolute_humidity'), states('sensor.wetter_absolute_humidity')) }}
         device_class: humidity
         unit_of_measurement: "%"
         state_class: measurement
@@ -389,7 +403,7 @@ template:
               {{ (relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
             {% endif %}
           {% endmacro %}
-          {{ relative_humidity_simulated(states('sensor.bewegungssensor_abstellkammer_terrasse_humidity'), states('sensor.abstellkammer_terrasse_absolutehumidity'), states('sensor.wetter_absolutehumidity')) }}
+          {{ relative_humidity_simulated(states('sensor.bewegungssensor_abstellkammer_terrasse_humidity'), states('sensor.abstellkammer_terrasse_absolute_humidity'), states('sensor.wetter_absolute_humidity')) }}
         device_class: humidity
         unit_of_measurement: "%"
         state_class: measurement
@@ -408,7 +422,7 @@ template:
               {{ (relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
             {% endif %}
           {% endmacro %}
-          {{ relative_humidity_simulated(states('sensor.thermostat_arbeitszimmer_humidity'), states('sensor.arbeitszimmer_absolutehumidity'), states('sensor.wetter_absolutehumidity')) }}
+          {{ relative_humidity_simulated(states('sensor.thermostat_arbeitszimmer_humidity'), states('sensor.arbeitszimmer_absolute_humidity'), states('sensor.wetter_absolute_humidity')) }}
         device_class: humidity
         unit_of_measurement: "%"
         state_class: measurement
@@ -427,7 +441,7 @@ template:
               {{ (relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
             {% endif %}
           {% endmacro %}
-          {{ relative_humidity_simulated(states('sensor.thermostat_badezimmer_humidity'), states('sensor.badezimmer_absolutehumidity'), states('sensor.wetter_absolutehumidity')) }}
+          {{ relative_humidity_simulated(states('sensor.thermostat_badezimmer_humidity'), states('sensor.badezimmer_absolute_humidity'), states('sensor.wetter_absolute_humidity')) }}
         device_class: humidity
         unit_of_measurement: "%"
         state_class: measurement
@@ -446,7 +460,7 @@ template:
               {{ (relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
             {% endif %}
           {% endmacro %}
-          {{ relative_humidity_simulated(states('sensor.thermostat_duschbad_humidity'), states('sensor.duschbad_absolutehumidity'), states('sensor.wetter_absolutehumidity')) }}
+          {{ relative_humidity_simulated(states('sensor.thermostat_duschbad_humidity'), states('sensor.duschbad_absolute_humidity'), states('sensor.wetter_absolute_humidity')) }}
         device_class: humidity
         unit_of_measurement: "%"
         state_class: measurement
@@ -465,7 +479,7 @@ template:
               {{ (relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
             {% endif %}
           {% endmacro %}
-          {{ relative_humidity_simulated(states('sensor.thermostat_flur_humidity'), states('sensor.flur_absolutehumidity'), states('sensor.wetter_absolutehumidity')) }}
+          {{ relative_humidity_simulated(states('sensor.thermostat_flur_humidity'), states('sensor.flur_absolute_humidity'), states('sensor.wetter_absolute_humidity')) }}
         device_class: humidity
         unit_of_measurement: "%"
         state_class: measurement
@@ -484,7 +498,7 @@ template:
               {{ (relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
             {% endif %}
           {% endmacro %}
-          {{ relative_humidity_simulated(states('sensor.temperature_sensor_keller_humidity'), states('sensor.keller_absolutehumidity'), states('sensor.wetter_absolutehumidity')) }}
+          {{ relative_humidity_simulated(states('sensor.temperature_sensor_keller_humidity'), states('sensor.keller_absolute_humidity'), states('sensor.wetter_absolute_humidity')) }}
         device_class: humidity
         unit_of_measurement: "%"
         state_class: measurement
@@ -503,7 +517,7 @@ template:
               {{ (relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
             {% endif %}
           {% endmacro %}
-          {{ relative_humidity_simulated(states('sensor.thermostat_kuche_humidity'), states('sensor.kuche_absolutehumidity'), states('sensor.wetter_absolutehumidity')) }}
+          {{ relative_humidity_simulated(states('sensor.thermostat_kuche_humidity'), states('sensor.kuche_absolute_humidity'), states('sensor.wetter_absolute_humidity')) }}
         device_class: humidity
         unit_of_measurement: "%"
         state_class: measurement
@@ -522,7 +536,7 @@ template:
               {{ (relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
             {% endif %}
           {% endmacro %}
-          {{ relative_humidity_simulated(states('sensor.thermostat_nino_humidity'), states('sensor.nino_absolutehumidity'), states('sensor.wetter_absolutehumidity')) }}
+          {{ relative_humidity_simulated(states('sensor.thermostat_nino_humidity'), states('sensor.nino_absolute_humidity'), states('sensor.wetter_absolute_humidity')) }}
         device_class: humidity
         unit_of_measurement: "%"
         state_class: measurement
@@ -541,7 +555,7 @@ template:
               {{ (relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
             {% endif %}
           {% endmacro %}
-          {{ relative_humidity_simulated(states('sensor.thermostat_noah_humidity'), states('sensor.noah_absolutehumidity'), states('sensor.wetter_absolutehumidity')) }}
+          {{ relative_humidity_simulated(states('sensor.thermostat_noah_humidity'), states('sensor.noah_absolute_humidity'), states('sensor.wetter_absolute_humidity')) }}
         device_class: humidity
         unit_of_measurement: "%"
         state_class: measurement
@@ -560,7 +574,7 @@ template:
               {{ (relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
             {% endif %}
           {% endmacro %}
-          {{ relative_humidity_simulated(states('sensor.thermostat_schlafzimmer_humidity'), states('sensor.schlafzimmer_absolutehumidity'), states('sensor.wetter_absolutehumidity')) }}
+          {{ relative_humidity_simulated(states('sensor.thermostat_schlafzimmer_humidity'), states('sensor.schlafzimmer_absolute_humidity'), states('sensor.wetter_absolute_humidity')) }}
         device_class: humidity
         unit_of_measurement: "%"
         state_class: measurement
@@ -579,7 +593,7 @@ template:
               {{ (relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
             {% endif %}
           {% endmacro %}
-          {{ relative_humidity_simulated(states('sensor.temperature_sensor_waschraum_humidity'), states('sensor.waschraum_absolutehumidity'), states('sensor.wetter_absolutehumidity')) }}
+          {{ relative_humidity_simulated(states('sensor.temperature_sensor_waschraum_humidity'), states('sensor.waschraum_absolute_humidity'), states('sensor.wetter_absolute_humidity')) }}
         device_class: humidity
         unit_of_measurement: "%"
         state_class: measurement
@@ -598,7 +612,7 @@ template:
               {{ (relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
             {% endif %}
           {% endmacro %}
-          {{ relative_humidity_simulated(states('sensor.thermostat_wohnzimmer_humidity'), states('sensor.wohnzimmer_absolutehumidity'), states('sensor.wetter_absolutehumidity')) }}
+          {{ relative_humidity_simulated(states('sensor.thermostat_wohnzimmer_humidity'), states('sensor.wohnzimmer_absolute_humidity'), states('sensor.wetter_absolute_humidity')) }}
         device_class: humidity
         unit_of_measurement: "%"
         state_class: measurement
