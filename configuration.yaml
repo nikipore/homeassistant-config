@@ -18,6 +18,7 @@ logger:
   default: warning
 
 recorder:
+  db_url: !secret mariadb-url
   purge_keep_days: 7
 
 homeassistant:
