@@ -4,8 +4,8 @@ sensor:
     authentication: basic
     username: !secret powerfox-user
     password: !secret powerfox-password
-    scan_interval: 60
-    timeout: 30
+    scan_interval: 30
+    timeout: 25
     resource: "https://backend.powerfox.energy/api/2.0/my/main/current?unit=kwh"
     value_template: "OK"
     json_attributes:
