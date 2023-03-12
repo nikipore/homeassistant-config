@@ -16,3 +16,23 @@ automation:
       - service: media_player.media_play
         entity_id: media_player.wohnzimmer
     id: f192120ea02a4daf63a729928ec88ced48a60df8
+  - alias: Turn on Multimedia Devices
+    trigger:
+      - platform: state
+        entity_id: remote.wohnzimmer
+        to: "on"
+    action:
+      - service: switch.turn_on
+        entity_id: switch.wohnzimmer_multimedia
+    id: ca1a524508a89623988e7d6ffb9d4d1c300ac74b
+  - alias: Turn off Multimedia Devices
+    trigger:
+      - platform: state
+        entity_id: remote.wohnzimmer
+        to: "off"
+        for:
+          minutes: 5
+    action:
+      - service: switch.turn_off
+        entity_id: switch.wohnzimmer_multimedia
+    id: c50a48a805c4ae5ed4dd46cff6d5ccabf6511bea
