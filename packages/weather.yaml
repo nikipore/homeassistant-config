@@ -26,19 +26,19 @@ template:
         state_class: measurement
         unit_of_measurement: "%"
         state: >
-          {{ states('sensor.cloud_coverage_wiesbaden_biebrich_1h') }}
+          {{ states('sensor.openweathermap_hourly_forecast_cloud_coverage') }}
         icon: mdi:cloud-outline
       - name: weather_forecast_dewpoint
         state_class: measurement
         unit_of_measurement: "°C"
         state: >
-          {{ states('sensor.dewpoint_wiesbaden_biebrich_1h') }}
+          {{ states('sensor.openweathermap_hourly_dew_point') }}
         device_class: temperature
       - name: weather_forecast_precipitation
         state_class: measurement
         unit_of_measurement: "mm"
         state: >
-          {{ states('sensor.precipitation_wiesbaden_biebrich_1h') }}
+          {{ states('sensor.openweathermap_hourly_forecast_precipitation') }}
         icon: mdi:weather-rainy
       - name: weather_forecast_wind_gusts
         state_class: measurement
@@ -56,19 +56,19 @@ template:
         state_class: measurement
         unit_of_measurement: "°C"
         state: >
-          {{ state_attr('weather.dwd_weather_wiesbaden_biebrich_1h', 'temperature') }}
+          {{ states('sensor.openweathermap_hourly_forecast_temperature') }}
         device_class: temperature
       - name: weather_forecast_temperature_interpolated
         state_class: measurement
         unit_of_measurement: "°C"
         state: >
-          {% set temperature = state_attr('sensor.temperature_wiesbaden_biebrich_1h', 'data') %}
+          {% set forecast = state_attr('weather.openweathermap_hourly', 'forecast') %}
           {% set t = now() %}
-          {% set index = ((as_timestamp(t) - as_timestamp(temperature[0]['datetime'])) // 3600) | int %}
+          {% set index = ((as_timestamp(t) - as_timestamp(forecast[0]['datetime'])) // 3600) | int %}
           {% if index < 0 %}
-            {% set result = temperature[0]['value'] %}
+            {% set result = forecast[0]['temperature'] %}
           {% else %}
-            {% set result = temperature[index]['value'] + (temperature[index+1]['value'] - temperature[index]['value']) * t.minute / 60 %}
+            {% set result = forecast[index]['temperature'] + (forecast[index+1]['temperature'] - forecast[index]['temperature']) * t.minute / 60 %}
           {% endif %}
           {{ result | round(1) }}
         device_class: temperature
@@ -76,35 +76,41 @@ template:
         state_class: measurement
         unit_of_measurement: "°C"
         state: >
-          {% set temperature = state_attr('sensor.temperature_wiesbaden_biebrich_1h', 'data') %}
-          {% set i = max(0, (as_timestamp(state_attr('sun.sun', 'next_setting')) - as_timestamp(temperature[0]['datetime'])) // 3600) | int(0) %}
-          {{ temperature[:i+2] | map(attribute='value') | max | float(0) }}
+          {% set forecast = state_attr('weather.openweathermap_hourly', 'forecast') %}
+          {% set i = max(0, (as_timestamp(state_attr('sun.sun', 'next_setting')) - as_timestamp(forecast[0]['datetime'])) // 3600) | int(0) %}
+          {{ forecast[:i+2] | map(attribute='temperature') | max | float(0) }}
         device_class: temperature
       - name: weather_forecast_temperature_low
         state_class: measurement
         unit_of_measurement: "°C"
         state: >
-          {% set temperature = state_attr('sensor.temperature_wiesbaden_biebrich_1h', 'data') %}
-          {% set i = max(0, (as_timestamp(state_attr('sun.sun', 'next_rising')) - as_timestamp(temperature[0]['datetime'])) // 3600) | int(0) %}
-          {{ temperature[:i+2] | map(attribute='value') | min | float(0) }}
+          {% set forecast = state_attr('weather.openweathermap_hourly', 'forecast') %}
+          {% set i = max(0, (as_timestamp(state_attr('sun.sun', 'next_rising')) - as_timestamp(forecast[0]['datetime'])) // 3600) | int(0) %}
+          {{ forecast[:i+2] | map(attribute='temperature') | min | float(0) }}
         device_class: temperature
+      - name: weather_forecast_uv_index
+        state_class: measurement
+        unit_of_measurement: "UV index"
+        state: >
+          {{ states('sensor.openweathermap_hourly_uv_index') }}
+        icon: mdi:sun-wireless-outline
       - name: weather_humidity
         state_class: measurement
         unit_of_measurement: "%"
         state: >
-          {{ state_attr('weather.dwd_weather_wiesbaden_biebrich_1h', 'humidity') }}
+          {{ states('sensor.openweathermap_hourly_humidity') }}
         device_class: humidity
       - name: weather_precipitation
         state_class: measurement
         unit_of_measurement: "mm/h"
         state: >
-          {{ states('sensor.precipitation_wiesbaden_biebrich_1h') }}
+          {{ states('sensor.openweathermap_hourly_rain') }}
         icon: mdi:weather-pouring
       - name: weather_pressure
         state_class: measurement
         unit_of_measurement: "mbar"
         state: >
-          {{ state_attr('weather.dwd_weather_wiesbaden_biebrich_1h', 'pressure') }}
+          {{ states('sensor.openweathermap_hourly_pressure') }}
         device_class: pressure
       - name: weather_temperature
         state_class: measurement
@@ -116,7 +122,7 @@ template:
         state_class: measurement
         unit_of_measurement: "°"
         state: >
-          {{ state_attr('weather.dwd_weather_wiesbaden_biebrich_1h', 'wind_bearing') }}
+          {{ states('sensor.openweathermap_hourly_wind_bearing') }}
         icon: mdi:compass-outline
       - name: weather_wind_direction_text
         state_class: measurement
