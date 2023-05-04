@@ -1,14 +1,3 @@
-binary_sensor:
-  - platform: workday
-    name: is_workday_today_builtin
-    country: DE
-    province: HE
-  - platform: workday
-    name: is_workday_tomorrow_builtin
-    days_offset: 1
-    country: DE
-    province: HE
-
 template:
   - binary_sensor:
       - name: is_workday_today_user
