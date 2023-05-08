@@ -125,7 +125,6 @@ template:
           {{ states('sensor.openweathermap_hourly_wind_bearing') }}
         icon: mdi:compass-outline
       - name: weather_wind_direction_text
-        state_class: measurement
         state: >
           {{ ['N','NNE','NE','ENE','E','ESE','SE','SSE','S','SSW','SW','WSW','W','WNW','NW','NNW'][((((states('sensor.weather_wind_direction') | float(0)) + 11.25) % 360) / 22.5) | int] }}
         icon: mdi:compass-outline
