@@ -1,18 +1,4 @@
 input_select:
-  climate_mode_global_reset:
-    name: "Thermostat: Modus zurücksetzen"
-    options:
-      - "<bitte wählen>"
-      - "auto"
-      - "heat"
-      - "off"
-  climate_mode_global_reset_daily:
-    name: "Thermostat: Modus zurücksetzen (täglich)"
-    options:
-      - "<bitte wählen>"
-      - "auto"
-      - "heat"
-      - "off"
   climate_mode_ankleide:
     name: "Thermostat: Modus (Ankleide)"
     options:

@@ -3,6 +3,7 @@
 .cloud
 .google.token
 custom_components
+homematicip_local/cache/**
 node-red/context/**
 node-red/node_modules/**
 themes
