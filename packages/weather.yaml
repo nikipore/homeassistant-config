@@ -11,7 +11,7 @@ template:
   - binary_sensor:
       - name: weather_raining
         state: >
-          {{ is_state('binary_sensor.regenradar_rainnow', 'on') }}
+          {{ not is_state('sensor.openweathermap_hourly_forecast_precipitation', '0') }}
         icon: >
           {{ is_state("binary_sensor.weather_raining", "on") | iif("mdi:weather-pouring", "mdi:circle-outline") }}
       - name: weather_storm

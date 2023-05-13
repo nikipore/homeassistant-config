@@ -92,30 +92,30 @@ automation:
         switch_target:
           entity_id: switch.licht_abstellkammer_terrasse
     id: 5515115774a657a7926c70b2f2d5bbc6e1fc65e4
-  - alias: Christmas lights (turn on)
-    trigger:
-      - platform: time
-        at: "06:00:00"
-      - platform: sun
-        event: sunset
-        offset: "-00:30:00"
-    action:
-      - service: switch.turn_on
-        target:
-          entity_id: switch.popp_smart_outdoor_plug_ip44_rated
-    id: 9a72ce70359b6e1d631acc5ef42694d338945960
-  - alias: Christmas lights (turn off)
-    trigger:
-      - platform: sun
-        event: sunrise
-        offset: "00:30:00"
-      - platform: time
-        at: "23:00:00"
-    action:
-      - service: switch.turn_off
-        target:
-          entity_id: switch.popp_smart_outdoor_plug_ip44_rated
-    id: e6be6b315bde7594302aba720ef4fcf86f54870a
+#  - alias: Christmas lights (turn on)
+#    trigger:
+#      - platform: time
+#        at: "06:00:00"
+#      - platform: sun
+#        event: sunset
+#        offset: "-00:30:00"
+#    action:
+#      - service: switch.turn_on
+#        target:
+#          entity_id: switch.popp_smart_outdoor_plug_ip44_rated
+#    id: 9a72ce70359b6e1d631acc5ef42694d338945960
+#  - alias: Christmas lights (turn off)
+#    trigger:
+#      - platform: sun
+#        event: sunrise
+#        offset: "00:30:00"
+#      - platform: time
+#        at: "23:00:00"
+#    action:
+#      - service: switch.turn_off
+#        target:
+#          entity_id: switch.popp_smart_outdoor_plug_ip44_rated
+#    id: e6be6b315bde7594302aba720ef4fcf86f54870a
 
 homeassistant:
   customize:
