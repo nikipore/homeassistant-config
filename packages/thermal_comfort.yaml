@@ -89,8 +89,8 @@ thermal_comfort:
           - summer_simmer_perception
         unique_id: d4309896f50c2ad70f60d59676bfe394d4f8e2fb
       - name: Küche
-        temperature_sensor: sensor.thermostat_kuche_temperature
-        humidity_sensor: sensor.thermostat_kuche_humidity
+        temperature_sensor: sensor.thermostat_kueche_temperature
+        humidity_sensor: sensor.thermostat_kueche_humidity
         custom_icons: true
         sensor_types:
           - absolute_humidity
@@ -206,11 +206,11 @@ template:
           {{ is_state('binary_sensor.keller_ventilate_humidity', 'on') and is_state('binary_sensor.keller_ventilate_temperature', 'on') }}
         icon: >
           {{ is_state("binary_sensor.keller_ventilate", "on") | iif("mdi:fan", "mdi:fan-off") }}
-      - name: kuche_ventilate
+      - name: kueche_ventilate
         state: >
-          {{ is_state('binary_sensor.kuche_ventilate_humidity', 'on') and is_state('binary_sensor.kuche_ventilate_temperature', 'on') }}
+          {{ is_state('binary_sensor.kueche_ventilate_humidity', 'on') and is_state('binary_sensor.kueche_ventilate_temperature', 'on') }}
         icon: >
-          {{ is_state("binary_sensor.kuche_ventilate", "on") | iif("mdi:fan", "mdi:fan-off") }}
+          {{ is_state("binary_sensor.kueche_ventilate", "on") | iif("mdi:fan", "mdi:fan-off") }}
       - name: nino_ventilate
         state: >
           {{ is_state('binary_sensor.nino_ventilate_humidity', 'on') and is_state('binary_sensor.nino_ventilate_temperature', 'on') }}
@@ -272,11 +272,11 @@ template:
           {{ states('sensor.keller_absolute_humidity') | float(0) > states('sensor.wetter_absolute_humidity') | float(0) }}
         icon: >
           {{ is_state("binary_sensor.keller_ventilate_humidity", "on") | iif("mdi:fan", "mdi:fan-off") }}
-      - name: kuche_ventilate_humidity
+      - name: kueche_ventilate_humidity
         state: >
           {{ states('sensor.kuche_absolute_humidity') | float(0) > states('sensor.wetter_absolute_humidity') | float(0) }}
         icon: >
-          {{ is_state("binary_sensor.kuche_ventilate_humidity", "on") | iif("mdi:fan", "mdi:fan-off") }}
+          {{ is_state("binary_sensor.kueche_ventilate_humidity", "on") | iif("mdi:fan", "mdi:fan-off") }}
       - name: nino_ventilate_humidity
         state: >
           {{ states('sensor.nino_absolute_humidity') | float(0) > states('sensor.wetter_absolute_humidity') | float(0) }}
@@ -337,11 +337,11 @@ template:
           {{ states('sensor.temperature_sensor_keller_temperature') | float(0) > states('sensor.weather_forecast_temperature') | float(0) }}
         icon: >
           {{ is_state("binary_sensor.keller_ventilate_temperature", "on") | iif("mdi:fan", "mdi:fan-off") }}
-      - name: kuche_ventilate_temperature
+      - name: kueche_ventilate_temperature
         state: >
-          {{ states('sensor.thermostat_kuche_temperature') | float(0) > states('sensor.weather_forecast_temperature') | float(0) }}
+          {{ states('sensor.thermostat_kueche_temperature') | float(0) > states('sensor.weather_forecast_temperature') | float(0) }}
         icon: >
-          {{ is_state("binary_sensor.kuche_ventilate_temperature", "on") | iif("mdi:fan", "mdi:fan-off") }}
+          {{ is_state("binary_sensor.kueche_ventilate_temperature", "on") | iif("mdi:fan", "mdi:fan-off") }}
       - name: nino_ventilate_temperature
         state: >
           {{ states('sensor.thermostat_noah_temperature') | float(0) > states('sensor.weather_forecast_temperature') | float(0) }}
@@ -502,7 +502,7 @@ template:
         device_class: humidity
         unit_of_measurement: "%"
         state_class: measurement
-      - name: kuche_ventilate_relative_humidity_simulated
+      - name: kueche_ventilate_relative_humidity_simulated
         state: >
           {% macro relative_humidity_simulated(relative_humidity_1, absolute_humidity_1, absolute_humidity_2) %}
             {% if relative_humidity_1 in ('unknown', 'unavailable') %}
@@ -517,7 +517,7 @@ template:
               {{ (relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
             {% endif %}
           {% endmacro %}
-          {{ relative_humidity_simulated(states('sensor.thermostat_kuche_humidity'), states('sensor.kuche_absolute_humidity'), states('sensor.wetter_absolute_humidity')) }}
+          {{ relative_humidity_simulated(states('sensor.thermostat_kueche_humidity'), states('sensor.kuche_absolute_humidity'), states('sensor.wetter_absolute_humidity')) }}
         device_class: humidity
         unit_of_measurement: "%"
         state_class: measurement
@@ -661,11 +661,11 @@ homeassistant:
       friendly_name: "Keller"
     binary_sensor.keller_ventilate_temperature:
       friendly_name: "Keller"
-    binary_sensor.kuche_ventilate:
+    binary_sensor.kueche_ventilate:
       friendly_name: "Küche"
-    binary_sensor.kuche_ventilate_humidity:
+    binary_sensor.kueche_ventilate_humidity:
       friendly_name: "Küche"
-    binary_sensor.kuche_ventilate_temperature:
+    binary_sensor.kueche_ventilate_temperature:
       friendly_name: "Küche"
     binary_sensor.nino_ventilate:
       friendly_name: "Nino"
@@ -730,9 +730,9 @@ homeassistant:
       friendly_name: "Keller"
     sensor.temperature_sensor_keller_temperature:
       friendly_name: "Keller"
-    sensor.thermostat_kuche_humidity:
+    sensor.thermostat_kueche_humidity:
       friendly_name: "Küche"
-    sensor.thermostat_kuche_temperature:
+    sensor.thermostat_kueche_temperature:
       friendly_name: "Küche"
     sensor.thermostat_nino_humidity:
       friendly_name: "Nino"
@@ -769,7 +769,7 @@ homeassistant:
       friendly_name: "rel. Luftfeuchtigkeit nach Lüftung (Flur)"
     sensor.keller_ventilate_relative_humidity_simulated:
       friendly_name: "rel. Luftfeuchtigkeit nach Lüftung (Keller)"
-    sensor.kuche_ventilate_relative_humidity_simulated:
+    sensor.kueche_ventilate_relative_humidity_simulated:
       friendly_name: "rel. Luftfeuchtigkeit nach Lüftung (Küche)"
     sensor.nino_ventilate_relative_humidity_simulated:
       friendly_name: "rel. Luftfeuchtigkeit nach Lüftung (Nino)"
