@@ -20,7 +20,7 @@ cover:
         availability_template: >
           {{ not (is_state('switch.lichtkuppel_ankleide_up', 'unknown') or is_state('switch.lichtkuppel_ankleide_down', 'unknown')) }}
         position_template: >
-          {{ is_state('binary_sensor.lichtkuppel_ankleide_window_door_is_open', 'on') * 100 }}
+          {{ is_state('binary_sensor.window_sensor_lichtkuppel_ankleide_is_open', 'on') * 100 }}
         open_cover:
           - service: cover.stop_cover
             entity_id: cover.lichtkuppel_ankleide
@@ -42,7 +42,7 @@ cover:
         availability_template: >
           {{ not (is_state('switch.lichtkuppel_flur_up', 'unknown') or is_state('switch.lichtkuppel_flur_down', 'unknown')) }}
         position_template: >
-          {{ is_state('binary_sensor.lichtkuppel_flur_window_door_is_open', 'on') * 100 }}
+          {{ is_state('binary_sensor.window_sensor_lichtkuppel_flur_is_open', 'on') * 100 }}
         open_cover:
           - service: cover.stop_cover
             entity_id: cover.lichtkuppel_flur
