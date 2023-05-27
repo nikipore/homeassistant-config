@@ -1,16 +1,3 @@
-template:
-  - binary_sensor:
-      - name: marquee_is_open
-        state: >
-          {{ states("binary_sensor.markise_offen_access_control_window_door_is_open") }}
-        device_class: opening
-        icon: mdi:window-closed
-
-homeassistant:
-  customize:
-    binary_sensor.marquee_is_open:
-      friendly_name: "Markise ist"
-
 cover:
   - platform: template
     covers:
@@ -58,27 +45,6 @@ cover:
           entity_id:
             - switch.lichtkuppel_flur_up
             - switch.lichtkuppel_flur_down
-      markise:
-        device_class: window
-        friendly_name: Markise
-        availability_template: >
-          {{ not is_state('cover.roller_shutter_markise', 'unknown') }}
-        value_template: >
-          {{ is_state('binary_sensor.marquee_is_open', 'on') }}
-        open_cover:
-          - service: cover.open_cover
-            entity_id: cover.roller_shutter_markise
-        close_cover:
-          - service: cover.close_cover
-            entity_id: cover.roller_shutter_markise
-        stop_cover:
-          service: cover.stop_cover
-          entity_id: cover.roller_shutter_markise
-        set_cover_position:
-          service: cover.set_cover_position
-          entity_id: cover.roller_shutter_markise
-          data:
-            position: "{{position}}"
 
 automation:
   - alias: Turn off Lichtkuppel switches after startup
