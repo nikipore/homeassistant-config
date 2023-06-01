@@ -58,20 +58,6 @@ template:
         state: >
           {{ states('sensor.openweathermap_hourly_forecast_temperature') }}
         device_class: temperature
-      - name: weather_forecast_temperature_interpolated
-        state_class: measurement
-        unit_of_measurement: "°C"
-        state: >
-          {% set forecast = state_attr('weather.openweathermap_hourly', 'forecast') %}
-          {% set t = now() %}
-          {% set index = ((as_timestamp(t) - as_timestamp(forecast[0]['datetime'])) // 3600) | int %}
-          {% if index < 0 %}
-            {% set result = forecast[0]['temperature'] %}
-          {% else %}
-            {% set result = forecast[index]['temperature'] + (forecast[index+1]['temperature'] - forecast[index]['temperature']) * t.minute / 60 %}
-          {% endif %}
-          {{ result | round(1) }}
-        device_class: temperature
       - name: weather_forecast_temperature_high
         state_class: measurement
         unit_of_measurement: "°C"
