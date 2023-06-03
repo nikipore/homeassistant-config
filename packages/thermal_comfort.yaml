@@ -381,7 +381,7 @@ template:
             {% elif absolute_humidity_1 == 0 %}
               unknown
             {% else %}
-              {{ (relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
+              {{ min(100, relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
             {% endif %}
           {% endmacro %}
           {{ relative_humidity_simulated(states('sensor.thermostat_ankleide_humidity'), states('sensor.ankleide_absolute_humidity'), states('sensor.wetter_absolute_humidity')) }}
@@ -400,7 +400,7 @@ template:
             {% elif absolute_humidity_1 == 0 %}
               unknown
             {% else %}
-              {{ (relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
+              {{ min(100, relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
             {% endif %}
           {% endmacro %}
           {{ relative_humidity_simulated(states('sensor.bewegungssensor_abstellkammer_terrasse_humidity'), states('sensor.abstellkammer_terrasse_absolute_humidity'), states('sensor.wetter_absolute_humidity')) }}
@@ -419,7 +419,7 @@ template:
             {% elif absolute_humidity_1 == 0 %}
               unknown
             {% else %}
-              {{ (relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
+              {{ min(100, relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
             {% endif %}
           {% endmacro %}
           {{ relative_humidity_simulated(states('sensor.thermostat_arbeitszimmer_humidity'), states('sensor.arbeitszimmer_absolute_humidity'), states('sensor.wetter_absolute_humidity')) }}
@@ -438,7 +438,7 @@ template:
             {% elif absolute_humidity_1 == 0 %}
               unknown
             {% else %}
-              {{ (relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
+              {{ min(100, relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
             {% endif %}
           {% endmacro %}
           {{ relative_humidity_simulated(states('sensor.thermostat_badezimmer_humidity'), states('sensor.badezimmer_absolute_humidity'), states('sensor.wetter_absolute_humidity')) }}
@@ -457,7 +457,7 @@ template:
             {% elif absolute_humidity_1 == 0 %}
               unknown
             {% else %}
-              {{ (relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
+              {{ min(100, relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
             {% endif %}
           {% endmacro %}
           {{ relative_humidity_simulated(states('sensor.thermostat_duschbad_humidity'), states('sensor.duschbad_absolute_humidity'), states('sensor.wetter_absolute_humidity')) }}
@@ -476,7 +476,7 @@ template:
             {% elif absolute_humidity_1 == 0 %}
               unknown
             {% else %}
-              {{ (relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
+              {{ min(100, relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
             {% endif %}
           {% endmacro %}
           {{ relative_humidity_simulated(states('sensor.thermostat_flur_humidity'), states('sensor.flur_absolute_humidity'), states('sensor.wetter_absolute_humidity')) }}
@@ -495,7 +495,7 @@ template:
             {% elif absolute_humidity_1 == 0 %}
               unknown
             {% else %}
-              {{ (relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
+              {{ min(100, relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
             {% endif %}
           {% endmacro %}
           {{ relative_humidity_simulated(states('sensor.temperature_sensor_keller_humidity'), states('sensor.keller_absolute_humidity'), states('sensor.wetter_absolute_humidity')) }}
@@ -514,7 +514,7 @@ template:
             {% elif absolute_humidity_1 == 0 %}
               unknown
             {% else %}
-              {{ (relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
+              {{ min(100, relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
             {% endif %}
           {% endmacro %}
           {{ relative_humidity_simulated(states('sensor.thermostat_kueche_humidity'), states('sensor.kuche_absolute_humidity'), states('sensor.wetter_absolute_humidity')) }}
@@ -533,7 +533,7 @@ template:
             {% elif absolute_humidity_1 == 0 %}
               unknown
             {% else %}
-              {{ (relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
+              {{ min(100, relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
             {% endif %}
           {% endmacro %}
           {{ relative_humidity_simulated(states('sensor.thermostat_nino_humidity'), states('sensor.nino_absolute_humidity'), states('sensor.wetter_absolute_humidity')) }}
@@ -552,7 +552,7 @@ template:
             {% elif absolute_humidity_1 == 0 %}
               unknown
             {% else %}
-              {{ (relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
+              {{ min(100, relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
             {% endif %}
           {% endmacro %}
           {{ relative_humidity_simulated(states('sensor.thermostat_noah_humidity'), states('sensor.noah_absolute_humidity'), states('sensor.wetter_absolute_humidity')) }}
@@ -571,7 +571,7 @@ template:
             {% elif absolute_humidity_1 == 0 %}
               unknown
             {% else %}
-              {{ (relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
+              {{ min(100, relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
             {% endif %}
           {% endmacro %}
           {{ relative_humidity_simulated(states('sensor.thermostat_schlafzimmer_humidity'), states('sensor.schlafzimmer_absolute_humidity'), states('sensor.wetter_absolute_humidity')) }}
@@ -590,7 +590,7 @@ template:
             {% elif absolute_humidity_1 == 0 %}
               unknown
             {% else %}
-              {{ (relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
+              {{ min(100, relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
             {% endif %}
           {% endmacro %}
           {{ relative_humidity_simulated(states('sensor.temperature_sensor_waschraum_humidity'), states('sensor.waschraum_absolute_humidity'), states('sensor.wetter_absolute_humidity')) }}
@@ -609,7 +609,7 @@ template:
             {% elif absolute_humidity_1 == 0 %}
               unknown
             {% else %}
-              {{ (relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
+              {{ min(100, relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
             {% endif %}
           {% endmacro %}
           {{ relative_humidity_simulated(states('sensor.thermostat_wohnzimmer_humidity'), states('sensor.wohnzimmer_absolute_humidity'), states('sensor.wetter_absolute_humidity')) }}
