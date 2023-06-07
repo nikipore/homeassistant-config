@@ -1,7 +1,6 @@
-switch:
-  - platform: command_line
-    switches:
-      aeotec_zstick_led:
-        friendly_name: 'Aeotec Z-Stick LED'
-        command_on: 'echo -e -n "\x01\x08\x00\xF2\x51\x01\x01\x05\x01\x50" > /dev/serial/by-id/usb-0658_0200-if00'
-        command_off: 'echo -e -n "\x01\x08\x00\xF2\x51\x01\x00\x05\x01\x51" > /dev/serial/by-id/usb-0658_0200-if00'
+command_line:
+  - switch:
+      name: Aeotec Z-Stick LED
+      unique_id: 3a03d2f7a4b39e419be73796b83d9b7177127342
+      command_on: 'echo -e -n "\x01\x08\x00\xF2\x51\x01\x01\x05\x01\x50" > /dev/serial/by-id/usb-0658_0200-if00'
+      command_off: 'echo -e -n "\x01\x08\x00\xF2\x51\x01\x00\x05\x01\x51" > /dev/serial/by-id/usb-0658_0200-if00'
