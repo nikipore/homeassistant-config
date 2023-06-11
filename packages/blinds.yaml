@@ -216,6 +216,36 @@ input_number:
     min: -20
     max: 100
     step: 10
+  blind_control_auto_parameter_winter_tmin:
+    name: "Rolladensteuerung: Sonnenstandsteuerung Winter (min. T)"
+    icon: mdi:snowflake-thermometer
+    min: -20
+    max: 0
+    step: 1
+  blind_control_auto_parameter_winter_t:
+    name: "Rolladensteuerung: Sonnenstandsteuerung Winter (T)"
+    icon: mdi:snowflake-thermometer
+    min: -20
+    max: 0
+    step: 1
+  blind_control_auto_parameter_summer_tmax:
+    name: "Rolladensteuerung: Sonnenstandsteuerung Sommer (max. T)"
+    icon: mdi:sun-thermometer-outline
+    min: 15
+    max: 30
+    step: 1
+  blind_control_auto_parameter_summer_t:
+    name: "Rolladensteuerung: Sonnenstandsteuerung Sommer (T)"
+    icon: mdi:sun-thermometer-outline
+    min: 15
+    max: 30
+    step: 1
+  blind_control_auto_parameter_summer_solarpower:
+    name: "Rolladensteuerung: Sonnenstandsteuerung Sommer (Sonnenleistung)"
+    icon: mdi:sun-wireless-outline
+    min: 0
+    max: 200
+    step: 10
 
 input_datetime:
   blind_control_from_earliest_workday_global:
