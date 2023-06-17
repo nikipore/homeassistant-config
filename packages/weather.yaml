@@ -102,7 +102,7 @@ template:
         state_class: measurement
         unit_of_measurement: "°C"
         state: >
-          {{ states('sensor.temperature_sensor_outdoor_air_temperature') }}
+          {{ states('sensor.openweathermap_hourly_forecast_temperature') }}
         device_class: temperature
       - name: weather_wind_direction
         state_class: measurement
