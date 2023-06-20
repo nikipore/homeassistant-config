@@ -14,6 +14,7 @@ template:
           {{ not is_state('sensor.openweathermap_hourly_forecast_precipitation', '0') }}
         icon: >
           {{ is_state("binary_sensor.weather_raining", "on") | iif("mdi:weather-pouring", "mdi:circle-outline") }}
+        unique_id: 434d5b21925833b3f83339753e335314f5b57ab7
       - name: weather_storm
         state: >
           {{ states('sensor.weather_forecast_wind_gusts') | float(0) >= 12.0 * 3.6 }}
@@ -21,6 +22,7 @@ template:
           {{ is_state("binary_sensor.weather_storm", "on") | iif("mdi:weather-windy", "mdi:circle-outline") }}
         delay_off:
           minutes: 0
+        unique_id: 72fcdde3459bab12c8411440631a0cace1ef57f8
   - sensor:
       - name: weather_forecast_cloud_coverage
         state_class: measurement
@@ -28,36 +30,42 @@ template:
         state: >
           {{ states('sensor.openweathermap_hourly_forecast_cloud_coverage') }}
         icon: mdi:cloud-outline
+        unique_id: ff64546a962af33f9963b99230b5933f0b8eb8b0
       - name: weather_forecast_dewpoint
         state_class: measurement
         unit_of_measurement: "°C"
         state: >
           {{ states('sensor.openweathermap_hourly_dew_point') }}
         device_class: temperature
+        unique_id: aae66e017b8611dbd7ec2e079a92fca40742a628
       - name: weather_forecast_precipitation
         state_class: measurement
         unit_of_measurement: "mm"
         state: >
           {{ states('sensor.openweathermap_hourly_forecast_precipitation') }}
         icon: mdi:weather-rainy
+        unique_id: 81bd5a634a62df3ec5b3add84d7b1bf09405c13a
       - name: weather_forecast_wind_gusts
         state_class: measurement
         unit_of_measurement: "km/h"
         state: >
           {{ states('sensor.wind_gusts_wiesbaden_biebrich_1h') }}
         icon: mdi:weather-rainy
+        unique_id: aeeb9fd8e90d71af4b489292711a1d5f0145fc0e
       - name: weather_forecast_sun_duration
         state_class: measurement
         unit_of_measurement: "s"
         state: >
           {{ states('sensor.sun_duration_wiesbaden_biebrich_1h') }}
         icon: mdi:weather-sunny
+        unique_id: 41acc499bee49362845013e9e570dccbd3be545f
       - name: weather_forecast_temperature
         state_class: measurement
         unit_of_measurement: "°C"
         state: >
           {{ states('sensor.openweathermap_hourly_forecast_temperature') }}
         device_class: temperature
+        unique_id: bfc393bc63ce5dcced05d494b3334c75c32600e5
       - name: weather_forecast_temperature_high
         state_class: measurement
         unit_of_measurement: "°C"
@@ -66,6 +74,7 @@ template:
           {% set i = max(0, (as_timestamp(state_attr('sun.sun', 'next_setting')) - as_timestamp(forecast[0]['datetime'])) // 3600) | int(0) %}
           {{ forecast[:i+2] | map(attribute='temperature') | max | float(0) }}
         device_class: temperature
+        unique_id: 0be9418eb6a15776650c6f19366ef36ebf9355f6
       - name: weather_forecast_temperature_low
         state_class: measurement
         unit_of_measurement: "°C"
@@ -74,64 +83,75 @@ template:
           {% set i = max(0, (as_timestamp(state_attr('sun.sun', 'next_rising')) - as_timestamp(forecast[0]['datetime'])) // 3600) | int(0) %}
           {{ forecast[:i+2] | map(attribute='temperature') | min | float(0) }}
         device_class: temperature
+        unique_id: 140472b68120fb362cbbdb9b51f271520a94a8f8
       - name: weather_forecast_uv_index
         state_class: measurement
         unit_of_measurement: "UV index"
         state: >
           {{ states('sensor.openweathermap_hourly_uv_index') }}
         icon: mdi:sun-wireless-outline
+        unique_id: 54ff35dd73f33792e5e57c15bf24dd266d2a6895
       - name: weather_humidity
         state_class: measurement
         unit_of_measurement: "%"
         state: >
           {{ states('sensor.openweathermap_hourly_humidity') }}
         device_class: humidity
+        unique_id: 6d29af8fe42101df2d6268089b3d319b93fc9ac5
       - name: weather_precipitation
         state_class: measurement
         unit_of_measurement: "mm/h"
         state: >
           {{ states('sensor.openweathermap_hourly_rain') }}
         icon: mdi:weather-pouring
+        unique_id: af3247a0fce76abbaa72abcf0c0461177a7ec35d
       - name: weather_pressure
         state_class: measurement
         unit_of_measurement: "mbar"
         state: >
           {{ states('sensor.openweathermap_hourly_pressure') }}
         device_class: pressure
+        unique_id: 3acaaec5eb1c22a778cb498179fc3622bc59b8ce
       - name: weather_temperature
         state_class: measurement
         unit_of_measurement: "°C"
         state: >
           {{ states('sensor.openweathermap_hourly_forecast_temperature') }}
         device_class: temperature
+        unique_id: 0201f803b8666e7c65b882e46f26f696e8b68fd6
       - name: weather_wind_direction
         state_class: measurement
         unit_of_measurement: "°"
         state: >
           {{ states('sensor.openweathermap_hourly_wind_bearing') }}
         icon: mdi:compass-outline
+        unique_id: 14a308ee89a063c1de4ecf1d1f9a87296a7c4818
       - name: weather_wind_direction_text
         state: >
           {{ ['N','NNE','NE','ENE','E','ESE','SE','SSE','S','SSW','SW','WSW','W','WNW','NW','NNW'][((((states('sensor.weather_wind_direction') | float(0)) + 11.25) % 360) / 22.5) | int] }}
         icon: mdi:compass-outline
+        unique_id: 07a3028300ec22d1051b95b0f05716f5b7cddde1
       - name: weather_wind_speed
         unit_of_measurement: "m/s"
         state_class: measurement
         state: >
           {{ states('sensor.windsensor_terrasse_velocity') }}
         icon: mdi:weather-windy
+        unique_id: 4a25dd3a5352e5302e7e770f76028a447afe27b4
       - name: weather_wind_speed_max_recent
         unit_of_measurement: "m/s"
         state_class: "measurement"
         state: >
           {{ states('sensor.weather_wind_speed_max_recent_statistics') | float(states('sensor.weather_wind_speed')) }}
         icon: mdi:weather-windy
+        unique_id: fc990b221a8260f2d8dc2b5c219c061ed72ddf54
       - name: weather_wind_force
         unit_of_measurement: "bft"
         state_class: measurement
         state: >
           {{ ([0, 0.3, 1.6, 3.4, 5.5, 8.0, 10.8, 13.9, 17.2, 20.8, 24.5, 28.5, 32.7] | select("<=", states('sensor.weather_wind_speed') | float(0)) | list | length) - 1 }}
         icon: mdi:weather-windy
+        unique_id: e5ee24939fb385a1f4ddd366ab95194f0d78e6eb
 
 homeassistant:
   customize:
