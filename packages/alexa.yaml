@@ -44,7 +44,7 @@ alexa:
       switch.popp_smart_outdoor_plug_ip44_rated:
         name: "Steckdose Terrasse"
         description: "Steckdose Terrasse"
-        display_categories: LIGHT,SWITCH
+        display_categories: SWITCH
       switch.steckdose_kueche_oberschrank:
         name: "Licht Oberschrank Küche"
         description: "Leuchten unter Oberschränken in der Küche"
