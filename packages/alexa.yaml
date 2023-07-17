@@ -1,0 +1,51 @@
+alexa:
+  smart_home:
+    locale: de-DE
+    filter:
+      include_entities:
+        - cover.roller_shutter_markise
+        - cover.roller_shutter_terrasse_links
+        - cover.roller_shutter_terrasse_rechts
+        - cover.roller_shutter_wohnzimmer
+        - light.wohnzimmer
+        - switch.licht_wohnzimmer_esstisch
+        - switch.luftfilter
+        - switch.steckdose_kueche_oberschrank
+        - switch.popp_smart_outdoor_plug_ip44_rated
+    entity_config:
+      cover.roller_shutter_markise:
+        name: "Markise"
+        description: "Markise"
+        display_categories: COVER
+      cover.roller_shutter_terrasse_links:
+        name: "Rolladen Terrasse links"
+        description: "Rolladen Terrasse links"
+        display_categories: COVER
+      cover.roller_shutter_terrasse_rechts:
+        name: "Rolladen Terrasse rechts"
+        description: "Rolladen Terrasse rechts"
+        display_categories: COVER
+      cover.roller_shutter_wohnzimmer:
+        name: "Rolladen Wohnzimmer"
+        description: "Rolladen Wohnzimmer"
+        display_categories: COVER
+      light.wohnzimmer:
+        name: "Licht Wohnzimmer"
+        description: "indirekte Beleuchtung im Wohnzimmer"
+        display_categories: LIGHT
+      switch.luftfilter:
+        name: "Steckdose Luftfilter"
+        description: "Steckdose Luftfilter im Wohnzimmer"
+        display_categories: SWITCH
+      switch.licht_wohnzimmer_esstisch:
+        name: "Licht Esstisch"
+        description: "Leuchten über Esstisch im Wohnzimmer"
+        display_categories: LIGHT
+      switch.popp_smart_outdoor_plug_ip44_rated:
+        name: "Steckdose Terrasse"
+        description: "Steckdose Terrasse"
+        display_categories: LIGHT,SWITCH
+      switch.steckdose_kueche_oberschrank:
+        name: "Licht Oberschrank Küche"
+        description: "Leuchten unter Oberschränken in der Küche"
+        display_categories: LIGHT
