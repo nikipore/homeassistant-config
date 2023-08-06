@@ -3,16 +3,29 @@ alexa:
     locale: de-DE
     filter:
       include_entities:
+        - cover.roller_shutter_kueche_links
+        - cover.roller_shutter_kueche_rechts
         - cover.roller_shutter_markise
         - cover.roller_shutter_terrasse_links
         - cover.roller_shutter_terrasse_rechts
         - cover.roller_shutter_wohnzimmer
+        - light.kueche_deckenleuchte
         - light.wohnzimmer
+        - switch.licht_kueche
+        - switch.licht_kueche_2
         - switch.licht_wohnzimmer_esstisch
         - switch.luftfilter
         - switch.steckdose_kueche_oberschrank
         - switch.popp_smart_outdoor_plug_ip44_rated
     entity_config:
+      cover.roller_shutter_kueche_links:
+        name: "Rolladen Küche links"
+        description: "Rolladen Küche links"
+        display_categories: COVER
+      cover.roller_shutter_kueche_rechts:
+        name: "Rolladen Küche rechts"
+        description: "Rolladen Küche rechts"
+        display_categories: COVER
       cover.roller_shutter_markise:
         name: "Markise"
         description: "Markise"
@@ -29,6 +42,10 @@ alexa:
         name: "Rolladen Wohnzimmer"
         description: "Rolladen Wohnzimmer"
         display_categories: COVER
+      light.kueche_deckenleuchte:
+        name: "Deckenleuchte Küche"
+        description: "Deckenleuchte in der Küche"
+        display_categories: LIGHT
       light.wohnzimmer:
         name: "Licht Wohnzimmer"
         description: "indirekte Beleuchtung im Wohnzimmer"
@@ -36,6 +53,14 @@ alexa:
       switch.luftfilter:
         name: "Steckdose Luftfilter"
         description: "Steckdose Luftfilter im Wohnzimmer"
+        display_categories: SWITCH
+      switch.licht_kueche:
+        name: "Licht Sideboard"
+        description: "Leuchte auf Sideboard in der Küche"
+        display_categories: LIGHT
+      switch.licht_kueche_2:
+        name: "Lichtschalter Küche"
+        description: "Deckenleuchte in der Küche (Schalter)"
         display_categories: SWITCH
       switch.licht_wohnzimmer_esstisch:
         name: "Licht Esstisch"
