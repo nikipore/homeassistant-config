@@ -1,3 +1,7 @@
+velux:
+  host: !secret velux-gateway-host
+  password: !secret velux-gateway-password
+
 cover:
   - platform: template
     covers:
