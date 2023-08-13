@@ -781,6 +781,10 @@ homeassistant:
       friendly_name: "Keller"
     sensor.temperature_sensor_keller_temperature:
       friendly_name: "Keller"
+    sensor.temperature_sensor_treppenhaus_humidity:
+      friendly_name: "Treppenhaus"
+    sensor.temperature_sensor_treppenhaus_temperature:
+      friendly_name: "Treppenhaus"
     sensor.thermostat_kueche_humidity:
       friendly_name: "Küche"
     sensor.thermostat_kueche_temperature:
