@@ -77,6 +77,17 @@ thermal_comfort:
           - summer_simmer_index
           - summer_simmer_perception
         unique_id: cc15a0aeed5932ef17f85d7f34984241ee44a347
+      - name: Garage
+        temperature_sensor: sensor.temperature_sensor_garage_temperature
+        humidity_sensor: sensor.temperature_sensor_garage_humidity
+        custom_icons: true
+        sensor_types:
+          - absolute_humidity
+          - dew_point
+          - dew_point_perception
+          - summer_simmer_index
+          - summer_simmer_perception
+        unique_id: e5815444663c79952188bc3a87f94bd96cb7e2de 
       - name: Keller
         temperature_sensor: sensor.temperature_sensor_keller_temperature
         humidity_sensor: sensor.temperature_sensor_keller_humidity
@@ -212,6 +223,11 @@ template:
           {{ is_state('binary_sensor.flur_ventilate_humidity', 'on') and is_state('binary_sensor.flur_ventilate_temperature', 'on') }}
         icon: >
           {{ is_state("binary_sensor.flur_ventilate", "on") | iif("mdi:fan", "mdi:fan-off") }}
+      - name: garage_ventilate
+        state: >
+          {{ is_state('binary_sensor.garage_ventilate_humidity', 'on') and is_state('binary_sensor.garage_ventilate_temperature', 'on') }}
+        icon: >
+          {{ is_state("binary_sensor.garage_ventilate", "on") | iif("mdi:fan", "mdi:fan-off") }}
       - name: keller_ventilate
         state: >
           {{ is_state('binary_sensor.keller_ventilate_humidity', 'on') and is_state('binary_sensor.keller_ventilate_temperature', 'on') }}
@@ -283,6 +299,11 @@ template:
           {{ states('sensor.flur_absolute_humidity') | float(0) > states('sensor.wetter_absolute_humidity') | float(0) }}
         icon: >
           {{ is_state("binary_sensor.flur_ventilate_humidity", "on") | iif("mdi:fan", "mdi:fan-off") }}
+      - name: garage_ventilate_humidity
+        state: >
+          {{ states('sensor.garage_absolute_humidity') | float(0) > states('sensor.wetter_absolute_humidity') | float(0) }}
+        icon: >
+          {{ is_state("binary_sensor.garage_ventilate_humidity", "on") | iif("mdi:fan", "mdi:fan-off") }}
       - name: keller_ventilate_humidity
         state: >
           {{ states('sensor.keller_absolute_humidity') | float(0) > states('sensor.wetter_absolute_humidity') | float(0) }}
@@ -353,6 +374,11 @@ template:
           {{ states('sensor.thermostat_flur_temperature') | float(0) > states('sensor.weather_forecast_temperature') | float(0) }}
         icon: >
           {{ is_state("binary_sensor.flur_ventilate_temperature", "on") | iif("mdi:fan", "mdi:fan-off") }}
+      - name: garage_ventilate_temperature
+        state: >
+          {{ states('sensor.temperature_sensor_garage_temperature') | float(0) > states('sensor.weather_forecast_temperature') | float(0) }}
+        icon: >
+          {{ is_state("binary_sensor.garage_ventilate_temperature", "on") | iif("mdi:fan", "mdi:fan-off") }}
       - name: keller_ventilate_temperature
         state: >
           {{ states('sensor.temperature_sensor_keller_temperature') | float(0) > states('sensor.weather_forecast_temperature') | float(0) }}
@@ -506,6 +532,25 @@ template:
             {% endif %}
           {% endmacro %}
           {{ relative_humidity_simulated(states('sensor.thermostat_flur_humidity'), states('sensor.flur_absolute_humidity'), states('sensor.wetter_absolute_humidity')) }}
+        device_class: humidity
+        unit_of_measurement: "%"
+        state_class: measurement
+      - name: garage_ventilate_relative_humidity_simulated
+        state: >
+          {% macro relative_humidity_simulated(relative_humidity_1, absolute_humidity_1, absolute_humidity_2) %}
+            {% if relative_humidity_1 in ('unknown', 'unavailable') %}
+              {{ relative_humidity_1 }}
+            {% elif absolute_humidity_1 in ('unknown', 'unavailable') %}
+              {{ absolute_humidity_1 }}
+            {% elif absolute_humidity_2 in ('unknown', 'unavailable') %}
+              {{ absolute_humidity_2 }}
+            {% elif absolute_humidity_1 == 0 %}
+              unknown
+            {% else %}
+              {{ min(100, relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
+            {% endif %}
+          {% endmacro %}
+          {{ relative_humidity_simulated(states('sensor.temperature_sensor_garage_humidity'), states('sensor.garage_absolute_humidity'), states('sensor.wetter_absolute_humidity')) }}
         device_class: humidity
         unit_of_measurement: "%"
         state_class: measurement
@@ -700,6 +745,12 @@ homeassistant:
       friendly_name: "Flur"
     binary_sensor.flur_ventilate_temperature:
       friendly_name: "Flur"
+    binary_sensor.garage_ventilate:
+      friendly_name: "Garage"
+    binary_sensor.garage_ventilate_humidity:
+      friendly_name: "Garage"
+    binary_sensor.garage_ventilate_temperature:
+      friendly_name: "Garage"
     binary_sensor.keller_ventilate:
       friendly_name: "Keller"
     binary_sensor.keller_ventilate_humidity:
@@ -777,6 +828,10 @@ homeassistant:
       friendly_name: "Flur"
     sensor.thermostat_flur_temperature:
       friendly_name: "Flur"
+    sensor.temperature_sensor_garage_humidity:
+      friendly_name: "Garage"
+    sensor.temperature_sensor_garage_temperature:
+      friendly_name: "Garage"
     sensor.temperature_sensor_keller_humidity:
       friendly_name: "Keller"
     sensor.temperature_sensor_keller_temperature:
@@ -826,6 +881,8 @@ homeassistant:
       friendly_name: "rel. Luftfeuchtigkeit nach Lüftung (Duschbad)"
     sensor.flur_ventilate_relative_humidity_simulated:
       friendly_name: "rel. Luftfeuchtigkeit nach Lüftung (Flur)"
+    sensor.garage_ventilate_relative_humidity_simulated:
+      friendly_name: "rel. Luftfeuchtigkeit nach Lüftung (Garage)"
     sensor.keller_ventilate_relative_humidity_simulated:
       friendly_name: "rel. Luftfeuchtigkeit nach Lüftung (Keller)"
     sensor.kueche_ventilate_relative_humidity_simulated:
