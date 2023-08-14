@@ -2,14 +2,11 @@ input_boolean:
   blind_control_active_global:
     name: "Rolladensteuerung: aktiv"
     icon: mdi:window-shutter
-  blind_control_active_kueche:
-    name: "Rolladensteuerung: aktiv (Küche)"
+  blind_control_active_ankleide:
+    name: "Rolladensteuerung: aktiv (Ankleide)"
     icon: mdi:window-shutter
-  blind_control_active_wohnzimmer:
-    name: "Rolladensteuerung: aktiv (Wohnzimmer)"
-    icon: mdi:window-shutter
-  blind_control_active_schlafzimmer:
-    name: "Rolladensteuerung: aktiv (Schlafzimmer)"
+  blind_control_active_arbeitszimmer:
+    name: "Rolladensteuerung: aktiv (Arbeitszimmer)"
     icon: mdi:window-shutter
   blind_control_active_badezimmer:
     name: "Rolladensteuerung: aktiv (Badezimmer)"
@@ -17,26 +14,32 @@ input_boolean:
   blind_control_active_duschbad:
     name: "Rolladensteuerung: aktiv (Duschbad)"
     icon: mdi:window-shutter
+  blind_control_active_flur:
+    name: "Rolladensteuerung: aktiv (Flur)"
+    icon: mdi:window-shutter
+  blind_control_active_kueche:
+    name: "Rolladensteuerung: aktiv (Küche)"
+    icon: mdi:window-shutter
   blind_control_active_nino:
     name: "Rolladensteuerung: aktiv (Nino)"
     icon: mdi:window-shutter
   blind_control_active_noah:
     name: "Rolladensteuerung: aktiv (Noah)"
     icon: mdi:window-shutter
-  blind_control_active_arbeitszimmer:
-    name: "Rolladensteuerung: aktiv (Arbeitszimmer)"
+  blind_control_active_schlafzimmer:
+    name: "Rolladensteuerung: aktiv (Schlafzimmer)"
+    icon: mdi:window-shutter
+  blind_control_active_wohnzimmer:
+    name: "Rolladensteuerung: aktiv (Wohnzimmer)"
     icon: mdi:window-shutter
   blind_control_auto_global:
     name: "Rolladensteuerung: Sonnenstandsteuerung automatisch"
     icon: mdi:cog-refresh-outline
-  blind_control_auto_kueche:
-    name: "Rolladensteuerung: Sonnenstandsteuerung automatisch (Küche)"
+  blind_control_auto_ankleide:
+    name: "Rolladensteuerung: Sonnenstandsteuerung automatisch (Ankleide)"
     icon: mdi:cog-refresh-outline
-  blind_control_auto_wohnzimmer:
-    name: "Rolladensteuerung: Sonnenstandsteuerung automatisch (Wohnzimmer)"
-    icon: mdi:cog-refresh-outline
-  blind_control_auto_schlafzimmer:
-    name: "Rolladensteuerung: Sonnenstandsteuerung automatisch (Schlafzimmer)"
+  blind_control_auto_arbeitszimmer:
+    name: "Rolladensteuerung: Sonnenstandsteuerung automatisch (Arbeitszimmer)"
     icon: mdi:cog-refresh-outline
   blind_control_auto_badezimmer:
     name: "Rolladensteuerung: Sonnenstandsteuerung automatisch (Badezimmer)"
@@ -44,14 +47,23 @@ input_boolean:
   blind_control_auto_duschbad:
     name: "Rolladensteuerung: Sonnenstandsteuerung automatisch (Duschbad)"
     icon: mdi:cog-refresh-outline
+  blind_control_auto_flur:
+    name: "Rolladensteuerung: Sonnenstandsteuerung automatisch (Flur)"
+    icon: mdi:cog-refresh-outline
+  blind_control_auto_kueche:
+    name: "Rolladensteuerung: Sonnenstandsteuerung automatisch (Küche)"
+    icon: mdi:cog-refresh-outline
   blind_control_auto_nino:
     name: "Rolladensteuerung: Sonnenstandsteuerung automatisch (Nino)"
     icon: mdi:cog-refresh-outline
   blind_control_auto_noah:
     name: "Rolladensteuerung: Sonnenstandsteuerung automatisch (Noah)"
     icon: mdi:cog-refresh-outline
-  blind_control_auto_arbeitszimmer:
-    name: "Rolladensteuerung: Sonnenstandsteuerung automatisch (Arbeitszimmer)"
+  blind_control_auto_schlafzimmer:
+    name: "Rolladensteuerung: Sonnenstandsteuerung automatisch (Schlafzimmer)"
+    icon: mdi:cog-refresh-outline
+  blind_control_auto_wohnzimmer:
+    name: "Rolladensteuerung: Sonnenstandsteuerung automatisch (Wohnzimmer)"
     icon: mdi:cog-refresh-outline
   blind_control_on_global:
     name: "Rolladensteuerung: an"
@@ -59,20 +71,26 @@ input_boolean:
   blind_control_specific_global:
     name: "Rolladensteuerung: gesondert gesteuerte Räume zurücksetzen"
     icon: mdi:lock-alert-outline
+  blind_control_specific_ankleide:
+    name: "Rolladensteuerung: gesondert steuern (Ankleide)"
+    icon: mdi:lock-open-outline
+  blind_control_specific_arbeitszimmer:
+    name: "Rolladensteuerung: gesondert steuern (Arbeitszimmer)"
+    icon: mdi:lock-open-outline
   blind_control_specific_badezimmer:
     name: "Rolladensteuerung: gesondert steuern (Badezimmer)"
     icon: mdi:lock-open-outline
   blind_control_specific_duschbad:
     name: "Rolladensteuerung: gesondert steuern (Duschbad)"
     icon: mdi:lock-open-outline
+  blind_control_specific_flur:
+    name: "Rolladensteuerung: gesondert steuern (Flur)"
+    icon: mdi:lock-open-outline
   blind_control_specific_nino:
     name: "Rolladensteuerung: gesondert steuern (Nino)"
     icon: mdi:lock-open-outline
   blind_control_specific_noah:
     name: "Rolladensteuerung: gesondert steuern (Noah)"
-    icon: mdi:lock-open-outline
-  blind_control_specific_arbeitszimmer:
-    name: "Rolladensteuerung: gesondert steuern (Arbeitszimmer)"
     icon: mdi:lock-open-outline
   blind_control_specific_kueche:
     name: "Rolladensteuerung: gesondert steuern (Küche)"
@@ -96,24 +114,16 @@ input_select:
       - "Winter"
       - "Sonnenlicht minimieren"
       - "Sommer"
-  blind_control_mode_kueche:
-    name: "Rolladensteuerung: Sonnenstandsteuerung (Küche)"
+  blind_control_mode_ankleide:
+    name: "Rolladensteuerung: Sonnenstandsteuerung (Ankleide)"
     icon: mdi:weather-partly-snowy
     options:
       - "aus"
       - "Winter"
       - "Sonnenlicht minimieren"
       - "Sommer"
-  blind_control_mode_wohnzimmer:
-    name: "Rolladensteuerung: Sonnenstandsteuerung (Wohnzimmer)"
-    icon: mdi:weather-partly-snowy
-    options:
-      - "aus"
-      - "Winter"
-      - "Sonnenlicht minimieren"
-      - "Sommer"
-  blind_control_mode_schlafzimmer:
-    name: "Rolladensteuerung: Sonnenstandsteuerung (Schlafzimmer)"
+  blind_control_mode_arbeitszimmer:
+    name: "Rolladensteuerung: Sonnenstandsteuerung (Arbeitszimmer)"
     icon: mdi:weather-partly-snowy
     options:
       - "aus"
@@ -136,6 +146,22 @@ input_select:
       - "Winter"
       - "Sonnenlicht minimieren"
       - "Sommer"
+  blind_control_mode_flur:
+    name: "Rolladensteuerung: Sonnenstandsteuerung (Flur)"
+    icon: mdi:weather-partly-snowy
+    options:
+      - "aus"
+      - "Winter"
+      - "Sonnenlicht minimieren"
+      - "Sommer"
+  blind_control_mode_kueche:
+    name: "Rolladensteuerung: Sonnenstandsteuerung (Küche)"
+    icon: mdi:weather-partly-snowy
+    options:
+      - "aus"
+      - "Winter"
+      - "Sonnenlicht minimieren"
+      - "Sommer"
   blind_control_mode_nino:
     name: "Rolladensteuerung: Sonnenstandsteuerung (Nino)"
     icon: mdi:weather-partly-snowy
@@ -152,8 +178,16 @@ input_select:
       - "Winter"
       - "Sonnenlicht minimieren"
       - "Sommer"
-  blind_control_mode_arbeitszimmer:
-    name: "Rolladensteuerung: Sonnenstandsteuerung (Arbeitszimmer)"
+  blind_control_mode_schlafzimmer:
+    name: "Rolladensteuerung: Sonnenstandsteuerung (Schlafzimmer)"
+    icon: mdi:weather-partly-snowy
+    options:
+      - "aus"
+      - "Winter"
+      - "Sonnenlicht minimieren"
+      - "Sommer"
+  blind_control_mode_wohnzimmer:
+    name: "Rolladensteuerung: Sonnenstandsteuerung (Wohnzimmer)"
     icon: mdi:weather-partly-snowy
     options:
       - "aus"
@@ -168,20 +202,14 @@ input_number:
     min: -20
     max: 100
     step: 10
-  blind_control_position_kueche:
-    name: "Rolladensteuerung: alle … % öffnen (–10 = aus) (Küche)"
+  blind_control_position_ankleide:
+    name: "Rolladensteuerung: alle … % öffnen (–10 = aus) (Ankleide)"
     icon: mdi:arrow-split-horizontal
     min: -20
     max: 100
     step: 10
-  blind_control_position_wohnzimmer:
-    name: "Rolladensteuerung: alle … % öffnen (–10 = aus) (Wohnzimmer)"
-    icon: mdi:arrow-split-horizontal
-    min: -20
-    max: 100
-    step: 10
-  blind_control_position_schlafzimmer:
-    name: "Rolladensteuerung: alle … % öffnen (–10 = aus) (Schlafzimmer)"
+  blind_control_position_arbeitszimmer:
+    name: "Rolladensteuerung: alle … % öffnen (–10 = aus) (Arbeitszimmer)"
     icon: mdi:arrow-split-horizontal
     min: -20
     max: 100
@@ -198,6 +226,12 @@ input_number:
     min: -20
     max: 100
     step: 10
+  blind_control_position_flur:
+    name: "Rolladensteuerung: alle … % öffnen (–10 = aus) (Flur)"
+    icon: mdi:arrow-split-horizontal
+    min: -20
+    max: 100
+    step: 10
   blind_control_position_nino:
     name: "Rolladensteuerung: alle … % öffnen (–10 = aus) (Nino)"
     icon: mdi:arrow-split-horizontal
@@ -210,8 +244,20 @@ input_number:
     min: -20
     max: 100
     step: 10
-  blind_control_position_arbeitszimmer:
-    name: "Rolladensteuerung: alle … % öffnen (–10 = aus) (Arbeitszimmer)"
+  blind_control_position_kueche:
+    name: "Rolladensteuerung: alle … % öffnen (–10 = aus) (Küche)"
+    icon: mdi:arrow-split-horizontal
+    min: -20
+    max: 100
+    step: 10
+  blind_control_position_schlafzimmer:
+    name: "Rolladensteuerung: alle … % öffnen (–10 = aus) (Schlafzimmer)"
+    icon: mdi:arrow-split-horizontal
+    min: -20
+    max: 100
+    step: 10
+  blind_control_position_wohnzimmer:
+    name: "Rolladensteuerung: alle … % öffnen (–10 = aus) (Wohnzimmer)"
     icon: mdi:arrow-split-horizontal
     min: -20
     max: 100
@@ -264,6 +310,38 @@ input_datetime:
     name: "Rolladensteuerung: vor Feiertagen spätestens"
     icon: mdi:weather-sunset-down
     has_time: true
+  blind_control_from_earliest_workday_ankleide:
+    name: "Rolladensteuerung: an Werktagen frühestens (Ankleide)"
+    icon: mdi:weather-sunset-up
+    has_time: true
+  blind_control_until_latest_workday_ankleide:
+    name: "Rolladensteuerung: vor Werktagen spätestens (Ankleide)"
+    icon: mdi:weather-sunset-down
+    has_time: true
+  blind_control_from_earliest_holiday_ankleide:
+    name: "Rolladensteuerung: an Feiertagen frühestens (Ankleide)"
+    icon: mdi:weather-sunset-up
+    has_time: true
+  blind_control_until_latest_holiday_ankleide:
+    name: "Rolladensteuerung: vor Feiertagen spätestens (Ankleide)"
+    icon: mdi:weather-sunset-down
+    has_time: true
+  blind_control_from_earliest_workday_arbeitszimmer:
+    name: "Rolladensteuerung: an Werktagen frühestens (Arbeitszimmer)"
+    icon: mdi:weather-sunset-up
+    has_time: true
+  blind_control_until_latest_workday_arbeitszimmer:
+    name: "Rolladensteuerung: vor Werktagen spätestens (Arbeitszimmer)"
+    icon: mdi:weather-sunset-down
+    has_time: true
+  blind_control_from_earliest_holiday_arbeitszimmer:
+    name: "Rolladensteuerung: an Feiertagen frühestens (Arbeitszimmer)"
+    icon: mdi:weather-sunset-up
+    has_time: true
+  blind_control_until_latest_holiday_arbeitszimmer:
+    name: "Rolladensteuerung: vor Feiertagen spätestens (Arbeitszimmer)"
+    icon: mdi:weather-sunset-down
+    has_time: true
   blind_control_from_earliest_workday_badezimmer:
     name: "Rolladensteuerung: an Werktagen frühestens (Badezimmer)"
     icon: mdi:weather-sunset-up
@@ -294,6 +372,38 @@ input_datetime:
     has_time: true
   blind_control_until_latest_holiday_duschbad:
     name: "Rolladensteuerung: vor Feiertagen spätestens (Duschbad)"
+    icon: mdi:weather-sunset-down
+    has_time: true
+  blind_control_from_earliest_workday_flur:
+    name: "Rolladensteuerung: an Werktagen frühestens (Flur)"
+    icon: mdi:weather-sunset-up
+    has_time: true
+  blind_control_until_latest_workday_flur:
+    name: "Rolladensteuerung: vor Werktagen spätestens (Flur)"
+    icon: mdi:weather-sunset-down
+    has_time: true
+  blind_control_from_earliest_holiday_flur:
+    name: "Rolladensteuerung: an Feiertagen frühestens (Flur)"
+    icon: mdi:weather-sunset-up
+    has_time: true
+  blind_control_until_latest_holiday_flur:
+    name: "Rolladensteuerung: vor Feiertagen spätestens (Flur)"
+    icon: mdi:weather-sunset-down
+    has_time: true
+  blind_control_from_earliest_workday_kueche:
+    name: "Rolladensteuerung: an Werktagen frühestens (Küche)"
+    icon: mdi:weather-sunset-up
+    has_time: true
+  blind_control_until_latest_workday_kueche:
+    name: "Rolladensteuerung: vor Werktagen spätestens (Küche)"
+    icon: mdi:weather-sunset-down
+    has_time: true
+  blind_control_from_earliest_holiday_kueche:
+    name: "Rolladensteuerung: an Feiertagen frühestens (Küche)"
+    icon: mdi:weather-sunset-up
+    has_time: true
+  blind_control_until_latest_holiday_kueche:
+    name: "Rolladensteuerung: vor Feiertagen spätestens (Küche)"
     icon: mdi:weather-sunset-down
     has_time: true
   blind_control_from_earliest_workday_nino:
@@ -328,36 +438,20 @@ input_datetime:
     name: "Rolladensteuerung: vor Feiertagen spätestens (Noah)"
     icon: mdi:weather-sunset-down
     has_time: true
-  blind_control_from_earliest_workday_arbeitszimmer:
-    name: "Rolladensteuerung: an Werktagen frühestens (Arbeitszimmer)"
+  blind_control_from_earliest_workday_schlafzimmer:
+    name: "Rolladensteuerung: an Werktagen frühestens (Schlafzimmer)"
     icon: mdi:weather-sunset-up
     has_time: true
-  blind_control_until_latest_workday_arbeitszimmer:
-    name: "Rolladensteuerung: vor Werktagen spätestens (Arbeitszimmer)"
+  blind_control_until_latest_workday_schlafzimmer:
+    name: "Rolladensteuerung: vor Werktagen spätestens (Schlafzimmer)"
     icon: mdi:weather-sunset-down
     has_time: true
-  blind_control_from_earliest_holiday_arbeitszimmer:
-    name: "Rolladensteuerung: an Feiertagen frühestens (Arbeitszimmer)"
+  blind_control_from_earliest_holiday_schlafzimmer:
+    name: "Rolladensteuerung: an Feiertagen frühestens (Schlafzimmer)"
     icon: mdi:weather-sunset-up
     has_time: true
-  blind_control_until_latest_holiday_arbeitszimmer:
-    name: "Rolladensteuerung: vor Feiertagen spätestens (Arbeitszimmer)"
-    icon: mdi:weather-sunset-down
-    has_time: true
-  blind_control_from_earliest_workday_kueche:
-    name: "Rolladensteuerung: an Werktagen frühestens (Küche)"
-    icon: mdi:weather-sunset-up
-    has_time: true
-  blind_control_until_latest_workday_kueche:
-    name: "Rolladensteuerung: vor Werktagen spätestens (Küche)"
-    icon: mdi:weather-sunset-down
-    has_time: true
-  blind_control_from_earliest_holiday_kueche:
-    name: "Rolladensteuerung: an Feiertagen frühestens (Küche)"
-    icon: mdi:weather-sunset-up
-    has_time: true
-  blind_control_until_latest_holiday_kueche:
-    name: "Rolladensteuerung: vor Feiertagen spätestens (Küche)"
+  blind_control_until_latest_holiday_schlafzimmer:
+    name: "Rolladensteuerung: vor Feiertagen spätestens (Schlafzimmer)"
     icon: mdi:weather-sunset-down
     has_time: true
   blind_control_from_earliest_workday_wohnzimmer:
@@ -376,61 +470,51 @@ input_datetime:
     name: "Rolladensteuerung: vor Feiertagen spätestens (Wohnzimmer)"
     icon: mdi:weather-sunset-down
     has_time: true
-  blind_control_from_earliest_workday_schlafzimmer:
-    name: "Rolladensteuerung: an Werktagen frühestens (Schlafzimmer)"
-    icon: mdi:weather-sunset-up
-    has_time: true
-  blind_control_until_latest_workday_schlafzimmer:
-    name: "Rolladensteuerung: vor Werktagen spätestens (Schlafzimmer)"
-    icon: mdi:weather-sunset-down
-    has_time: true
-  blind_control_from_earliest_holiday_schlafzimmer:
-    name: "Rolladensteuerung: an Feiertagen frühestens (Schlafzimmer)"
-    icon: mdi:weather-sunset-up
-    has_time: true
-  blind_control_until_latest_holiday_schlafzimmer:
-    name: "Rolladensteuerung: vor Feiertagen spätestens (Schlafzimmer)"
-    icon: mdi:weather-sunset-down
-    has_time: true
 
 homeassistant:
   customize:
+    sensor.blind_control_ankleide:
+      friendly_name: "Ankleide"
+      icon: hass:arrow-split-horizontal
+    sensor.blind_control_arbeitszimmer:
+      friendly_name: "Arbeitszimmer"
+      icon: hass:arrow-split-horizontal
     sensor.blind_control_badezimmer:
       friendly_name: "Badezimmer"
       icon: hass:arrow-split-horizontal
     sensor.blind_control_duschbad:
       friendly_name: "Duschbad"
       icon: hass:arrow-split-horizontal
-    sensor.blind_control_nino_rechts:
-      friendly_name: "Nino (rechts)"
-      icon: hass:arrow-split-horizontal
-    sensor.blind_control_nino_links:
-      friendly_name: "Nino (links)"
-      icon: hass:arrow-split-horizontal
-    sensor.blind_control_noah_rechts:
-      friendly_name: "Noah (rechts)"
-      icon: hass:arrow-split-horizontal
-    sensor.blind_control_noah_links:
-      friendly_name: "Noah (links)"
-      icon: hass:arrow-split-horizontal
-    sensor.blind_control_arbeitszimmer:
-      friendly_name: "Arbeitszimmer"
-      icon: hass:arrow-split-horizontal
-    sensor.blind_control_kueche_rechts:
-      friendly_name: "Küche (rechts)"
+    sensor.blind_control_flur:
+      friendly_name: "Flur"
       icon: hass:arrow-split-horizontal
     sensor.blind_control_kueche_links:
       friendly_name: "Küche (links)"
       icon: hass:arrow-split-horizontal
-    sensor.blind_control_wohnzimmer:
-      friendly_name: "Wohnzimmer"
+    sensor.blind_control_kueche_rechts:
+      friendly_name: "Küche (rechts)"
       icon: hass:arrow-split-horizontal
-    sensor.blind_control_terrasse_rechts:
-      friendly_name: "Terrasse (rechts)"
+    sensor.blind_control_nino_links:
+      friendly_name: "Nino (links)"
+      icon: hass:arrow-split-horizontal
+    sensor.blind_control_nino_rechts:
+      friendly_name: "Nino (rechts)"
+      icon: hass:arrow-split-horizontal
+    sensor.blind_control_noah_links:
+      friendly_name: "Noah (links)"
+      icon: hass:arrow-split-horizontal
+    sensor.blind_control_noah_rechts:
+      friendly_name: "Noah (rechts)"
       icon: hass:arrow-split-horizontal
     sensor.blind_control_terrasse_links:
       friendly_name: "Terrasse (links)"
       icon: hass:arrow-split-horizontal
+    sensor.blind_control_terrasse_rechts:
+      friendly_name: "Terrasse (rechts)"
+      icon: hass:arrow-split-horizontal
     sensor.blind_control_schlafzimmer:
       friendly_name: "Schlafzimmer"
+      icon: hass:arrow-split-horizontal
+    sensor.blind_control_wohnzimmer:
+      friendly_name: "Wohnzimmer"
       icon: hass:arrow-split-horizontal

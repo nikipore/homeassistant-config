@@ -77,6 +77,14 @@ automation:
           entity_id: >
             {{ trigger.entity_id }}
     id: 7c90b4caff834c3036d746a21b50807fe655b844
+  - alias: KLF reboot on Home Assistant shutdown
+    description: Reboots the KLF200 in order to avoid SSL Handshake issue
+    trigger:
+      - platform: homeassistant
+        event: shutdown
+    action:
+      - service: velux.reboot_gateway
+    id: ebc073c2c786877704b0bc82e5c78fe94822d54e
 
 input_boolean:
   auto_cooling_ankleide:
