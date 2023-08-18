@@ -9,6 +9,7 @@ esphome:
   name: ${name}
   name_add_mac_suffix: false
   friendly_name: ${friendly_name}
+  comment: "Bluetooth Proxy on generic ESP32 board with Wi-Fi and Bluetooth"
 
 esp32:
   board: esp32dev
