@@ -1,0 +1,22 @@
+input_select:
+  climate_preset_mode:
+    name: "Heizung: Voreinstellung"
+    icon: mdi:home-thermometer
+    options:
+      - "Boost"
+      - "Keine"
+      - "WP 1"
+      - "WP 2"
+      - "WP 3"
+      - "WP 4"
+      - "WP 5"
+      - "WP 6"
+
+input_boolean:
+  climate_preset_mode_reset_daily:
+    name: "Heizung: Voreinstellung zurücksetzen (täglich)"
+    icon: mdi:history
+input_button:
+  climate_preset_mode_reset_now:
+    name: "Heizung: Voreinstellung zurücksetzen (jetzt)"
+    icon: mdi:restore
