@@ -3,14 +3,14 @@ input_select:
     name: "Heizung: Voreinstellung"
     icon: mdi:home-thermometer
     options:
-      - "Boost"
       - "Keine"
-      - "WP 1"
-      - "WP 2"
-      - "WP 3"
-      - "WP 4"
-      - "WP 5"
-      - "WP 6"
+      - "Wochenprofil 1"
+      - "Wochenprofil 2"
+      - "Wochenprofil 3"
+      - "Wochenprofil 4"
+      - "Wochenprofil 5"
+      - "Wochenprofil 6"
+      - "Boost"
 
 input_boolean:
   climate_preset_mode_reset_daily:
