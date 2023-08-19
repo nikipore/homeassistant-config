@@ -4,7 +4,6 @@ substitutions:
 
   api_encryption_key: "jE1AoEyCZ6fe1fvNJ3hKjZfVG8iEFeKV+rjCVdivQ6M="
   ota_password: "c1da84251e063e50727ed0dfab064272"
-  wifi_ap_password: "Of3EyrjZ1NyI"
 
   # Higher value gives lower watt readout
   current_res: "0.00280"
@@ -42,7 +41,7 @@ wifi:
   # Enable fallback hotspot (captive portal) in case wifi connection fails
   ap:
     ssid: "${name}-AP"
-    password: ${wifi_ap_password}
+    password: !secret wifi_ap_password
 
 captive_portal:
 
