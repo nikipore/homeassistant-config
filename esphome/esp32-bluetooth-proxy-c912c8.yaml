@@ -2,6 +2,8 @@ substitutions:
   name: esp32-bluetooth-proxy-c912c8
   friendly_name: Bluetooth Proxy Garage
 
+  api_encryption_key: "XVNafTCJVOruPDh50woEnZQWb98j1YgogeOhcj0yDz4="
+
 packages:
   esphome.bluetooth-proxy: github://esphome/bluetooth-proxies/esp32-generic.yaml@main
   
@@ -18,7 +20,7 @@ esp32:
 
 api:
   encryption:
-    key: XVNafTCJVOruPDh50woEnZQWb98j1YgogeOhcj0yDz4=
+    key: ${api_encryption_key}
 
 wifi:
   ssid: !secret wifi_ssid
