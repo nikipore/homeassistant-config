@@ -1,7 +1,6 @@
 substitutions:
   name: esp32-bluetooth-proxy-f28cec
   friendly_name: Bluetooth Proxy Terrasse
-
   api_encryption_key: "eXLRS5phDrB9AVEoH04M+yHAOL3xN2PdpZwYN0FDjQ4="
 
 packages:

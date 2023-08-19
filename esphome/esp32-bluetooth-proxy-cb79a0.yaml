@@ -1,7 +1,6 @@
 substitutions:
   name: esp32-bluetooth-proxy-cb79a0
   friendly_name: Bluetooth Proxy Keller
-
   api_encryption_key: "JxHIZn2Coqt08EEVkf5wzCQ3Di3sE5dJRgCy4AYGSYw="
 
 packages:

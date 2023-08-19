@@ -1,10 +1,8 @@
 substitutions:
   name: steckdose-waschmaschine
   friendly_name: "Steckdose Waschmaschine"
-
   api_encryption_key: "WwPIRFclBnWX24jSpiOmp7+5fmFWViMagkEvdmR8q80="
-  ota_password: "850097d6734dba5138a68f049b24eab8"
-
+  
   # Higher value gives lower watt readout
   current_res: "0.00280"
   # Lower value gives lower voltage readout
@@ -32,7 +30,7 @@ api:
     key: ${api_encryption_key}
 
 ota:
-  password: ${ota_password}
+  password: !secret ota_password
 
 wifi:
   ssid: !secret wifi_ssid
