@@ -52,8 +52,11 @@ time:
     id: homeassistant_time
 
 # Enable Web server
-web_server:
-  port: 80
+#web_server:
+#  port: 80
+#  auth:
+#    username: !secret web_server_username
+#    password: !secret web_server_password
 
 light:
   - platform: status_led
@@ -93,6 +96,7 @@ switch:
     turn_off_action:
       - switch.turn_off: relay
       - light.turn_off: led
+    restore_mode: RESTORE_DEFAULT_ON
   - platform: gpio
     pin: GPIO14
     id: relay
