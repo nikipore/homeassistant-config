@@ -1,22 +1,32 @@
 input_select:
-  climate_preset_mode:
-    name: "Heizung: Voreinstellung"
+  climate_hvac_mode:
+    name: "Heizung: Aktion"
     icon: mdi:home-thermometer
     options:
+      - "Auto"
+      - "Heizen"
+      - "Aus"
+  climate_preset_mode:
+    name: "Heizung: Voreinstellung"
+    icon: mdi:home-clock
+    options:
+      - "Boost"
       - "Keine"
       - "Wochenprofil 1"
       - "Wochenprofil 2"
       - "Wochenprofil 3"
-      - "Wochenprofil 4"
-      - "Wochenprofil 5"
-      - "Wochenprofil 6"
-      - "Boost"
 
 input_boolean:
+  climate_hvac_mode_reset_daily:
+    name: "Heizung: Aktion zurücksetzen (täglich)"
+    icon: mdi:history
   climate_preset_mode_reset_daily:
     name: "Heizung: Voreinstellung zurücksetzen (täglich)"
     icon: mdi:history
 input_button:
+  climate_hvac_mode_reset_now:
+    name: "Heizung: Aktion zurücksetzen (jetzt)"
+    icon: mdi:restore
   climate_preset_mode_reset_now:
     name: "Heizung: Voreinstellung zurücksetzen (jetzt)"
     icon: mdi:restore
