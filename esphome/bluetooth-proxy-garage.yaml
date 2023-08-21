@@ -1,7 +1,7 @@
 substitutions:
-  name: esp32-bluetooth-proxy-f28cec
-  friendly_name: Bluetooth Proxy Terrasse
-  api_encryption_key: "eXLRS5phDrB9AVEoH04M+yHAOL3xN2PdpZwYN0FDjQ4="
+  name: bluetooth-proxy-garage
+  friendly_name: Bluetooth Proxy Garage
+  api_encryption_key: "GaTKf6yMT+sKwgpW/eLDDDM0iN1AxYCdG+V7+Eu7q9M="
 
 packages:
   esphome.bluetooth-proxy: github://esphome/bluetooth-proxies/esp32-generic.yaml@main
