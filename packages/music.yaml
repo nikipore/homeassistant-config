@@ -11,7 +11,7 @@ automation:
         state: "Musik"
     action:
       - service: switch.turn_on
-        entity_id: switch.wohnzimmer_multimedia
+        entity_id: switch.steckdose_wohnzimmer_tv_switch
     id: ca1a524508a89623988e7d6ffb9d4d1c300ac74b
   - alias: Turn off Multimedia Devices
     trigger:
@@ -22,5 +22,5 @@ automation:
           minutes: 5
     action:
       - service: switch.turn_off
-        entity_id: switch.wohnzimmer_multimedia
+        entity_id: switch.steckdose_wohnzimmer_tv_switch
     id: c50a48a805c4ae5ed4dd46cff6d5ccabf6511bea
