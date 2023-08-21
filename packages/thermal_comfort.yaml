@@ -87,7 +87,7 @@ thermal_comfort:
           - dew_point_perception
           - summer_simmer_index
           - summer_simmer_perception
-        unique_id: e5815444663c79952188bc3a87f94bd96cb7e2de 
+        unique_id: e5815444663c79952188bc3a87f94bd96cb7e2de
       - name: Keller
         temperature_sensor: sensor.temperature_sensor_keller_temperature
         humidity_sensor: sensor.temperature_sensor_keller_humidity
@@ -153,7 +153,7 @@ thermal_comfort:
           - dew_point_perception
           - summer_simmer_index
           - summer_simmer_perception
-        unique_id: 2d1a96dc40f3df1c5228f4d17e3e63347cf36e19  
+        unique_id: 2d1a96dc40f3df1c5228f4d17e3e63347cf36e19
       - name: Waschraum
         temperature_sensor: sensor.temperature_sensor_waschraum_temperature
         humidity_sensor: sensor.temperature_sensor_waschraum_humidity
@@ -437,6 +437,11 @@ template:
             {% endif %}
           {% endmacro %}
           {{ relative_humidity_simulated(states('sensor.thermostat_ankleide_humidity'), states('sensor.ankleide_absolute_humidity'), states('sensor.wetter_absolute_humidity')) }}
+        availability: >
+          {{
+            (['sensor.thermostat_ankleide_humidity', 'sensor.ankleide_absolute_humidity', 'sensor.wetter_absolute_humidity'] | map("states") | map("is_number") | min)
+            and not is_state('sensor.ankleide_absolute_humidity', 0)
+          }}
         device_class: humidity
         unit_of_measurement: "%"
         state_class: measurement
@@ -456,6 +461,11 @@ template:
             {% endif %}
           {% endmacro %}
           {{ relative_humidity_simulated(states('sensor.bewegungssensor_abstellkammer_terrasse_humidity'), states('sensor.abstellkammer_terrasse_absolute_humidity'), states('sensor.wetter_absolute_humidity')) }}
+        availability: >
+          {{
+            (['sensor.bewegungssensor_abstellkammer_humidity', 'sensor.abstellkammer_absolute_humidity', 'sensor.wetter_absolute_humidity'] | map("states") | map("is_number") | min)
+            and not is_state('sensor.abstellkammer_absolute_humidity', 0)
+          }}
         device_class: humidity
         unit_of_measurement: "%"
         state_class: measurement
@@ -475,6 +485,11 @@ template:
             {% endif %}
           {% endmacro %}
           {{ relative_humidity_simulated(states('sensor.thermostat_arbeitszimmer_humidity'), states('sensor.arbeitszimmer_absolute_humidity'), states('sensor.wetter_absolute_humidity')) }}
+        availability: >
+          {{
+            (['sensor.thermostat_arbeitszimmer_humidity', 'sensor.arbeitszimmer_absolute_humidity', 'sensor.wetter_absolute_humidity'] | map("states") | map("is_number") | min)
+            and not is_state('sensor.arbeitszimmer_absolute_humidity', 0)
+          }}
         device_class: humidity
         unit_of_measurement: "%"
         state_class: measurement
@@ -494,6 +509,11 @@ template:
             {% endif %}
           {% endmacro %}
           {{ relative_humidity_simulated(states('sensor.thermostat_badezimmer_humidity'), states('sensor.badezimmer_absolute_humidity'), states('sensor.wetter_absolute_humidity')) }}
+        availability: >
+          {{
+            (['sensor.thermostat_badezimmer_humidity', 'sensor.badezimmer_absolute_humidity', 'sensor.wetter_absolute_humidity'] | map("states") | map("is_number") | min)
+            and not is_state('sensor.badezimmer_absolute_humidity', 0)
+          }}
         device_class: humidity
         unit_of_measurement: "%"
         state_class: measurement
@@ -513,6 +533,11 @@ template:
             {% endif %}
           {% endmacro %}
           {{ relative_humidity_simulated(states('sensor.thermostat_duschbad_humidity'), states('sensor.duschbad_absolute_humidity'), states('sensor.wetter_absolute_humidity')) }}
+        availability: >
+          {{
+            (['sensor.thermostat_duschbad_humidity', 'sensor.duschbad_absolute_humidity', 'sensor.wetter_absolute_humidity'] | map("states") | map("is_number") | min)
+            and not is_state('sensor.duschbad_absolute_humidity', 0)
+          }}
         device_class: humidity
         unit_of_measurement: "%"
         state_class: measurement
@@ -532,6 +557,11 @@ template:
             {% endif %}
           {% endmacro %}
           {{ relative_humidity_simulated(states('sensor.thermostat_flur_humidity'), states('sensor.flur_absolute_humidity'), states('sensor.wetter_absolute_humidity')) }}
+        availability: >
+          {{
+            (['sensor.thermostat_flur_humidity', 'sensor.flur_absolute_humidity', 'sensor.wetter_absolute_humidity'] | map("states") | map("is_number") | min)
+            and not is_state('sensor.flur_absolute_humidity', 0)
+          }}
         device_class: humidity
         unit_of_measurement: "%"
         state_class: measurement
@@ -551,6 +581,11 @@ template:
             {% endif %}
           {% endmacro %}
           {{ relative_humidity_simulated(states('sensor.temperature_sensor_garage_humidity'), states('sensor.garage_absolute_humidity'), states('sensor.wetter_absolute_humidity')) }}
+        availability: >
+          {{
+            (['sensor.temperature_sensor_garage_humidity', 'sensor.garage_absolute_humidity', 'sensor.wetter_absolute_humidity'] | map("states") | map("is_number") | min)
+            and not is_state('sensor.garage_absolute_humidity', 0)
+          }}
         device_class: humidity
         unit_of_measurement: "%"
         state_class: measurement
@@ -570,6 +605,11 @@ template:
             {% endif %}
           {% endmacro %}
           {{ relative_humidity_simulated(states('sensor.temperature_sensor_keller_humidity'), states('sensor.keller_absolute_humidity'), states('sensor.wetter_absolute_humidity')) }}
+        availability: >
+          {{
+            (['sensor.temperature_sensor_keller_humidity', 'sensor.keller_absolute_humidity', 'sensor.wetter_absolute_humidity'] | map("states") | map("is_number") | min)
+            and not is_state('sensor.keller_absolute_humidity', 0)
+          }}
         device_class: humidity
         unit_of_measurement: "%"
         state_class: measurement
@@ -589,6 +629,11 @@ template:
             {% endif %}
           {% endmacro %}
           {{ relative_humidity_simulated(states('sensor.thermostat_kueche_humidity'), states('sensor.kuche_absolute_humidity'), states('sensor.wetter_absolute_humidity')) }}
+        availability: >
+          {{
+            (['sensor.thermostat_kueche_humidity', 'sensor.kuche_absolute_humidity', 'sensor.wetter_absolute_humidity'] | map("states") | map("is_number") | min)
+            and not is_state('sensor.treppenhaus_absolute_humidity', 0)
+          }}
         device_class: humidity
         unit_of_measurement: "%"
         state_class: measurement
@@ -608,6 +653,11 @@ template:
             {% endif %}
           {% endmacro %}
           {{ relative_humidity_simulated(states('sensor.thermostat_nino_humidity'), states('sensor.nino_absolute_humidity'), states('sensor.wetter_absolute_humidity')) }}
+        availability: >
+          {{
+            (['sensor.thermostat_nino_humidity', 'sensor.nino_absolute_humidity', 'sensor.wetter_absolute_humidity'] | map("states") | map("is_number") | min)
+            and not is_state('sensor.nino_absolute_humidity', 0)
+          }}
         device_class: humidity
         unit_of_measurement: "%"
         state_class: measurement
@@ -627,6 +677,11 @@ template:
             {% endif %}
           {% endmacro %}
           {{ relative_humidity_simulated(states('sensor.thermostat_noah_humidity'), states('sensor.noah_absolute_humidity'), states('sensor.wetter_absolute_humidity')) }}
+        availability: >
+          {{
+            (['sensor.thermostat_noah_humidity', 'sensor.noah_absolute_humidity', 'sensor.wetter_absolute_humidity'] | map("states") | map("is_number") | min)
+            and not is_state('sensor.noah_absolute_humidity', 0)
+          }}
         device_class: humidity
         unit_of_measurement: "%"
         state_class: measurement
@@ -646,6 +701,11 @@ template:
             {% endif %}
           {% endmacro %}
           {{ relative_humidity_simulated(states('sensor.thermostat_schlafzimmer_humidity'), states('sensor.schlafzimmer_absolute_humidity'), states('sensor.wetter_absolute_humidity')) }}
+        availability: >
+          {{
+            (['sensor.thermostat_schlafzimmer_humidity', 'sensor.schlafzimmer_absolute_humidity', 'sensor.wetter_absolute_humidity'] | map("states") | map("is_number") | min)
+            and not is_state('sensor.schlafzimmer_absolute_humidity', 0)
+          }}
         device_class: humidity
         unit_of_measurement: "%"
         state_class: measurement
@@ -665,6 +725,11 @@ template:
             {% endif %}
           {% endmacro %}
           {{ relative_humidity_simulated(states('sensor.temperature_sensor_treppenhaus_humidity'), states('sensor.waschraum_absolute_humidity'), states('sensor.wetter_absolute_humidity')) }}
+        availability: >
+          {{
+            (['sensor.temperature_sensor_treppenhaus_humidity', 'sensor.treppenhaus_absolute_humidity', 'sensor.wetter_absolute_humidity'] | map("states") | map("is_number") | min)
+            and not is_state('sensor.treppenhaus_absolute_humidity', 0)
+          }}
         device_class: humidity
         unit_of_measurement: "%"
         state_class: measurement
@@ -684,6 +749,11 @@ template:
             {% endif %}
           {% endmacro %}
           {{ relative_humidity_simulated(states('sensor.temperature_sensor_waschraum_humidity'), states('sensor.waschraum_absolute_humidity'), states('sensor.wetter_absolute_humidity')) }}
+        availability: >
+          {{
+            (['sensor.temperature_sensor_waschraum_humidity', 'sensor.waschraum_absolute_humidity', 'sensor.wetter_absolute_humidity'] | map("states") | map("is_number") | min)
+            and not is_state('sensor.waschraum_absolute_humidity', 0)
+          }}
         device_class: humidity
         unit_of_measurement: "%"
         state_class: measurement
@@ -703,6 +773,11 @@ template:
             {% endif %}
           {% endmacro %}
           {{ relative_humidity_simulated(states('sensor.thermostat_wohnzimmer_humidity'), states('sensor.wohnzimmer_absolute_humidity'), states('sensor.wetter_absolute_humidity')) }}
+        availability: >
+          {{
+            (['sensor.thermostat_wohnzimmer_humidity', 'sensor.wohnzimmer_absolute_humidity', 'sensor.wetter_absolute_humidity'] | map("states") | map("is_number") | min)
+            and not is_state('sensor.wohnzimmer_absolute_humidity', 0)
+          }}
         device_class: humidity
         unit_of_measurement: "%"
         state_class: measurement

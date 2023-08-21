@@ -3,6 +3,10 @@ automation:
     trigger:
       - platform: state
         entity_id: sensor.arbeitszimmer_schalter_wuerfel_side
+    condition:
+      - "{{ trigger.from_state.state not in ['unknown', 'unavailable'] }}"
+      - "{{ trigger.to_state.state not in ['unknown', 'unavailable'] }}"
+      - "{{ trigger.to_state.state != trigger.from_state.state }}"
     action:
       - service: switch.toggle
         target:
