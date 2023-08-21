@@ -1,0 +1,10 @@
+automation:
+  - alias: Toggle technology switch in Arbeitszimmer
+    trigger:
+      - platform: state
+        entity_id: sensor.arbeitszimmer_schalter_wuerfel_side
+    action:
+      - service: switch.toggle
+        target:
+          entity_id: switch.steckdose_arbeitszimmer_switch
+    id: f55998fe58dafe49fc3f9b2e99409c90714fa889
