@@ -1,0 +1,65 @@
+- id: '1692866936661'
+  alias: NFC Tag AP Schlafzimmer ist gescannt
+  description: ''
+  trigger:
+  - platform: tag
+    tag_id: 399be7c4-d976-4bf3-b852-efb6d21630e5
+  condition: []
+  action:
+  - service: switch.toggle
+    data: {}
+    target:
+      entity_id: switch.switch_flur_ap_schlafzimmer_poe
+  mode: single
+- id: '1692866786803'
+  alias: NFC Tag Roon Arbeitszimmer ist gescannt
+  description: ''
+  trigger:
+  - platform: tag
+    tag_id: c0cc2746-1414-4e44-aa25-33e7e8108b6e
+  condition: []
+  action:
+  - service: switch.toggle
+    data: {}
+    target:
+      entity_id: switch.switch_flur_roon_arbeitszimmer_poe
+  mode: single
+- id: '1692866966748'
+  alias: NFC Tag Roon Nino ist gescannt
+  description: ''
+  trigger:
+  - platform: tag
+    tag_id: adb5365a-e875-407a-8ff3-9c27c7b5e8a2
+  condition: []
+  action:
+  - service: switch.toggle
+    data: {}
+    target:
+      entity_id: switch.switch_flur_roon_nino_poe
+  mode: single
+- id: '1692867027161'
+  alias: NFC Tag Roon Noah ist gescannt
+  description: ''
+  trigger:
+  - platform: tag
+    tag_id: 47dd2755-f192-4a79-9c6b-44bd23c2bf61
+  condition: []
+  action:
+  - service: switch.toggle
+    data: {}
+    target:
+      entity_id: switch.switch_flur_roon_noah_poe
+  mode: single
+- id: '1692862486934'
+  alias: NFC Tag Steckdose Schreibtisch ist gescannt
+  description: ''
+  trigger:
+  - platform: tag
+    tag_id: 40afb836-354f-40d6-b847-15ebc02771a8
+  condition: []
+  action:
+  - service: switch.toggle
+    data: {}
+    target:
+      entity_id: switch.steckdose_arbeitszimmer_switch
+  mode: single
