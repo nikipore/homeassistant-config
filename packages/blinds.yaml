@@ -101,9 +101,6 @@ input_boolean:
   blind_control_specific_schlafzimmer:
     name: "Rolladensteuerung: gesondert steuern (Schlafzimmer)"
     icon: mdi:lock-open-outline
-  blind_control_raining:
-    name: "Rolladensteuerung: Regen"
-    icon: mdi:weather-pouring
 
 input_select:
   blind_control_mode_global:
@@ -194,6 +191,94 @@ input_select:
       - "Winter"
       - "Sonnenlicht minimieren"
       - "Sommer"
+  blind_control_ventilate_global:
+    name: "Rolladensteuerung: Lüftungspräferenz"
+    icon: mdi:weather-windy
+    options:
+      - "keine" 
+      - "verdunkeln"
+      - "lüften"
+      - "offen"
+  blind_control_ventilate_ankleide:
+    name: "Rolladensteuerung: Lüftungspräferenz (Ankleide)"
+    icon: mdi:weather-windy
+    options:
+      - "keine" 
+      - "verdunkeln"
+      - "lüften"
+      - "offen"
+  blind_control_ventilate_arbeitszimmer:
+    name: "Rolladensteuerung: Lüftungspräferenz (Arbeitszimmer)"
+    icon: mdi:weather-windy
+    options:
+      - "keine" 
+      - "verdunkeln"
+      - "lüften"
+      - "offen"
+  blind_control_ventilate_badezimmer:
+    name: "Rolladensteuerung: Lüftungspräferenz (Badezimmer)"
+    icon: mdi:weather-windy
+    options:
+      - "keine" 
+      - "verdunkeln"
+      - "lüften"
+      - "offen"
+  blind_control_ventilate_duschbad:
+    name: "Rolladensteuerung: Lüftungspräferenz (Duschbad)"
+    icon: mdi:weather-windy
+    options:
+      - "keine" 
+      - "verdunkeln"
+      - "lüften"
+      - "offen"
+  blind_control_ventilate_flur:
+    name: "Rolladensteuerung: Lüftungspräferenz (Flur)"
+    icon: mdi:weather-windy
+    options:
+      - "keine" 
+      - "verdunkeln"
+      - "lüften"
+      - "offen"
+  blind_control_ventilate_kueche:
+    name: "Rolladensteuerung: Lüftungspräferenz (Küche)"
+    icon: mdi:weather-windy
+    options:
+      - "keine" 
+      - "verdunkeln"
+      - "lüften"
+      - "offen"
+  blind_control_ventilate_nino:
+    name: "Rolladensteuerung: Lüftungspräferenz (Nino)"
+    icon: mdi:weather-windy
+    options:
+      - "keine" 
+      - "verdunkeln"
+      - "lüften"
+      - "offen"
+  blind_control_ventilate_noah:
+    name: "Rolladensteuerung: Lüftungspräferenz (Noah)"
+    icon: mdi:weather-windy
+    options:
+      - "keine" 
+      - "verdunkeln"
+      - "lüften"
+      - "offen"
+  blind_control_ventilate_schlafzimmer:
+    name: "Rolladensteuerung: Lüftungspräferenz (Schlafzimmer)"
+    icon: mdi:weather-windy
+    options:
+      - "keine" 
+      - "verdunkeln"
+      - "lüften"
+      - "offen"
+  blind_control_ventilate_wohnzimmer:
+    name: "Rolladensteuerung: Lüftungspräferenz (Wohnzimmer)"
+    icon: mdi:weather-windy
+    options:
+      - "keine" 
+      - "verdunkeln"
+      - "lüften"
+      - "offen"
 
 input_number:
   blind_control_position_global:
