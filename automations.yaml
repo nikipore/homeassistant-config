@@ -63,3 +63,81 @@
     target:
       entity_id: switch.steckdose_arbeitszimmer_switch
   mode: single
+- id: '1693070991630'
+  alias: NFC Tag Türschloss Aufzug ist gescannt
+  description: ''
+  trigger:
+  - platform: tag
+    tag_id: 902a7052-91d5-47db-b2b3-dbece01623dd
+  condition: []
+  action:
+  - service: lock.open
+    data: {}
+    target:
+      device_id: d6325d0109b417afa62944da7e7ee0df
+  mode: single
+- id: '1693071058017'
+  alias: NFC Tag Türschloss Treppenhaus ist gescannt
+  description: ''
+  trigger:
+  - platform: tag
+    tag_id: 006914a9-f479-4bb7-9d8e-aeea021d770f
+  condition: []
+  action:
+  - service: lock.open
+    data: {}
+    target:
+      device_id: 792108c8263345ed87a1ccd398324627
+  mode: single
+- id: '1693080189440'
+  alias: NFC Tag Steckdose Multimedia ist gescannt
+  description: ''
+  trigger:
+  - platform: tag
+    tag_id: 44ce9729-3b0f-4306-823b-bbfa61cd3fe4
+  condition: []
+  action:
+  - service: switch.toggle
+    data: {}
+    target:
+      entity_id: switch.steckdose_wohnzimmer_tv_switch
+  mode: single
+- id: '1693080473799'
+  alias: NFC Tag Licht Oberschrank Küche ist gescannt
+  description: ''
+  trigger:
+  - platform: tag
+    tag_id: 39f7f0d7-bec6-49cc-97da-167ef71f8c1e
+  condition: []
+  action:
+  - service: automation.toggle
+    data: {}
+    target:
+      entity_id: automation.motion_activated_switch_kuche_2
+  mode: single
+- id: '1693127673354'
+  alias: NFC Tag Licht Arbeitszimmer ist gescannt
+  description: ''
+  trigger:
+  - platform: tag
+    tag_id: be4f3ff5-56b0-490b-8556-8c1369167a66
+  condition: []
+  action:
+  - service: switch.toggle
+    data: {}
+    target:
+      entity_id: switch.licht_arbeitszimmer
+  mode: single
+- id: '1693139793680'
+  alias: NFC Tag Bewegungsmelder Ankleide ist gescannt
+  description: ''
+  trigger:
+  - platform: tag
+    tag_id: 84e54908-6ab1-417f-ab4b-bbcf26050b8b
+  condition: []
+  action:
+  - service: automation.toggle
+    data: {}
+    target:
+      entity_id: automation.motion_activated_switch_ankleide_2
+  mode: single
