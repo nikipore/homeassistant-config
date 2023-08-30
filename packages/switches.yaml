@@ -2,16 +2,23 @@ automation:
   - alias: Toggle technology switch in Arbeitszimmer
     trigger:
       - platform: state
-        entity_id: sensor.arbeitszimmer_schalter_wuerfel_side
-    condition:
-      - "{{ trigger.from_state.state not in ['unknown', 'unavailable'] }}"
-      - "{{ trigger.to_state.state not in ['unknown', 'unavailable'] }}"
-      - "{{ trigger.to_state.state != trigger.from_state.state }}"
+        entity_id: sensor.arbeitszimmer_knopf_schreibtisch_action
+        to: single
     action:
       - service: switch.toggle
         target:
           entity_id: switch.steckdose_arbeitszimmer_switch
     id: f55998fe58dafe49fc3f9b2e99409c90714fa889
+  - alias: Toggle Wi-Fi AP Schlafzimmer
+    trigger:
+      - platform: state
+        entity_id: sensor.schlafzimmer_knopf_wifi_action
+        to: single
+    action:
+      - service: switch.toggle
+        target:
+          entity_id: switch.switch_flur_ap_schlafzimmer_poe
+    id: a737155d8fa6fc7d120c316ad7ab3236081a8e22
 
 input_boolean:
   switch_auto_off_active_arbeitszimmer:
@@ -46,4 +53,3 @@ input_number:
     min: 0
     max: 20
     step: 0.5
-

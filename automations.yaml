@@ -1,16 +1,3 @@
-- id: '1692866936661'
-  alias: NFC Tag AP Schlafzimmer ist gescannt
-  description: ''
-  trigger:
-  - platform: tag
-    tag_id: 399be7c4-d976-4bf3-b852-efb6d21630e5
-  condition: []
-  action:
-  - service: switch.toggle
-    data: {}
-    target:
-      entity_id: switch.switch_flur_ap_schlafzimmer_poe
-  mode: single
 - id: '1692866786803'
   alias: NFC Tag Roon Arbeitszimmer ist gescannt
   description: ''
