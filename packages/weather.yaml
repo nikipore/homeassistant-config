@@ -1,3 +1,24 @@
+binary_sensor:
+  - name: weather_raining_bayesian
+    platform: bayesian
+    prior: 0.02
+    observations:
+      - platform: state
+        entity_id: binary_sensor.regensensor_lichtkuppel_flur_is_wet
+        prob_given_true: 0.99 # the sensor is almost certainly wet when it's raining
+        prob_given_false: 0.1 # the sensor might trigger although it isn't raining (fog)
+        to_state: on
+      - platform: numeric_state
+        entity_id: sensor.openweathermap_hourly_forecast_precipitation_probability
+        above: 90
+        prob_given_true: 0.7
+        prob_given_false: 0.1
+      - platform: numeric_state
+        entity_id: sensor.openweathermap_hourly_forecast_precipitation_probability
+        above: 10
+        prob_given_true: 0.9
+        prob_given_false: 0.5
+
 sensor:
   - platform: statistics
     name: weather_wind_speed_max_recent_statistics
@@ -159,6 +180,8 @@ homeassistant:
   customize:
     binary_sensor.weather_raining:
       friendly_name: "Wetteralarm: Regen"
+    binary_sensor.weather_raining_bayesian:
+      friendly_name: "Wetteralarm: Regen (Bayesian)"
     binary_sensor.weather_storm:
       friendly_name: "Wetteralarm: Sturm"
     sensor.weather_forecast_cloud_coverage:

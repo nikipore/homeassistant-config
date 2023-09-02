@@ -24,7 +24,9 @@ template:
   - binary_sensor:
       - name: regensensor_lichtkuppel_flur_is_wet
         state: >
-          {{ 0.1 < states("sensor.regensensor_lichtkuppel_flur_voltage_3") | float(0) < 2.0 }}
+          {{ 0 < states("sensor.regensensor_lichtkuppel_flur_voltage_3") | float(0) < 2 }}
+        availability: >
+          {{ not is_state('sensor.regensensor_lichtkuppel_flur_voltage_3', 'unavailable') }}
         icon: >
           {{ is_state("regensensor_lichtkuppel_flur_is_wet", "on") | iif("mdi:weather-pouring", "mdi:circle-outline") }}
         unique_id: fbe43771ee234abbedd9bbc35ebc33bcbb8faca0
