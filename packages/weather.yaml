@@ -11,9 +11,11 @@ template:
   - binary_sensor:
       - name: weather_raining
         state: >
-          {{ not is_state('sensor.openweathermap_hourly_forecast_precipitation', '0') }}
+          {{ is_state('binary_sensor.regensensor_lichtkuppel_flur_is_wet', "on") }}
         icon: >
           {{ is_state("binary_sensor.weather_raining", "on") | iif("mdi:weather-pouring", "mdi:circle-outline") }}
+        delay_off:
+          minutes: 0
         unique_id: 434d5b21925833b3f83339753e335314f5b57ab7
       - name: weather_storm
         state: >
