@@ -1,5 +1,5 @@
 automation:
-  - alias: Toggle technology switch in Arbeitszimmer
+  - alias: Toggle switch Arbeitszimmer Technik/Schreibtisch
     trigger:
       - platform: state
         entity_id: sensor.arbeitszimmer_knopf_schreibtisch_action
@@ -9,7 +9,7 @@ automation:
         target:
           entity_id: switch.steckdose_arbeitszimmer_switch
     id: f55998fe58dafe49fc3f9b2e99409c90714fa889
-  - alias: Toggle Wi-Fi AP Schlafzimmer
+  - alias: Toggle Schlafzimmer Wi-Fi AP
     trigger:
       - platform: state
         entity_id: sensor.schlafzimmer_knopf_wifi_action
@@ -19,6 +19,27 @@ automation:
         target:
           entity_id: switch.switch_flur_ap_schlafzimmer_poe
     id: a737155d8fa6fc7d120c316ad7ab3236081a8e22
+  - alias: Toggle switch Küche Oberschrank
+    trigger:
+      - platform: state
+        entity_id: sensor.kueche_knopf_oberschrank_action
+        to: single
+    action:
+      - service: switch.toggle
+        target:
+          entity_id: switch.steckdose_kueche_oberschrank
+    id: 02705d1cdb128d9d2df45542e218291b3006b007
+  - alias: Toggle motion detector Küche
+    trigger:
+      - platform: state
+        entity_id: sensor.kueche_knopf_oberschrank_action
+        to: double
+    action:
+    - service: automation.toggle
+      data: {}
+      target:
+        entity_id: automation.motion_activated_switch_kueche
+    id: 02705d1cdb128d9d2df45542e218291b3006b007
 
 input_boolean:
   switch_auto_off_active_arbeitszimmer:

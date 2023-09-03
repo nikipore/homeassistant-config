@@ -89,19 +89,6 @@
     target:
       entity_id: switch.steckdose_wohnzimmer_tv_switch
   mode: single
-- id: '1693080473799'
-  alias: NFC Tag Licht Oberschrank Küche ist gescannt
-  description: ''
-  trigger:
-  - platform: tag
-    tag_id: 39f7f0d7-bec6-49cc-97da-167ef71f8c1e
-  condition: []
-  action:
-  - service: automation.toggle
-    data: {}
-    target:
-      entity_id: automation.motion_activated_switch_kuche_2
-  mode: single
 - id: '1693127673354'
   alias: NFC Tag Licht Arbeitszimmer ist gescannt
   description: ''
@@ -126,5 +113,5 @@
   - service: automation.toggle
     data: {}
     target:
-      entity_id: automation.motion_activated_switch_ankleide_2
+      entity_id: automation.motion_activated_switch_ankleide
   mode: single
