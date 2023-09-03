@@ -9,7 +9,7 @@ automation:
         target:
           entity_id: switch.steckdose_arbeitszimmer_switch
     id: f55998fe58dafe49fc3f9b2e99409c90714fa889
-  - alias: Toggle Schlafzimmer Wi-Fi AP
+  - alias: Toggle switch Schlafzimmer Wi-Fi AP
     trigger:
       - platform: state
         entity_id: sensor.schlafzimmer_knopf_wifi_action
@@ -29,17 +29,29 @@ automation:
         target:
           entity_id: switch.steckdose_kueche_oberschrank
     id: 02705d1cdb128d9d2df45542e218291b3006b007
-  - alias: Toggle motion detector Küche
+  - alias: Toggle automation Küche motion detector
     trigger:
       - platform: state
         entity_id: sensor.kueche_knopf_oberschrank_action
         to: double
+    variables:
+      automation: automation.motion_activated_switch_kuche_2
+      mediaplayer: media_player.kuche
     action:
-    - service: automation.toggle
-      data: {}
-      target:
-        entity_id: automation.motion_activated_switch_kueche
-    id: 02705d1cdb128d9d2df45542e218291b3006b007
+      - service: automation.toggle
+        data: {}
+        target:
+          entity_id: "{{ automation }}"
+      - service: notify.alexa_media
+        data:
+          message: >
+            "Präsenzmelder ist {{ {"on": "angeschaltet", "off": "ausgeschaltet"}[states(automation)] }}"
+          target: "{{ mediaplayer }}"
+          data:
+            type: announce
+          title: >
+            "Präsenzmelder ist {{ {"on": "angeschaltet", "off": "ausgeschaltet"}[states(automation)] }}"
+    id: 6d75c7a1a7f3d6fef3e35cc5232085bceb1a653f
 
 input_boolean:
   switch_auto_off_active_arbeitszimmer:
