@@ -1,7 +1,6 @@
 # Ignore folders.
 .storage
 .cloud
-.google.token
 custom_components
 homematicip_local/cache/**
 node-red/context/**
@@ -24,7 +23,9 @@ __pycache__
 *.db-*
 harmony_*.conf
 *.pem
+.google.token
 .shopping_list.json
+apikey-google-cloud.json
 node-red/.config.nodes.json*
 node-red/.config.users.json*
 node-red/.flows.json.backup

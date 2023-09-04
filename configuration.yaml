@@ -33,7 +33,9 @@ influxdb:
   default_measurement: state
 
 tts:
-  - platform: google_translate
+  - platform: google_cloud
+    key_file: apikey-google-cloud.json
+    voice: de-DE-Wavenet-F
 
 http:
   use_x_forwarded_for: true
