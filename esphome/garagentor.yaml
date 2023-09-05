@@ -1,0 +1,87 @@
+substitutions:
+  name: garagentor
+  friendly_name: Garagentor
+  api_encryption_key: "AnPvytk6Gw6QOHEXDWkNYJjVLDo/ablP/ZlFg1x+FLM="
+
+esphome:
+  name: ${name}
+  name_add_mac_suffix: false
+  friendly_name: ${friendly_name}
+  comment: "Shelly 1 relais controlling the garage door"
+
+esp8266:
+  board: esp01_1m
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  encryption:
+    key: ${api_encryption_key}
+
+ota:
+  password: !secret ota_password
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "${name}-AP"
+    password: !secret wifi_ap_password
+
+captive_portal:
+
+# see: https://esphome.io/components/time.html
+time:
+  - platform: homeassistant
+    id: homeassistant_time
+
+# Enable Web server
+#web_server:
+#  port: 80
+#  auth:
+#    username: !secret web_server_username
+#    password: !secret web_server_password
+
+text_sensor:
+  - platform: version
+    name: "${name}_esphome_version"
+
+  - platform: wifi_info
+    ip_address:
+      name: "${name}_ip"
+    ssid:
+      name: "${name}_wifi_ssid"
+    bssid:
+      name: "${name}_wifi_bssid"
+
+sensor:
+  - platform: uptime
+    name: "${name}_uptime"
+
+  - platform: wifi_signal
+    name: "${name}_wifi_signal"
+    update_interval: 300s
+
+switch:
+  - platform: gpio
+    name: "${name}_switch"
+    id: "${name}_relay"
+    pin: GPIO4
+    restore_mode: restore_default_off
+    on_turn_on:
+      then:
+        - delay: 2s
+        - switch.turn_off: "${name}_relay"
+
+binary_sensor:
+  - platform: gpio
+    name: "${name}_state"
+    id: "${name}_state"
+    device_class: garage_door
+    pin:
+      number: GPIO5
+      inverted: True
