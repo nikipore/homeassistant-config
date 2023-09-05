@@ -46,42 +46,32 @@ time:
 #    username: !secret web_server_username
 #    password: !secret web_server_password
 
-text_sensor:
-  - platform: version
-    name: "${name}_esphome_version"
-
-  - platform: wifi_info
-    ip_address:
-      name: "${name}_ip"
-    ssid:
-      name: "${name}_wifi_ssid"
-    bssid:
-      name: "${name}_wifi_bssid"
-
 sensor:
   - platform: uptime
-    name: "${name}_uptime"
-
-  - platform: wifi_signal
-    name: "${name}_wifi_signal"
-    update_interval: 300s
+    name: "Uptime"
 
 switch:
   - platform: gpio
-    name: "${name}_switch"
-    id: "${name}_relay"
+    id: relay
     pin: GPIO4
-    restore_mode: restore_default_off
     on_turn_on:
       then:
         - delay: 2s
-        - switch.turn_off: "${name}_relay"
+        - switch.turn_off: relay
+
+button:
+  - platform: template
+    id: trigger
+    name: "Trigger"
+    on_press:
+      then:
+        - switch.turn_on: relay
 
 binary_sensor:
   - platform: gpio
-    name: "${name}_state"
-    id: "${name}_state"
+    name: "State"
+    id: state
     device_class: garage_door
     pin:
       number: GPIO5
-      inverted: True
+      inverted: true
