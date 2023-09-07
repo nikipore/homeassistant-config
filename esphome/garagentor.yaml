@@ -50,14 +50,24 @@ sensor:
   - platform: uptime
     name: "Uptime"
 
+  - platform: wifi_signal
+    name: "WiFi Signal"
+    update_interval: 60s
+
+text_sensor:
+  - platform: wifi_info
+    ip_address:
+      name: "IP"
+    ssid:
+      name: "SSID"
+    bssid:
+      name: "BSSID"
+
 switch:
   - platform: gpio
     id: relay
+    name: "Switch"
     pin: GPIO4
-    on_turn_on:
-      then:
-        - delay: 2s
-        - switch.turn_off: relay
 
 button:
   - platform: template
@@ -66,6 +76,8 @@ button:
     on_press:
       then:
         - switch.turn_on: relay
+        - delay: 200ms
+        - switch.turn_off: relay
 
 binary_sensor:
   - platform: gpio
