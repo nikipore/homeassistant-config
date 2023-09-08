@@ -115,3 +115,16 @@
     target:
       entity_id: automation.motion_activated_switch_ankleide
   mode: single
+- id: '1694171387973'
+  alias: NFC Tag Garagentor ist gescannt
+  description: ''
+  trigger:
+  - platform: tag
+    tag_id: 6e379d86-41cc-4330-9073-4bacf10eed83
+  condition: []
+  action:
+  - service: button.press
+    data: {}
+    target:
+      entity_id: button.garagentor_trigger
+  mode: single
