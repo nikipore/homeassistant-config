@@ -39,5 +39,8 @@ tts:
 
 http:
   use_x_forwarded_for: true
-  trusted_proxies: # Docker containers
-    - 172.30.33.0/24
+  trusted_proxies:
+    - 172.30.33.0/24 # Docker containers
+
+  ip_ban_enabled: true
+  login_attempts_threshold: 5
