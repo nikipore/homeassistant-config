@@ -12,10 +12,8 @@ esphome:
 esp8266:
   board: esp01_1m
 
-# Enable logging
 logger:
 
-# Enable Home Assistant API
 api:
   encryption:
     key: ${api_encryption_key}
@@ -27,57 +25,15 @@ wifi:
   ssid: !secret wifi_ssid
   password: !secret wifi_password
 
-  # Enable fallback hotspot (captive portal) in case wifi connection fails
   ap:
     ssid: "${name}-AP"
     password: !secret wifi_ap_password
 
 captive_portal:
 
-# see: https://esphome.io/components/time.html
 time:
   - platform: homeassistant
     id: homeassistant_time
-
-# Enable Web server
-#web_server:
-#  port: 80
-#  auth:
-#    username: !secret web_server_username
-#    password: !secret web_server_password
-
-sensor:
-  - platform: uptime
-    name: "Uptime"
-
-  - platform: wifi_signal
-    name: "WiFi Signal"
-    update_interval: 60s
-
-text_sensor:
-  - platform: wifi_info
-    ip_address:
-      name: "IP"
-    ssid:
-      name: "SSID"
-    bssid:
-      name: "BSSID"
-
-switch:
-  - platform: gpio
-    id: relay
-    name: "Switch"
-    pin: GPIO4
-
-button:
-  - platform: template
-    id: trigger
-    name: "Trigger"
-    on_press:
-      then:
-        - switch.turn_on: relay
-        - delay: 200ms
-        - switch.turn_off: relay
 
 binary_sensor:
   - platform: gpio
@@ -87,3 +43,26 @@ binary_sensor:
     pin:
       number: GPIO5
       inverted: true
+
+switch:
+  - platform: gpio
+    id: relay
+    pin: GPIO4
+    name: "Switch"
+    
+button:
+  - platform: template
+    name: "Trigger"
+    on_press:
+      then:
+        - switch.turn_on: relay
+        - delay: 200ms
+        - switch.turn_off: relay
+
+sensor:
+  - platform: uptime
+    name: "Uptime"
+
+  - platform: wifi_signal
+    name: "WiFi Signal"
+    update_interval: 60s
