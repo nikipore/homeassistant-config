@@ -4,10 +4,15 @@ binary_sensor:
     prior: 0.02
     observations:
       - platform: state
-        entity_id: binary_sensor.regensensor_lichtkuppel_flur_is_wet
-        prob_given_true: 0.99 # the sensor is almost certainly wet when it's raining
-        prob_given_false: 0.1 # the sensor might trigger although it isn't raining (fog)
-        to_state: on
+        entity_id: binary_sensor.window_sensor_lichtkuppel_flur_is_open
+        prob_given_true: 0.98 # the skylight is almost certainly closed when it's raining
+        prob_given_false: 0.5
+        to_state: off
+      - platform: state
+        entity_id: binary_sensor.window_sensor_lichtkuppel_flur_is_open
+        prob_given_true: 0.98 # the skylight is almost certainly closed when it's raining
+        prob_given_false: 0.5
+        to_state: off
       - platform: numeric_state
         entity_id: sensor.openweathermap_hourly_forecast_precipitation_probability
         above: 90
@@ -32,7 +37,7 @@ template:
   - binary_sensor:
       - name: weather_raining
         state: >
-          {{ is_state('binary_sensor.regensensor_lichtkuppel_flur_is_wet', "on") }}
+          {{ not is_state('sensor.openweathermap_hourly_forecast_precipitation', '0') }}
         icon: >
           {{ is_state("binary_sensor.weather_raining", "on") | iif("mdi:weather-pouring", "mdi:circle-outline") }}
         delay_off:
@@ -73,7 +78,7 @@ template:
         unit_of_measurement: "km/h"
         state: >
           {{ states('sensor.wind_gusts_wiesbaden_biebrich_1h') }}
-        icon: mdi:weather-rainy
+        icon: mdi:weather-windy
         unique_id: aeeb9fd8e90d71af4b489292711a1d5f0145fc0e
       - name: weather_forecast_sun_duration
         state_class: measurement
