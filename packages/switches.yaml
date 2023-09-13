@@ -60,6 +60,9 @@ input_boolean:
   switch_auto_off_active_garage:
     name: "automatisch ausschalten (Garage)"
     icon: mdi:timer-stop-outline
+  switch_auto_off_active_keller:
+    name: "automatisch ausschalten (Keller)"
+    icon: mdi:timer-stop-outline
 
 input_number:
   switch_auto_off_timeout_arbeitszimmer:
@@ -74,6 +77,12 @@ input_number:
     min: 0
     max: 60
     step: 1
+  switch_auto_off_timeout_keller:
+    name: "automatisch ausschalten nach … Minuten (Keller)"
+    icon: mdi:history
+    min: 0
+    max: 60
+    step: 1
   switch_auto_off_threshold_arbeitszimmer:
     name: "automatisch ausschalten unter … W (Arbeitszimmer)"
     icon: mdi:current-ac
@@ -82,6 +91,12 @@ input_number:
     step: 0.5
   switch_auto_off_threshold_garage:
     name: "automatisch ausschalten unter … W (Garage)"
+    icon: mdi:current-ac
+    min: 0
+    max: 20
+    step: 0.5
+  switch_auto_off_threshold_keller:
+    name: "automatisch ausschalten unter … W (Keller)"
     icon: mdi:current-ac
     min: 0
     max: 20
