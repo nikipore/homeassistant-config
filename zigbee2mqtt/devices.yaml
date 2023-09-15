@@ -75,3 +75,15 @@
   friendly_name: kueche-knopf-oberschrank
 '0x943469fffe5f6a37':
   friendly_name: vierer-schalter
+'0xa4c138ab49708136':
+  friendly_name: ankleide-knopf-bewegungsmelder
+'0xa4c1381e7d1a3b98':
+  friendly_name: nino-knopf-wifi
+'0xa4c13843b0639b0b':
+  friendly_name: noah-knopf-musik
+'0xa4c138999e203837':
+  friendly_name: nino-knopf-musik
+'0xa4c13800968df981':
+  friendly_name: wohnzimmer-knopf-wifi
+'0xa4c138bcac443e35':
+  friendly_name: wohnzimmer-knopf-tv
