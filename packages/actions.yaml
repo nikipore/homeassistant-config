@@ -12,7 +12,7 @@ automation:
             - media_player.noah
       - service: notify.alexa_media
         data:
-          message: Essen ist fertig! Essen ist fertig!
+          message: Essen ist fertig!
           target: media_player.flur
           data:
             type: announce
@@ -30,7 +30,7 @@ automation:
             - media_player.noah
       - service: notify.alexa_media
         data:
-          message: Kommt mal her! Kommt mal her!
+          message: Kommt mal her!
           target: media_player.flur
           data:
             type: announce

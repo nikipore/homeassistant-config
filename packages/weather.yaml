@@ -77,14 +77,14 @@ template:
         state_class: measurement
         unit_of_measurement: "km/h"
         state: >
-          {{ states('sensor.wind_gusts_wiesbaden_biebrich_1h') }}
+          {{ states('sensor.wiesbaden_biebrich_windboen') }}
         icon: mdi:weather-windy
         unique_id: aeeb9fd8e90d71af4b489292711a1d5f0145fc0e
       - name: weather_forecast_sun_duration
         state_class: measurement
         unit_of_measurement: "s"
         state: >
-          {{ states('sensor.sun_duration_wiesbaden_biebrich_1h') }}
+          {{ states('sensor.wiesbaden_biebrich_sonnenscheindauer') }}
         icon: mdi:weather-sunny
         unique_id: 41acc499bee49362845013e9e570dccbd3be545f
       - name: weather_forecast_temperature

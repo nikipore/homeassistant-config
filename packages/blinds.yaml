@@ -375,8 +375,8 @@ input_number:
     name: "Rolladensteuerung: Sonnenstandsteuerung Sommer (Sonnenleistung)"
     icon: mdi:sun-wireless-outline
     min: 0
-    max: 200
-    step: 10
+    max: 400
+    step: 25
 
 input_datetime:
   blind_control_from_earliest_workday_global:
