@@ -122,7 +122,7 @@ automation:
         to: double
     variables:
       automation: automation.motion_activated_switch_kuche_2
-      mediaplayer: media_player.kuche
+      mediaplayer: media_player.kueche
     action:
       - service: automation.toggle
         data: {}
