@@ -58,6 +58,8 @@ button:
         - switch.turn_on: relay
         - delay: 200ms
         - switch.turn_off: relay
+  - platform: restart
+    name: "Restart"
 
 sensor:
   - platform: uptime

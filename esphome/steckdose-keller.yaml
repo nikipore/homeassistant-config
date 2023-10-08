@@ -1,7 +1,7 @@
 substitutions:
-  name: steckdose-garage
-  friendly_name: "Steckdose Garage"
-  api_encryption_key: "jE1AoEyCZ6fe1fvNJ3hKjZfVG8iEFeKV+rjCVdivQ6M="
+  name: "steckdose-keller"
+  friendly_name: "Steckdose Keller"
+  api_encryption_key: "WWuizIU4nupjNesYhepznKlGn1QzxyG8sxN0PidkRFM="
 
   # Higher value gives lower watt readout
   current_res: "0.00280"
