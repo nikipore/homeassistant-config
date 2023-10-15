@@ -1,0 +1,10 @@
+wake_on_lan:
+
+switch:
+  - name: "NAS"
+    platform: wake_on_lan
+    mac: 00:11:32:6d:00:07
+    host: 192.168.20.152
+    turn_off:
+      service: button.press
+      entity_id: button.nas_shutdown
