@@ -73,6 +73,7 @@ switch:
     turn_off_action:
       - switch.turn_off: relay
       - light.turn_off: led
+    restore_mode: RESTORE_DEFAULT_ON
   - platform: gpio
     pin: GPIO14
     id: relay
