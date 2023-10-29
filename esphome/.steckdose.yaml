@@ -25,6 +25,8 @@ wifi:
     ssid: "${name}-AP"
     password: !secret wifi_ap_password
 
+  reboot_timeout: 0s
+  
 captive_portal:
 
 time:
