@@ -1,0 +1,6 @@
+substitutions:
+  name: bluetooth-proxy-flur
+  friendly_name: Bluetooth Proxy Flur
+  api_encryption_key: "d1SHy1XDPBZD3bH8usf5kN2ZXpuNHXOljQjA/aHGz4M="
+
+<<: !include .bluetooth-proxy.yaml
