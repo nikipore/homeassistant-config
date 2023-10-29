@@ -49,8 +49,8 @@ automation:
     use_blueprint:
       path: local/motion_switch.yaml
       input:
-        motion_entity: binary_sensor.motion_sensor_kueche_home_security_motion_detection
-        illuminance_entity: sensor.motion_sensor_kueche_illuminance
+        motion_entity: binary_sensor.bewegungssensor_kuche_motion_detection
+        illuminance_entity: sensor.bewegungssensor_kuche_illuminance
         max_illuminance: 100
         no_motion_wait: 60 # total: 300 seconds
         switch_target:
