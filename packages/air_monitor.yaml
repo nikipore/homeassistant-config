@@ -1,0 +1,86 @@
+mqtt:
+  sensor:
+    - object_id: air_monitor_co2
+      name: "CO2"
+      state_topic: "qingping/582D34700B3E/up"
+      device_class: carbon_dioxide
+      unique_id: "qingping_air_monitor_582D34700B3E_co2"
+      value_template: >-
+        {{ value_json.sensorData.0.co2.value 
+          if value_json.type=="17" }}
+      unit_of_measurement: "ppm"
+      device:
+        identifiers: ["582D34700B3E"]
+        name: "Air monitor"
+        model: "CGS1"
+        manufacturer: "qingping"
+    - object_id: air_monitor_pm25
+      name: "pm25"
+      state_topic: "qingping/582D34700B3E/up"
+      device_class: pm25
+      unique_id: "qingping_air_monitor_582D34700B3E_pm25"
+      value_template: >-
+        {{ value_json.sensorData.0.pm25.value 
+          if value_json.type=="17" }}
+      unit_of_measurement: "µg/m³"
+      device:
+        identifiers: ["582D34700B3E"]
+        name: "Air monitor"
+        model: "CGS1"
+        manufacturer: "qingping"
+    - object_id: air_monitor_pm10
+      name: "pm10"
+      state_topic: "qingping/582D34700B3E/up"
+      device_class: pm10
+      unique_id: "qingping_air_monitor_582D34700B3E_pm10"
+      value_template: >-
+        {{ value_json.sensorData.0.pm10.value 
+          if value_json.type=="17" }}
+      unit_of_measurement: "µg/m³"
+      device:
+        identifiers: ["582D34700B3E"]
+        name: "Air monitor"
+        model: "CGS1"
+        manufacturer: "qingping"
+    - object_id: air_monitor_tvoc
+      name: "tvoc"
+      state_topic: "qingping/582D34700B3E/up"
+      device_class: volatile_organic_compounds
+      unique_id: "qingping_air_monitor_582D34700B3E_tvoc"
+      value_template: >-
+        {{ (value_json.sensorData.0.tvoc.value/218.77)|round(3) 
+          if value_json.type=="17" }}
+      unit_of_measurement: "ppb"
+      device:
+        identifiers: ["582D34700B3E"]
+        name: "Air monitor"
+        model: "CGS1"
+        manufacturer: "qingping"
+    - object_id: air_monitor_humidity
+      name: "humidity"
+      state_topic: "qingping/582D34700B3E/up"
+      device_class: humidity
+      unique_id: "qingping_air_monitor_582D34700B3E_humidity"
+      value_template: >-
+        {{ value_json.sensorData.0.humidity.value|round(2)
+          if value_json.type=="17" }}
+      unit_of_measurement: "%"
+      device:
+        identifiers: ["582D34700B3E"]
+        name: "Air monitor"
+        model: "CGS1"
+        manufacturer: "qingping"
+    - object_id: air_monitor_temperature
+      name: "temperature"
+      state_topic: "qingping/582D34700B3E/up"
+      device_class: temperature
+      unique_id: "qingping_air_monitor_582D34700B3E_temperature"
+      value_template: >-
+        {{ value_json.sensorData.0.temperature.value|round(2)
+            if value_json.type=="17" }}
+      unit_of_measurement: "°C"
+      device:
+        identifiers: ["582D34700B3E"]
+        name: "Air monitor"
+        model: "CGS1"
+        manufacturer: "qingping"
