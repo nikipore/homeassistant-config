@@ -1,0 +1,20 @@
+automation:
+  - alias: Export power meter to Google Sheets
+    trigger:
+      platform: time_pattern
+      minutes: "/15"
+    condition:
+      condition: numeric_state
+      entity_id: sensor.last_meter_consumption_zuhause
+      above: 0
+    action:
+      - service: google_sheets.append_sheet
+        data:
+          config_entry: d4c1ba49aae5a528a9d94645412bfb32
+          worksheet: "Power Meter"
+          data:
+            time: "{{ utcnow() | as_timestamp }}"
+            consumption: "{{ states('sensor.last_meter_consumption_zuhause') | float(0) }}"
+            electricity_price: "{{ states('sensor.electricity_price_kostheimer_landstrasse_17') | float(0) }}"
+            accumulated_cost: "{{ states('sensor.accumulated_cost_zuhause') | float(0 )}}"
+    id: d698e01895aab3aead886032a61e945c169dd5b6
