@@ -7,7 +7,7 @@ mqtt:
       state_topic: "qingping/582D34700B3E/up"
       value_template: >-
         {{ value_json.sensorData.0.co2.value
-          if value_json.type=="17" else this.state }}
+          if value_json else this.state }}
       availability:
         - topic: "qingping/582D34700B3E/up"
           payload_available: "true"
@@ -26,7 +26,7 @@ mqtt:
       state_topic: "qingping/582D34700B3E/up"
       value_template: >-
         {{ value_json.sensorData.0.pm25.value 
-          if value_json.type=="17" else this.state }}
+          if value_json else this.state }}
       unit_of_measurement: "µg/m³"
       availability:
         - topic: "qingping/582D34700B3E/up"
@@ -47,7 +47,7 @@ mqtt:
       state_topic: "qingping/582D34700B3E/up"
       value_template: >-
         {{ value_json.sensorData.0.pm10.value 
-          if value_json.type=="17" else this.state }}
+          if value_json else this.state }}
       availability:
         - topic: "qingping/582D34700B3E/up"
           payload_available: "true"
@@ -67,7 +67,7 @@ mqtt:
       state_topic: "qingping/582D34700B3E/up"
       value_template: >-
         {{ (value_json.sensorData.0.tvoc.value / 218.77) | round(3) 
-          if value_json.type=="17" else this.state }}
+          if value_json else this.state }}
       availability:
         - topic: "qingping/582D34700B3E/up"
           payload_available: "true"
@@ -86,7 +86,7 @@ mqtt:
       state_topic: "qingping/582D34700B3E/up"
       value_template: >-
         {{ value_json.sensorData.0.humidity.value|round(2)
-          if value_json.type=="17" else this.state }}
+          if value_json else this.state }}
       unit_of_measurement: "%"
       availability:
         - topic: "qingping/582D34700B3E/up"
@@ -107,7 +107,7 @@ mqtt:
       state_topic: "qingping/582D34700B3E/up"
       value_template: >-
         {{ value_json.sensorData.0.temperature.value|round(2)
-            if value_json.type=="17" else this.state }}
+            if value_json else this.state }}
       availability:
         - topic: "qingping/582D34700B3E/up"
           payload_available: "true"
@@ -150,3 +150,19 @@ template:
         availability: >
           {{ not is_state('sensor.air_monitor_tvoc', 'unavailable') }}
         icon: mdi:molecule
+
+automation:
+  - alias: Activate near-time reporting of Qingping Air Sensor
+    trigger:
+      - platform: homeassistant
+        event: start
+      - platform: time
+        at:
+        - "03:00:00"
+    action:
+      - service: mqtt.publish
+        data:
+          topic: qingping/582D34700B3E/down
+          payload: >-
+            {"type": "12", "up_itvl": "15" ,"duration": "86400"}
+    id: a20cb2c8aa6253f8607bc3572ecd25d8a3d279f8
