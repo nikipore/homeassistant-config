@@ -15,6 +15,6 @@ automation:
           data:
             time: "{{ utcnow() | as_timestamp }}"
             consumption: "{{ states('sensor.last_meter_consumption_zuhause') | float(0) }}"
-            electricity_price: "{{ states('sensor.electricity_price_kostheimer_landstrasse_17') | float(0) }}"
+            electricity_price: "{{ states('sensor.electricity_price_zuhause') | float(0) }}"
             accumulated_cost: "{{ states('sensor.accumulated_cost_zuhause') | float(0 )}}"
     id: d698e01895aab3aead886032a61e945c169dd5b6

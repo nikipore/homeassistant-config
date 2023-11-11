@@ -1,13 +1,7 @@
 default_config:
 
 automation: !include automations.yaml
-binary_sensor: !include binary_sensors.yaml
-group: !include groups.yaml
-light: !include lights.yaml
-scene: !include scenes.yaml
 script: !include scripts.yaml
-sensor: !include sensors.yaml
-timer: !include timers.yaml
 
 python_script:
 
@@ -25,12 +19,7 @@ homeassistant:
   customize: !include customize.yaml
   packages: !include_dir_named packages
 
-influxdb:
-  database: !secret influxdb-database
-  username: !secret influxdb-user
-  password: !secret influxdb-password
-  max_retries: 3
-  default_measurement: state
+influxdb: !include influxdb.yaml
 
 tts:
   - platform: google_cloud
