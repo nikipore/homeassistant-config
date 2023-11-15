@@ -13,7 +13,7 @@ automation:
           config_entry: d4c1ba49aae5a528a9d94645412bfb32
           worksheet: "Power Meter"
           data:
-            time: "{{ utcnow() | as_timestamp }}"
+            time: "{{ utcnow() | as_timestamp | round }}"
             consumption: "{{ states('sensor.last_meter_consumption_zuhause') | float(0) }}"
             electricity_price: "{{ states('sensor.electricity_price_zuhause') | float(0) }}"
             accumulated_cost: "{{ states('sensor.accumulated_cost_zuhause') | float(0 )}}"
