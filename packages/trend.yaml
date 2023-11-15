@@ -1,4 +1,3 @@
-
 binary_sensor:
   - platform: trend
     sensors:
@@ -6,167 +5,180 @@ binary_sensor:
         entity_id: sensor.bewegungssensor_abstellkammer_temperature
         sample_duration: 7200
         max_samples: 120
-        min_gradient: -0.0008
+        min_gradient: -0.00002
         device_class: cold
       trend_temperature_abstellkammer_rising:
         entity_id: sensor.bewegungssensor_abstellkammer_temperature
         sample_duration: 7200
         max_samples: 120
-        min_gradient: 0.0008
+        min_gradient: 0.00002
         device_class: heat
       trend_temperature_abstellkammer_terrasse_falling:
         entity_id: sensor.bewegungssensor_abstellkammer_terrasse_temperature
         sample_duration: 7200
         max_samples: 120
-        min_gradient: -0.0008
+        min_gradient: -0.00002
         device_class: cold
       trend_temperature_abstellkammer_terrasse_rising:
         entity_id: sensor.bewegungssensor_abstellkammer_terrasse_temperature
         sample_duration: 7200
         max_samples: 120
-        min_gradient: 0.0008
+        min_gradient: 0.00002
         device_class: heat
       trend_temperature_ankleide_falling:
         entity_id: sensor.thermostat_ankleide_temperature
         sample_duration: 7200
         max_samples: 120
-        min_gradient: -0.0008
+        min_gradient: -0.00002
         device_class: cold
       trend_temperature_ankleide_rising:
         entity_id: sensor.thermostat_ankleide_temperature
         sample_duration: 7200
         max_samples: 120
-        min_gradient: 0.0008
+        min_gradient: 0.00002
         device_class: heat
       trend_temperature_arbeitszimmer_falling:
         entity_id: sensor.thermostat_arbeitszimmer_temperature
         sample_duration: 7200
         max_samples: 120
-        min_gradient: -0.0008
+        min_gradient: -0.00002
         device_class: cold
       trend_temperature_arbeitszimmer_rising:
         entity_id: sensor.thermostat_arbeitszimmer_temperature
         sample_duration: 7200
         max_samples: 120
-        min_gradient: 0.0008
+        min_gradient: 0.00002
         device_class: heat
       trend_temperature_badezimmer_falling:
         entity_id: sensor.thermostat_badezimmer_temperature
         sample_duration: 7200
         max_samples: 120
-        min_gradient: -0.0008
+        min_gradient: -0.00002
         device_class: cold
       trend_temperature_badezimmer_rising:
         entity_id: sensor.thermostat_badezimmer_temperature
         sample_duration: 7200
         max_samples: 120
-        min_gradient: 0.0008
+        min_gradient: 0.00002
         device_class: heat
       trend_temperature_duschbad_falling:
         entity_id: sensor.thermostat_duschbad_temperature
         sample_duration: 7200
         max_samples: 120
-        min_gradient: -0.0008
+        min_gradient: -0.00002
         device_class: cold
       trend_temperature_duschbad_rising:
         entity_id: sensor.thermostat_duschbad_temperature
         sample_duration: 7200
         max_samples: 120
-        min_gradient: 0.0008
+        min_gradient: 0.00002
         device_class: heat
       trend_temperature_flur_falling:
         entity_id: sensor.thermostat_flur_temperature
         sample_duration: 7200
         max_samples: 120
-        min_gradient: -0.0008
+        min_gradient: -0.00002
         device_class: cold
       trend_temperature_flur_rising:
         entity_id: sensor.thermostat_flur_temperature
         sample_duration: 7200
         max_samples: 120
-        min_gradient: 0.0008
+        min_gradient: 0.00002
         device_class: heat
       trend_temperature_kueche_falling:
         entity_id: sensor.thermostat_kueche_temperature
         sample_duration: 7200
         max_samples: 120
-        min_gradient: -0.0008
+        min_gradient: -0.00002
         device_class: cold
       trend_temperature_kueche_rising:
         entity_id: sensor.thermostat_kueche_temperature
         sample_duration: 7200
         max_samples: 120
-        min_gradient: 0.0008
+        min_gradient: 0.00002
         device_class: heat
       trend_temperature_keller_falling:
         entity_id: sensor.temperature_sensor_keller_temperature
         sample_duration: 7200
         max_samples: 120
-        min_gradient: -0.0008
+        min_gradient: -0.00002
         device_class: cold
       trend_temperature_keller_rising:
         entity_id: sensor.temperature_sensor_keller_temperature
         sample_duration: 7200
         max_samples: 120
-        min_gradient: 0.0008
+        min_gradient: 0.00002
         device_class: heat
       trend_temperature_nino_falling:
         entity_id: sensor.thermostat_nino_temperature
         sample_duration: 7200
         max_samples: 120
-        min_gradient: -0.0008
+        min_gradient: -0.00002
         device_class: cold
       trend_temperature_nino_rising:
         entity_id: sensor.thermostat_nino_temperature
         sample_duration: 7200
         max_samples: 120
-        min_gradient: 0.0008
+        min_gradient: 0.00002
         device_class: heat
       trend_temperature_noah_falling:
         entity_id: sensor.thermostat_noah_temperature
         sample_duration: 7200
         max_samples: 120
-        min_gradient: -0.0008
+        min_gradient: -0.00002
         device_class: cold
       trend_temperature_noah_rising:
         entity_id: sensor.thermostat_noah_temperature
         sample_duration: 7200
         max_samples: 120
-        min_gradient: 0.0008
+        min_gradient: 0.00002
         device_class: heat
       trend_temperature_waschraum_falling:
         entity_id: sensor.temperature_sensor_waschraum_temperature
         sample_duration: 7200
         max_samples: 120
-        min_gradient: -0.0008
+        min_gradient: -0.00002
         device_class: cold
       trend_temperature_waschraum_rising:
         entity_id: sensor.temperature_sensor_waschraum_temperature
         sample_duration: 7200
         max_samples: 120
-        min_gradient: 0.0008
+        min_gradient: 0.00002
         device_class: heat
       trend_temperature_wohnzimmer_falling:
         entity_id: sensor.thermostat_wohnzimmer_temperature
         sample_duration: 7200
         max_samples: 120
-        min_gradient: -0.0008
+        min_gradient: -0.00002
         device_class: cold
       trend_temperature_wohnzimmer_rising:
         entity_id: sensor.thermostat_wohnzimmer_temperature
         sample_duration: 7200
         max_samples: 120
-        min_gradient: 0.0008
+        min_gradient: 0.00002
         device_class: heat
       trend_weather_temperature_falling:
         entity_id: sensor.weather_temperature
         sample_duration: 7200
         max_samples: 120
-        min_gradient: -0.0008
+        min_gradient: -0.00002
         device_class: cold
       trend_weather_temperature_rising:
         entity_id: sensor.weather_temperature
         sample_duration: 7200
         max_samples: 120
-        min_gradient: 0.0008
+        min_gradient: 0.00002
         device_class: heat
+
+sensor:
+  - name: derivative_temperature_weather
+    platform: derivative
+    source: sensor.weather_temperature
+    round: 3
+    unit_time: h
+    time_window: "00:30:00"
+
+homeassistant:
+  customize:
+    sensor.derivative_temperature_weather:
+      friendly_name: "Veränderung Temperatur (Wetter)"
