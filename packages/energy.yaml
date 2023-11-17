@@ -16,5 +16,29 @@ automation:
             time: "{{ utcnow() | as_timestamp | round }}"
             consumption: "{{ states('sensor.last_meter_consumption_zuhause') | float(0) }}"
             electricity_price: "{{ states('sensor.electricity_price_zuhause') | float(0) }}"
-            accumulated_cost: "{{ states('sensor.accumulated_cost_zuhause') | float(0 )}}"
     id: d698e01895aab3aead886032a61e945c169dd5b6
+
+sensor:
+  - platform: filter
+    name: energy_average_power
+    entity_id: sensor.average_power_zuhause
+    filters:
+      - filter: time_throttle
+        window_size: "00:01:00"
+    unique_id: 6057afc61360324ed0e5d471617630c277e8502b
+  - platform: filter
+    name: energy_last_meter_consumption
+    entity_id: sensor.last_meter_consumption_zuhause
+    filters:
+      - filter: time_throttle
+        window_size: "00:01:00"
+        precision: 3
+    unique_id: 25996c3b9d7ec9ba80da412ba82a4c615eb2bc7b
+  - platform: filter
+    name: energy_power
+    entity_id: sensor.power_zuhause
+    filters:
+      - filter: time_throttle
+        window_size: "00:01:00"
+        precision: 0
+    unique_id: f0caf5aa2f3073a85ecf6498d100ea9135d8ed40

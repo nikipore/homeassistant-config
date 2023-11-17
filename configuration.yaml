@@ -14,6 +14,11 @@ logger:
 recorder:
   db_url: !secret mariadb-url
   purge_keep_days: 7
+  exclude:
+    entities:
+      - sensor.average_power_zuhause
+      - sensor.last_meter_consumption_zuhause
+      - sensor.power_zuhause
 
 homeassistant:
   customize: !include customize.yaml
