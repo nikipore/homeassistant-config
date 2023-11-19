@@ -24,21 +24,6 @@ alert:
       - 10080
     notifiers:
       - telegram_admin
-  certificate_expiry:
-    name: Certificate expiry close
-    message: >
-      *Certificate expiry close* (valid for {{ states('sensor.cert_expiry_days_left') | int(0) }} days). Check renewal routine!
-    done_message: >
-      Certificate renewed.
-    entity_id: binary_sensor.cert_expiry_close
-    skip_first: true
-    repeat:
-      - 1440
-      - 2880
-      - 5760
-      - 10080
-    notifiers:
-      - telegram_admin
   storm:
     name: Storm alert
     message: >
