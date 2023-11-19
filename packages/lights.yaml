@@ -4,6 +4,10 @@ light:
     entities:
       - light.arbeitszimmer_deckenleuchte
   - platform: group
+    name: Flur
+    entities:
+      - light.flur_stehleuchte
+  - platform: group
     name: Küche
     entities:
       - light.kueche_deckenleuchte

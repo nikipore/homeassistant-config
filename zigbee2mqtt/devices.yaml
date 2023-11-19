@@ -56,7 +56,7 @@
 '0x00178801038909e6':
   friendly_name: wohnzimmer-tv-links
 '0x00178801067ccfea':
-  friendly_name: wohnzimmer-kamin
+  friendly_name: flur-stehleuchte
 '0x00178801047a8f0f':
   friendly_name: wohnzimmer-tv-rechts
 '0x0017880102c20295':
@@ -86,5 +86,11 @@
   friendly_name: wohnzimmer-knopf-tv
 '0xa4c138912da6817f':
   friendly_name: kueche-knopf-essen
+'0x0017880104f3cdcb':
+  friendly_name: kueche-dimmer
+  legacy: true
 '0x0017880109694ca5':
   friendly_name: '0x0017880109694ca5'
+'0x00178801104842c8':
+  friendly_name: flur-dimmer
+  legacy: true
