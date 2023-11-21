@@ -22,7 +22,7 @@
 '0x00158d0005bcb6d2':
   friendly_name: kueche-deckenleuchte
 '0x00158d0001fe573e':
-  friendly_name: luftfilter
+  friendly_name: wohnzimmer-artemide
 '0x00124b0024c8bb58':
   friendly_name: router-wohnzimmer
 '0x00124b0024c9200d':
@@ -53,12 +53,10 @@
   friendly_name: wohnzimmer-regal
 '0x0017880103892bd7':
   friendly_name: wohnzimmer-vitrine
-'0x00178801038909e6':
-  friendly_name: wohnzimmer-tv-links
 '0x00178801067ccfea':
   friendly_name: flur-stehleuchte
 '0x00178801047a8f0f':
-  friendly_name: wohnzimmer-tv-rechts
+  friendly_name: wohnzimmer-tv-links
 '0x0017880102c20295':
   friendly_name: wohnzimmer-dimmer
   legacy: true

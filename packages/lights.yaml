@@ -32,12 +32,15 @@ light:
   - platform: group
     name: Wohnzimmer
     entities:
+      - light.wohnzimmer_artemide
       - light.wohnzimmer_kamin
       - light.wohnzimmer_regal
       - light.wohnzimmer_tv_links
-      - light.wohnzimmer_tv_rechts
       - light.wohnimmer_vitrine
-
+  - platform: switch
+    name: wohnzimmer_artemide
+    entity_id: switch.wohnzimmer_artemide
+    
 automation:
   - alias: Turn off light at night (Terrasse)
     trigger:

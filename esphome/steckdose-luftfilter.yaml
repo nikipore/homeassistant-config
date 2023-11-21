@@ -1,6 +1,6 @@
 substitutions:
-  name: "steckdose-8343af"
-  friendly_name: "Steckdose 8343af"
+  name: "steckdose-luftfilter"
+  friendly_name: "Steckdose Luftfilter"
   api_encryption_key: "oFSAMW/fn2/Sudlx7r6u/D+JBDdmmDvcGFYH+miD6QQ="
 
   # Higher value gives lower watt readout
