@@ -51,18 +51,6 @@ automation:
         target:
           entity_id: switch.licht_terrasse
     id: 986d8fc3ada8f9a3189839d2a6129d61b86ffafb
-  - alias: Motion-activated switch (Küche)
-    description: ""
-    use_blueprint:
-      path: local/motion_switch.yaml
-      input:
-        motion_entity: binary_sensor.bewegungssensor_kuche_motion_detection
-        illuminance_entity: sensor.bewegungssensor_kuche_illuminance
-        max_illuminance: 100
-        no_motion_wait: 60 # total: 300 seconds
-        switch_target:
-          entity_id: switch.steckdose_kueche_oberschrank
-    id: 1172df0cb260b2ec865568f441cd7c5777916a3e
   - alias: Motion-activated switch (Ankleide)
     description: ""
     use_blueprint:
@@ -99,6 +87,30 @@ automation:
         switch_target:
           entity_id: switch.licht_abstellkammer_terrasse
     id: 5515115774a657a7926c70b2f2d5bbc6e1fc65e4
+  - alias: Motion-activated light (Flur)
+    description: ""
+    use_blueprint:
+      path: homeassistant/motion_light.yaml
+      input:
+        motion_entity: binary_sensor.flur_motion_sensor_occupancy
+        illuminance_entity: sensor.flur_motion_sensor_illuminance_lux
+        max_illuminance: 75
+        no_motion_wait: 150 # total: 120 seconds
+        light_target:
+          entity_id: light.flur_stehleuchte
+    id: 817e663b16db1110ce2068724e81619124e96c14 
+  - alias: Motion-activated switch (Küche)
+    description: ""
+    use_blueprint:
+      path: local/motion_switch.yaml
+      input:
+        motion_entity: binary_sensor.bewegungssensor_kuche_motion_detection
+        illuminance_entity: sensor.bewegungssensor_kuche_illuminance
+        max_illuminance: 100
+        no_motion_wait: 60 # total: 300 seconds
+        switch_target:
+          entity_id: switch.steckdose_kueche_oberschrank
+    id: 1172df0cb260b2ec865568f441cd7c5777916a3e
 #  - alias: Christmas lights (turn on)
 #    trigger:
 #      - platform: time
