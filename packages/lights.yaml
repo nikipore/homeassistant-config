@@ -94,7 +94,7 @@ automation:
       input:
         motion_entity: binary_sensor.flur_motion_sensor_occupancy
         illuminance_entity: sensor.flur_motion_sensor_illuminance_lux
-        max_illuminance: 75
+        max_illuminance: 100
         no_motion_wait: 30 # total: 120 seconds
         light_target:
           entity_id: light.flur_stehleuchte

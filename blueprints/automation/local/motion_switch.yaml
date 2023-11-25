@@ -17,7 +17,7 @@ blueprint:
           device_class: illuminance
     max_illuminance:
       name: Maximal Illuminance
-      description: Only turn on the swich when illuminance is below this threshold.
+      description: Only turn on the switch when illuminance is below this threshold.
       selector:
         number:
           min: 0

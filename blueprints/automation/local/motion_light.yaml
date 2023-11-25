@@ -10,6 +10,20 @@ blueprint:
         entity:
           domain: binary_sensor
           device_class: motion
+    illuminance_entity:
+      name: Illuminance Sensor
+      selector:
+        entity:
+          domain: sensor
+          device_class: illuminance
+    max_illuminance:
+      name: Maximal Illuminance
+      description: Only turn on the light when illuminance is below this threshold.
+      selector:
+        number:
+          min: 0
+          max: 1000
+          unit_of_measurement: lx
     light_target:
       name: Light
       selector:
@@ -36,6 +50,11 @@ trigger:
   entity_id: !input motion_entity
   from: "off"
   to: "on"
+
+condition:
+  condition: numeric_state
+  entity_id: !input illuminance_entity
+  below: !input max_illuminance
 
 action:
   - service: light.turn_on
