@@ -90,7 +90,7 @@ automation:
   - alias: Motion-activated light (Flur)
     description: ""
     use_blueprint:
-      path: homeassistant/motion_light.yaml
+      path: local/motion_light.yaml
       input:
         motion_entity: binary_sensor.flur_motion_sensor_occupancy
         illuminance_entity: sensor.flur_motion_sensor_illuminance_lux
