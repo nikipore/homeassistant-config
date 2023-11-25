@@ -1,45 +1,10 @@
 light:
-  - platform: group
-    name: Arbeitszimmer
-    entities:
-      - light.arbeitszimmer_deckenleuchte
-  - platform: group
-    name: Flur
-    entities:
-      - light.flur_stehleuchte
-  - platform: group
-    name: Küche
-    entities:
-      - light.kueche_deckenleuchte
-  - platform: group
-    name: Nino
-    entities:
-      - light.nino_1
-      - light.nino_2
-      - light.nino_3
-  - platform: group
-    name: Noah
-    entities:
-      - light.noah_1
-      - light.noah_2
-      - light.noah_3
-  - platform: group
-    name: Schlafzimmer
-    entities:
-      - light.schlafzimmer_1
-      - light.schlafzimmer_2
-      - light.schlafzimmer_3
-  - platform: group
-    name: Wohnzimmer
-    entities:
-      - light.wohnzimmer_artemide
-      - light.wohnzimmer_kamin
-      - light.wohnzimmer_regal
-      - light.wohnzimmer_tv_links
-      - light.wohnimmer_vitrine
   - platform: switch
     name: wohnzimmer_artemide
     entity_id: switch.wohnzimmer_artemide
+  - platform: switch
+    name: wohnzimmer_esstisch
+    entity_id: switch.licht_wohnzimmer_esstisch
     
 automation:
   - alias: Turn off light at night (Terrasse)
@@ -97,7 +62,7 @@ automation:
         max_illuminance: 100
         no_motion_wait: 30 # total: 120 seconds
         light_target:
-          entity_id: light.flur_stehleuchte
+          entity_id: light.flur
     id: 817e663b16db1110ce2068724e81619124e96c14 
   - alias: Motion-activated switch (Küche)
     description: ""
