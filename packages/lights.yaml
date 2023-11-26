@@ -25,8 +25,7 @@ automation:
         illuminance_entity: sensor.ankleide_motion_sensor_illuminance_lux
         max_illuminance: 50
         no_motion_wait: 30 # total: 60 seconds
-        switch_target:
-          entity_id: switch.licht_ankleide
+        switch_entity: switch.licht_ankleide
     id: de06c94d9f653c5bec9a63f691f695d00be55ceb
   - alias: Motion-activated switch (Abstellkammer)
     description: ""
@@ -37,8 +36,7 @@ automation:
         illuminance_entity: sensor.bewegungssensor_abstellkammer_illuminance
         max_illuminance: 50
         no_motion_wait: 30 # total: 60 seconds
-        switch_target:
-          entity_id: switch.licht_abstellkammer
+        switch_entity: switch.licht_abstellkammer
     id: 17d77010fb15ef2b31b998f84061ba712feae824
   - alias: Motion-activated switch (Abstellkammer Terrasse)
     description: ""
@@ -49,8 +47,7 @@ automation:
         illuminance_entity: sensor.bewegungssensor_abstellkammer_terrasse_illuminance
         max_illuminance: 50
         no_motion_wait: 30 # total: 60 seconds
-        switch_target:
-          entity_id: switch.licht_abstellkammer_terrasse
+        switch_entity: switch.licht_abstellkammer_terrasse
     id: 5515115774a657a7926c70b2f2d5bbc6e1fc65e4
   - alias: Motion-activated light (Flur)
     description: ""
@@ -59,10 +56,9 @@ automation:
       input:
         motion_entity: binary_sensor.flur_motion_sensor_occupancy
         illuminance_entity: sensor.flur_motion_sensor_illuminance_lux
-        max_illuminance: 100
+        max_illuminance: 25
         no_motion_wait: 30 # total: 120 seconds
-        light_target:
-          entity_id: light.flur
+        light_entity: light.flur
     id: 817e663b16db1110ce2068724e81619124e96c14 
   - alias: Motion-activated switch (Küche)
     description: ""
@@ -73,8 +69,7 @@ automation:
         illuminance_entity: sensor.bewegungssensor_kuche_illuminance
         max_illuminance: 100
         no_motion_wait: 60 # total: 300 seconds
-        switch_target:
-          entity_id: switch.steckdose_kueche_oberschrank
+        switch_entity: switch.steckdose_kueche_oberschrank
     id: 1172df0cb260b2ec865568f441cd7c5777916a3e
 #  - alias: Christmas lights (turn on)
 #    trigger:

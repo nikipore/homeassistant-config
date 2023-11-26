@@ -23,12 +23,11 @@ blueprint:
           min: 0
           max: 1000
           unit_of_measurement: lx
-    switch_target:
+    switch_entity:
       name: Switch
       selector:
-        target:
-          entity:
-            domain: switch
+        entity:
+          domain: switch
     no_motion_wait:
       name: Wait time
       description: Time to leave the switch on after last motion is detected.
@@ -50,13 +49,18 @@ trigger:
   to: "on"
 
 condition:
-  condition: numeric_state
-  entity_id: !input illuminance_entity
-  below: !input max_illuminance
+  or:
+    - condition: numeric_state
+      entity_id: !input illuminance_entity
+      below: !input max_illuminance
+    - condition: state
+      entity_id: !input switch_entity
+      state: "on"
 
 action:
   - service: switch.turn_on
-    target: !input switch_target
+    target:
+      entity_id: !input switch_entity
   - wait_for_trigger:
       platform: state
       entity_id: !input motion_entity
@@ -64,4 +68,5 @@ action:
       to: "off"
   - delay: !input no_motion_wait
   - service: switch.turn_off
-    target: !input switch_target
+    target:
+      entity_id: !input switch_entity
