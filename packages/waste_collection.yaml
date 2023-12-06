@@ -1,6 +1,7 @@
 waste_collection_schedule:
   sources:
     - name: ics
+      calendar_title: "Abfallkalender"
       args:
         url: "https://www.elw.de/fileadmin/elw/php/downloads.php?func=ical&obj=%7BB72AAC7D-560E-445D-841C-2AFEDAAFB099%7D&location=0"
       customize:

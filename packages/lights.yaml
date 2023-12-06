@@ -5,7 +5,7 @@ light:
   - platform: switch
     name: wohnzimmer_esstisch
     entity_id: switch.licht_wohnzimmer_esstisch
-    
+
 automation:
   - alias: Turn off light at night (Terrasse)
     trigger:
@@ -56,10 +56,10 @@ automation:
       input:
         motion_entity: binary_sensor.flur_motion_sensor_occupancy
         illuminance_entity: sensor.flur_motion_sensor_illuminance_lux
-        max_illuminance: 25
+        max_illuminance: 20
         no_motion_wait: 30 # total: 120 seconds
         light_entity: light.flur
-    id: 817e663b16db1110ce2068724e81619124e96c14 
+    id: 817e663b16db1110ce2068724e81619124e96c14
   - alias: Motion-activated switch (Küche)
     description: ""
     use_blueprint:
