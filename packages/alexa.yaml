@@ -3,14 +3,25 @@ alexa:
     locale: de-DE
     filter:
       include_entities:
+        - cover.lichtkuppel_ankleide
+        - cover.lichtkuppel_flur
+        - cover.plissee_ankleide
+        - cover.plissee_flur
+        - cover.roller_shutter_arbeitszimmer
+        - cover.roller_shutter_badezimmer
+        - cover.roller_shutter_duschbad
         - cover.roller_shutter_kueche_links
         - cover.roller_shutter_kueche_rechts
         - cover.roller_shutter_markise
+        - cover.roller_shutter_nino_links
+        - cover.roller_shutter_nino_rechts
+        - cover.roller_shutter_noah_links
+        - cover.roller_shutter_noah_rechts
         - cover.roller_shutter_terrasse_links
         - cover.roller_shutter_terrasse_rechts
+        - cover.roller_shutter_schlafzimmer
         - cover.roller_shutter_wohnzimmer
         - light.flur
-        - light.kueche_deckenleuchte
         - light.wohnzimmer
         - switch.licht_kueche
         - switch.licht_kueche_2
@@ -19,6 +30,34 @@ alexa:
         - switch.steckdose_kueche_oberschrank
         - switch.steckdose_luftfilter_switch
     entity_config:
+      cover.lichtkuppel_ankleide:
+        name: "Lichtkuppel Ankleide"
+        description: "Lichtkuppel Ankleide"
+        display_categories: COVER
+      cover.lichtkuppel_flur:
+        name: "Lichtkuppel Flur"
+        description: "Lichtkuppel Flur"
+        display_categories: COVER
+      cover.plissee_ankleide:
+        name: "Plissee Ankleide"
+        description: "Plissee Ankleide"
+        display_categories: COVER
+      cover.plissee_flur:
+        name: "Plissee Flur"
+        description: "Plissee Flur"
+        display_categories: COVER
+      cover.roller_shutter_arbeitszimmer:
+        name: "Rolladen Arbeitszimmer"
+        description: "Rolladen Arbeitszimmer"
+        display_categories: COVER
+      cover.roller_shutter_badezimmer:
+        name: "Rolladen Badezimmer"
+        description: "Rolladen Badezimmer"
+        display_categories: COVER
+      cover.roller_shutter_duschbad:
+        name: "Rolladen Duschbad"
+        description: "Rolladen Duschbad"
+        display_categories: COVER
       cover.roller_shutter_kueche_links:
         name: "Rolladen Küche links"
         description: "Rolladen Küche links"
@@ -30,6 +69,26 @@ alexa:
       cover.roller_shutter_markise:
         name: "Markise"
         description: "Markise"
+        display_categories: COVER
+      cover.roller_shutter_nino_links:
+        name: "Rolladen Nino links"
+        description: "Rolladen Nino links"
+        display_categories: COVER
+      cover.roller_shutter_nino_rechts:
+        name: "Rolladen Nino rechts"
+        description: "Rolladen Nino rechts"
+        display_categories: COVER
+      cover.roller_shutter_noah_links:
+        name: "Rolladen Noah links"
+        description: "Rolladen Noah links"
+        display_categories: COVER
+      cover.roller_shutter_noah_rechts:
+        name: "Rolladen Noah rechts"
+        description: "Rolladen Noah rechts"
+        display_categories: COVER
+      cover.roller_shutter_schlafzimmer:
+        name: "Rolladen Schlafzimmer"
+        description: "Rolladen Schlafzimmer"
         display_categories: COVER
       cover.roller_shutter_terrasse_links:
         name: "Rolladen Terrasse links"
@@ -47,22 +106,18 @@ alexa:
         name: "Licht Flur"
         description: "Stehleuchte im Flur"
         display_categories: LIGHT
-      light.kueche_deckenleuchte:
-        name: "Deckenleuchte Küche"
-        description: "Deckenleuchte in der Küche"
-        display_categories: LIGHT
       light.wohnzimmer:
         name: "Licht Wohnzimmer"
         description: "indirekte Beleuchtung im Wohnzimmer"
         display_categories: LIGHT
       switch.licht_kueche:
-        name: "Licht Sideboard"
+        name: "Licht Sideboard Küche"
         description: "Leuchte auf Sideboard in der Küche"
         display_categories: LIGHT
       switch.licht_kueche_2:
-        name: "Lichtschalter Küche"
-        description: "Deckenleuchte in der Küche (Schalter)"
-        display_categories: SWITCH
+        name: "Licht Küche"
+        description: "Deckenleuchte in der Küche"
+        display_categories: LIGHT
       switch.licht_wohnzimmer_esstisch:
         name: "Licht Esstisch"
         description: "Leuchten über Esstisch im Wohnzimmer"
