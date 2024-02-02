@@ -3,7 +3,7 @@ automation:
     trigger:
       - platform: state
         entity_id: sensor.kueche_knopf_essen_action
-        to: single
+        to: 1_single
     action:
       - service: media_player.media_pause
         target:
@@ -21,7 +21,7 @@ automation:
     trigger:
       - platform: state
         entity_id: sensor.kueche_knopf_essen_action
-        to: double
+        to: 1_double
     action:
       - service: media_player.media_pause
         target:
@@ -39,7 +39,7 @@ automation:
     trigger:
       - platform: state
         entity_id: sensor.arbeitszimmer_knopf_schreibtisch_action
-        to: single
+        to: 1_single
     action:
       - service: switch.toggle
         target:
@@ -49,7 +49,7 @@ automation:
     trigger:
       - platform: state
         entity_id: sensor.nino_knopf_musik_action
-        to: single
+        to: 1_single
     action:
       - service: switch.toggle
         target:
@@ -59,7 +59,7 @@ automation:
     trigger:
       - platform: state
         entity_id: sensor.noah_knopf_musik_action
-        to: single
+        to: 1_single
     action:
       - service: switch.toggle
         target:
@@ -69,7 +69,7 @@ automation:
     trigger:
       - platform: state
         entity_id: sensor.nino_knopf_wifi_action
-        to: single
+        to: 1_single
     action:
       - service: switch.toggle
         target:
@@ -79,7 +79,7 @@ automation:
     trigger:
       - platform: state
         entity_id: sensor.wohnzimmer_knopf_wifi_action
-        to: single
+        to: 1_single
     action:
       - service: switch.toggle
         target:
@@ -89,7 +89,7 @@ automation:
     trigger:
       - platform: state
         entity_id: sensor.schlafzimmer_knopf_wifi_action
-        to: single
+        to: 1_single
     action:
       - service: switch.toggle
         target:
@@ -99,7 +99,7 @@ automation:
     trigger:
       - platform: state
         entity_id: sensor.kueche_knopf_oberschrank_action
-        to: single
+        to: 1_single
     action:
       - service: switch.toggle
         target:
@@ -109,7 +109,7 @@ automation:
     trigger:
       - platform: state
         entity_id: sensor.wohnzimmer_knopf_tv_action
-        to: single
+        to: 1_single
     action:
       - service: switch.toggle
         target:
@@ -119,7 +119,7 @@ automation:
     trigger:
       - platform: state
         entity_id: sensor.kueche_knopf_oberschrank_action
-        to: double
+        to: 1_double
     variables:
       automation: automation.motion_activated_switch_kuche_2
       mediaplayer: media_player.kueche
@@ -142,7 +142,7 @@ automation:
     trigger:
       - platform: state
         entity_id: sensor.ankleide_knopf_bewegungsmelder_action
-        to: single
+        to: 1_single
     variables:
       automation: automation.motion_activated_switch_ankleide_2
     action:
