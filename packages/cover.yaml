@@ -1,7 +1,3 @@
-velux:
-  host: !secret velux-gateway-host
-  password: !secret velux-gateway-password
-
 automation:
   - alias: KLF reboot on Home Assistant shutdown
     description: Reboots the KLF200 in order to avoid SSL Handshake issue

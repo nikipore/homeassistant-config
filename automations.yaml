@@ -37,6 +37,21 @@
     target:
       entity_id: button.garagentor_trigger
   mode: single
+- id: '1711050632517'
+  alias: iOS App Garagentor
+  description: ''
+  trigger:
+  - event_type: ios.action_fired
+    event_data:
+      actionID: 20E8A3CB-A18C-44D5-A403-3243D96CDC4A
+    platform: event
+  condition: []
+  action:
+  - service: button.press
+    data: {}
+    target:
+      entity_id: button.garagentor_trigger
+  mode: single
 - id: '1694361837997'
   alias: Viererschalter (1 single)
   description: Steckdose Arbeitszimmer umschalten
