@@ -98,7 +98,7 @@ template:
         state_class: measurement
         unit_of_measurement: "°C"
         state: >
-          {% set forecast = state_attr('weather.openweathermap_hourly', 'forecast') %}
+          {% set forecast = state_attr('sensor.weather_forecast_hourly', 'forecast') %}
           {% set i = max(0, (as_timestamp(state_attr('sun.sun', 'next_setting')) - as_timestamp(forecast[0]['datetime'])) // 3600) | int(0) %}
           {{ forecast[:i+2] | map(attribute='temperature') | max | float(0) }}
         device_class: temperature
@@ -107,7 +107,7 @@ template:
         state_class: measurement
         unit_of_measurement: "°C"
         state: >
-          {% set forecast = state_attr('weather.openweathermap_hourly', 'forecast') %}
+          {% set forecast = state_attr('sensor.weather_forecast_hourly', 'forecast') %}
           {% set i = max(0, (as_timestamp(state_attr('sun.sun', 'next_rising')) - as_timestamp(forecast[0]['datetime'])) // 3600) | int(0) %}
           {{ forecast[:i+2] | map(attribute='temperature') | min | float(0) }}
         device_class: temperature
@@ -180,6 +180,25 @@ template:
           {{ ([0, 0.3, 1.6, 3.4, 5.5, 8.0, 10.8, 13.9, 17.2, 20.8, 24.5, 28.5, 32.7] | select("<=", states('sensor.weather_wind_speed') | float(0)) | list | length) - 1 }}
         icon: mdi:weather-windy
         unique_id: e5ee24939fb385a1f4ddd366ab95194f0d78e6eb
+  - trigger:
+      - platform: state
+        entity_id: weather.openweathermap_hourly
+      - platform: time_pattern
+        hours: /1
+    action:
+      - service: weather.get_forecasts
+        data:
+          type: hourly
+        target:
+          entity_id: weather.openweathermap_hourly
+        response_variable: forecast
+    sensor:
+      - name: Weather Forecast Hourly
+        unique_id: weather_forecast_hourly
+        state: "{{ forecast['weather.openweathermap_hourly'].forecast[0].condition }}"
+        availability: "{{ is_number(forecast['weather.openweathermap_hourly'].forecast[0].temperature) }}"
+        attributes: 
+          forecast: "{{ forecast['weather.openweathermap_hourly'].forecast }}"
 
 homeassistant:
   customize:
