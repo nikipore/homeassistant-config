@@ -16,6 +16,10 @@ api:
   encryption:
     key: ${api_encryption_key}
 
+ota:
+  platform: esphome
+  password: !secret ota_password
+
 wifi:
   ssid: !secret wifi_ssid
   password: !secret wifi_password
