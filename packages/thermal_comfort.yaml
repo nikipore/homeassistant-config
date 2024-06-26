@@ -166,7 +166,7 @@ thermal_comfort:
           - summer_simmer_perception
         unique_id: 5ae4acb77b576ce7fade33cdc4044c42b48128a0
       - name: Wetter
-        temperature_sensor: sensor.weather_forecast_temperature
+        temperature_sensor: sensor.weather_temperature
         humidity_sensor: sensor.weather_humidity
         custom_icons: true
         sensor_types:
