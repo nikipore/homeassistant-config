@@ -29,6 +29,9 @@ input_boolean:
   blind_control_active_schlafzimmer:
     name: "Rolladensteuerung: aktiv (Schlafzimmer)"
     icon: mdi:window-shutter
+  blind_control_active_terrasse:
+    name: "Rolladensteuerung: aktiv (Terrasse)"
+    icon: mdi:window-shutter
   blind_control_active_wohnzimmer:
     name: "Rolladensteuerung: aktiv (Wohnzimmer)"
     icon: mdi:window-shutter
@@ -62,6 +65,9 @@ input_boolean:
   blind_control_auto_schlafzimmer:
     name: "Rolladensteuerung: Sonnenstandsteuerung automatisch (Schlafzimmer)"
     icon: mdi:cog-refresh-outline
+  blind_control_auto_terrasse:
+    name: "Rolladensteuerung: Sonnenstandsteuerung automatisch (Terrasse)"
+    icon: mdi:cog-refresh-outline
   blind_control_auto_wohnzimmer:
     name: "Rolladensteuerung: Sonnenstandsteuerung automatisch (Wohnzimmer)"
     icon: mdi:cog-refresh-outline
@@ -94,6 +100,9 @@ input_boolean:
     icon: mdi:lock-open-outline
   blind_control_specific_kueche:
     name: "Rolladensteuerung: gesondert steuern (Küche)"
+    icon: mdi:lock-open-outline
+  blind_control_specific_terrasse:
+    name: "Rolladensteuerung: gesondert steuern (Terrasse)"
     icon: mdi:lock-open-outline
   blind_control_specific_wohnzimmer:
     name: "Rolladensteuerung: gesondert steuern (Wohnzimmer)"
@@ -177,6 +186,14 @@ input_select:
       - "Sommer"
   blind_control_mode_schlafzimmer:
     name: "Rolladensteuerung: Sonnenstandsteuerung (Schlafzimmer)"
+    icon: mdi:weather-partly-snowy
+    options:
+      - "aus"
+      - "Winter"
+      - "Sonnenlicht minimieren"
+      - "Sommer"
+  blind_control_mode_terrasse:
+    name: "Rolladensteuerung: Sonnenstandsteuerung (Terrasse)"
     icon: mdi:weather-partly-snowy
     options:
       - "aus"
@@ -271,6 +288,14 @@ input_select:
       - "verdunkeln"
       - "lüften"
       - "offen"
+  blind_control_ventilate_terrasse:
+    name: "Rolladensteuerung: Lüftungspräferenz (Terrasse)"
+    icon: mdi:weather-windy
+    options:
+      - "keine" 
+      - "verdunkeln"
+      - "lüften"
+      - "offen"
   blind_control_ventilate_wohnzimmer:
     name: "Rolladensteuerung: Lüftungspräferenz (Wohnzimmer)"
     icon: mdi:weather-windy
@@ -337,6 +362,12 @@ input_number:
     step: 10
   blind_control_position_schlafzimmer:
     name: "Rolladensteuerung: alle … % öffnen (–10 = aus) (Schlafzimmer)"
+    icon: mdi:arrow-split-horizontal
+    min: -20
+    max: 100
+    step: 10
+  blind_control_position_terrasse:
+    name: "Rolladensteuerung: alle … % öffnen (–10 = aus) (Terrasse)"
     icon: mdi:arrow-split-horizontal
     min: -20
     max: 100
@@ -537,6 +568,22 @@ input_datetime:
     has_time: true
   blind_control_until_latest_holiday_schlafzimmer:
     name: "Rolladensteuerung: vor Feiertagen spätestens (Schlafzimmer)"
+    icon: mdi:weather-sunset-down
+    has_time: true
+  blind_control_from_earliest_workday_terrasse:
+    name: "Rolladensteuerung: an Werktagen frühestens (Terrasse)"
+    icon: mdi:weather-sunset-up
+    has_time: true
+  blind_control_until_latest_workday_terrasse:
+    name: "Rolladensteuerung: vor Werktagen spätestens (Terrasse)"
+    icon: mdi:weather-sunset-down
+    has_time: true
+  blind_control_from_earliest_holiday_terrasse:
+    name: "Rolladensteuerung: an Feiertagen frühestens (Terrasse)"
+    icon: mdi:weather-sunset-up
+    has_time: true
+  blind_control_until_latest_holiday_terrasse:
+    name: "Rolladensteuerung: vor Feiertagen spätestens (Terrasse)"
     icon: mdi:weather-sunset-down
     has_time: true
   blind_control_from_earliest_workday_wohnzimmer:
