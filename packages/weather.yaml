@@ -33,11 +33,19 @@ sensor:
     max_age:
       minutes: 30
 
+input_boolean:
+  weather_raining:
+    name: "Wetteralarm: Regen (überschreiben)"
+    icon: mdi:weather-pouring
+  weather_storm:
+    name: "Wetteralarm: Sturm (überschreiben)"
+    icon: mdi:weather-windy
+
 template:
   - binary_sensor:
       - name: weather_raining
         state: >
-          {{ not is_state('sensor.openweathermap_hourly_forecast_precipitation', '0') }}
+          {{ is_state("input_boolean.weather_raining", "on") or not is_state('sensor.openweathermap_hourly_forecast_precipitation', '0') }}
         icon: >
           {{ is_state("binary_sensor.weather_raining", "on") | iif("mdi:weather-pouring", "mdi:circle-outline") }}
         delay_off:
@@ -45,7 +53,7 @@ template:
         unique_id: 434d5b21925833b3f83339753e335314f5b57ab7
       - name: weather_storm
         state: >
-          {{ states('sensor.weather_forecast_wind_gusts') | float(0) >= 12.0 * 3.6 }}
+          {{ is_state("input_boolean.weather_storm", "on") or states('sensor.weather_forecast_wind_gusts') | float(0) >= 12.0 * 3.6 }}
         icon: >
           {{ is_state("binary_sensor.weather_storm", "on") | iif("mdi:weather-windy", "mdi:circle-outline") }}
         delay_off:
