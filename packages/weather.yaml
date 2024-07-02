@@ -45,7 +45,7 @@ template:
   - binary_sensor:
       - name: weather_raining
         state: >
-          {{ is_state("input_boolean.weather_raining", "on") or not is_state('sensor.openweathermap_hourly_forecast_precipitation', '0') }}
+          {{ is_state("input_boolean.weather_raining", "on") or not is_state('sensor.weather_precipitation', '0') }}
         icon: >
           {{ is_state("binary_sensor.weather_raining", "on") | iif("mdi:weather-pouring", "mdi:circle-outline") }}
         delay_off:
