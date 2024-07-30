@@ -99,7 +99,7 @@ template:
         state_class: measurement
         unit_of_measurement: "°C"
         state: >
-          {{ states('sensor.openweathermap_hourly_forecast_temperature') }}
+          {{ states('sensor.openweathermap_hourly_temperature') }}
         device_class: temperature
         unique_id: bfc393bc63ce5dcced05d494b3334c75c32600e5
       - name: weather_forecast_temperature_high
