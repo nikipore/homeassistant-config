@@ -15,9 +15,23 @@ automation:
           data:
             time: "{{ utcnow() | as_timestamp | round }}"
             consumption: "{{ states('sensor.last_meter_consumption_zuhause') | float(0) }}"
-            electricity_price: "{{ states('sensor.electricity_price_zuhause') | float(0) }}"
+            electricity_price: 0.2912
             production: "{{ states('sensor.solartisch_yieldtotal') | float(0) }}"
     id: d698e01895aab3aead886032a61e945c169dd5b6
+  - alias: Tibber Reload
+    trigger:
+      platform: state
+      entity_id: sensor.last_meter_consumption_zuhause
+      for:
+        hours: 0
+        minutes: 5
+        seconds: 0
+    action:
+      - service: homeassistant.reload_config_entry
+        data:
+          entry_id: 25ee964f751e61a9c053d2e5932b56a8
+    mode: single
+    id: e9d1b7990a76e7c8a9af0b400e0b9e435f0a5ca5
 
 sensor:
   - platform: filter
