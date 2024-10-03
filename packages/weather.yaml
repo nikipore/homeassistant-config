@@ -21,6 +21,7 @@ binary_sensor:
       - platform: numeric_state
         entity_id: sensor.openweathermap_hourly_forecast_precipitation_probability
         above: 10
+        below: 90
         prob_given_true: 0.9
         prob_given_false: 0.5
 
@@ -194,7 +195,7 @@ template:
       - platform: time_pattern
         hours: /1
     action:
-      - service: weather.get_forecasts
+      - action: weather.get_forecasts
         data:
           type: hourly
         target:
@@ -205,7 +206,7 @@ template:
         unique_id: weather_forecast_hourly
         state: "{{ forecast['weather.openweathermap_hourly'].forecast[0].condition }}"
         availability: "{{ is_number(forecast['weather.openweathermap_hourly'].forecast[0].temperature) }}"
-        attributes: 
+        attributes:
           forecast: "{{ forecast['weather.openweathermap_hourly'].forecast }}"
 
 homeassistant:

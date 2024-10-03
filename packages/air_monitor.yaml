@@ -153,14 +153,14 @@ template:
 
 automation:
   - alias: Activate near-time reporting of Qingping Air Sensor
-    trigger:
+    triggers:
       - platform: homeassistant
         event: start
       - platform: time
         at:
         - "03:00:00"
-    action:
-      - service: mqtt.publish
+    actions:
+      - action: mqtt.publish
         data:
           topic: qingping/582D34700B3E/down
           payload: >-

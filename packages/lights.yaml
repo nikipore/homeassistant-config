@@ -8,11 +8,11 @@ light:
 
 automation:
   - alias: Turn off light at night (Terrasse)
-    trigger:
+    triggers:
       - platform: time
         at: "00:00:00"
-    action:
-      - service: switch.turn_off
+    actions:
+      - action: switch.turn_off
         target:
           entity_id: switch.licht_terrasse
     id: 986d8fc3ada8f9a3189839d2a6129d61b86ffafb
@@ -72,26 +72,26 @@ automation:
         switch_entity: switch.steckdose_kueche_oberschrank
     id: 1172df0cb260b2ec865568f441cd7c5777916a3e
 #  - alias: Christmas lights (turn on)
-#    trigger:
+#    triggers:
 #      - platform: time
 #        at: "06:00:00"
 #      - platform: sun
 #        event: sunset
 #        offset: "-00:30:00"
-#    action:
-#      - service: switch.turn_on
+#    actions:
+#      - action: switch.turn_on
 #        target:
 #          entity_id: switch.popp_smart_outdoor_plug_ip44_rated
 #    id: 9a72ce70359b6e1d631acc5ef42694d338945960
 #  - alias: Christmas lights (turn off)
-#    trigger:
+#    triggers:
 #      - platform: sun
 #        event: sunrise
 #        offset: "00:30:00"
 #      - platform: time
 #        at: "23:00:00"
-#    action:
-#      - service: switch.turn_off
+#    actions:
+#      - action: switch.turn_off
 #        target:
 #          entity_id: switch.popp_smart_outdoor_plug_ip44_rated
 #    id: e6be6b315bde7594302aba720ef4fcf86f54870a

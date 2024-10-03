@@ -1,26 +1,26 @@
 automation:
   - alias: Turn on Multimedia Devices
-    trigger:
+    triggers:
       - platform: state
         entity_id: remote.wohnzimmer
         to: "on"
-    condition:
+    conditions:
       not:
         condition: state
         entity_id: select.wohnzimmer_activities
         state: "Musik"
-    action:
-      - service: switch.turn_on
+    actions:
+      - action: switch.turn_on
         entity_id: switch.steckdose_wohnzimmer_tv_switch
     id: ca1a524508a89623988e7d6ffb9d4d1c300ac74b
   - alias: Turn off Multimedia Devices
-    trigger:
+    triggers:
       - platform: state
         entity_id: remote.wohnzimmer
         to: "off"
         for:
           minutes: 5
-    action:
-      - service: switch.turn_off
+    actions:
+      - action: switch.turn_off
         entity_id: switch.steckdose_wohnzimmer_tv_switch
     id: c50a48a805c4ae5ed4dd46cff6d5ccabf6511bea

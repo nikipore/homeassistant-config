@@ -1,12 +1,12 @@
 - id: '1693070991630'
   alias: NFC Tag Türschloss Aufzug ist gescannt
   description: ''
-  trigger:
+  triggers:
   - platform: tag
     tag_id: 902a7052-91d5-47db-b2b3-dbece01623dd
-  condition: []
-  action:
-  - service: lock.open
+  conditions: []
+  actions:
+  - action: lock.open
     data: {}
     target:
       device_id: d6325d0109b417afa62944da7e7ee0df
@@ -14,12 +14,12 @@
 - id: '1693071058017'
   alias: NFC Tag Türschloss Treppenhaus ist gescannt
   description: ''
-  trigger:
+  triggers:
   - platform: tag
     tag_id: 006914a9-f479-4bb7-9d8e-aeea021d770f
-  condition: []
-  action:
-  - service: lock.open
+  conditions: []
+  actions:
+  - action: lock.open
     data: {}
     target:
       device_id: 792108c8263345ed87a1ccd398324627
@@ -27,12 +27,12 @@
 - id: '1694171387973'
   alias: NFC Tag Garagentor ist gescannt
   description: ''
-  trigger:
+  triggers:
   - platform: tag
     tag_id: 6e379d86-41cc-4330-9073-4bacf10eed83
-  condition: []
-  action:
-  - service: button.press
+  conditions: []
+  actions:
+  - action: button.press
     data: {}
     target:
       entity_id: button.garagentor_trigger
@@ -40,14 +40,14 @@
 - id: '1711050632517'
   alias: iOS App Garagentor
   description: ''
-  trigger:
+  triggers:
   - event_type: ios.action_fired
     event_data:
       actionID: 20E8A3CB-A18C-44D5-A403-3243D96CDC4A
     platform: event
-  condition: []
-  action:
-  - service: button.press
+  conditions: []
+  actions:
+  - action: button.press
     data: {}
     target:
       entity_id: button.garagentor_trigger
@@ -55,16 +55,16 @@
 - id: '1694361837997'
   alias: Viererschalter (1 single)
   description: Steckdose Arbeitszimmer umschalten
-  trigger:
+  triggers:
   - platform: device
     domain: mqtt
     device_id: 602cb004388e68d6a3da810f98d17765
     type: action
     subtype: 1_single
     discovery_id: 0x943469fffe5f6a37 action_1_single
-  condition: []
-  action:
-  - service: switch.toggle
+  conditions: []
+  actions:
+  - action: switch.toggle
     data: {}
     target:
       entity_id: switch.steckdose_arbeitszimmer_switch
@@ -72,16 +72,16 @@
 - id: '1694361945803'
   alias: Viererschalter (2 single)
   description: Roon Arbeitszimmer umschalten
-  trigger:
+  triggers:
   - platform: device
     domain: mqtt
     device_id: 602cb004388e68d6a3da810f98d17765
     type: action
     subtype: 2_single
     discovery_id: 0x943469fffe5f6a37 action_2_single
-  condition: []
-  action:
-  - service: switch.toggle
+  conditions: []
+  actions:
+  - action: switch.toggle
     data: {}
     target:
       entity_id: switch.switch_flur_roon_arbeitszimmer_poe
@@ -89,16 +89,16 @@
 - id: '1694724129228'
   alias: Viererschalter (3 single)
   description: Licht Arbeitszimmer umschalten
-  trigger:
+  triggers:
   - platform: device
     domain: mqtt
     device_id: 602cb004388e68d6a3da810f98d17765
     type: action
     subtype: 3_single
     discovery_id: 0x943469fffe5f6a37 action_3_single
-  condition: []
-  action:
-  - service: switch.toggle
+  conditions: []
+  actions:
+  - action: switch.toggle
     data: {}
     target:
       entity_id: switch.licht_arbeitszimmer

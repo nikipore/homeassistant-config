@@ -1,14 +1,14 @@
 automation:
   - alias: Export power meter to Google Sheets
-    trigger:
+    triggers:
       platform: time_pattern
       minutes: "/15"
-    condition:
+    conditions:
       condition: numeric_state
       entity_id: sensor.last_meter_consumption_zuhause
       above: 0
-    action:
-      - service: google_sheets.append_sheet
+    actions:
+      - action: google_sheets.append_sheet
         data:
           config_entry: d4c1ba49aae5a528a9d94645412bfb32
           worksheet: "Power Meter"
@@ -19,15 +19,15 @@ automation:
             production: "{{ states('sensor.solartisch_yieldtotal') | float(0) }}"
     id: d698e01895aab3aead886032a61e945c169dd5b6
   - alias: Tibber Reload
-    trigger:
+    triggers:
       platform: state
       entity_id: sensor.last_meter_consumption_zuhause
       for:
         hours: 0
         minutes: 5
         seconds: 0
-    action:
-      - service: homeassistant.reload_config_entry
+    actions:
+      - action: homeassistant.reload_config_entry
         data:
           entry_id: 25ee964f751e61a9c053d2e5932b56a8
     mode: single
