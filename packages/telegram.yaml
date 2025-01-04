@@ -46,10 +46,10 @@ alert:
 automation:
   - alias: "Telegram callback to acknowledge storm alerts"
     triggers:
-      - platform: event
+      - trigger: event
         event_type: telegram_callback
         event_data:
-          data: "/storm_acknowledge"
+          command: "/storm_acknowledge"
     actions:
       - action: alert.turn_off
         target:
@@ -57,10 +57,10 @@ automation:
     id: 6ff31fd57341aa02d0931f1e04a72589ecdab9e5
   - alias: "Telegram callback to close marquee"
     triggers:
-      - platform: event
+      - trigger: event
         event_type: telegram_callback
         event_data:
-          data: "/close_marquee"
+          command: "/close_marquee"
     actions:
       - action: cover.close_cover
         target:

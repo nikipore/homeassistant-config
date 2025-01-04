@@ -10,14 +10,12 @@ sensor:
       - stateNswHsw
     value_template: "{{ ( value_json.timeseries[0].currentMeasurement.value | int / 100 ) }}"
     unit_of_measurement: "m"
-
   - platform: template
     sensors:
       pegel_mainz_wasserstand_status:
         friendly_name: "Pegel Mainz Status"
         value_template: "{{ {'low': 'niedrig', 'normal': 'normal', 'high': 'high', 'unknown': 'unknown'}[state_attr('sensor.pegel_mainz_wasserstand', 'stateMnwMhw') ] }}"
         icon_template: "{{ {'low': 'mdi:arrow-down-box', 'normal': 'mdi:arrow-right-box', 'high': 'mdi:arrow-up-box', 'unknown': 'mdi:help', None: 'mdi:help'}[state_attr('sensor.pegel_mainz_wasserstand', 'stateMnwMhw') ] }}"
-
   - platform: rest
     name: "Pegel Mainz Abfluss"
     icon: mdi:waves
@@ -27,7 +25,6 @@ sensor:
       - timestamp
     value_template: "{{ value_json.timeseries[1].currentMeasurement.value }}"
     unit_of_measurement: "m³/s"
-
   - platform: rest
     name: "Pegel Raunheim Wasserstand"
     icon: mdi:waves
@@ -39,14 +36,12 @@ sensor:
       - stateNswHsw
     value_template: "{{ ( value_json.timeseries[0].currentMeasurement.value | int / 100 ) }}"
     unit_of_measurement: "m"
-
   - platform: template
     sensors:
       pegel_raunheim_wasserstand_status:
         friendly_name: "Pegel Raunheim Status"
         value_template: "{{ {'low': 'niedrig', 'normal': 'normal', 'high': 'high', 'unknown': 'unknown'}[state_attr('sensor.pegel_raunheim_wasserstand', 'stateMnwMhw') ] }}"
         icon_template: "{{ {'low': 'mdi:arrow-down-box', 'normal': 'mdi:arrow-right-box', 'high': 'mdi:arrow-up-box', 'unknown': 'mdi:help', None: 'mdi:help'}[state_attr('sensor.pegel_raunheim_wasserstand', 'stateMnwMhw') ] }}"
-
   - platform: rest
     name: "Pegel Raunheim Abfluss"
     icon: mdi:waves

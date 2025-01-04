@@ -1,9 +1,14 @@
 automation:
   - alias: Rundruf Essen ist fertig
     triggers:
-      - platform: state
-        entity_id: sensor.kueche_knopf_essen_action
-        to: single
+      - trigger: state
+        entity_id: event.kueche_knopf_essen_action
+        to: ~
+    conditions:
+      - condition: template
+        value_template: "{{trigger.from_state.state != 'unavailable'}}"
+      - condition: template
+        value_template: "{{trigger.to_state.attributes.event_type == 'single'}}"
     actions:
       - action: media_player.media_pause
         target:
@@ -12,16 +17,21 @@ automation:
             - media_player.noah
       - action: notify.alexa_media
         data:
-          message: Essen ist fertig!
+          message: "Essen ist fertig!"
           target: media_player.flur
           data:
             type: announce
     id: 45897867cb1a995bbba5a2a3b74f89aef2a7992e
   - alias: Rundruf Kommen
     triggers:
-      - platform: state
-        entity_id: sensor.kueche_knopf_essen_action
-        to: double
+      - trigger: state
+        entity_id: event.kueche_knopf_essen_action
+        to: ~
+    conditions:
+      - condition: template
+        value_template: "{{trigger.from_state.state != 'unavailable'}}"
+      - condition: template
+        value_template: "{{trigger.to_state.attributes.event_type == 'double'}}"
     actions:
       - action: media_player.media_pause
         target:
@@ -30,16 +40,21 @@ automation:
             - media_player.noah
       - action: notify.alexa_media
         data:
-          message: Kommt mal her!
+          message: "Kommt mal her!"
           target: media_player.flur
           data:
             type: announce
     id: afc622d3db062e562ea5dd66e0a45db0df8a194a
   - alias: Toggle switch Arbeitszimmer Technik/Schreibtisch
     triggers:
-      - platform: state
-        entity_id: sensor.arbeitszimmer_knopf_schreibtisch_action
-        to: single
+      - trigger: state
+        entity_id: event.arbeitszimmer_knopf_schreibtisch_action
+        to: ~
+    conditions:
+      - condition: template
+        value_template: "{{trigger.from_state.state != 'unavailable'}}"
+      - condition: template
+        value_template: "{{trigger.to_state.attributes.event_type == 'single'}}"
     actions:
       - action: switch.toggle
         target:
@@ -47,9 +62,14 @@ automation:
     id: f55998fe58dafe49fc3f9b2e99409c90714fa889
   - alias: Toggle switch Nino Roon
     triggers:
-      - platform: state
-        entity_id: sensor.nino_knopf_musik_action
-        to: single
+      - trigger: state
+        entity_id: event.nino_knopf_musik_action
+        to: ~
+    conditions:
+      - condition: template
+        value_template: "{{trigger.from_state.state != 'unavailable'}}"
+      - condition: template
+        value_template: "{{trigger.to_state.attributes.event_type == 'single'}}"
     actions:
       - action: switch.toggle
         target:
@@ -57,9 +77,14 @@ automation:
     id: ae01d1c683474a0093befcc384cb246311a760ee
   - alias: Toggle switch Noah Roon
     triggers:
-      - platform: state
-        entity_id: sensor.noah_knopf_musik_action
-        to: single
+      - trigger: state
+        entity_id: event.noah_knopf_musik_action
+        to: ~
+    conditions:
+      - condition: template
+        value_template: "{{trigger.from_state.state != 'unavailable'}}"
+      - condition: template
+        value_template: "{{trigger.to_state.attributes.event_type == 'single'}}"
     actions:
       - action: switch.toggle
         target:
@@ -67,9 +92,14 @@ automation:
     id: e7d60dc2beb2776f301ca98380c3b69f203d68cd
   - alias: Toggle switch Nino Wi-Fi AP
     triggers:
-      - platform: state
-        entity_id: sensor.nino_knopf_wifi_action
-        to: single
+      - trigger: state
+        entity_id: event.nino_knopf_wifi_action
+        to: ~
+    conditions:
+      - condition: template
+        value_template: "{{trigger.from_state.state != 'unavailable'}}"
+      - condition: template
+        value_template: "{{trigger.to_state.attributes.event_type == 'single'}}"
     actions:
       - action: switch.toggle
         target:
@@ -77,9 +107,14 @@ automation:
     id: d9d78b586a1c3df98b91e8d750a934d6f1551ca8
   - alias: Toggle switch Wohnzimmer Wi-Fi AP
     triggers:
-      - platform: state
-        entity_id: sensor.wohnzimmer_knopf_wifi_action
-        to: single
+      - trigger: state
+        entity_id: event.wohnzimmer_knopf_wifi_action
+        to: ~
+    conditions:
+      - condition: template
+        value_template: "{{trigger.from_state.state != 'unavailable'}}"
+      - condition: template
+        value_template: "{{trigger.to_state.attributes.event_type == 'single'}}"
     actions:
       - action: switch.toggle
         target:
@@ -87,9 +122,14 @@ automation:
     id: 8d71a343c00524aa10200671d242983fd6949d24
   - alias: Toggle switch Schlafzimmer Wi-Fi AP
     triggers:
-      - platform: state
-        entity_id: sensor.schlafzimmer_knopf_wifi_action
-        to: single
+      - trigger: state
+        entity_id: event.schlafzimmer_knopf_wifi_action
+        to: ~
+    conditions:
+      - condition: template
+        value_template: "{{trigger.from_state.state != 'unavailable'}}"
+      - condition: template
+        value_template: "{{trigger.to_state.attributes.event_type == 'single'}}"
     actions:
       - action: switch.toggle
         target:
@@ -97,9 +137,14 @@ automation:
     id: a737155d8fa6fc7d120c316ad7ab3236081a8e22
   - alias: Toggle switch Küche Oberschrank
     triggers:
-      - platform: state
-        entity_id: sensor.kueche_knopf_oberschrank_action
-        to: single
+      - trigger: state
+        entity_id: event.kueche_knopf_oberschrank_action
+        to: ~
+    conditions:
+      - condition: template
+        value_template: "{{trigger.from_state.state != 'unavailable'}}"
+      - condition: template
+        value_template: "{{trigger.to_state.attributes.event_type == 'single'}}"
     actions:
       - action: switch.toggle
         target:
@@ -107,9 +152,14 @@ automation:
     id: 02705d1cdb128d9d2df45542e218291b3006b007
   - alias: Toggle switch Wohnzimmer TV
     triggers:
-      - platform: state
-        entity_id: sensor.wohnzimmer_knopf_tv_action
-        to: single
+      - trigger: state
+        entity_id: event.wohnzimmer_knopf_tv_action
+        to: ~
+    conditions:
+      - condition: template
+        value_template: "{{trigger.from_state.state != 'unavailable'}}"
+      - condition: template
+        value_template: "{{trigger.to_state.attributes.event_type == 'single'}}"
     actions:
       - action: switch.toggle
         target:
@@ -117,9 +167,14 @@ automation:
     id: 907cc9672753a766a3a0f564e1c5856a50b87057
   - alias: Toggle automation Küche motion detector
     triggers:
-      - platform: state
-        entity_id: sensor.kueche_knopf_oberschrank_action
-        to: double
+      - trigger: state
+        entity_id: event.kueche_knopf_oberschrank_action
+        to: ~
+    conditions:
+      - condition: template
+        value_template: "{{trigger.from_state.state != 'unavailable'}}"
+      - condition: template
+        value_template: "{{trigger.to_state.attributes.event_type == 'double'}}"
     variables:
       automation: automation.motion_activated_switch_kuche_2
       mediaplayer: media_player.kueche
@@ -140,9 +195,14 @@ automation:
     id: 6d75c7a1a7f3d6fef3e35cc5232085bceb1a653f
   - alias: Toggle automation Ankleide motion detector
     triggers:
-      - platform: state
-        entity_id: sensor.ankleide_knopf_bewegungsmelder_action
-        to: single
+      - trigger: state
+        entity_id: event.ankleide_knopf_bewegungsmelder_action
+        to: ~
+    conditions:
+      - condition: template
+        value_template: "{{trigger.from_state.state != 'unavailable'}}"
+      - condition: template
+        value_template: "{{trigger.to_state.attributes.event_type == 'single'}}"
     variables:
       automation: automation.motion_activated_switch_ankleide_2
     actions:

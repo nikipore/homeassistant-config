@@ -154,9 +154,9 @@ template:
 automation:
   - alias: Activate near-time reporting of Qingping Air Sensor
     triggers:
-      - platform: homeassistant
+      - trigger: homeassistant
         event: start
-      - platform: time
+      - trigger: time
         at:
         - "03:00:00"
     actions:

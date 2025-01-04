@@ -9,7 +9,7 @@ light:
 automation:
   - alias: Turn off light at night (Terrasse)
     triggers:
-      - platform: time
+      - trigger: time
         at: "00:00:00"
     actions:
       - action: switch.turn_off
@@ -22,7 +22,7 @@ automation:
       path: local/motion_switch.yaml
       input:
         motion_entity: binary_sensor.ankleide_motion_sensor_occupancy
-        illuminance_entity: sensor.ankleide_motion_sensor_illuminance_lux
+        illuminance_entity: sensor.ankleide_motion_sensor_illuminance
         max_illuminance: 50
         no_motion_wait: 30 # total: 60 seconds
         switch_entity: switch.licht_ankleide
@@ -55,7 +55,7 @@ automation:
       path: local/motion_light.yaml
       input:
         motion_entity: binary_sensor.flur_motion_sensor_occupancy
-        illuminance_entity: sensor.flur_motion_sensor_illuminance_lux
+        illuminance_entity: sensor.flur_motion_sensor_illuminance
         max_illuminance: 20
         no_motion_wait: 30 # total: 120 seconds
         light_entity: light.flur
@@ -73,9 +73,9 @@ automation:
     id: 1172df0cb260b2ec865568f441cd7c5777916a3e
 #  - alias: Christmas lights (turn on)
 #    triggers:
-#      - platform: time
+#      - trigger: time
 #        at: "06:00:00"
-#      - platform: sun
+#      - trigger: sun
 #        event: sunset
 #        offset: "-00:30:00"
 #    actions:
@@ -85,10 +85,10 @@ automation:
 #    id: 9a72ce70359b6e1d631acc5ef42694d338945960
 #  - alias: Christmas lights (turn off)
 #    triggers:
-#      - platform: sun
+#      - trigger: sun
 #        event: sunrise
 #        offset: "00:30:00"
-#      - platform: time
+#      - trigger: time
 #        at: "23:00:00"
 #    actions:
 #      - action: switch.turn_off

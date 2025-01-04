@@ -6,7 +6,7 @@ input_button:
 automation:
   - alias: Restart Node-RED
     triggers:
-      - platform: state
+      - trigger: state
         entity_id: input_button.node_red_restart
     actions:
       - action: hassio.addon_restart
@@ -15,7 +15,7 @@ automation:
     id: 7b4f14d00e65981ce0b4264d23aa53c434d8dafb
   - alias: Restart Node-RED on (re)start of Home Assistant (with a delay)
     triggers:
-      - platform: homeassistant
+      - trigger: homeassistant
         event: start
     actions:
       - delay:

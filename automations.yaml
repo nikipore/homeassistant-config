@@ -2,7 +2,7 @@
   alias: NFC Tag Türschloss Aufzug ist gescannt
   description: ''
   triggers:
-  - platform: tag
+  - trigger: tag
     tag_id: 902a7052-91d5-47db-b2b3-dbece01623dd
   conditions: []
   actions:
@@ -15,7 +15,7 @@
   alias: NFC Tag Türschloss Treppenhaus ist gescannt
   description: ''
   triggers:
-  - platform: tag
+  - trigger: tag
     tag_id: 006914a9-f479-4bb7-9d8e-aeea021d770f
   conditions: []
   actions:
@@ -28,7 +28,7 @@
   alias: NFC Tag Garagentor ist gescannt
   description: ''
   triggers:
-  - platform: tag
+  - trigger: tag
     tag_id: 6e379d86-41cc-4330-9073-4bacf10eed83
   conditions: []
   actions:
@@ -44,7 +44,7 @@
   - event_type: ios.action_fired
     event_data:
       actionID: 20E8A3CB-A18C-44D5-A403-3243D96CDC4A
-    platform: event
+    trigger: event
   conditions: []
   actions:
   - action: button.press
@@ -56,7 +56,7 @@
   alias: Viererschalter (1 single)
   description: Steckdose Arbeitszimmer umschalten
   triggers:
-  - platform: device
+  - trigger: device
     domain: mqtt
     device_id: 602cb004388e68d6a3da810f98d17765
     type: action
@@ -73,7 +73,7 @@
   alias: Viererschalter (2 single)
   description: Roon Arbeitszimmer umschalten
   triggers:
-  - platform: device
+  - trigger: device
     domain: mqtt
     device_id: 602cb004388e68d6a3da810f98d17765
     type: action
@@ -90,7 +90,7 @@
   alias: Viererschalter (3 single)
   description: Licht Arbeitszimmer umschalten
   triggers:
-  - platform: device
+  - trigger: device
     domain: mqtt
     device_id: 602cb004388e68d6a3da810f98d17765
     type: action

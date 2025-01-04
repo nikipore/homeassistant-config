@@ -46,7 +46,7 @@ blueprint:
 mode: restart
 
 triggers:
-  platform: state
+  trigger: state
   entity_id: !input motion_entity
   from: "off"
   to: "on"
@@ -65,7 +65,7 @@ actions:
     target:
       entity_id: !input switch_entity
   - wait_for_trigger:
-      platform: state
+      trigger: state
       entity_id: !input motion_entity
       from: "on"
       to: "off"

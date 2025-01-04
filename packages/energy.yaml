@@ -1,7 +1,7 @@
 automation:
   - alias: Export power meter to Google Sheets
     triggers:
-      platform: time_pattern
+      trigger: time_pattern
       minutes: "/15"
     conditions:
       condition: numeric_state
@@ -20,7 +20,7 @@ automation:
     id: d698e01895aab3aead886032a61e945c169dd5b6
   - alias: Tibber Reload
     triggers:
-      platform: state
+      trigger: state
       entity_id: sensor.last_meter_consumption_zuhause
       for:
         hours: 0

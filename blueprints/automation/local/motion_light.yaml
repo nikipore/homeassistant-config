@@ -48,7 +48,7 @@ mode: restart
 max_exceeded: silent
 
 triggers:
-  platform: state
+  trigger: state
   entity_id: !input motion_entity
   from: "off"
   to: "on"
@@ -67,7 +67,7 @@ actions:
     target:
       entity_id: !input light_entity
   - wait_for_trigger:
-      platform: state
+      trigger: state
       entity_id: !input motion_entity
       from: "on"
       to: "off"

@@ -190,9 +190,9 @@ template:
         icon: mdi:weather-windy
         unique_id: e5ee24939fb385a1f4ddd366ab95194f0d78e6eb
   - trigger:
-      - platform: state
+      - trigger: state
         entity_id: weather.openweathermap_hourly
-      - platform: time_pattern
+      - trigger: time_pattern
         hours: /1
     action:
       - action: weather.get_forecasts

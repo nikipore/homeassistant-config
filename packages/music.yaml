@@ -1,7 +1,7 @@
 automation:
   - alias: Turn on Multimedia Devices
     triggers:
-      - platform: state
+      - trigger: state
         entity_id: remote.wohnzimmer
         to: "on"
     conditions:
@@ -15,7 +15,7 @@ automation:
     id: ca1a524508a89623988e7d6ffb9d4d1c300ac74b
   - alias: Turn off Multimedia Devices
     triggers:
-      - platform: state
+      - trigger: state
         entity_id: remote.wohnzimmer
         to: "off"
         for:
