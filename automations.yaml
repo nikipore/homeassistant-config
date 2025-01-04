@@ -301,27 +301,14 @@
   conditions: []
   actions:
   - action: automation.toggle
+    metadata: {}
     data: {}
     target:
-      entity_id: '{{ automation }}'
-  - action: notify.alexa_media
-    data:
-      message: '"Präsenzmelder ist {{ {"on": "angeschaltet", "off": "ausgeschaltet"}[states(automation)]
-        }}"
-
-        '
-      target: '{{ mediaplayer }}'
-      data:
-        type: announce
-      title: '"Präsenzmelder ist {{ {"on": "angeschaltet", "off": "ausgeschaltet"}[states(automation)]
-        }}"
-
-        '
+      entity_id: automation.motion_activated_switch_kuche_2
   - choose:
     - conditions:
       - condition: state
         entity_id: automation.motion_activated_switch_kuche_2
-        attribute: mode
         state: 'on'
       sequence:
       - action: notify.alexa_media_kuche
@@ -331,7 +318,6 @@
     - conditions:
       - condition: state
         entity_id: automation.motion_activated_switch_kuche_2
-        attribute: mode
         state: 'off'
       sequence:
       - action: notify.alexa_media_kuche
@@ -339,6 +325,3 @@
         data:
           message: Präsenzmelder ist ausgeschaltet
   mode: single
-  variables:
-    automation: automation.motion_activated_switch_kuche_2
-    mediaplayer: media_player.kuche
