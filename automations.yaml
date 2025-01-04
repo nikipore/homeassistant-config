@@ -37,21 +37,6 @@
     target:
       entity_id: button.garagentor_trigger
   mode: single
-- id: '1711050632517'
-  alias: iOS App Garagentor
-  description: ''
-  triggers:
-  - event_type: ios.action_fired
-    event_data:
-      actionID: 20E8A3CB-A18C-44D5-A403-3243D96CDC4A
-    trigger: event
-  conditions: []
-  actions:
-  - action: button.press
-    data: {}
-    target:
-      entity_id: button.garagentor_trigger
-  mode: single
 - id: '1694361837997'
   alias: Viererschalter (1 single)
   description: Steckdose Arbeitszimmer umschalten
@@ -103,3 +88,257 @@
     target:
       entity_id: switch.licht_arbeitszimmer
   mode: single
+- id: '1736026127099'
+  alias: Toggle switch Arbeitszimmer Technik/Schreibtisch
+  description: ''
+  triggers:
+  - domain: mqtt
+    device_id: c4d827dafc2876cd497485950c3d792f
+    type: action
+    subtype: single
+    trigger: device
+  conditions: []
+  actions:
+  - action: switch.toggle
+    metadata: {}
+    data: {}
+    target:
+      device_id: b21b4f3a64a4f34540a59837b82195a1
+  mode: single
+- id: '1736026905613'
+  alias: Toggle switch Nino Roon
+  description: ''
+  triggers:
+  - domain: mqtt
+    device_id: fd4756c33912ee5b4b24aa9f61f8d499
+    type: action
+    subtype: single
+    trigger: device
+  conditions: []
+  actions:
+  - action: switch.toggle
+    metadata: {}
+    data: {}
+    target:
+      entity_id: switch.switch_flur_roon_nino_poe
+  mode: single
+- id: '1736026986736'
+  alias: Toggle switch Noah Roon
+  description: ''
+  triggers:
+  - domain: mqtt
+    device_id: f61a20235903013871386cb976d38a44
+    type: action
+    subtype: single
+    trigger: device
+  conditions: []
+  actions:
+  - action: switch.toggle
+    metadata: {}
+    data: {}
+    target:
+      entity_id: switch.switch_flur_roon_noah_poe
+  mode: single
+- id: '1736027106617'
+  alias: Toggle switch Wohnzimmer Wi-Fi AP
+  description: ''
+  triggers:
+  - domain: mqtt
+    device_id: f72536653a874570cb53c69452146156
+    type: action
+    subtype: single
+    trigger: device
+  conditions: []
+  actions:
+  - action: switch.toggle
+    metadata: {}
+    data: {}
+    target:
+      entity_id: switch.switch_flur_ap_wohnzimmer_poe
+  mode: single
+- id: '1736027200011'
+  alias: Toggle switch Schlafzimmer Wi-Fi AP
+  description: ''
+  triggers:
+  - domain: mqtt
+    device_id: dd40ea6c6408e38416e4b76c2534302d
+    type: action
+    subtype: single
+    trigger: device
+  conditions: []
+  actions:
+  - action: switch.toggle
+    metadata: {}
+    data: {}
+    target:
+      entity_id: switch.switch_flur_ap_schlafzimmer_poe
+  mode: single
+- id: '1736027259144'
+  alias: Toggle switch Nino Wi-Fi AP
+  description: ''
+  triggers:
+  - domain: mqtt
+    device_id: 70614c4bf8c85d95af39cde746b30e21
+    type: action
+    subtype: single
+    trigger: device
+  conditions: []
+  actions:
+  - action: switch.toggle
+    metadata: {}
+    data: {}
+    target:
+      entity_id: switch.switch_flur_ap_nino_poe
+  mode: single
+- id: '1736027375789'
+  alias: Toggle switch Wohnzimmer TV
+  description: ''
+  triggers:
+  - domain: mqtt
+    device_id: 759eb63dc9f4b693f03084e618180f52
+    type: action
+    subtype: single
+    trigger: device
+  conditions: []
+  actions:
+  - action: switch.toggle
+    metadata: {}
+    data: {}
+    target:
+      entity_id: switch.steckdose_wohnzimmer_tv_switch
+  mode: single
+- id: '1736027447221'
+  alias: Toggle switch Küche Oberschrank
+  description: ''
+  triggers:
+  - domain: mqtt
+    device_id: d4103307981aa0350b057965c22748de
+    type: action
+    subtype: single
+    trigger: device
+  conditions: []
+  actions:
+  - action: switch.toggle
+    metadata: {}
+    data: {}
+    target:
+      entity_id: switch.steckdose_kueche_oberschrank
+  mode: single
+- id: '1736027603550'
+  alias: Toggle automation Ankleide motion detector
+  description: ''
+  triggers:
+  - domain: mqtt
+    device_id: 9a58b1acd415cbb6dbab3320af7ff2e4
+    type: action
+    subtype: single
+    trigger: device
+  conditions: []
+  actions:
+  - action: automation.toggle
+    metadata: {}
+    data: {}
+    target:
+      entity_id: automation.motion_activated_switch_ankleide_2
+  mode: single
+- id: '1736028547099'
+  alias: Rundruf Essen ist fertig
+  description: ''
+  triggers:
+  - domain: mqtt
+    device_id: 196f83e07e56ca9dbe0cca4bf1f6f96a
+    type: action
+    subtype: single
+    trigger: device
+  conditions: []
+  actions:
+  - action: media_player.media_pause
+    target:
+      entity_id:
+      - media_player.nino
+      - media_player.noah
+    data: {}
+  - action: notify.alexa_media
+    data:
+      message: Essen ist fertig!
+      target: media_player.flur
+      data:
+        type: announce
+  mode: single
+- id: '1736028619708'
+  alias: Rundruf Kommen
+  description: ''
+  triggers:
+  - domain: mqtt
+    device_id: 196f83e07e56ca9dbe0cca4bf1f6f96a
+    type: action
+    subtype: double
+    trigger: device
+  conditions: []
+  actions:
+  - action: media_player.media_pause
+    target:
+      entity_id:
+      - media_player.nino
+      - media_player.noah
+    data: {}
+  - action: notify.alexa_media
+    data:
+      message: Kommt mal her!
+      target: media_player.flur
+      data:
+        type: announce
+  mode: single
+- id: '1736029276783'
+  alias: Toggle automation Küche motion detector
+  description: ''
+  triggers:
+  - domain: mqtt
+    device_id: d4103307981aa0350b057965c22748de
+    type: action
+    subtype: double
+    trigger: device
+  conditions: []
+  actions:
+  - action: automation.toggle
+    data: {}
+    target:
+      entity_id: '{{ automation }}'
+  - action: notify.alexa_media
+    data:
+      message: '"Präsenzmelder ist {{ {"on": "angeschaltet", "off": "ausgeschaltet"}[states(automation)]
+        }}"
+
+        '
+      target: '{{ mediaplayer }}'
+      data:
+        type: announce
+      title: '"Präsenzmelder ist {{ {"on": "angeschaltet", "off": "ausgeschaltet"}[states(automation)]
+        }}"
+
+        '
+  - choose:
+    - conditions:
+      - condition: state
+        entity_id: automation.motion_activated_switch_kuche_2
+        attribute: mode
+        state: 'on'
+      sequence:
+      - action: notify.alexa_media_kuche
+        metadata: {}
+        data:
+          message: Präsenzmelder ist angeschaltet
+    - conditions:
+      - condition: state
+        entity_id: automation.motion_activated_switch_kuche_2
+        attribute: mode
+        state: 'off'
+      sequence:
+      - action: notify.alexa_media_kuche
+        metadata: {}
+        data:
+          message: Präsenzmelder ist ausgeschaltet
+  mode: single
+  variables:
+    automation: automation.motion_activated_switch_kuche_2
+    mediaplayer: media_player.kuche
