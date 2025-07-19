@@ -63,7 +63,7 @@ mqtt:
     - name: "TVOC"
       object_id: air_monitor_tvoc
       device_class: volatile_organic_compounds
-      unit_of_measurement: "mg/m³"
+      unit_of_measurement: "µg/m³"
       state_topic: "qingping/582D34700B3E/up"
       value_template: >-
         {{ (value_json.sensorData.0.tvoc.value / 218.77) | round(3) 

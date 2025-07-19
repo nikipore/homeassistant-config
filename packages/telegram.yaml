@@ -1,8 +1,3 @@
-telegram_bot:
-  - platform: polling
-    api_key: !secret telegram-api-key
-    allowed_chat_ids: !secret telegram-allowed-chat-ids
-
 notify:
   - name: telegram_admin
     platform: telegram
