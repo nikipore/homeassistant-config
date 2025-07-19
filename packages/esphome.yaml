@@ -1,0 +1,27 @@
+script:
+  update_esphome:
+    alias: Update ESPHome Devices
+    mode: single
+    variables:
+      entities: >
+        {{ integration_entities('esphome') | select('search','^update') | select('is_state','on') | list }}
+      message: >
+        Updating firmware of all devices …
+    sequence:
+      - condition: template
+        value_template: "{{ entities | length > 0 }}"
+      - action: notify.persistent_notification
+        data:
+          message: Updating firmware of all devices …
+          title: ESPHome
+      - action: update.install
+        target:
+          entity_id: "{{ entities }}"
+
+  garagentor:
+    alias: "garagentor"
+    mode: single
+    sequence:
+      - action: button.press
+        target:
+          entity_id: button.garagentor_trigger
