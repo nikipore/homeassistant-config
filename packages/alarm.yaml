@@ -33,7 +33,7 @@ automation:
           entity_id: alarm_control_panel.alarmanlage
     mode: single
     id: b17361ad5fd60c364b56e848b8db6a6b89181ea5
-  - alias: "Alarm: triggered"
+  - alias: "Alarm: Triggered"
     triggers:
       - trigger: state
         entity_id: alarm_control_panel.alarmanlage
@@ -50,7 +50,6 @@ automation:
           entity_id: switch.licht_ankleide
     mode: single
     id: 86818dd12467f6cf29e90899c12e4c18790acbdc
-
   - alias: "Alarm: Disarm in morning"
     triggers:
       - trigger: time
