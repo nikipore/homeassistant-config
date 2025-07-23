@@ -1,0 +1,69 @@
+alarm_control_panel:
+  - platform: manual
+    name: Alarmanlage
+    code: !secret alarm-code
+    arming_time: 60
+    delay_time: 60
+    trigger_time: 60
+    arming_states:
+      - armed_home
+    disarmed:
+      trigger_time: 0
+    unique_id: d3ee51e96e051ae4b02fc17756d113b0625ffa12
+
+automation:
+  - alias: "Alarm: Trigger while armed home"
+    triggers:
+      - trigger: state
+        entity_id: binary_sensor.alarm_motion_sensor_occupancy
+        to: "on"
+      - trigger: state
+        entity_id: binary_sensor.treppenhaus
+        to: "open"
+      - trigger: state
+        entity_id: binary_sensor.aufzug
+        to: "open"
+    conditions:
+      - condition: state
+        entity_id: alarm_control_panel.alarmanlage
+        state: armed_home
+    actions:
+      - action: alarm_control_panel.alarm_trigger
+        target:
+          entity_id: alarm_control_panel.alarmanlage
+    mode: single
+    id: b17361ad5fd60c364b56e848b8db6a6b89181ea5
+  - alias: "Alarm: triggered"
+    triggers:
+      - trigger: state
+        entity_id: alarm_control_panel.alarmanlage
+        to: "triggered"
+    actions:
+      - action: notify.alexa_media
+        data:
+          message: Achtung! Achtung! Achtung!
+          target: media_player.flur
+          data:
+            type: announce
+      - action: switch.turn_on
+        target:
+          entity_id: switch.licht_ankleide
+    mode: single
+    id: 86818dd12467f6cf29e90899c12e4c18790acbdc
+
+  - alias: "Alarm: Disarm in morning"
+    triggers:
+      - trigger: time
+        at: "06:00"
+    conditions:
+      - condition: state
+        entity_id: alarm_control_panel.alarmanlage
+        state: armed_home
+    actions:
+      - action: alarm_control_panel.alarm_disarm
+        data:
+          code: !secret alarm-code
+        target:
+          entity_id: alarm_control_panel.alarmanlage
+    mode: single
+    id: 78d8ceaf3e95d3b1ca1922410ae55b5c8951d29c

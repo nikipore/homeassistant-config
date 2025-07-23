@@ -92,3 +92,5 @@
   friendly_name: flur-motion-sensor
 '0x001788010329dfc5':
   friendly_name: ankleide-motion-sensor
+'0x54ef44100125f901':
+  friendly_name: alarm-motion-sensor
