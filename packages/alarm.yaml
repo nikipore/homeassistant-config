@@ -3,16 +3,22 @@ alarm_control_panel:
     name: Alarmanlage
     code: !secret alarm-code
     arming_time: 60
-    delay_time: 60
+    delay_time: 0
     trigger_time: 60
     arming_states:
-      - armed_home
+      - armed_night
     disarmed:
       trigger_time: 0
     unique_id: d3ee51e96e051ae4b02fc17756d113b0625ffa12
 
+input_datetime:
+  armed_night_disarm:
+    name: "Nachtalarm unscharf schalten um …"
+    icon: mdi:shield-moon-outline
+    has_time: true
+
 automation:
-  - alias: "Alarm: Trigger while armed home"
+  - alias: "Alarm: Trigger while armed night"
     triggers:
       - trigger: state
         entity_id: binary_sensor.alarm_motion_sensor_occupancy
@@ -26,7 +32,7 @@ automation:
     conditions:
       - condition: state
         entity_id: alarm_control_panel.alarmanlage
-        state: armed_home
+        state: armed_night
     actions:
       - action: alarm_control_panel.alarm_trigger
         target:
@@ -50,14 +56,15 @@ automation:
           entity_id: switch.licht_ankleide
     mode: single
     id: 86818dd12467f6cf29e90899c12e4c18790acbdc
-  - alias: "Alarm: Disarm in morning"
+  - alias: "Alarm: Disarm night alarm in the morning"
     triggers:
-      - trigger: time
-        at: "06:00"
+      - trigger: template
+        value_template: >
+          {{ as_timestamp(now()) | timestamp_custom("%H:%M:00") == states("input_datetime.armed_night_disarm") }}
     conditions:
       - condition: state
         entity_id: alarm_control_panel.alarmanlage
-        state: armed_home
+        state: armed_night
     actions:
       - action: alarm_control_panel.alarm_disarm
         data:
