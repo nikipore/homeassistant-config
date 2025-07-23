@@ -1,5 +1,5 @@
 script:
-  update_esphome:
+  esphome_update:
     alias: Update ESPHome Devices
     mode: single
     variables:
@@ -25,3 +25,17 @@ script:
       - action: button.press
         target:
           entity_id: button.garagentor_trigger
+
+input_button:
+  esphome_update:
+    name: "ESPHome Firmware Update"
+    icon: mdi:update
+
+automation:
+  - alias: ESPHome Firmware Update
+    triggers:
+      - trigger: state
+        entity_id: input_button.esphome_update
+    actions:
+      - action: script.esphome_update
+    id: 560ecaef020710fe56d82a862328209e524dc816
