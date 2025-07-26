@@ -6,3 +6,8 @@ notify:
       - service: mobile_app_handy_bella
       - service: mobile_app_handy_nino
       - service: mobile_app_handy_noah
+  - name: parents_mobiles
+    platform: group
+    services:
+      - service: mobile_app_handy_jan
+      - service: mobile_app_handy_bella

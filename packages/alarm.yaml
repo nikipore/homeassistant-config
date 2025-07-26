@@ -11,11 +11,33 @@ automation:
         at: input_datetime.armed_night_disarm
     conditions:
       - condition: state
-        entity_id: alarm_control_panel.eingang
-        state: armed_night
+        entity_id: alarm_control_panel.wohnung
+        state:
+          - armed_night
     actions:
       - action: alarm_control_panel.alarm_disarm
         target:
-          entity_id: alarm_control_panel.eingang
+          entity_id: alarm_control_panel.wohnung
     mode: single
-    id: 78d8ceaf3e95d3b1ca1922410ae55b5c8951d29c
+    id: 62654b9ca8dc9520c050c32090e2913e00a26734
+  - alias: "Alarm: Disarm alarm"
+    triggers:
+      - trigger: event
+        event_type: mobile_app_notification_action
+        event_data:
+          action: "ALARMO_DISARM"
+    conditions:
+      - condition: state
+        entity_id: alarm_control_panel.wohnung
+        state:
+          - armed_away
+          - armed_home
+          - armed_night
+          - armed_vacation
+          - armed_custom_bypass
+    actions:
+      - action: alarm_control_panel.alarm_disarm
+        target:
+          entity_id: alarm_control_panel.wohnung
+    mode: single
+    id: 68626b24f3c3af0d212fc1e6980170175a2d8511
