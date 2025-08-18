@@ -1,0 +1,33 @@
+script:
+  skip_dimmer_updates:
+    alias: Skip Zigbee Dimmer Updates
+    mode: single
+    variables:
+      entities: >
+        {{ integration_entities('mqtt') | select('search','^update\..+_dimmer') | select('is_state','on') | list }}
+      message: >
+        Skipping firmware update of all Zigbee dimmers …
+    sequence:
+      - condition: template
+        value_template: "{{ entities | length > 0 }}"
+      - action: notify.persistent_notification
+        data:
+          message: "{{ message }}"
+          title: MQTT
+      - action: update.skip
+        target:
+          entity_id: "{{ entities }}"
+
+input_button:
+  skip_dimmer_updates:
+    name: "Skip Zigbee Dimmer Updates"
+    icon: mdi:update
+
+automation:
+  - alias: Skip Zigbee Dimmer Updates
+    triggers:
+      - trigger: state
+        entity_id: input_button.skip_dimmer_updates
+    actions:
+      - action: script.skip_dimmer_updates
+    id: 560ecaef020710fe56d82a862328209e524dc816

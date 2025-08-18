@@ -1,3 +1,47 @@
+alert:
+  storm:
+    name: Storm alert
+    message: >
+      *Storm alert* (wind speed {{ states('sensor.weather_wind_speed_max_recent') | int(0) }} m/s). Check marquee ({{ states('cover.roller_shutter_markise') }}), windows, and blinds!
+    done_message: >
+      Storm alert deactivated.
+    entity_id: binary_sensor.weather_storm
+    skip_first: true
+    repeat:
+      - 1
+      - 60
+      - 480
+    can_acknowledge: true
+    data:
+      inline_keyboard:
+        - "Close marquee:/close_marquee, Acknowledge:/storm_acknowledge"
+    notifiers:
+      - telegram_admin
+
+automation:
+  - alias: "Telegram callback to acknowledge storm alerts"
+    triggers:
+      - trigger: event
+        event_type: telegram_callback
+        event_data:
+          command: "/storm_acknowledge"
+    actions:
+      - action: alert.turn_off
+        target:
+          entity_id: alert.storm
+    id: 6ff31fd57341aa02d0931f1e04a72589ecdab9e5
+  - alias: "Telegram callback to close marquee"
+    triggers:
+      - trigger: event
+        event_type: telegram_callback
+        event_data:
+          command: "/close_marquee"
+    actions:
+      - action: cover.close_cover
+        target:
+          entity_id: cover.roller_shutter_markise
+    id: 0f0f8b39b928a528896ffdaa127f1f9ef14cea1b
+
 sensor:
   - platform: statistics
     name: weather_wind_speed_max_recent_statistics

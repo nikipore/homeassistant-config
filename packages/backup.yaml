@@ -1,0 +1,16 @@
+alert:
+  backups_stale:
+    name: Backups stale
+    message: >
+      *Backups stale*. Check for reasons!
+    done_message: >
+      Backups working again.
+    entity_id: binary_sensor.backups_stale
+    skip_first: false
+    repeat:
+      - 1440
+      - 2880
+      - 5760
+      - 10080
+    notifiers:
+      - telegram_admin

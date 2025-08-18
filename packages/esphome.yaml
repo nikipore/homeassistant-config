@@ -12,7 +12,7 @@ script:
         value_template: "{{ entities | length > 0 }}"
       - action: notify.persistent_notification
         data:
-          message: Updating firmware of all devices …
+          message: "{{ message }}"
           title: ESPHome
       - action: update.install
         target:

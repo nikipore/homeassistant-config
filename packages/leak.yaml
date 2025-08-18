@@ -1,0 +1,27 @@
+alert:
+  leak:
+    name: Water leak
+    message: >
+      *Water leak*. Check for reasons!
+    done_message: >
+      Water leak fixed.
+    entity_id: binary_sensor.leak
+    skip_first: false
+    repeat:
+      - 1440
+      - 2880
+      - 5760
+      - 10080
+    notifiers:
+      - telegram_admin
+
+template:
+  - binary_sensor:
+      - name: Leak
+        state: >
+          {% set entities = ['binary_sensor.leak_keller_links', 'binary_sensor.leak_keller_mitte', 'binary_sensor.leak_keller_rechts'] %}
+          {{ expand(entities) | selectattr('state', 'eq', 'on') | list | count > 0 }}
+        availability: >
+          {% set entities = ['binary_sensor.leak_keller_links', 'binary_sensor.leak_keller_mitte', 'binary_sensor.leak_keller_rechts'] %}
+          {{ entities | map("has_value") | select("false") | list | count == 0 }}
+        unique_id: ba59469e4b58ab12ba30d4fdec1cd019eff0b8d7

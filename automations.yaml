@@ -325,3 +325,28 @@
         data:
           message: Präsenzmelder ist ausgeschaltet
   mode: single
+- id: '1755295147099'
+  alias: Überflutungsalarm
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - binary_sensor.leak
+    to: 'on'
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 10
+  conditions: []
+  actions:
+  - action: notify.parents_mobiles
+    metadata: {}
+    data:
+      message: Im Keller ist möglicherweise Wasser eingetreten!
+      title: Überflutungsalarm
+  - action: notify.alexa_media_flur
+    metadata: {}
+    data:
+      message: Im Keller ist möglicherweise Wasser eingetreten!
+    enabled: false
+  mode: single
