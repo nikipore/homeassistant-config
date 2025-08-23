@@ -30,4 +30,4 @@ automation:
         entity_id: input_button.skip_dimmer_updates
     actions:
       - action: script.skip_dimmer_updates
-    id: 560ecaef020710fe56d82a862328209e524dc816
+    id: f615b4e08dc497de692f231873669f5c82906253
