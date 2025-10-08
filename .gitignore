@@ -17,6 +17,7 @@ zigbee2mqtt/**
 # Ignore files.
 __pycache__
 .HA_VERSION
+.ha_run.lock
 *.log
 *.log.*
 *.db

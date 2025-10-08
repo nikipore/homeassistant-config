@@ -350,3 +350,20 @@
       message: Im Keller ist möglicherweise Wasser eingetreten!
     enabled: false
   mode: single
+- id: '1759950073615'
+  alias: Markise bei Regen schließen
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - binary_sensor.lichtkuppel_ankleide_rain_sensor
+    - binary_sensor.lichtkuppel_flur_rain_sensor
+    to: 'on'
+  conditions: []
+  actions:
+  - action: cover.close_cover
+    metadata: {}
+    data: {}
+    target:
+      entity_id: cover.roller_shutter_markise
+  mode: single

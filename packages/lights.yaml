@@ -56,7 +56,7 @@ automation:
       input:
         motion_entity: binary_sensor.flur_motion_sensor_occupancy
         illuminance_entity: sensor.flur_motion_sensor_illuminance
-        max_illuminance: 20
+        max_illuminance: 15
         no_motion_wait: 30 # total: 120 seconds
         light_entity: light.flur
     id: 817e663b16db1110ce2068724e81619124e96c14

@@ -1,7 +1,7 @@
 mqtt:
   sensor:
     - name: "CO2"
-      object_id: air_monitor_co2
+      default_entity_id: sensor.air_monitor_co2
       device_class: carbon_dioxide
       unit_of_measurement: "ppm"
       state_topic: "qingping/582D34700B3E/up"
@@ -21,7 +21,7 @@ mqtt:
         manufacturer: "qingping"
       unique_id: f0864ae1d3e66cdb5a29c894dd6a192f8ba528ec
     - name: "PM2.5"
-      object_id: air_monitor_pm25
+      default_entity_id: sensor.air_monitor_pm25
       device_class: pm25
       state_topic: "qingping/582D34700B3E/up"
       value_template: >-
@@ -41,7 +41,7 @@ mqtt:
         manufacturer: "qingping"
       unique_id: 0c4f328dd042cdfc17f01ec2f880e7dd5317750b
     - name: "PM10"
-      object_id: air_monitor_pm10
+      default_entity_id: sensor.air_monitor_pm10
       device_class: pm10
       unit_of_measurement: "µg/m³"
       state_topic: "qingping/582D34700B3E/up"
@@ -61,7 +61,7 @@ mqtt:
         manufacturer: "qingping"
       unique_id: 0e330464965310305e8df5187ba00e5a6b515471
     - name: "TVOC"
-      object_id: air_monitor_tvoc
+      default_entity_id: sensor.air_monitor_tvoc
       device_class: volatile_organic_compounds
       unit_of_measurement: "µg/m³"
       state_topic: "qingping/582D34700B3E/up"
@@ -81,7 +81,7 @@ mqtt:
         manufacturer: "qingping"
       unique_id: 145ba4f594273ed8cfcf44f8df1983e3a229b0d1
     - name: "Luftfeuchtigkeit"
-      object_id: air_monitor_humidity
+      default_entity_id: sensor.air_monitor_humidity
       device_class: humidity
       state_topic: "qingping/582D34700B3E/up"
       value_template: >-
@@ -100,8 +100,8 @@ mqtt:
         model: "CGS1"
         manufacturer: "qingping"
       unique_id: 5648fe503a9c4c7563643425de97f184a3282a66
-    - object_id: air_monitor_temperature
-      name: "Temperatur"
+    - name: "Temperatur"
+      default_entity_id: sensor.air_monitor_temperature
       device_class: temperature
       unit_of_measurement: "°C"
       state_topic: "qingping/582D34700B3E/up"
