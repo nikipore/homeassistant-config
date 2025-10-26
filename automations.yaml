@@ -356,8 +356,7 @@
   triggers:
   - trigger: state
     entity_id:
-    - binary_sensor.lichtkuppel_ankleide_rain_sensor
-    - binary_sensor.lichtkuppel_flur_rain_sensor
+    - binary_sensor.weather_raining
     to: 'on'
   conditions: []
   actions:
