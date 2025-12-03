@@ -1,4 +1,0 @@
-notify:
-  - name: telegram_admin
-    platform: telegram
-    chat_id: !secret telegram-chat-id-admin
