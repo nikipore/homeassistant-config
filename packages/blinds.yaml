@@ -74,9 +74,6 @@ input_boolean:
   blind_control_on_global:
     name: "Rolladensteuerung: an"
     icon: mdi:car-clutch
-  blind_control_specific_global:
-    name: "Rolladensteuerung: gesondert gesteuerte Räume zurücksetzen"
-    icon: mdi:lock-alert-outline
   blind_control_specific_ankleide:
     name: "Rolladensteuerung: gesondert steuern (Ankleide)"
     icon: mdi:lock-open-outline
