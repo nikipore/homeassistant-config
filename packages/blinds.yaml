@@ -108,11 +108,6 @@ input_boolean:
     name: "Rolladensteuerung: gesondert steuern (Schlafzimmer)"
     icon: mdi:lock-open-outline
 
-input_button:
-  blind_control_reset:
-    name: "Rolladensteuerung: gesondert gesteuerte Räume zurücksetzen"
-    icon: mdi:lock-reset
-
 input_select:
   blind_control_mode_global:
     name: "Rolladensteuerung: Sonnenstandsteuerung"
