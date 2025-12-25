@@ -71,7 +71,7 @@ input_boolean:
   blind_control_auto_wohnzimmer:
     name: "Rolladensteuerung: Sonnenstandsteuerung automatisch (Wohnzimmer)"
     icon: mdi:cog-refresh-outline
-  blind_control_on_global:
+  blind_control_on:
     name: "Rolladensteuerung: an"
     icon: mdi:car-clutch
   blind_control_specific_ankleide:
