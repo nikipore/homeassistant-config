@@ -366,3 +366,18 @@
     target:
       entity_id: cover.roller_shutter_markise
   mode: single
+- id: '1765476843464'
+  alias: Wi-Fi AP Keller neustarten
+  description: ''
+  triggers:
+  - trigger: time
+    at: 04:00:00
+    weekday:
+    - sat
+  conditions: []
+  actions:
+  - device_id: 34d3c802da84e8bfb4c5c343d714070a
+    domain: button
+    entity_id: b62535432407832cf045df9fdd27cdc6
+    type: press
+  mode: single

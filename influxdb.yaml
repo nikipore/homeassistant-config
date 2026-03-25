@@ -1,6 +1,3 @@
-database: !secret influxdb-database
-username: !secret influxdb-user
-password: !secret influxdb-password
 max_retries: 3
 default_measurement: state
 tags:

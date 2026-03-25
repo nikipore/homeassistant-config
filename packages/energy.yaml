@@ -20,16 +20,13 @@ automation:
     id: d698e01895aab3aead886032a61e945c169dd5b6
   - alias: Tibber Reload
     triggers:
-      trigger: state
-      entity_id: sensor.last_meter_consumption_zuhause
-      for:
-        hours: 0
-        minutes: 5
-        seconds: 0
+      trigger: template
+      value_template: >
+        {{ now() - states.sensor.last_meter_consumption_zuhause.last_changed >= timedelta(minutes=5) }}
     actions:
       - action: homeassistant.reload_config_entry
         data:
-          entry_id: 25ee964f751e61a9c053d2e5932b56a8
+          entry_id: 01KEFMGZTG7DJMJWJ67EQ3CPFK
     mode: single
     id: e9d1b7990a76e7c8a9af0b400e0b9e435f0a5ca5
 
