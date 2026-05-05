@@ -10,13 +10,13 @@ script:
     sequence:
       - condition: template
         value_template: "{{ entities | length > 0 }}"
-      - action: notify.persistent_notification
-        data:
-          message: "{{ message }}"
-          title: MQTT
       - action: update.skip
         target:
           entity_id: "{{ entities }}"
+#      - action: notify.persistent_notification
+#        data:
+#          message: "{{ message }}"
+#          title: Zigbee2MQTT
 
 input_button:
   skip_dimmer_updates:
@@ -31,3 +31,12 @@ automation:
     actions:
       - action: script.skip_dimmer_updates
     id: f615b4e08dc497de692f231873669f5c82906253
+  - alias: Skip Zigbee Dimmer Updates on (re)start of Home Assistant (with a delay)
+    triggers:
+      - trigger: homeassistant
+        event: start
+    actions:
+      - delay:
+          seconds: 15
+      - action: script.skip_dimmer_updates
+    id: f9bae70016f342bb10436ffe59f283aa6df2526e

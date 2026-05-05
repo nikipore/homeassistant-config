@@ -69,7 +69,7 @@
   - action: switch.toggle
     data: {}
     target:
-      entity_id: switch.switch_flur_roon_arbeitszimmer_poe
+      entity_id: switch.switch_arbeitszimmer_roon_arbeitszimmer_poe
   mode: single
 - id: '1694724129228'
   alias: Viererschalter (3 single)
@@ -120,7 +120,7 @@
     metadata: {}
     data: {}
     target:
-      entity_id: switch.switch_flur_roon_nino_poe
+      entity_id: switch.roon_nino_poe
   mode: single
 - id: '1736026986736'
   alias: Toggle switch Noah Roon
@@ -137,7 +137,7 @@
     metadata: {}
     data: {}
     target:
-      entity_id: switch.switch_flur_roon_noah_poe
+      entity_id: switch.roon_noah_poe
   mode: single
 - id: '1736027106617'
   alias: Toggle switch Wohnzimmer Wi-Fi AP
@@ -154,7 +154,7 @@
     metadata: {}
     data: {}
     target:
-      entity_id: switch.switch_flur_ap_wohnzimmer_poe
+      entity_id: switch.ap_wohnzimmer_poe
   mode: single
 - id: '1736027200011'
   alias: Toggle switch Schlafzimmer Wi-Fi AP
@@ -171,7 +171,7 @@
     metadata: {}
     data: {}
     target:
-      entity_id: switch.switch_flur_ap_schlafzimmer_poe
+      entity_id: switch.ap_schlafzimmer_poe
   mode: single
 - id: '1736027259144'
   alias: Toggle switch Nino Wi-Fi AP
@@ -188,7 +188,7 @@
     metadata: {}
     data: {}
     target:
-      entity_id: switch.switch_flur_ap_nino_poe
+      entity_id: switch.ap_nino_poe
   mode: single
 - id: '1736027375789'
   alias: Toggle switch Wohnzimmer TV
@@ -366,18 +366,35 @@
     target:
       entity_id: cover.roller_shutter_markise
   mode: single
-- id: '1765476843464'
-  alias: Wi-Fi AP Keller neustarten
+- id: '1776145289073'
+  alias: Neue Automation
+  description: ''
+  triggers:
+  - trigger: numeric_state
+    entity_id:
+    - sensor.river_3_battery_level
+    below: 20
+  conditions:
+  - condition: numeric_state
+    entity_id: sensor.river_3_ac_input_power
+    below: 0.01
+  actions:
+  - action: button.press
+    metadata: {}
+    target:
+      entity_id: button.node_proxmox1_herunterfahren
+    data: {}
+  mode: single
+- id: '1776712864468'
+  alias: Restart ROCK
   description: ''
   triggers:
   - trigger: time
-    at: 04:00:00
-    weekday:
-    - sat
+    at: 05:15:00
   conditions: []
   actions:
-  - device_id: 34d3c802da84e8bfb4c5c343d714070a
+  - device_id: acb5ac1122b3568ce06305c3286a4de4
     domain: button
-    entity_id: b62535432407832cf045df9fdd27cdc6
+    entity_id: 2e8746052eab80aa76d9ead67bb6289e
     type: press
   mode: single

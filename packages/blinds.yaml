@@ -209,7 +209,7 @@ input_select:
     name: "Rolladensteuerung: Lüftungspräferenz"
     icon: mdi:weather-windy
     options:
-      - "keine" 
+      - "keine"
       - "verdunkeln"
       - "lüften"
       - "offen"
@@ -217,7 +217,7 @@ input_select:
     name: "Rolladensteuerung: Lüftungspräferenz (Ankleide)"
     icon: mdi:weather-windy
     options:
-      - "keine" 
+      - "keine"
       - "verdunkeln"
       - "lüften"
       - "offen"
@@ -225,7 +225,7 @@ input_select:
     name: "Rolladensteuerung: Lüftungspräferenz (Arbeitszimmer)"
     icon: mdi:weather-windy
     options:
-      - "keine" 
+      - "keine"
       - "verdunkeln"
       - "lüften"
       - "offen"
@@ -233,7 +233,7 @@ input_select:
     name: "Rolladensteuerung: Lüftungspräferenz (Badezimmer)"
     icon: mdi:weather-windy
     options:
-      - "keine" 
+      - "keine"
       - "verdunkeln"
       - "lüften"
       - "offen"
@@ -241,7 +241,7 @@ input_select:
     name: "Rolladensteuerung: Lüftungspräferenz (Duschbad)"
     icon: mdi:weather-windy
     options:
-      - "keine" 
+      - "keine"
       - "verdunkeln"
       - "lüften"
       - "offen"
@@ -249,7 +249,7 @@ input_select:
     name: "Rolladensteuerung: Lüftungspräferenz (Flur)"
     icon: mdi:weather-windy
     options:
-      - "keine" 
+      - "keine"
       - "verdunkeln"
       - "lüften"
       - "offen"
@@ -257,7 +257,7 @@ input_select:
     name: "Rolladensteuerung: Lüftungspräferenz (Küche)"
     icon: mdi:weather-windy
     options:
-      - "keine" 
+      - "keine"
       - "verdunkeln"
       - "lüften"
       - "offen"
@@ -265,7 +265,7 @@ input_select:
     name: "Rolladensteuerung: Lüftungspräferenz (Nino)"
     icon: mdi:weather-windy
     options:
-      - "keine" 
+      - "keine"
       - "verdunkeln"
       - "lüften"
       - "offen"
@@ -273,7 +273,7 @@ input_select:
     name: "Rolladensteuerung: Lüftungspräferenz (Noah)"
     icon: mdi:weather-windy
     options:
-      - "keine" 
+      - "keine"
       - "verdunkeln"
       - "lüften"
       - "offen"
@@ -281,7 +281,7 @@ input_select:
     name: "Rolladensteuerung: Lüftungspräferenz (Schlafzimmer)"
     icon: mdi:weather-windy
     options:
-      - "keine" 
+      - "keine"
       - "verdunkeln"
       - "lüften"
       - "offen"
@@ -289,7 +289,7 @@ input_select:
     name: "Rolladensteuerung: Lüftungspräferenz (Terrasse)"
     icon: mdi:weather-windy
     options:
-      - "keine" 
+      - "keine"
       - "verdunkeln"
       - "lüften"
       - "offen"
@@ -297,7 +297,7 @@ input_select:
     name: "Rolladensteuerung: Lüftungspräferenz (Wohnzimmer)"
     icon: mdi:weather-windy
     options:
-      - "keine" 
+      - "keine"
       - "verdunkeln"
       - "lüften"
       - "offen"
@@ -647,3 +647,21 @@ homeassistant:
     sensor.blind_control_wohnzimmer:
       friendly_name: "Wohnzimmer"
       icon: hass:arrow-split-horizontal
+
+template:
+  - binary_sensor:
+      - name: "false"
+        state: >
+          {{ false }}
+        availability: >
+          {{ true }}
+        icon: mdi:circle-outline
+        unique_id: 9334c2cf9ea0e911ca2a64655f7582626ab3e4cf
+  - binary_sensor:
+      - name: "true"
+        state: >
+          {{ true }}
+        availability: >
+          {{ true }}
+        icon: mdi:circle
+        unique_id: 454f4491f1f0e924c1972883b43e77f50d37f080
