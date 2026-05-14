@@ -398,3 +398,16 @@
     entity_id: 2e8746052eab80aa76d9ead67bb6289e
     type: press
   mode: single
+- id: '1778304885561'
+  alias: Restart AP Keller
+  description: ''
+  triggers:
+  - trigger: time
+    at: 05:15:00
+  conditions: []
+  actions:
+  - device_id: 34d3c802da84e8bfb4c5c343d714070a
+    domain: button
+    entity_id: b62535432407832cf045df9fdd27cdc6
+    type: press
+  mode: single
