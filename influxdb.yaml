@@ -10,8 +10,3 @@ include:
     - sensor
     - sun
     - weather
-exclude:
-  entities:
-    - sensor.average_power_zuhause
-    - sensor.last_meter_consumption_zuhause
-    - sensor.power_zuhause
