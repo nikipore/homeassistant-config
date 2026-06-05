@@ -390,13 +390,13 @@ input_number:
   blind_control_auto_parameter_summer_tmax:
     name: "Rolladensteuerung: Sonnenstandsteuerung Sommer (max. T)"
     icon: mdi:sun-thermometer-outline
-    min: 15
+    min: 20
     max: 30
     step: 1
   blind_control_auto_parameter_summer_t:
     name: "Rolladensteuerung: Sonnenstandsteuerung Sommer (T)"
     icon: mdi:sun-thermometer-outline
-    min: 15
+    min: 10
     max: 30
     step: 1
   blind_control_auto_parameter_summer_solarpower:

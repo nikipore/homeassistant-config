@@ -373,7 +373,7 @@
   - trigger: numeric_state
     entity_id:
     - sensor.river_3_battery_level
-    below: 20
+    below: 15
   conditions:
   - condition: numeric_state
     entity_id: sensor.river_3_ac_input_power

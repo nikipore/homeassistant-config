@@ -60,6 +60,13 @@ button:
   - platform: restart
     name: "Restart"
 
+  - platform: template
+    name: "Reset Electric Consumption"
+    id: reset
+    icon: mdi:history
+    on_press:
+      - sensor.integration.reset: electric_consumption
+
 switch:
   - platform: template
     name: "Switch"
@@ -95,18 +102,23 @@ sensor:
     update_interval: 60s
     icon: mdi:clock-outline
 
-  - platform: total_daily_energy
+  - platform: integration
     name: "Electric Consumption"
-    power_id: "nous_a1t_watt"
+    id: electric_consumption
+    sensor: power
     filters:
       - multiply: 0.001
     unit_of_measurement: kWh
-    icon: mdi:calendar-clock
+    time_unit: h
+    state_class: total_increasing
+    device_class: energy
+    icon: mdi:lightning-bolt
+    restore: true
 
   - platform: adc
     pin: VCC
     name: "VCC Volt"
-    icon: mdi:flash-outline
+    icon: mdi:lightning-bolt-outline
 
   - platform: hlw8012
     sel_pin:
@@ -129,11 +141,11 @@ sensor:
       name: "Voltage"
       unit_of_measurement: V
       accuracy_decimals: 1
-      icon: mdi:flash-outline
+      icon: mdi:lightning-bolt-outline
 
     power:
       name: "Power"
-      id: "nous_a1t_watt"
+      id: power
       unit_of_measurement: W
       icon: mdi:gauge
 

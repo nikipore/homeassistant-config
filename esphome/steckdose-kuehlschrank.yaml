@@ -1,6 +1,6 @@
 substitutions:
-  name: "steckdose-klimaanlage"
-  friendly_name: "Steckdose Klimaanlage"
+  name: "steckdose-kuehlschrank"
+  friendly_name: "Steckdose Kühlschrank"
   api_encryption_key: "grSl9VtX1L/QMY+dyIWjhWoinijO4rP6TxsBGxtg3e0="
 
   # Higher value gives lower watt readout

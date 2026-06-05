@@ -33,8 +33,6 @@
   friendly_name: nino-3
 '0x0017880103b9624b':
   friendly_name: nino-2
-'0x0017880103b83ba1':
-  friendly_name: nino-1
 '0x0017880102c3143f':
   friendly_name: nino-dimmer
   legacy: true
@@ -50,7 +48,7 @@
 '0x0017880103e185e6':
   friendly_name: wohnzimmer-regal
 '0x0017880103892bd7':
-  friendly_name: wohnzimmer-vitrine
+  friendly_name: nino-1
 '0x00178801067ccfea':
   friendly_name: flur-stehleuchte
 '0x00178801047a8f0f':
@@ -94,3 +92,5 @@
   friendly_name: ankleide-motion-sensor
 '0x54ef44100125f901':
   friendly_name: alarm-motion-sensor
+'0x001788010359b0f2':
+  friendly_name: wohnzimmer-vitrine
