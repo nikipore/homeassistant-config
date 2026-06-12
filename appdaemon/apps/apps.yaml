@@ -1,0 +1,17 @@
+bett-bella:
+  module: controllerx
+  class: HueDimmerZ2MLightController
+  controller: bett-dimmer-bella
+  integration:
+    name: z2m
+    listen_to: mqtt
+  light: bett-bella
+
+bett-jan:
+  module: controllerx
+  class: HueDimmerZ2MLightController
+  controller: bett-dimmer-jan
+  integration:
+    name: z2m
+    listen_to: mqtt
+  light: bett-jan
