@@ -2,6 +2,7 @@
 .cache
 .cloud
 .storage
+appdaemon/apps/controllerx/**
 custom_components
 homematicip_local/cache/**
 node-red/context/**

@@ -94,3 +94,11 @@
   friendly_name: alarm-motion-sensor
 '0x001788010359b0f2':
   friendly_name: wohnzimmer-vitrine
+'0x001788010fb0708e':
+  friendly_name: bett-bella
+'0x001788010faaa5fc':
+  friendly_name: bett-jan
+'0x0017880109694ca5':
+  friendly_name: bett-dimmer-jan
+'0x000425ffff7ac479':
+  friendly_name: bett-dimmer-bella
