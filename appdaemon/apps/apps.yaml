@@ -1,4 +1,4 @@
-bett-bella:
+bett-dimmer-bella:
   module: controllerx
   class: HueDimmerZ2MLightController
   controller: bett-dimmer-bella
@@ -7,7 +7,7 @@ bett-bella:
     listen_to: mqtt
   light: bett-bella
 
-bett-jan:
+bett-dimmer-jan:
   module: controllerx
   class: HueDimmerZ2MLightController
   controller: bett-dimmer-jan
@@ -15,3 +15,87 @@ bett-jan:
     name: z2m
     listen_to: mqtt
   light: bett-jan
+
+kueche-dimmer:
+  module: controllerx
+  class: HueDimmerZ2MLightController
+  controller: kueche-dimmer
+  integration:
+    name: z2m
+    listen_to: mqtt
+  light: kueche-deckenleuchte
+
+kueche-schalter-deckenleuchte:
+  module: controllerx
+  class: PTM215XLightController
+  controller: kueche-schalter
+  integration:
+    name: z2m
+    listen_to: mqtt
+  light: light.kueche_deckenleuchte
+  mapping:
+    press_1: "hold_brightness_up"
+    press_2: "hold_brightness_down"
+    press_3: "toggle"
+    press_4: "toggle"
+    release_1: "release"
+    release_2: "release"
+    release_3: "release"
+    release_4: "release"
+
+schlafzimmer-dimmer-bella:
+  module: controllerx
+  class: HueDimmerZ2MLightController
+  controller: schlafzimmer-dimmer-bella
+  integration:
+    name: z2m
+    listen_to: mqtt
+  light: schlafzimmer
+
+schlafzimmer-dimmer-jan:
+  module: controllerx
+  class: HueDimmerZ2MLightController
+  controller: schlafzimmer-dimmer-jan
+  integration:
+    name: z2m
+    listen_to: mqtt
+  light: schlafzimmer
+
+schlafzimmer-schalter-deckenleuchten:
+  module: controllerx
+  class: PTM215XLightController
+  controller: schlafzimmer-schalter
+  integration:
+    name: z2m
+    listen_to: mqtt
+  light: light.schlafzimmer
+  mapping:
+    press_1: "toggle"
+    release_1: "release"
+    press_2:
+      service: switch.toggle
+      entity_id: switch.licht_ankleide
+
+schlafzimmer-schalter-bett-bella:
+  module: controllerx
+  class: PTM215XLightController
+  controller: schlafzimmer-schalter
+  integration:
+    name: z2m
+    listen_to: mqtt
+  light: light.bett_bella
+  mapping:
+    press_3: "toggle"
+    release_3: "release"
+
+schlafzimmer-schalter-bett-jan:
+  module: controllerx
+  class: PTM215XLightController
+  controller: schlafzimmer-schalter
+  integration:
+    name: z2m
+    listen_to: mqtt
+  light: light.bett_jan
+  mapping:
+    press_4: "toggle"
+    release_4: "release"

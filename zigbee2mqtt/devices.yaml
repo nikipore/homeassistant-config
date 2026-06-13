@@ -102,3 +102,7 @@
   friendly_name: bett-dimmer-jan
 '0x000425ffff7ac479':
   friendly_name: bett-dimmer-bella
+'0x0000000001785839':
+  friendly_name: kueche-schalter
+'0x0000000001785823':
+  friendly_name: schlafzimmer-schalter
