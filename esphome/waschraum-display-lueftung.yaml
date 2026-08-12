@@ -76,7 +76,7 @@ display:
         lambda: |-
           it.printf(100, 100, id(font_24), TextAlign::CENTER, "Starting");
 
-          font:
+font:
   - file:
       type: gfonts
       family: Source Code Pro
