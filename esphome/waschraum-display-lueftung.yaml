@@ -70,10 +70,7 @@ display:
     full_update_every: 1
     rotation: 90
     id: my_display
-    lambda: |-
-      it.fill(esphome::display::COLOR_OFF); // white background
-      it.printf(10, 10, id(font_title), esphome::display::COLOR_ON, “Hello World!”);
-      
+
     pages:
       - id: page1
         lambda: |-
