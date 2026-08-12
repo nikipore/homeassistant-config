@@ -28,27 +28,53 @@ esp32:
 
 logger:
 
-  
+ output:
+  - platform: gpio
+    pin: GPIO6 # EPD3V3_EN pin GHF: Required by the ePaper display!!!
+    id: epd_power_enable
+    inverted: True
+    
+  - platform: gpio
+    pin: 
+      number: GPIO17 # BATT_Control pin GHF: Required by the battery to work!!!
+      #allow_other_uses: True # GHF: Required here cause it is used in deep sleep as wakeup pin
+    id: vbat_power_enable
+    
+  - platform: gpio
+    pin: GPIO3
+    id: green_led_pin
+    inverted: True
+
+light:
+  - platform: binary
+    output: green_led_pin
+    id: green_led
+    name: green_led
 
 spi:
-  clk_pin: GPIO7      # SCK
-  mosi_pin: GPIO9     # MOSI
+  clk_pin: GPIO12 # SCK
+  mosi_pin: GPIO13 # SDO
+
+i2c:
+  sda: GPIO47
+  scl: GPIO48
 
 display:
   - platform: waveshare_epaper
-    model: 1.54inv2
-    id: epd
-    cs_pin: GPIO2
-    dc_pin: GPIO4
-    reset_pin: GPIO1
-    busy_pin: GPIO3
+    model: 1.54inv2 # 200x200 pixels
+    cs_pin: GPIO11 # CS (Chip Select)
+    dc_pin: GPIO10 # DC (Data/Command)
+    busy_pin: GPIO8 # BUSY pin (required to check when the display is ready)
+    reset_pin: GPIO9 # RST (Reset)
     update_interval: never
-    rotation: 270
+    reset_duration: 2ms
     full_update_every: 1
-
-    lambda: |-
-      it.printf(5, 5, id(font_roboto), "Living Room:");
-
+    rotation: 90
+    id: my_display
+    pages:
+      - id: pg_offline # this page is shown by default initially
+        lambda: |-
+          it.printf(100, 100, id(font_24), TextAlign::CENTER, "Starting");
 font:
   - file:
       type: gfonts
