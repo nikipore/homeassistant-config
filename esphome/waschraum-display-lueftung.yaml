@@ -74,7 +74,7 @@ display:
     pages:
       - id: page1
         lambda: |-
-          it.fill(esphome::display::COLOR_OFF); // white background
+          it.fill(COLOR_OFF); // white background
           it.print(0, 10, id(font_roboto), "This is page 1!");
 
 font:
