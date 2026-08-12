@@ -22,7 +22,7 @@ esphome:
   on_boot:
     then:
       - output.turn_on: epd_power_enable
-      - display.page.show: pg_starting
+      - display.page.show: page1
 
 esp32:
   board: esp32-s3-devkitc-1
@@ -70,10 +70,11 @@ display:
     full_update_every: 1
     rotation: 90
     id: my_display
+    
     pages:
-      - id: pg_starting # this page is shown by default initially
+      - id: page1
         lambda: |-
-          it.printf(100, 100, id(font_roboto), TextAlign::CENTER, "Starting");
+          it.print(0, 10, id(font_roboto), "This is page 1!");
 
 font:
   - file:
