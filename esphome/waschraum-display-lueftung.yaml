@@ -33,7 +33,7 @@ display:
     full_update_every: 1
 
     lambda: |-
-      it.printf(5, 5, id(font_1), color_black, "Living Room:");
+      it.printf(5, 5, id(font_roboto), color_black, "Living Room:");
 
 font:
   - file:
