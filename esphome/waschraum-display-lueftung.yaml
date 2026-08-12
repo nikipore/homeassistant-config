@@ -6,7 +6,6 @@ api:
   encryption:
     key: dHjusSzRZTM1iEoJQJ72f4T2IxPPIdV1bHyyO02X5X0=
 
-
 wifi:
   ssid: !secret wifi_ssid
   password: !secret wifi_password
