@@ -75,7 +75,7 @@ display:
     pages:
       - id: pg_starting # this page is shown by default initially
         lambda: |-
-          it.printf(100, 100, id(font), TextAlign::CENTER, "Starting");
+          it.printf(100, 100, id(font_roboto), TextAlign::CENTER, "Starting");
 
 font:
   - file:
