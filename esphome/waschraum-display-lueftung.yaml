@@ -19,11 +19,11 @@ wifi:
 spi:
   clk_pin: GPIO13
   mosi_pin: GPIO14
-  
+
 display:
   - platform: waveshare_epaper
     id: waveshare
-    model: 7.50in-bV3-bwr #Version 3 of the 7.50" (B) e-Paper Display, supports B/W/R rendering.
+    model: 1.54in
     cs_pin:
       number: GPIO15
       ignore_strapping_warning: True
