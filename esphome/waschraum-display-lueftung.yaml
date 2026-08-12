@@ -73,7 +73,7 @@ display:
     rotation: 90
     id: my_display
     pages:
-      - id: pg_offline # this page is shown by default initially
+      - id: pg_starting # this page is shown by default initially
         lambda: |-
           it.printf(100, 100, id(font), TextAlign::CENTER, "Starting");
 
