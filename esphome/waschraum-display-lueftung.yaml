@@ -31,3 +31,6 @@ display:
     update_interval: never
     rotation: 270
     full_update_every: 1
+
+    lambda: |-
+      it.printf(5, 5, id(font_1), color_black, "Living Room:");
