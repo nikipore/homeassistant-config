@@ -33,7 +33,7 @@ display:
     full_update_every: 1
 
     lambda: |-
-      it.printf(5, 5, id(font_roboto), color_black, "Living Room:");
+      it.printf(5, 5, id(font_roboto), "Living Room:");
 
 font:
   - file:
@@ -45,10 +45,3 @@ font:
   - file: "gfonts://Roboto"
     id: roboto_20
     size: 20
-
-color:
-  - id: color_black
-    red: 100%
-    green: 100%
-    blue: 100%
-    white: 100%
