@@ -28,7 +28,7 @@ esp32:
 
 logger:
 
- output:
+output:
   - platform: gpio
     pin: GPIO6 # EPD3V3_EN pin GHF: Required by the ePaper display!!!
     id: epd_power_enable
