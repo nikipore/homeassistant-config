@@ -18,7 +18,7 @@ esphome:
   on_boot:
     then:
       - output.turn_on: epd_power_enable
-      - display.page.show: pg_offline
+      - display.page.show: pg_starting
 
 esp32:
   board: esp32-s3-devkitc-1
