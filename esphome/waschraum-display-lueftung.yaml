@@ -26,8 +26,9 @@ esp32:
   variant: ESP32S3
   cpu_frequency: 80MHz
 
+logger:
 
-
+  
 
 spi:
   clk_pin: GPIO7      # SCK
