@@ -9,7 +9,7 @@ api:
 ota:
   platform: esphome
   password: !secret ota_password
-  
+
 wifi:
   ssid: !secret wifi_ssid
   password: !secret wifi_password
@@ -38,12 +38,6 @@ output:
     pin: GPIO6 # EPD3V3_EN pin GHF: Required by the ePaper display!!!
     id: epd_power_enable
     inverted: True
-    
-  - platform: gpio
-    pin: 
-      number: GPIO17 # BATT_Control pin GHF: Required by the battery to work!!!
-      #allow_other_uses: True # GHF: Required here cause it is used in deep sleep as wakeup pin
-    id: vbat_power_enable
     
   - platform: gpio
     pin: GPIO3
