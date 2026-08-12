@@ -16,7 +16,7 @@ esphome:
   friendly_name: ${friendly_name}
   on_boot:
     then:
-      - output.turn_on: epd_power_enable # turn ePaper display on
+      - output.turn_on: epd_power_enable 
 
 
 
