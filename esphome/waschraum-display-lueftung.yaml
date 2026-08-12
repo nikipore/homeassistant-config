@@ -45,3 +45,10 @@ font:
   - file: "gfonts://Roboto"
     id: roboto_20
     size: 20
+
+color:
+  - id: color_black
+    red: 100%
+    green: 100%
+    blue: 100%
+    white: 100%
