@@ -34,3 +34,14 @@ display:
 
     lambda: |-
       it.printf(5, 5, id(font_1), color_black, "Living Room:");
+
+font:
+  - file:
+      type: gfonts
+      family: Source Code Pro
+      weight: 700
+    id: font_roboto
+    size: 26
+  - file: "gfonts://Roboto"
+    id: roboto_20
+    size: 20
