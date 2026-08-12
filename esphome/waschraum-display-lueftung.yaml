@@ -1,6 +1,6 @@
 substitutions:
-  name: waschraum-display-lueftung
-  friendly_name: Waschraum Display Lüftung
+  name: display-waschraum-lueftung
+  friendly_name: Display Waschraum Lüftung
 packages:
   esphome.esp_web_tools_example: github://esphome/firmware/esp-web-tools/esp32s3.yaml@main
 esphome:
