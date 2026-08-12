@@ -1,0 +1,17 @@
+substitutions:
+  name: waschraum-display-lueftung
+  friendly_name: Waschraum Display Lüftung
+packages:
+  esphome.esp_web_tools_example: github://esphome/firmware/esp-web-tools/esp32s3.yaml@main
+esphome:
+  name: ${name}
+  name_add_mac_suffix: false
+  friendly_name: ${friendly_name}
+api:
+  encryption:
+    key: dHjusSzRZTM1iEoJQJ72f4T2IxPPIdV1bHyyO02X5X0=
+
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
