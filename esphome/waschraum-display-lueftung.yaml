@@ -6,6 +6,10 @@ api:
   encryption:
     key: dHjusSzRZTM1iEoJQJ72f4T2IxPPIdV1bHyyO02X5X0=
 
+ota:
+  platform: esphome
+  password: !secret ota_password
+  
 wifi:
   ssid: !secret wifi_ssid
   password: !secret wifi_password
