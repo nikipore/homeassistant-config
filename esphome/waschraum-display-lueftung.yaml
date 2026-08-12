@@ -74,7 +74,7 @@ display:
     pages:
       - id: pg_offline # this page is shown by default initially
         lambda: |-
-          it.printf(100, 100, id(font_24), TextAlign::CENTER, "Starting");
+          it.printf(100, 100, id(font), TextAlign::CENTER, "Starting");
 
 font:
   - file:
