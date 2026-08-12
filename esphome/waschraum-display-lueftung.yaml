@@ -75,7 +75,8 @@ display:
       - id: pg_offline # this page is shown by default initially
         lambda: |-
           it.printf(100, 100, id(font_24), TextAlign::CENTER, "Starting");
-font:
+
+          font:
   - file:
       type: gfonts
       family: Source Code Pro
