@@ -19,7 +19,6 @@ wifi:
 spi:
   clk_pin: GPIO7      # SCK
   mosi_pin: GPIO9     # MOSI
-  # MISO not used for e-paper
 
 display:
   - platform: waveshare_epaper
