@@ -15,3 +15,20 @@ api:
 wifi:
   ssid: !secret wifi_ssid
   password: !secret wifi_password
+
+spi:
+  clk_pin: GPIO13
+  mosi_pin: GPIO14
+display:
+  - platform: waveshare_epaper
+    id: waveshare
+    model: 7.50in-bV3-bwr #Version 3 of the 7.50" (B) e-Paper Display, supports B/W/R rendering.
+    cs_pin:
+      number: GPIO15
+      ignore_strapping_warning: True
+    dc_pin: GPIO27
+    busy_pin: 
+      number: GPIO25
+      inverted: true
+    reset_pin: GPIO26
+    lambda: |-
