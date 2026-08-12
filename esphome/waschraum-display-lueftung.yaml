@@ -19,6 +19,7 @@ wifi:
 spi:
   clk_pin: GPIO13
   mosi_pin: GPIO14
+  
 display:
   - platform: waveshare_epaper
     id: waveshare
