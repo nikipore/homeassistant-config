@@ -59,10 +59,20 @@ spi:
   clk_pin: GPIO12
   mosi_pin: GPIO13
 
-font:
-  - file: "RobotoCondensed-Bold.ttf"
-    id: font1
-    size: 30
+ffont:                         #  Custom clock font
+  - file: "gfonts://Montserrat"
+    id: clock_font
+    size: 72                  # +50% compared to montserrat_48
+    bpp: 4                    # anti-aliasing: smooth edges at large sizes
+    glyphs: "0123456789:-"    # only the characters used by the clock (HH:MM and "--:--")
+  # Material Design Icons font (same icons as Home Assistant)
+  - file: "https://github.com/Templarian/MaterialDesign-Webfont/raw/master/fonts/materialdesignicons-webfont.ttf"
+    id: mdi_icons
+    size: 40
+    bpp: 4
+    glyphs:
+      - "\U000F06E8"   # mdi:lightbulb-on  (Light icon, left)
+      - "\U000F07E5"   # mdi:pipe          (Recirculation icon, right)
 
 display:
   - platform: waveshare_epaper
