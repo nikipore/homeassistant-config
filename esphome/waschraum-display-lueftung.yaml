@@ -26,7 +26,7 @@ esphome:
 
   on_boot:
     then:
-      - output.turn_on: display_power_enable
+      - output.turn_on: display_power
       - light.turn_on: green_led
 
   on_shutdown: 
@@ -48,7 +48,7 @@ api:
 output:
   - platform: gpio
     pin: GPIO6
-    id: display_power_enable
+    id: display_power
     inverted: True
     
   - platform: gpio
