@@ -114,13 +114,13 @@ display:
 font:
   - file: "gfonts://Roboto"
     id: font_24
-    size: 24
+    size: 35
   - file: "gfonts://Roboto"
     id: font_24
     size: 24
   - file: "gfonts://Roboto"
-    id: font_24
-    size: 24
+    id: font_16
+    size: 16
 
 binary_sensor:
   - platform: status
