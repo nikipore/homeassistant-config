@@ -60,8 +60,8 @@ spi:
   mosi_pin: GPIO13
 
 font:       
-  - file: "gfonts://Montserrat"
-    id: clock_font
+  - file: "gfonts://Roboto"
+    id: font
     size: 20
 
 
@@ -77,4 +77,4 @@ display:
     update_interval: 15s
     reset_duration: 2ms
     lambda: |-
-      it.print(it.get_width() / 2, it.get_height() / 2, id(clock_font), "Hello World!");
+      it.print(it.get_width() / 2, it.get_height() / 2, id(font), "Hello World!");
