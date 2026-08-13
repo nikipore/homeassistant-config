@@ -62,10 +62,7 @@ spi:
 font:       
   - file: "gfonts://Montserrat"
     id: clock_font
-    size: 48    
-    bpp: 4                    # anti-aliasing: smooth edges at large sizes
-    glyphs: "0123456789:-"    # only the characters used by the clock (HH:MM and "--:--")
-  # Material Design Icons font (same icons as Home Assistant)
+    size: 20
 
 
 display:
