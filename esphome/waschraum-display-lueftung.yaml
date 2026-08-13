@@ -76,4 +76,4 @@ display:
     update_interval: 15s
     reset_duration: 2ms
     lambda: |-
-      it.print(it.get_width() / 2, it.get_height() / 2, id(font), "Hello World!");
+      it.print(it.get_width() / 2, it.get_height() / 2, id(roboto), "Hello World!");
