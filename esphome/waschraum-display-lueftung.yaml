@@ -24,6 +24,21 @@ esphome:
   name_add_mac_suffix: false
   friendly_name: ${friendly_name}
 
+esphome:
+  name: esp32eink
+  friendly_name: esp32eink
+  on_boot:
+    then:
+      - output.turn_on: vbat_power_enable # "connect" battery
+      - output.turn_on: epd_power_enable # turn ePaper display on
+      - light.turn_on: green_led
+  on_shutdown: 
+    then:
+      - lambda: |- # GHF: This is required for the battery to keep connected during deep_sleep
+          gpio_hold_en(GPIO_NUM_17);
+      - component.update: my_display
+      - delay: 3s
+
 esp32:
   board: esp32-s3-devkitc-1
   framework:
@@ -33,7 +48,46 @@ esp32:
 
 logger:
 
+api:
+  encryption:
+    key: "mLBU7EOr5Z8rTQFDuwNwVB2CRnwSQ2oK53d4s6msTww="
+  on_client_connected:
+    - display.page.show: pg_main
+    - delay: 5s
+    - component.update: my_display
+
+ota:
+  - platform: esphome
+    password: "fbf9579d796ebb9a1610ac6e35741145"
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+  power_save_mode: HIGH
+  manual_ip:
+    static_ip: 192.168.0.207
+    gateway: 192.168.0.1
+    subnet: 255.255.255.0
+    dns1: 192.168.0.1
+
+  ap:
+    ssid: "Esp32Eink Fallback Hotspot"
+    password: "cIxc2eqnrfzE"
+
+captive_portal:
+
 output:
+  - platform: gpio
+    pin: GPIO6 # EPD3V3_EN pin GHF: Required by the ePaper display!!!
+    id: epd_power_enable
+    inverted: True
+    
+  - platform: gpio
+    pin: 
+      number: GPIO17 # BATT_Control pin GHF: Required by the battery to work!!!
+      #allow_other_uses: True # GHF: Required here cause it is used in deep sleep as wakeup pin
+    id: vbat_power_enable
+    
   - platform: gpio
     pin: GPIO3
     id: green_led_pin
@@ -45,30 +99,163 @@ light:
     id: green_led
     name: green_led
 
-i2c:
-  sda: GPIO15
-  scl: GPIO16
-  scan: True
-
 spi:
-  clk_pin: GPIO12
-  mosi_pin: GPIO13
+  clk_pin: GPIO12 # SCK
+  mosi_pin: GPIO13 # SDO
 
-font:       
-  - file: "gfonts://Roboto"
-    id: roboto
-    size: 20
+i2c:
+  sda: GPIO47
+  scl: GPIO48
 
 display:
   - platform: waveshare_epaper
-    id: epd_display
-    cs_pin: GPIO11
-    dc_pin: GPIO10
-    busy_pin: GPIO8
-    reset_pin: GPIO9
-    model: 1.54in
-    full_update_every: 30
-    update_interval: 15s
+    model: 1.54inv2 # 200x200 pixels
+    cs_pin: GPIO11 # CS (Chip Select)
+    dc_pin: GPIO10 # DC (Data/Command)
+    busy_pin: GPIO8 # BUSY pin (required to check when the display is ready)
+    reset_pin: GPIO9 # RST (Reset)
+    update_interval: never
     reset_duration: 2ms
+    full_update_every: 1
+    rotation: 90
+    id: my_display
+    pages:
+      - id: pg_offline # this page is shown by default initially
+        lambda: |-
+          it.printf(100, 100, id(font_24), TextAlign::CENTER, "Starting");
+      - id: pg_main # this page is show once connected to HomeAssistant
+        lambda: |-
+          it.filled_rectangle(0, 0, 200, 200, COLOR_ON);
+          it.filled_rectangle(0, 0, 200, 200, COLOR_OFF);
+          it.printf(100,0,id(font_36), TextAlign::TOP_CENTER, "T:%.1fC", id(local_temp).state);
+          it.printf(100,40,id(font_36), TextAlign::TOP_CENTER, "H:%.1f%%", id(local_humidity).state);
+          it.printf(100,80,id(font_36), TextAlign::TOP_CENTER, "B:%.2fV", id(batt_voltage).state);
+          it.printf(100,170,id(font_24), TextAlign::CENTER, "WaveShare");
+          it.strftime(0,199, id(font_16), TextAlign::BOTTOM_LEFT, "%Y-%m-%d", id(time_comp).now());
+          it.strftime(199,199, id(font_16), TextAlign::BOTTOM_RIGHT, "%H:%M", id(time_comp).now());
+      - id: pg_off # this page (blank screen) is shown when power button is pressed
+        lambda: |-
+          it.filled_rectangle(0, 0, 200, 200, COLOR_OFF);
+      - id: pg_low_batt # this page is shown before turning off due to batt voltage being too low
+        lambda: |-
+          it.printf(100, 85, id(font_24), TextAlign::CENTER, "Battery");
+          it.printf(100, 115, id(font_24), TextAlign::CENTER, "too low");
+          
+font:
+  - file: "fonts/LiberationMono-Bold.ttf" 
+    id: font_36
+    size: 36
+
+  - file: "fonts/Pervitina-Dex-FFP.ttf"
+    id: font_24
+    size: 24
+
+  - file: "fonts/LiberationMono-Bold.ttf"
+    id: font_16
+    size: 16
+
+binary_sensor:
+  - platform: status
+    name: "Node Status"
+    id: system_status
+
+  - platform: gpio # Generic button usable by HomeAssistant
+    pin:
+      number: GPIO0
+      inverted: true
+      mode:
+        input: true
+        pullup: true
+    name: "Button 0"
+    id: button_0
+
+  - platform: gpio # Power button, to poweroff board when on battery
+    pin:
+      number: GPIO18
+      mode: 
+        input: true
+        pullup: true
+      inverted: True
+      allow_other_uses: True  
+    id: button_pwr
+    on_press: # internally disconnects the battery
+      then:
+        - display.page.show: pg_off
+        - component.update: my_display
+        - lambda: |- # GHF: This is required for the next output.turn_off to work
+            gpio_hold_dis(GPIO_NUM_17);
+        - output.turn_off: vbat_power_enable
+       # the rest of this code runs only if USB power is connected
+        - display.page.show: pg_main 
+        - component.update: my_display
+        - output.turn_on: vbat_power_enable
+
+time:
+  - platform: homeassistant
+    id: time_comp
+    timezone: "America/Argentina/Buenos_Aires"
+
+sensor:
+  - platform: shtcx
+    update_interval: 10s
+    temperature:
+      name: "Temperature"
+      id: local_temp
+    humidity:
+      name: "Humidity"
+      id: local_humidity
+
+  - platform: adc
+    update_interval: 10s
+    pin: GPIO4
+    name: "Batt_voltage"
+    id: batt_voltage
+    attenuation: auto
+    filters:
+      - multiply: 2.02
+    on_value_range: # turn off if batt voltage is too low (to avoid damaging the battery)
+      - below: 3.4
+        then: 
+          - display.page.show: pg_low_batt
+          - component.update: my_display
+          - lambda: |- # GHF: This is required for the next output.turn_off to work
+              gpio_hold_dis(GPIO_NUM_17);
+          - output.turn_off: vbat_power_enable
+
+button:
+  - platform: template # to force a display update from HomeAssistant
+    name: "display update"
+    on_press: 
+      then:
+        - component.update: my_display
+
+globals:
+  - id: ds_disabled # To keep state of "deep sleep disabled" switch
+    initial_value: 'false'
+    type: bool
+
+switch:
+  - platform: template # To avoid entering deep sleep from HA, for doing OTA, for example
+    name: "Deep sleep disabled"    
     lambda: |-
-      it.print(it.get_width() / 2, it.get_height() / 2, id(roboto), "Hello World!");
+      return id(ds_disabled);
+    turn_on_action: 
+      - deep_sleep.prevent: ds1
+      - globals.set: 
+          id: ds_disabled
+          value: 'true'
+    turn_off_action: 
+      - deep_sleep.allow: ds1
+      - globals.set: 
+          id: ds_disabled
+          value: 'false'
+    restore_mode: ALWAYS_OFF
+
+deep_sleep:
+  id: ds1
+  sleep_duration: 30min 
+  run_duration: 30s
+  wakeup_pin: 
+    number: GPIO18
+    inverted: True
+    allow_other_uses: True  
