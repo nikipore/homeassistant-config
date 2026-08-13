@@ -46,7 +46,6 @@ api:
     - delay: 5s
     - component.update: my_display
 
-
 output:
   - platform: gpio
     pin: GPIO6 # EPD3V3_EN pin GHF: Required by the ePaper display!!!
