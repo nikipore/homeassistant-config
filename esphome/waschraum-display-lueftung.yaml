@@ -70,8 +70,8 @@ i2c:
 
 display:
   - platform: waveshare_epaper
-    model: 1.54inv2 # 200x200 pixels
-    cs_pin: GPIO11 # CS (Chip Select)
+    model: 1.54inv2
+    cs_pin: GPIO11
     dc_pin: GPIO10 # DC (Data/Command)
     busy_pin: GPIO8 # BUSY pin (required to check when the display is ready)
     reset_pin: GPIO9 # RST (Reset)
