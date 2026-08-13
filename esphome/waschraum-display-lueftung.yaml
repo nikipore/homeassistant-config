@@ -19,16 +19,6 @@ esp32:
 
 logger:
 
-api:
-  encryption:
-    key: dHjusSzRZTM1iEoJQJ72f4T2IxPPIdV1bHyyO02X5X0=
-
-  on_client_connected:
-    - display.page.show: pg_main
-    - delay: 5s
-    - component.update: my_display
-
-
 esphome:
   name: ${name}
   name_add_mac_suffix: false
@@ -46,6 +36,16 @@ esphome:
           gpio_hold_en(GPIO_NUM_17);
       - component.update: my_display
       - delay: 3s
+
+api:
+  encryption:
+    key: dHjusSzRZTM1iEoJQJ72f4T2IxPPIdV1bHyyO02X5X0=
+
+  on_client_connected:
+    - display.page.show: pg_main
+    - delay: 5s
+    - component.update: my_display
+
 
 output:
   - platform: gpio
