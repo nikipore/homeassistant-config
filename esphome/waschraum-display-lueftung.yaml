@@ -61,7 +61,7 @@ spi:
 
 font:       
   - file: "gfonts://Roboto"
-    id: font
+    id: roboto
     size: 20
 
 display:
