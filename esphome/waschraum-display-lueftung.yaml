@@ -106,10 +106,6 @@ display:
       - id: pg_off # this page (blank screen) is shown when power button is pressed
         lambda: |-
           it.filled_rectangle(0, 0, 200, 200, COLOR_OFF);
-      - id: pg_low_batt # this page is shown before turning off due to batt voltage being too low
-        lambda: |-
-          it.printf(100, 85, id(font_24), TextAlign::CENTER, "Battery");
-          it.printf(100, 115, id(font_24), TextAlign::CENTER, "too low");
           
 font:
   - file: "gfonts://Roboto"
