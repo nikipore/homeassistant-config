@@ -2,15 +2,6 @@ substitutions:
   name: display-waschraum-lueftung
   friendly_name: Display Waschraum Lüftung
 
-api:
-  encryption:
-    key: dHjusSzRZTM1iEoJQJ72f4T2IxPPIdV1bHyyO02X5X0=
-
-  on_client_connected:
-    - display.page.show: pg_main
-    - delay: 5s
-    - component.update: my_display
-
 ota:
   platform: esphome
   password: !secret ota_password
