@@ -22,7 +22,6 @@ esphome:
   on_boot:
     then:
       - output.turn_on: epd_power_enable
-      - display.page.show: page1
 
 esp32:
   board: esp32-s3-devkitc-1
