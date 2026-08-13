@@ -24,14 +24,12 @@ esphome:
   name_add_mac_suffix: false
   friendly_name: ${friendly_name}
 
-esphome:
-  name: esp32eink
-  friendly_name: esp32eink
   on_boot:
     then:
       - output.turn_on: vbat_power_enable # "connect" battery
       - output.turn_on: epd_power_enable # turn ePaper display on
       - light.turn_on: green_led
+      
   on_shutdown: 
     then:
       - lambda: |- # GHF: This is required for the battery to keep connected during deep_sleep
