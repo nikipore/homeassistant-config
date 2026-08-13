@@ -157,7 +157,7 @@ binary_sensor:
 time:
   - platform: homeassistant
     id: time_comp
-    timezone: "Europe/Argentina/Buenos_Aires"
+    timezone: "Europe/Germany/Berlin"
 
 sensor:
   - platform: shtcx
