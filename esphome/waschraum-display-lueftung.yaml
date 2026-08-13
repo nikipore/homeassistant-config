@@ -56,8 +56,6 @@ api:
     - delay: 5s
     -
 
-captive_portal:
-
 output:
   - platform: gpio
     pin: GPIO6 # EPD3V3_EN pin GHF: Required by the ePaper display!!!
