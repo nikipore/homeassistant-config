@@ -10,6 +10,7 @@ api:
     - display.page.show: pg_main
     - delay: 5s
     - component.update: my_display
+
 ota:
   platform: esphome
   password: !secret ota_password
