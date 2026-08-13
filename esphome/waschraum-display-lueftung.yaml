@@ -66,13 +66,7 @@ font:
     bpp: 4                    # anti-aliasing: smooth edges at large sizes
     glyphs: "0123456789:-"    # only the characters used by the clock (HH:MM and "--:--")
   # Material Design Icons font (same icons as Home Assistant)
-  - file: "https://github.com/Templarian/MaterialDesign-Webfont/raw/master/fonts/materialdesignicons-webfont.ttf"
-    id: mdi_icons
-    size: 40
-    bpp: 4
-    glyphs:
-      - "\U000F06E8"   # mdi:lightbulb-on  (Light icon, left)
-      - "\U000F07E5"   # mdi:pipe          (Recirculation icon, right)
+
 
 display:
   - platform: waveshare_epaper
@@ -86,4 +80,4 @@ display:
     update_interval: 15s
     reset_duration: 2ms
     lambda: |-
-      it.print(it.get_width() / 2, it.get_height() / 2, id(font1), "Hello World!");
+      it.print(it.get_width() / 2, it.get_height() / 2, id(clock_font), "Hello World!");
