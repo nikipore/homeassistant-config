@@ -64,7 +64,6 @@ font:
     id: font
     size: 20
 
-
 display:
   - platform: waveshare_epaper
     id: epd_display
