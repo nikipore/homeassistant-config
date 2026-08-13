@@ -113,7 +113,7 @@ display:
           
 font:
   - file: "gfonts://Roboto"
-    id: roboto_20
+    id: font_24
     size: 24
 
 binary_sensor:
