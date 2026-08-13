@@ -50,40 +50,30 @@ light:
     id: green_led
     name: green_led
 
-spi:
-  clk_pin: GPIO12 # SCK
-  mosi_pin: GPIO13 # SDO
-
 i2c:
-  sda: GPIO47
-  scl: GPIO48
+  sda: GPIO15
+  scl: GPIO16
+  scan: True
+
+spi:
+  clk_pin: GPIO12
+  mosi_pin: GPIO13
+
+font:
+  - file: "RobotoCondensed-Bold.ttf"
+    id: font1
+    size: 30
 
 display:
   - platform: waveshare_epaper
-    model: 1.54inv2 # 200x200 pixels
-    cs_pin: GPIO11 # CS (Chip Select)
-    dc_pin: GPIO10 # DC (Data/Command)
-    busy_pin: GPIO8 # BUSY pin (required to check when the display is ready)
-    reset_pin: GPIO9 # RST (Reset)
-    update_interval: never
+    id: epd_display
+    cs_pin: GPIO11
+    dc_pin: GPIO10
+    busy_pin: GPIO8
+    reset_pin: GPIO9
+    model: 1.54in
+    full_update_every: 30
+    update_interval: 15s
     reset_duration: 2ms
-    full_update_every: 1
-    rotation: 90
-    id: my_display
-
-    pages:
-      - id: page1
-        lambda: |-
-          it.fill(COLOR_OFF); // white background
-          it.print(0, 10, id(font_roboto), "This is page 1!");
-
-font:
-  - file:
-      type: gfonts
-      family: Source Code Pro
-      weight: 700
-    id: font_roboto
-    size: 26
-  - file: "gfonts://Roboto"
-    id: roboto_20
-    size: 20
+    lambda: |-
+      it.print(it.get_width() / 2, it.get_height() / 2, id(font1), "Hello World!");
