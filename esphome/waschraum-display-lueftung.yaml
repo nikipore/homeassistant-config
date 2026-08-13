@@ -113,7 +113,7 @@ display:
           
 font:
   - file: "gfonts://Roboto"
-    id: font_24
+    id: font_36
     size: 35
   - file: "gfonts://Roboto"
     id: font_24
