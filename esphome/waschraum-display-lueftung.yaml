@@ -123,7 +123,7 @@ binary_sensor:
     name: "Node Status"
     id: system_status
 
-  - platform: gpio # Generic button usable by HomeAssistant
+  - platform: gpio
     pin:
       number: GPIO0
       inverted: true
@@ -133,7 +133,7 @@ binary_sensor:
     name: "Settings"
     id: button_settings
 
-  - platform: gpio # Power button, to poweroff board when on battery
+  - platform: gpio
     pin:
       number: GPIO18
       inverted: true
