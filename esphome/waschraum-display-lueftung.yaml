@@ -47,8 +47,8 @@ api:
 
 output:
   - platform: gpio
-    pin: GPIO6 # EPD3V3_EN pin GHF: Required by the ePaper display!!!
-    id: epd_power_enable
+    pin: GPIO6
+    id: display_power_enable
     inverted: True
     
   - platform: gpio
