@@ -74,7 +74,7 @@ display:
     cs_pin: GPIO11
     dc_pin: GPIO10 
     busy_pin: GPIO8
-    reset_pin: GPIO9 # RST (Reset)
+    reset_pin: GPIO9 
     update_interval: never
     reset_duration: 2ms
     full_update_every: 1
