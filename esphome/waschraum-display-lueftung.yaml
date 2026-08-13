@@ -72,8 +72,8 @@ display:
   - platform: waveshare_epaper
     model: 1.54inv2
     cs_pin: GPIO11
-    dc_pin: GPIO10 # DC (Data/Command)
-    busy_pin: GPIO8 # BUSY pin (required to check when the display is ready)
+    dc_pin: GPIO10 
+    busy_pin: GPIO8
     reset_pin: GPIO9 # RST (Reset)
     update_interval: never
     reset_duration: 2ms
