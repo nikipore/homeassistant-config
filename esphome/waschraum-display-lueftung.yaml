@@ -115,6 +115,12 @@ font:
   - file: "gfonts://Roboto"
     id: font_24
     size: 24
+  - file: "gfonts://Roboto"
+    id: font_24
+    size: 24
+  - file: "gfonts://Roboto"
+    id: font_24
+    size: 24
 
 binary_sensor:
   - platform: status
