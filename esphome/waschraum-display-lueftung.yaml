@@ -94,9 +94,7 @@ display:
           it.printf(100,170,id(font_24), TextAlign::CENTER, "WaveShare");
           it.strftime(0,199, id(font_16), TextAlign::BOTTOM_LEFT, "%Y-%m-%d", id(time_comp).now());
           it.strftime(199,199, id(font_16), TextAlign::BOTTOM_RIGHT, "%H:%M", id(time_comp).now());
-      - id: pg_off # this page (blank screen) is shown when power button is pressed
-        lambda: |-
-          it.filled_rectangle(0, 0, 200, 200, COLOR_OFF);
+  
           
 font:
   - file: "gfonts://Roboto"
