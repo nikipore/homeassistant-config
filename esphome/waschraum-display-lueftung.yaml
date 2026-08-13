@@ -139,7 +139,6 @@ binary_sensor:
       mode: 
         input: true
         pullup: true
-      inverted: True
       allow_other_uses: True  
     name: "Power"
     id: button_power
