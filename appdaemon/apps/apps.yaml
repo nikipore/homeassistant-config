@@ -16,6 +16,15 @@ bett-dimmer-jan:
     listen_to: mqtt
   light: bett-jan
 
+flur-dimmer:
+  module: controllerx
+  class: HueDimmerZ2MLightController
+  controller: flur-dimmer
+  integration:
+    name: z2m
+    listen_to: mqtt
+  light: flur-stehleuchte
+
 kueche-dimmer:
   module: controllerx
   class: HueDimmerZ2MLightController
@@ -36,12 +45,22 @@ kueche-schalter-deckenleuchte:
   mapping:
     press_1: "hold_brightness_up"
     press_2: "hold_brightness_down"
-    press_3: "toggle"
     press_4: "toggle"
     release_1: "release"
     release_2: "release"
-    release_3: "release"
     release_4: "release"
+
+kueche-schalter-sideboard:
+  module: controllerx
+  class: PTM215XLightController
+  controller: kueche-schalter
+  integration:
+    name: z2m
+    listen_to: mqtt
+  light: light.kueche_sideboard
+  mapping:
+    press_3: "toggle"
+    release_3: "release"
 
 schlafzimmer-dimmer-bella:
   module: controllerx
@@ -70,11 +89,11 @@ schlafzimmer-schalter-deckenleuchten:
     listen_to: mqtt
   light: light.schlafzimmer
   mapping:
-    press_1: "toggle"
-    release_1: "release"
-    press_2:
+    press_1:
       service: switch.toggle
       entity_id: switch.licht_ankleide
+    press_2: "toggle"
+    release_2: "release"
 
 schlafzimmer-schalter-bett-bella:
   module: controllerx

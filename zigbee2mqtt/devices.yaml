@@ -25,30 +25,16 @@
   friendly_name: router-wohnzimmer
 '0x00124b0024c9200d':
   friendly_name: router-noah
-'0x00124b0024ca7af1':
-  friendly_name: router-arbeitszimmer
 '0x00124b0024ca848b':
   friendly_name: router-schlafzimmer
-'0x00178801038929b4':
-  friendly_name: nino-3
-'0x0017880103b9624b':
-  friendly_name: nino-2
 '0x0017880102c3143f':
   friendly_name: nino-dimmer
   legacy: true
-'0x0017880103204d45':
-  friendly_name: noah-1
-'0x00178801038746d4':
-  friendly_name: noah-2
-'0x00178801035073df':
-  friendly_name: noah-3
 '0x0017880103e7b1fc':
   friendly_name: noah-dimmer
   legacy: true
 '0x0017880103e185e6':
   friendly_name: wohnzimmer-regal
-'0x0017880103892bd7':
-  friendly_name: nino-1
 '0x00178801067ccfea':
   friendly_name: flur-stehleuchte
 '0x00178801047a8f0f':
@@ -98,11 +84,25 @@
   friendly_name: bett-bella
 '0x001788010faaa5fc':
   friendly_name: bett-jan
-'0x0017880109694ca5':
-  friendly_name: bett-dimmer-jan
-'0x000425ffff7ac479':
-  friendly_name: bett-dimmer-bella
 '0x0000000001785839':
   friendly_name: kueche-schalter
 '0x0000000001785823':
   friendly_name: schlafzimmer-schalter
+'0x0017880109694ca5':
+  friendly_name: bett-dimmer-jan
+'0x000425ffff7ac479':
+  friendly_name: bett-dimmer-bella
+'0x001788010f9b2020':
+  friendly_name: kueche-sideboard
+'0xa4c13895611f0fdc':
+  friendly_name: noah-2
+'0xa4c1386d22872233':
+  friendly_name: noah-1
+'0xa4c138f7e4c9dcaa':
+  friendly_name: noah-3
+'0xa4c138c4a3442201':
+  friendly_name: nino-1
+'0xa4c13889897f8a0f':
+  friendly_name: nino-2
+'0xa4c1387fdbda1ebd':
+  friendly_name: nino-3

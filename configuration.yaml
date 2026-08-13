@@ -12,7 +12,7 @@ logger:
   default: warning
 
 recorder:
-  db_url: !secret mariadb-url
+  db_url: !secret "mariadb-url"
   purge_keep_days: 7
 
 homeassistant:
@@ -25,11 +25,3 @@ tts:
   - platform: google_cloud
     key_file: apikey-google-cloud.json
     voice: de-DE-Wavenet-F
-
-http:
-  use_x_forwarded_for: true
-  trusted_proxies:
-    - 172.30.33.0/24 # Docker containers
-
-  ip_ban_enabled: true
-  login_attempts_threshold: 5
