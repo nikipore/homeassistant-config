@@ -142,17 +142,6 @@ binary_sensor:
       inverted: True
       allow_other_uses: True  
     id: button_pwr
-    on_press: # internally disconnects the battery
-      then:
-        - display.page.show: pg_off
-        - component.update: my_display
-        - lambda: |- # GHF: This is required for the next output.turn_off to work
-            gpio_hold_dis(GPIO_NUM_17);
-        - output.turn_off: vbat_power_enable
-       # the rest of this code runs only if USB power is connected
-        - display.page.show: pg_main 
-        - component.update: my_display
-        - output.turn_on: vbat_power_enable
 
 time:
   - platform: homeassistant
