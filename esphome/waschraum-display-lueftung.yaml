@@ -53,12 +53,6 @@ output:
     inverted: True
     
   - platform: gpio
-    pin: 
-      number: GPIO17 # BATT_Control pin GHF: Required by the battery to work!!!
-      #allow_other_uses: True # GHF: Required here cause it is used in deep sleep as wakeup pin
-    id: vbat_power_enable
-    
-  - platform: gpio
     pin: GPIO3
     id: green_led_pin
     inverted: True
