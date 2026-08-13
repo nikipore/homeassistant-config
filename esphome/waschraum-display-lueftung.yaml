@@ -142,7 +142,7 @@ binary_sensor:
       inverted: True
       allow_other_uses: True  
     name: "Power"
-    id: button_pwr
+    id: button_power
 
 time:
   - platform: homeassistant
