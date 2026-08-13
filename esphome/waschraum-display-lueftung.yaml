@@ -48,14 +48,6 @@ esp32:
 
 logger:
 
-api:
-  encryption:
-    key: "mLBU7EOr5Z8rTQFDuwNwVB2CRnwSQ2oK53d4s6msTww="
-  on_client_connected:
-    - display.page.show: pg_main
-    - delay: 5s
-    -
-
 output:
   - platform: gpio
     pin: GPIO6 # EPD3V3_EN pin GHF: Required by the ePaper display!!!
