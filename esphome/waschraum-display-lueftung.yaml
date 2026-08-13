@@ -31,8 +31,6 @@ esphome:
 
   on_shutdown: 
     then:
-      - lambda: |- # GHF: This is required for the battery to keep connected during deep_sleep
-          gpio_hold_en(GPIO_NUM_17);
       - component.update: my_display
       - delay: 3s
 
