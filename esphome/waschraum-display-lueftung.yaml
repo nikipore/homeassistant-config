@@ -26,7 +26,7 @@ esphome:
 
   on_boot:
     then:
-      - output.turn_on: epd_power_enable # turn ePaper display on
+      - output.turn_on: display_power_enable
       - light.turn_on: green_led
 
   on_shutdown: 
