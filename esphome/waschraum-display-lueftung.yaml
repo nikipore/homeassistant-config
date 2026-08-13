@@ -112,17 +112,9 @@ display:
           it.printf(100, 115, id(font_24), TextAlign::CENTER, "too low");
           
 font:
-  - file: "fonts/LiberationMono-Bold.ttf" 
-    id: font_36
-    size: 36
-
-  - file: "fonts/Pervitina-Dex-FFP.ttf"
-    id: font_24
+  - file: "gfonts://Roboto"
+    id: roboto_20
     size: 24
-
-  - file: "fonts/LiberationMono-Bold.ttf"
-    id: font_16
-    size: 16
 
 binary_sensor:
   - platform: status
