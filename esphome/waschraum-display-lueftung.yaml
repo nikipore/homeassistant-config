@@ -19,10 +19,6 @@ esphome:
   name_add_mac_suffix: false
   friendly_name: ${friendly_name}
 
-  on_boot:
-    then:
-      - output.turn_on: epd_power_enable
-
 esp32:
   board: esp32-s3-devkitc-1
   framework:
@@ -33,11 +29,6 @@ esp32:
 logger:
 
 output:
-  - platform: gpio
-    pin: GPIO6 # EPD3V3_EN pin GHF: Required by the ePaper display!!!
-    id: epd_power_enable
-    inverted: True
-    
   - platform: gpio
     pin: GPIO3
     id: green_led_pin
