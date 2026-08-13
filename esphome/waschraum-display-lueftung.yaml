@@ -136,6 +136,7 @@ binary_sensor:
   - platform: gpio # Power button, to poweroff board when on battery
     pin:
       number: GPIO18
+      inverted: true
       mode: 
         input: true
         pullup: true
