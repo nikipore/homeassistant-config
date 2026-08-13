@@ -173,23 +173,6 @@ sensor:
       name: "Humidity"
       id: local_humidity
 
-  - platform: adc
-    update_interval: 10s
-    pin: GPIO4
-    name: "Batt_voltage"
-    id: batt_voltage
-    attenuation: auto
-    filters:
-      - multiply: 2.02
-    on_value_range: # turn off if batt voltage is too low (to avoid damaging the battery)
-      - below: 3.4
-        then: 
-          - display.page.show: pg_low_batt
-          - component.update: my_display
-          - lambda: |- # GHF: This is required for the next output.turn_off to work
-              gpio_hold_dis(GPIO_NUM_17);
-          - output.turn_off: vbat_power_enable
-
 button:
   - platform: template # to force a display update from HomeAssistant
     name: "display update"
