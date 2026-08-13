@@ -19,6 +19,15 @@ wifi:
   ssid: !secret wifi_ssid
   password: !secret wifi_password
 
+esp32:
+  board: esp32-s3-devkitc-1
+  framework:
+    type: esp-idf
+  variant: ESP32S3
+  cpu_frequency: 80MHz
+
+logger:
+
 esphome:
   name: ${name}
   name_add_mac_suffix: false
@@ -29,22 +38,13 @@ esphome:
       - output.turn_on: vbat_power_enable # "connect" battery
       - output.turn_on: epd_power_enable # turn ePaper display on
       - light.turn_on: green_led
-      
+
   on_shutdown: 
     then:
       - lambda: |- # GHF: This is required for the battery to keep connected during deep_sleep
           gpio_hold_en(GPIO_NUM_17);
       - component.update: my_display
       - delay: 3s
-
-esp32:
-  board: esp32-s3-devkitc-1
-  framework:
-    type: esp-idf
-  variant: ESP32S3
-  cpu_frequency: 80MHz
-
-logger:
 
 output:
   - platform: gpio
