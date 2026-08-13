@@ -130,7 +130,7 @@ binary_sensor:
       mode:
         input: true
         pullup: true
-    name: "Button 0"
+    name: "Button Settings"
     id: button_settings
 
   - platform: gpio # Power button, to poweroff board when on battery
