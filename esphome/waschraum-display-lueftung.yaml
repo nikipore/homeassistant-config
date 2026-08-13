@@ -90,7 +90,6 @@ display:
           it.filled_rectangle(0, 0, 200, 200, COLOR_OFF);
           it.printf(100,0,id(font_36), TextAlign::TOP_CENTER, "T:%.1fC", id(local_temp).state);
           it.printf(100,40,id(font_36), TextAlign::TOP_CENTER, "H:%.1f%%", id(local_humidity).state);
-          it.printf(100,80,id(font_36), TextAlign::TOP_CENTER, "B:%.2fV", id(batt_voltage).state);
           it.printf(100,170,id(font_24), TextAlign::CENTER, "WaveShare");
           it.strftime(0,199, id(font_16), TextAlign::BOTTOM_LEFT, "%Y-%m-%d", id(time_comp).now());
           it.strftime(199,199, id(font_16), TextAlign::BOTTOM_RIGHT, "%H:%M", id(time_comp).now());
