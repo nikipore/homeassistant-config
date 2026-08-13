@@ -130,7 +130,7 @@ binary_sensor:
       mode:
         input: true
         pullup: true
-    name: "Button Settings"
+    name: "Settings"
     id: button_settings
 
   - platform: gpio # Power button, to poweroff board when on battery
@@ -141,7 +141,7 @@ binary_sensor:
         pullup: true
       inverted: True
       allow_other_uses: True  
-    name: "Button Power"
+    name: "Power"
     id: button_pwr
 
 time:
