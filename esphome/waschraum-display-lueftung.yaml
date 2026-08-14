@@ -86,27 +86,53 @@ display:
           it.printf(100, 100, id(font_24), TextAlign::CENTER, "Starting");
       - id: pg_main # this page is show once connected to HomeAssistant
         lambda: |-
-          it.filled_rectangle(0, 0, 200, 200, COLOR_ON);
-          it.filled_rectangle(0, 0, 200, 200, COLOR_OFF);
-          it.printf(100,0,id(font_36), TextAlign::TOP_CENTER, "T:%.1fC", id(local_temp).state);
-          it.printf(100,40,id(font_36), TextAlign::TOP_CENTER, "H:%.1f%%", id(local_humidity).state);
-          it.printf(100,170,id(font_24), TextAlign::CENTER, "WaveShare");
+          it.printf(138,2,id(font_16), TextAlign::RIGHT, "innen");
+          it.printf(199,2,id(font_16), TextAlign::RIGHT, "aussen");
+          it.printf(2,25,id(font_16), "Temperatur °C");
+          it.printf(138,25,id(font_16), TextAlign::RIGHT, "%.1f", id(temperature).state);
+          it.printf(199,25,id(font_16), TextAlign::RIGHT, "%.1f", id(temperature_outside).state);
+          it.printf(2,48,id(font_16), "Feuchte rel %%");
+          it.printf(138,48,id(font_16), TextAlign::RIGHT, "%.1f", id(relative_humidity).state);
+          it.printf(199,48,id(font_16), TextAlign::RIGHT, "%.1f", id(relative_humidity_outside).state);
+          it.printf(2,71,id(font_16), "- sim %%");
+          it.printf(138,71,id(font_16), TextAlign::RIGHT, "%.1f", id(relative_humidity_simulated).state);
+          it.printf(199,71,id(font_16), TextAlign::RIGHT, "%.1f", id(relative_humidity_outside).state);
+          it.printf(2,94,id(font_16), "- abs g/m3");
+          it.printf(138,94,id(font_16), TextAlign::RIGHT, "%.1f", id(absolute_humidity).state);
+          it.printf(199,94,id(font_16), TextAlign::RIGHT, "%.1f", id(absolute_humidity_outside).state);
+          it.printf(2,117,id(font_16), "Taupunkt °C");
+          it.printf(138,117,id(font_16), TextAlign::RIGHT, "%.1f", id(dew_point).state);
+          it.printf(199,117,id(font_16), TextAlign::RIGHT, "%.1f", id(dew_point_outside).state);
+
+          it.printf(97,160,id(font_30), TextAlign::CENTER, "Fenster %s!", id(ventilate).state ? "auf" : "zu");
+
           it.strftime(0,199, id(font_16), TextAlign::BOTTOM_LEFT, "%Y-%m-%d", id(time_comp).now());
           it.strftime(199,199, id(font_16), TextAlign::BOTTOM_RIGHT, "%H:%M", id(time_comp).now());
-  
-          
+
 font:
   - file: "gfonts://Roboto"
-    id: font_36
-    size: 35
+    id: font_30
+    size: 30
   - file: "gfonts://Roboto"
     id: font_24
     size: 24
+  - file: "gfonts://Roboto"
+    id: font_20
+    size: 20
+  - file: "gfonts://Roboto"
+    id: font_18
+    size: 18
   - file: "gfonts://Roboto"
     id: font_16
     size: 16
 
 binary_sensor:
+  - platform: template
+    name: "Lüftungsempfehlung"
+    id: ventilate
+    lambda: |-
+      return id(absolute_humidity).state > id(absolute_humidity_outside).state;
+
   - platform: status
     name: "Node Status"
     id: system_status
@@ -137,14 +163,43 @@ time:
     timezone: "Europe/Berlin"
 
 sensor:
-  - platform: shtcx
-    update_interval: 10s
-    temperature:
-      name: "Temperature"
-      id: local_temp
-    humidity:
-      name: "Humidity"
-      id: local_humidity
+  - platform: homeassistant
+    name: "Temperatur außen"
+    entity_id: sensor.weather_temperature
+    id: temperature_outside
+  - platform: homeassistant
+    name: "relative Luftfeuchtigkeit außen"
+    entity_id: sensor.weather_humidity
+    id: relative_humidity_outside
+  - platform: homeassistant
+    name: "absolute Luftfeuchtigkeit außen"
+    entity_id: sensor.wetter_absolute_humidity
+    id: absolute_humidity_outside
+  - platform: homeassistant
+    name: "Taupunkt außen"
+    entity_id: sensor.wetter_dew_point
+    id: dew_point_outside
+
+  - platform: homeassistant
+    name: "Temperatur"
+    entity_id: sensor.temperature_sensor_waschraum_temperature
+    id: temperature
+  - platform: homeassistant
+    name: "relative Luftfeuchtigkeit"
+    entity_id: sensor.temperature_sensor_waschraum_humidity
+    id: relative_humidity
+  - platform: homeassistant
+    name: "absolute Luftfeuchtigkeit"
+    entity_id: sensor.waschraum_absolute_humidity
+    id: absolute_humidity
+  - platform: homeassistant
+    name: "Taupunkt"
+    entity_id: sensor.waschraum_dew_point
+    id: dew_point
+  - platform: homeassistant
+    name: "relative Luftfeuchtigkeit nach Lüftung"
+    entity_id: sensor.waschraum_ventilate_relative_humidity_simulated
+    id: relative_humidity_simulated
 
 button:
   - platform: template # to force a display update from HomeAssistant
