@@ -28,21 +28,12 @@ esphome:
     then:
       - output.turn_on: display_power
       - light.turn_on: green_led
-
-  on_shutdown: 
-    then:
-      - component.update: my_display
-      - delay: 3s
+      - display.page.show: page_main
 
 api:
   encryption:
     key: dHjusSzRZTM1iEoJQJ72f4T2IxPPIdV1bHyyO02X5X0=
-
-  on_client_connected:
-    - display.page.show: pg_main
-    - delay: 5s
-    - component.update: my_display
-
+  
 output:
   - platform: gpio
     pin: GPIO6
@@ -77,53 +68,43 @@ display:
     reset_pin: GPIO9 
     update_interval: never
     reset_duration: 2ms
-    full_update_every: 1
-    rotation: 90
-    id: my_display
+    full_update_every: 30
+    rotation: 0
+    id: screen
     pages:
-      - id: pg_offline # this page is shown by default initially
+      - id: page_main
         lambda: |-
-          it.printf(100, 100, id(font_24), TextAlign::CENTER, "Starting");
-      - id: pg_main # this page is show once connected to HomeAssistant
-        lambda: |-
-          it.printf(138,2,id(font_16), TextAlign::RIGHT, "innen");
-          it.printf(199,2,id(font_16), TextAlign::RIGHT, "aussen");
-          it.printf(2,25,id(font_16), "Temperatur °C");
-          it.printf(138,25,id(font_16), TextAlign::RIGHT, "%.1f", id(temperature).state);
-          it.printf(199,25,id(font_16), TextAlign::RIGHT, "%.1f", id(temperature_outside).state);
-          it.printf(2,48,id(font_16), "Feuchte rel %%");
-          it.printf(138,48,id(font_16), TextAlign::RIGHT, "%.1f", id(relative_humidity).state);
-          it.printf(199,48,id(font_16), TextAlign::RIGHT, "%.1f", id(relative_humidity_outside).state);
-          it.printf(2,71,id(font_16), "- sim %%");
-          it.printf(138,71,id(font_16), TextAlign::RIGHT, "%.1f", id(relative_humidity_simulated).state);
-          it.printf(199,71,id(font_16), TextAlign::RIGHT, "%.1f", id(relative_humidity_outside).state);
-          it.printf(2,94,id(font_16), "- abs g/m3");
-          it.printf(138,94,id(font_16), TextAlign::RIGHT, "%.1f", id(absolute_humidity).state);
-          it.printf(199,94,id(font_16), TextAlign::RIGHT, "%.1f", id(absolute_humidity_outside).state);
-          it.printf(2,117,id(font_16), "Taupunkt °C");
-          it.printf(138,117,id(font_16), TextAlign::RIGHT, "%.1f", id(dew_point).state);
-          it.printf(199,117,id(font_16), TextAlign::RIGHT, "%.1f", id(dew_point_outside).state);
+          it.printf(142,2,id(font_normal), TextAlign::RIGHT, "innen");
+          it.printf(199,2,id(font_normal), TextAlign::RIGHT, "aussen");
+          it.printf(2,22,id(font_normal), "Temperatur");
+          it.printf(144,22,id(font_normal), TextAlign::RIGHT, "%.0f°C", id(temperature).state);
+          it.printf(199,22,id(font_normal), TextAlign::RIGHT, "%.0f°C", id(temperature_outside).state);
+          it.printf(2,42,id(font_normal), "Feuchte");
+          it.printf(144,42,id(font_normal), TextAlign::RIGHT, "%.0f%%", id(relative_humidity).state);
+          it.printf(199,42,id(font_normal), TextAlign::RIGHT, "%.0f%%", id(relative_humidity_outside).state);
+          it.printf(2,62,id(font_normal), "- gelueftet");
+          it.printf(144,62,id(font_normal), TextAlign::RIGHT, "%.0f%%", id(relative_humidity_simulated).state);
+          it.printf(199,62,id(font_normal), TextAlign::RIGHT, "%.0f%%", id(relative_humidity_outside).state);
+          it.printf(2,82,id(font_normal), "- absolut je m3");
+          it.printf(144,82,id(font_normal), TextAlign::RIGHT, "%.0fg", id(absolute_humidity).state);
+          it.printf(199,82,id(font_normal), TextAlign::RIGHT, "%.0fg", id(absolute_humidity_outside).state);
+          it.printf(2,102,id(font_normal), "Taupunkt");
+          it.printf(144,102,id(font_normal), TextAlign::RIGHT, "%.0f°C", id(dew_point).state);
+          it.printf(199,102,id(font_normal), TextAlign::RIGHT, "%.0f°C", id(dew_point_outside).state);
 
-          it.printf(97,160,id(font_30), TextAlign::CENTER, "Fenster %s!", id(ventilate).state ? "auf" : "zu");
+          it.filled_rectangle(0, 127, 200, 4);
+          it.printf(99,150,id(font_large), TextAlign::CENTER, "Fenster %s!", id(ventilate).state ? "auf" : "zu");
+          it.filled_rectangle(0, 170, 200, 4);
 
-          it.strftime(0,199, id(font_16), TextAlign::BOTTOM_LEFT, "%Y-%m-%d", id(time_comp).now());
-          it.strftime(199,199, id(font_16), TextAlign::BOTTOM_RIGHT, "%H:%M", id(time_comp).now());
+          it.strftime(0,199, id(font_normal), TextAlign::BOTTOM_LEFT, "%d.%m.%Y", id(now).now());
+          it.strftime(199,199, id(font_normal), TextAlign::BOTTOM_RIGHT, "%H:%M", id(now).now());
 
 font:
   - file: "gfonts://Roboto"
-    id: font_30
-    size: 30
+    id: font_large
+    size: 36
   - file: "gfonts://Roboto"
-    id: font_24
-    size: 24
-  - file: "gfonts://Roboto"
-    id: font_20
-    size: 20
-  - file: "gfonts://Roboto"
-    id: font_18
-    size: 18
-  - file: "gfonts://Roboto"
-    id: font_16
+    id: font_normal
     size: 16
 
 binary_sensor:
@@ -159,8 +140,14 @@ binary_sensor:
 
 time:
   - platform: homeassistant
-    id: time_comp
+    id: now
     timezone: "Europe/Berlin"
+
+    on_time:
+      - seconds: 0
+        minutes: /1 # every minute
+        then:
+          - component.update: screen
 
 sensor:
   - platform: homeassistant
@@ -206,4 +193,4 @@ button:
     name: "display update"
     on_press: 
       then:
-        - component.update: my_display
+        - component.update: screen
