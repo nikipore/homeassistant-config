@@ -422,6 +422,13 @@ template:
         icon: >
           {{ is_state("binary_sensor.wohnzimmer_ventilate_temperature", "on") | iif("mdi:fan", "mdi:fan-off") }}
 
+      - name: keller_ventilate_allowed
+        state: >
+          {{ states('sensor.wetter_dew_point') | float(0) < states('sensor.keller_temperature_critical') | float(0) }}
+        availability: >
+          {{ ['sensor.wetter_dew_point', 'sensor.keller_temperature_critical'] | map("has_value") | list | min }}
+        icon: >
+          {{ is_state("binary_sensor.keller_ventilate_allowed", "on") | iif("mdi:fan", "mdi:fan-off") }}
       - name: waschraum_ventilate_allowed
         state: >
           {{ states('sensor.wetter_dew_point') | float(0) < states('sensor.waschraum_temperature_critical') | float(0) }}
@@ -437,7 +444,7 @@ template:
             {% if absolute_humidity_1 == 0 %}
               unknown
             {% else %}
-              {{ min(100, relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
+              {{ min(100, relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(0) }}
             {% endif %}
           {% endmacro %}
           {{ relative_humidity_simulated(states('sensor.thermostat_ankleide_humidity'), states('sensor.ankleide_absolute_humidity'), states('sensor.wetter_absolute_humidity')) }}
@@ -455,7 +462,7 @@ template:
             {% if absolute_humidity_1 == 0 %}
               unknown
             {% else %}
-              {{ min(100, relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
+              {{ min(100, relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(0) }}
             {% endif %}
           {% endmacro %}
           {{ relative_humidity_simulated(states('sensor.bewegungssensor_abstellkammer_terrasse_humidity'), states('sensor.abstellkammer_terrasse_absolute_humidity'), states('sensor.wetter_absolute_humidity')) }}
@@ -473,7 +480,7 @@ template:
             {% if absolute_humidity_1 == 0 %}
               unknown
             {% else %}
-              {{ min(100, relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
+              {{ min(100, relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(0) }}
             {% endif %}
           {% endmacro %}
           {{ relative_humidity_simulated(states('sensor.thermostat_arbeitszimmer_humidity'), states('sensor.arbeitszimmer_absolute_humidity'), states('sensor.wetter_absolute_humidity')) }}
@@ -491,7 +498,7 @@ template:
             {% if absolute_humidity_1 == 0 %}
               unknown
             {% else %}
-              {{ min(100, relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
+              {{ min(100, relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(0) }}
             {% endif %}
           {% endmacro %}
           {{ relative_humidity_simulated(states('sensor.thermostat_badezimmer_humidity'), states('sensor.badezimmer_absolute_humidity'), states('sensor.wetter_absolute_humidity')) }}
@@ -509,7 +516,7 @@ template:
             {% if absolute_humidity_1 == 0 %}
               unknown
             {% else %}
-              {{ min(100, relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
+              {{ min(100, relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(0) }}
             {% endif %}
           {% endmacro %}
           {{ relative_humidity_simulated(states('sensor.thermostat_duschbad_humidity'), states('sensor.duschbad_absolute_humidity'), states('sensor.wetter_absolute_humidity')) }}
@@ -527,7 +534,7 @@ template:
             {% if absolute_humidity_1 == 0 %}
               unknown
             {% else %}
-              {{ min(100, relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
+              {{ min(100, relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(0) }}
             {% endif %}
           {% endmacro %}
           {{ relative_humidity_simulated(states('sensor.thermostat_flur_humidity'), states('sensor.flur_absolute_humidity'), states('sensor.wetter_absolute_humidity')) }}
@@ -545,7 +552,7 @@ template:
             {% if absolute_humidity_1 == 0 %}
               unknown
             {% else %}
-              {{ min(100, relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
+              {{ min(100, relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(0) }}
             {% endif %}
           {% endmacro %}
           {{ relative_humidity_simulated(states('sensor.temperature_sensor_garage_humidity'), states('sensor.garage_absolute_humidity'), states('sensor.wetter_absolute_humidity')) }}
@@ -563,7 +570,7 @@ template:
             {% if absolute_humidity_1 == 0 %}
               unknown
             {% else %}
-              {{ min(100, relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
+              {{ min(100, relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(0) }}
             {% endif %}
           {% endmacro %}
           {{ relative_humidity_simulated(states('sensor.temperature_sensor_keller_humidity'), states('sensor.keller_absolute_humidity'), states('sensor.wetter_absolute_humidity')) }}
@@ -581,7 +588,7 @@ template:
             {% if absolute_humidity_1 == 0 %}
               unknown
             {% else %}
-              {{ min(100, relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
+              {{ min(100, relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(0) }}
             {% endif %}
           {% endmacro %}
           {{ relative_humidity_simulated(states('sensor.thermostat_kueche_humidity'), states('sensor.kuche_absolute_humidity'), states('sensor.wetter_absolute_humidity')) }}
@@ -599,7 +606,7 @@ template:
             {% if absolute_humidity_1 == 0 %}
               unknown
             {% else %}
-              {{ min(100, relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
+              {{ min(100, relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(0) }}
             {% endif %}
           {% endmacro %}
           {{ relative_humidity_simulated(states('sensor.thermostat_nino_humidity'), states('sensor.nino_absolute_humidity'), states('sensor.wetter_absolute_humidity')) }}
@@ -617,7 +624,7 @@ template:
             {% if absolute_humidity_1 == 0 %}
               unknown
             {% else %}
-              {{ min(100, relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
+              {{ min(100, relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(0) }}
             {% endif %}
           {% endmacro %}
           {{ relative_humidity_simulated(states('sensor.thermostat_noah_humidity'), states('sensor.noah_absolute_humidity'), states('sensor.wetter_absolute_humidity')) }}
@@ -635,7 +642,7 @@ template:
             {% if absolute_humidity_1 == 0 %}
               unknown
             {% else %}
-              {{ min(100, relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
+              {{ min(100, relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(0) }}
             {% endif %}
           {% endmacro %}
           {{ relative_humidity_simulated(states('sensor.thermostat_schlafzimmer_humidity'), states('sensor.schlafzimmer_absolute_humidity'), states('sensor.wetter_absolute_humidity')) }}
@@ -653,7 +660,7 @@ template:
             {% if absolute_humidity_1 == 0 %}
               unknown
             {% else %}
-              {{ min(100, relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
+              {{ min(100, relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(0) }}
             {% endif %}
           {% endmacro %}
           {{ relative_humidity_simulated(states('sensor.temperature_sensor_treppenhaus_humidity'), states('sensor.waschraum_absolute_humidity'), states('sensor.wetter_absolute_humidity')) }}
@@ -671,7 +678,7 @@ template:
             {% if absolute_humidity_1 == 0 %}
               unknown
             {% else %}
-              {{ min(100, relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
+              {{ min(100, relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(0) }}
             {% endif %}
           {% endmacro %}
           {{ relative_humidity_simulated(states('sensor.temperature_sensor_waschraum_humidity'), states('sensor.waschraum_absolute_humidity'), states('sensor.wetter_absolute_humidity')) }}
@@ -689,7 +696,7 @@ template:
             {% if absolute_humidity_1 == 0 %}
               unknown
             {% else %}
-              {{ min(100, relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
+              {{ min(100, relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(0) }}
             {% endif %}
           {% endmacro %}
           {{ relative_humidity_simulated(states('sensor.thermostat_wohnzimmer_humidity'), states('sensor.wohnzimmer_absolute_humidity'), states('sensor.wetter_absolute_humidity')) }}
@@ -702,10 +709,23 @@ template:
         unit_of_measurement: "%"
         state_class: measurement
 
+      - name: keller_temperature_critical
+        state: >
+          {% macro temperature_critical(temperature_outside, temperature_inside, f_rsi) %}
+            {{ ( temperature_outside | float(0) + f_rsi | float(0) * ( temperature_inside | float(0) - temperature_outside | float(0) )) | round(0) }}
+          {% endmacro %}
+          {{ temperature_critical(states('sensor.weather_temperature'), states('sensor.temperature_sensor_keller_temperature'), 0.7) }}
+        availability: >
+          {{
+            (['sensor.weather_temperature', 'sensor.temperature_sensor_keller_temperature'] | map("states") | map("is_number") | min)
+          }}
+        device_class: temperature
+        unit_of_measurement: "°C"
+        state_class: measurement
       - name: waschraum_temperature_critical
         state: >
           {% macro temperature_critical(temperature_outside, temperature_inside, f_rsi) %}
-            {{ ( temperature_outside | float(0) + f_rsi | float(0) * ( temperature_inside | float(0) - temperature_outside | float(0) )) | round(1) }}
+            {{ ( temperature_outside | float(0) + f_rsi | float(0) * ( temperature_inside | float(0) - temperature_outside | float(0) )) | round(0) }}
           {% endmacro %}
           {{ temperature_critical(states('sensor.weather_temperature'), states('sensor.temperature_sensor_waschraum_temperature'), 0.7) }}
         availability: >
@@ -717,6 +737,25 @@ template:
         state_class: measurement
 
   - select:
+      - name: keller_mold_risk
+        options: >
+          {{ ['low', 'medium', 'high', 'critical'] }}
+        select_option: []
+        state: >
+          {% set critical_dew_point_distance = states('sensor.keller_temperature_critical') | float(0) - states('sensor.keller_dew_point') | float(0) %}
+          {% if critical_dew_point_distance >= 7 %}
+            {{ 'low' }} 
+          {% elif critical_dew_point_distance >= 4 %}
+            {{ 'medium' }} 
+          {% elif critical_dew_point_distance >= 2 %}
+            {{ 'high' }}
+          {% else %}
+            {{ 'critical' }} 
+          {% endif %}
+        availability: >
+          {{
+            (['sensor.keller_temperature_critical', 'sensor.keller_dew_point'] | map("states") | map("is_number") | min)
+          }}
       - name: waschraum_mold_risk
         options: >
           {{ ['low', 'medium', 'high', 'critical'] }}
@@ -736,6 +775,33 @@ template:
           {{
             (['sensor.waschraum_temperature_critical', 'sensor.waschraum_dew_point'] | map("states") | map("is_number") | min)
           }}
+
+      - name: keller_ventilate_recommendation
+        options: >
+          {{ ['open', 'close', 'neutral'] }}
+        select_option: []
+        state: >
+          {% macro ventilate_recommendation(mold_risk, relative_humidity, ventilate_less_humid, ventilate_allowed) %}
+            {% if not ventilate_allowed %}
+              {{ 'close' }}
+            {% elif mold_risk == 'critical' %}
+              {{ 'open' }}
+            {% elif mold_risk == 'high' %}
+              {{ 'open' if ventilate_less_humid else 'close' }}
+            {% elif mold_risk == 'low' %}
+              {% if ventilate_less_humid %}
+                {{ 'open' if relative_humidity | float(0) > 60 else 'neutral' }}
+              {% else %}
+                {{ 'close' }}
+              {% endif %}
+            {% endif %}
+          {% endmacro %}        
+          {{ ventilate_recommendation(states('select.keller_mold_risk'), states('sensor.temperature_sensor_keller_humidity'), is_state('binary_sensor.keller_ventilate_humidity', 'on'), is_state('binary_sensor.keller_ventilate_allowed', 'on')) }}
+        availability: >
+          {{
+            (['select.keller_mold_risk', 'binary_sensor.keller_ventilate_allowed', 'binary_sensor.keller_ventilate_humidity', 'sensor.temperature_sensor_keller_humidity'] | map("has_value") | min )
+          }}
+        icon: "mdi:fan"
       - name: waschraum_ventilate_recommendation
         options: >
           {{ ['open', 'close', 'neutral'] }}
@@ -743,26 +809,25 @@ template:
         state: >
           {% macro ventilate_recommendation(mold_risk, relative_humidity, ventilate_less_humid, ventilate_allowed) %}
             {% if not ventilate_allowed %}
-              "close"
+              {{ 'close' }}
             {% elif mold_risk == 'critical' %}
-              "open"
+              {{ 'open' }}
             {% elif mold_risk == 'high' %}
-              {{ "open" if ventilate_less_humid else "close" }}
+              {{ 'open' if ventilate_less_humid else 'close' }}
             {% elif mold_risk == 'low' %}
               {% if ventilate_less_humid %}
-                {{ "open" if relative_humidity | float(0) > 60 else "neutral" }}
+                {{ 'open' if relative_humidity | float(0) > 60 else 'neutral' }}
               {% else %}
-                "close"
+                {{ 'close' }}
               {% endif %}
             {% endif %}
-          {% endmacro %}
+          {% endmacro %}        
           {{ ventilate_recommendation(states('select.waschraum_mold_risk'), states('sensor.temperature_sensor_waschraum_humidity'), is_state('binary_sensor.waschraum_ventilate_humidity', 'on'), is_state('binary_sensor.waschraum_ventilate_allowed', 'on')) }}
         availability: >
           {{
             (['select.waschraum_mold_risk', 'binary_sensor.waschraum_ventilate_allowed', 'binary_sensor.waschraum_ventilate_humidity', 'sensor.temperature_sensor_waschraum_humidity'] | map("has_value") | min )
           }}
-        icon: >
-          {{ "mdi:fan" }}
+        icon: "mdi:fan"
 
 homeassistant:
   customize:
@@ -856,6 +921,11 @@ homeassistant:
       friendly_name: "Wohnzimmer"
     binary_sensor.wohnzimmer_ventilate_temperature:
       friendly_name: "Wohnzimmer"
+
+    select.keller_ventilate_recommendation:
+      friendly_name: "Keller"
+    select.waschraum_ventilate_recommendation:
+      friendly_name: "Waschraum"
 
     sensor.thermostat_ankleide_humidity:
       friendly_name: "Ankleide"
