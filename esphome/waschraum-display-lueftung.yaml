@@ -29,6 +29,7 @@ esphome:
       - output.turn_on: display_power
       - light.turn_on: green_led
       - display.page.show: page_main
+      - component.update: screen
 
 api:
   encryption:
@@ -52,8 +53,8 @@ light:
     name: green_led
 
 spi:
-  clk_pin: GPIO12 # SCK
-  mosi_pin: GPIO13 # SDO
+  clk_pin: GPIO12
+  mosi_pin: GPIO13
 
 i2c:
   sda: GPIO47
@@ -68,41 +69,60 @@ display:
     reset_pin: GPIO9 
     update_interval: never
     reset_duration: 2ms
-    full_update_every: 30
+    full_update_every: 1
     rotation: 0
     id: screen
     pages:
       - id: page_main
         lambda: |-
-          it.printf(142,2,id(font_normal), TextAlign::RIGHT, "innen");
-          it.printf(199,2,id(font_normal), TextAlign::RIGHT, "aussen");
-          it.printf(2,22,id(font_normal), "Temperatur");
-          it.printf(144,22,id(font_normal), TextAlign::RIGHT, "%.0f°C", id(temperature).state);
-          it.printf(199,22,id(font_normal), TextAlign::RIGHT, "%.0f°C", id(temperature_outside).state);
-          it.printf(2,42,id(font_normal), "Feuchte");
-          it.printf(144,42,id(font_normal), TextAlign::RIGHT, "%.0f%%", id(relative_humidity).state);
-          it.printf(199,42,id(font_normal), TextAlign::RIGHT, "%.0f%%", id(relative_humidity_outside).state);
-          it.printf(2,62,id(font_normal), "- gelueftet");
-          it.printf(144,62,id(font_normal), TextAlign::RIGHT, "%.0f%%", id(relative_humidity_simulated).state);
-          it.printf(199,62,id(font_normal), TextAlign::RIGHT, "%.0f%%", id(relative_humidity_outside).state);
-          it.printf(2,82,id(font_normal), "- absolut je m3");
-          it.printf(144,82,id(font_normal), TextAlign::RIGHT, "%.0fg", id(absolute_humidity).state);
-          it.printf(199,82,id(font_normal), TextAlign::RIGHT, "%.0fg", id(absolute_humidity_outside).state);
-          it.printf(2,102,id(font_normal), "Taupunkt");
-          it.printf(144,102,id(font_normal), TextAlign::RIGHT, "%.0f°C", id(dew_point).state);
-          it.printf(199,102,id(font_normal), TextAlign::RIGHT, "%.0f°C", id(dew_point_outside).state);
+          it.printf(0,0,id(font_normal), TextAlign::TOP_LEFT, "in");
+          it.printf(83,0,id(font_normal), TextAlign::TOP_RIGHT, "T:%.0f°C", id(temperature).state);
+          it.printf(139,0,id(font_normal), TextAlign::TOP_RIGHT, "H:%.0f%%", id(relative_humidity).state);
+          it.printf(199,0,id(font_normal), TextAlign::TOP_RIGHT, "D:%.0f°C", id(dew_point).state);
+          it.printf(0,18,id(font_normal), TextAlign::TOP_LEFT, "out");
+          it.printf(83,18,id(font_normal), TextAlign::TOP_RIGHT, "T:%.0f°C", id(temperature_outside).state);
+          it.printf(139,18,id(font_normal), TextAlign::TOP_RIGHT, "H:%.0f%%", id(relative_humidity_outside).state);
+          it.printf(199,18,id(font_normal), TextAlign::TOP_RIGHT, "D:%.0f°C", id(dew_point_outside).state);
+          it.filled_rectangle(0, 38, 200, 2);
 
-          it.filled_rectangle(0, 127, 200, 4);
-          it.printf(99,150,id(font_large), TextAlign::CENTER, "Fenster %s!", id(ventilate).state ? "auf" : "zu");
-          it.filled_rectangle(0, 170, 200, 4);
+          it.printf(99, 60, id(font_large), TextAlign::CENTER, "Fenster");
+          it.printf(99, 118, id(font_xlarge), TextAlign::CENTER, "%s", id(recommendations)[id(ventilate_recommendation).state.c_str()].c_str());
 
+          it.filled_rectangle(0, 176, 200, 2);
+          it.strftime(0,199, id(font_normal), TextAlign::BOTTOM_LEFT, "%d.%m.%Y", id(now).now());
+          it.strftime(199,199, id(font_normal), TextAlign::BOTTOM_RIGHT, "%H:%M", id(now).now());
+      - id: page_detail
+        lambda: |-
+          it.printf(152,2,id(font_normal), TextAlign::RIGHT, "aussen");
+          it.printf(199,2,id(font_normal), TextAlign::RIGHT, "innen");
+          it.printf(2,27,id(font_normal), "Temperatur");
+          it.printf(152,27,id(font_normal), TextAlign::RIGHT, "%.0f°C", id(temperature_outside).state);
+          it.printf(199,27,id(font_normal), TextAlign::RIGHT, "%.0f°C", id(temperature).state);
+          it.printf(2,47,id(font_normal), "- Kaeltebruecken");
+          it.printf(199,47,id(font_normal), TextAlign::RIGHT, "%.0f°C", id(temperature_critical).state);
+          it.printf(2,72,id(font_normal), "Feuchte");
+          it.printf(152,72,id(font_normal), TextAlign::RIGHT, "%.0f%%", id(relative_humidity_outside).state);
+          it.printf(199,72,id(font_normal), TextAlign::RIGHT, "%.0f%%", id(relative_humidity).state);
+          it.printf(2,92,id(font_normal), "- gelueftet");
+          it.printf(199,92,id(font_normal), TextAlign::RIGHT, "%.0f%%", id(relative_humidity_simulated).state);
+          it.printf(2,112,id(font_normal), "- absolut je m3");
+          it.printf(152,112,id(font_normal), TextAlign::RIGHT, "%.0fg", id(absolute_humidity_outside).state);
+          it.printf(199,112,id(font_normal), TextAlign::RIGHT, "%.0fg", id(absolute_humidity).state);
+          it.printf(2,137,id(font_normal), "Taupunkt");
+          it.printf(152,137,id(font_normal), TextAlign::RIGHT, "%.0f°C", id(dew_point_outside).state);
+          it.printf(199,137,id(font_normal), TextAlign::RIGHT, "%.0f°C", id(dew_point).state);
+
+          it.filled_rectangle(0, 176, 200, 2);
           it.strftime(0,199, id(font_normal), TextAlign::BOTTOM_LEFT, "%d.%m.%Y", id(now).now());
           it.strftime(199,199, id(font_normal), TextAlign::BOTTOM_RIGHT, "%H:%M", id(now).now());
 
 font:
   - file: "gfonts://Roboto"
+    id: font_xlarge
+    size: 80
+  - file: "gfonts://Roboto"
     id: font_large
-    size: 36
+    size: 24
   - file: "gfonts://Roboto"
     id: font_normal
     size: 16
@@ -119,24 +139,29 @@ binary_sensor:
     id: system_status
 
   - platform: gpio
-    pin:
-      number: GPIO0
-      inverted: true
-      mode:
-        input: true
-        pullup: true
-    name: "Settings"
-    id: button_settings
-
-  - platform: gpio
+    name: "Power"
+    id: button_power
+    icon: "mdi:power"
     pin:
       number: GPIO18
       inverted: true
       mode: 
         input: true
         pullup: true
-    name: "Power"
-    id: button_power
+
+  - platform: gpio
+    name: "Settings"
+    id: button_settings
+    icon: "mdi:cog"
+    pin:
+      number: GPIO0
+      inverted: true
+      mode:
+        input: true
+        pullup: true
+    on_press:
+      - display.page.show_next: screen
+      - component.update: screen
 
 time:
   - platform: homeassistant
@@ -145,10 +170,17 @@ time:
 
     on_time:
       - seconds: 0
-        minutes: /1 # every minute
+        minutes: /5
         then:
+          - display.page.show: page_main
           - component.update: screen
 
+text_sensor:
+  - platform: homeassistant
+    name: "Lüftungsempfehlung"
+    entity_id: select.waschraum_ventilate_recommendation
+    id: ventilate_recommendation
+          
 sensor:
   - platform: homeassistant
     name: "Temperatur außen"
@@ -187,10 +219,24 @@ sensor:
     name: "relative Luftfeuchtigkeit nach Lüftung"
     entity_id: sensor.waschraum_ventilate_relative_humidity_simulated
     id: relative_humidity_simulated
+  - platform: homeassistant
+    name: "kritische Temperatur"
+    entity_id: sensor.waschraum_temperature_critical
+    id: temperature_critical
 
 button:
-  - platform: template # to force a display update from HomeAssistant
-    name: "display update"
+  - platform: template # to force a display update from Home Assistant
+    name: "Update Display"
     on_press: 
       then:
         - component.update: screen
+
+mapping:
+  - id: recommendations
+    from: string
+    to: string
+    default_value: "?"
+    entries:
+      open: "auf"
+      close: "zu"
+      neutral: "egal"
