@@ -306,7 +306,7 @@ input_number:
   blind_control_position_global:
     name: "Rolladensteuerung: alle … % öffnen (–10 = aus)"
     icon: mdi:arrow-split-horizontal
-    min: -20
+    min: -10
     max: 100
     step: 10
   blind_control_position_ankleide:
