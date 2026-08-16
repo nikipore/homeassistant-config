@@ -712,7 +712,7 @@ template:
       - name: keller_temperature_critical
         state: >
           {% macro temperature_critical(temperature_outside, temperature_inside, f_rsi) %}
-            {{ ( temperature_outside | float(0) + f_rsi | float(0) * ( temperature_inside | float(0) - temperature_outside | float(0) )) | round(0) }}
+            {{ ( temperature_outside | float(0) + f_rsi | float(0) * ( temperature_inside | float(0) - temperature_outside | float(0) )) | round(1) }}
           {% endmacro %}
           {{ temperature_critical(states('sensor.weather_temperature'), states('sensor.temperature_sensor_keller_temperature'), 0.7) }}
         availability: >
@@ -725,7 +725,7 @@ template:
       - name: waschraum_temperature_critical
         state: >
           {% macro temperature_critical(temperature_outside, temperature_inside, f_rsi) %}
-            {{ ( temperature_outside | float(0) + f_rsi | float(0) * ( temperature_inside | float(0) - temperature_outside | float(0) )) | round(0) }}
+            {{ ( temperature_outside | float(0) + f_rsi | float(0) * ( temperature_inside | float(0) - temperature_outside | float(0) )) | round(1) }}
           {% endmacro %}
           {{ temperature_critical(states('sensor.weather_temperature'), states('sensor.temperature_sensor_waschraum_temperature'), 0.7) }}
         availability: >
@@ -739,18 +739,18 @@ template:
   - select:
       - name: keller_mold_risk
         options: >
-          {{ ['low', 'medium', 'high', 'critical'] }}
+          {{ ['niedrig', 'mittel', 'hoch', 'akut'] }}
         select_option: []
         state: >
           {% set critical_dew_point_distance = states('sensor.keller_temperature_critical') | float(0) - states('sensor.keller_dew_point') | float(0) %}
           {% if critical_dew_point_distance >= 7 %}
-            {{ 'low' }} 
+            {{ 'niedrig' }} 
           {% elif critical_dew_point_distance >= 4 %}
-            {{ 'medium' }} 
+            {{ 'mittel' }} 
           {% elif critical_dew_point_distance >= 2 %}
-            {{ 'high' }}
+            {{ 'hoch' }}
           {% else %}
-            {{ 'critical' }} 
+            {{ 'akut' }} 
           {% endif %}
         availability: >
           {{
@@ -758,18 +758,18 @@ template:
           }}
       - name: waschraum_mold_risk
         options: >
-          {{ ['low', 'medium', 'high', 'critical'] }}
+          {{ ['niedrig', 'mittel', 'hoch', 'akut'] }}
         select_option: []
         state: >
           {% set critical_dew_point_distance = states('sensor.waschraum_temperature_critical') | float(0) - states('sensor.waschraum_dew_point') | float(0) %}
           {% if critical_dew_point_distance >= 7 %}
-            {{ 'low' }} 
+            {{ 'niedrig' }} 
           {% elif critical_dew_point_distance >= 4 %}
-            {{ 'medium' }} 
+            {{ 'mittel' }} 
           {% elif critical_dew_point_distance >= 2 %}
-            {{ 'high' }}
+            {{ 'hoch' }}
           {% else %}
-            {{ 'critical' }} 
+            {{ 'akut' }} 
           {% endif %}
         availability: >
           {{
@@ -778,21 +778,21 @@ template:
 
       - name: keller_ventilate_recommendation
         options: >
-          {{ ['open', 'close', 'neutral'] }}
+          {{ ['auf', 'zu', 'egal'] }}
         select_option: []
         state: >
           {% macro ventilate_recommendation(mold_risk, relative_humidity, ventilate_less_humid, ventilate_allowed) %}
             {% if not ventilate_allowed %}
-              {{ 'close' }}
-            {% elif mold_risk == 'critical' %}
-              {{ 'open' }}
-            {% elif mold_risk == 'high' %}
-              {{ 'open' if ventilate_less_humid else 'close' }}
-            {% elif mold_risk == 'low' %}
+              {{ 'zu' }}
+            {% elif mold_risk == 'akut' %}
+              {{ 'auf' }}
+            {% elif mold_risk == 'hoch' %}
+              {{ 'auf' if ventilate_less_humid else 'zu' }}
+            {% elif mold_risk == 'niedrig' %}
               {% if ventilate_less_humid %}
-                {{ 'open' if relative_humidity | float(0) > 60 else 'neutral' }}
+                {{ 'auf' if relative_humidity | float(0) > 60 else 'egal' }}
               {% else %}
-                {{ 'close' }}
+                {{ 'zu' }}
               {% endif %}
             {% endif %}
           {% endmacro %}        
@@ -804,21 +804,21 @@ template:
         icon: "mdi:fan"
       - name: waschraum_ventilate_recommendation
         options: >
-          {{ ['open', 'close', 'neutral'] }}
+          {{ ['auf', 'zu', 'egal'] }}
         select_option: []
         state: >
           {% macro ventilate_recommendation(mold_risk, relative_humidity, ventilate_less_humid, ventilate_allowed) %}
             {% if not ventilate_allowed %}
-              {{ 'close' }}
-            {% elif mold_risk == 'critical' %}
-              {{ 'open' }}
-            {% elif mold_risk == 'high' %}
-              {{ 'open' if ventilate_less_humid else 'close' }}
-            {% elif mold_risk == 'low' %}
+              {{ 'zu' }}
+            {% elif mold_risk == 'akut' %}
+              {{ 'auf' }}
+            {% elif mold_risk == 'hoch' %}
+              {{ 'auf' if ventilate_less_humid else 'zu' }}
+            {% elif mold_risk == 'niedrig' %}
               {% if ventilate_less_humid %}
-                {{ 'open' if relative_humidity | float(0) > 60 else 'neutral' }}
+                {{ 'auf' if relative_humidity | float(0) > 60 else 'egal' }}
               {% else %}
-                {{ 'close' }}
+                {{ 'zu' }}
               {% endif %}
             {% endif %}
           {% endmacro %}        
