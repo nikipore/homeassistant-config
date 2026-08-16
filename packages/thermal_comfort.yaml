@@ -274,6 +274,7 @@ template:
           {{ states('sensor.abstellkammer_terrasse_absolute_humidity') | float(0) > states('sensor.wetter_absolute_humidity') | float(0) }}
         icon: >
           {{ is_state("binary_sensor.abstellkammer_terrasse_ventilate_humidity", "on") | iif("mdi:fan", "mdi:fan-off") }}
+
       - name: ankleide_ventilate_humidity
         state: >
           {{ states('sensor.ankleide_absolute_humidity') | float(0) > states('sensor.wetter_absolute_humidity') | float(0) }}
@@ -344,6 +345,7 @@ template:
           {{ states('sensor.wohnzimmer_absolute_humidity') | float(0) > states('sensor.wetter_absolute_humidity') | float(0) }}
         icon: >
           {{ is_state("binary_sensor.wohnzimmer_ventilate_humidity", "on") | iif("mdi:fan", "mdi:fan-off") }}
+
       - name: abstellkammer_terrasse_ventilate_temperature
         state: >
           {{ states('sensor.bewegungssensor_abstellkammer_terrasse_temperature') | float(0) > states('sensor.weather_forecast_temperature') | float(0) }}
@@ -420,17 +422,19 @@ template:
         icon: >
           {{ is_state("binary_sensor.wohnzimmer_ventilate_temperature", "on") | iif("mdi:fan", "mdi:fan-off") }}
 
+      - name: waschraum_ventilate_allowed
+        state: >
+          {{ states('sensor.wetter_dew_point') | float(0) < states('sensor.waschraum_temperature_critical') | float(0) }}
+        availability: >
+          {{ ['sensor.wetter_dew_point', 'sensor.waschraum_temperature_critical'] | map("has_value") | list | min }}
+        icon: >
+          {{ is_state("binary_sensor.waschraum_ventilate_allowed", "on") | iif("mdi:fan", "mdi:fan-off") }}
+
   - sensor:
       - name: ankleide_ventilate_relative_humidity_simulated
         state: >
           {% macro relative_humidity_simulated(relative_humidity_1, absolute_humidity_1, absolute_humidity_2) %}
-            {% if relative_humidity_1 in ('unknown', 'unavailable') %}
-              {{ relative_humidity_1 }}
-            {% elif absolute_humidity_1 in ('unknown', 'unavailable') %}
-              {{ absolute_humidity_1 }}
-            {% elif absolute_humidity_2 in ('unknown', 'unavailable') %}
-              {{ absolute_humidity_2 }}
-            {% elif absolute_humidity_1 == 0 %}
+            {% if absolute_humidity_1 == 0 %}
               unknown
             {% else %}
               {{ min(100, relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
@@ -448,13 +452,7 @@ template:
       - name: abstellkammer_terrasse_ventilate_relative_humidity_simulated
         state: >
           {% macro relative_humidity_simulated(relative_humidity_1, absolute_humidity_1, absolute_humidity_2) %}
-            {% if relative_humidity_1 in ('unknown', 'unavailable') %}
-              {{ relative_humidity_1 }}
-            {% elif absolute_humidity_1 in ('unknown', 'unavailable') %}
-              {{ absolute_humidity_1 }}
-            {% elif absolute_humidity_2 in ('unknown', 'unavailable') %}
-              {{ absolute_humidity_2 }}
-            {% elif absolute_humidity_1 == 0 %}
+            {% if absolute_humidity_1 == 0 %}
               unknown
             {% else %}
               {{ min(100, relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
@@ -472,13 +470,7 @@ template:
       - name: arbeitszimmer_ventilate_relative_humidity_simulated
         state: >
           {% macro relative_humidity_simulated(relative_humidity_1, absolute_humidity_1, absolute_humidity_2) %}
-            {% if relative_humidity_1 in ('unknown', 'unavailable') %}
-              {{ relative_humidity_1 }}
-            {% elif absolute_humidity_1 in ('unknown', 'unavailable') %}
-              {{ absolute_humidity_1 }}
-            {% elif absolute_humidity_2 in ('unknown', 'unavailable') %}
-              {{ absolute_humidity_2 }}
-            {% elif absolute_humidity_1 == 0 %}
+            {% if absolute_humidity_1 == 0 %}
               unknown
             {% else %}
               {{ min(100, relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
@@ -496,13 +488,7 @@ template:
       - name: badezimmer_ventilate_relative_humidity_simulated
         state: >
           {% macro relative_humidity_simulated(relative_humidity_1, absolute_humidity_1, absolute_humidity_2) %}
-            {% if relative_humidity_1 in ('unknown', 'unavailable') %}
-              {{ relative_humidity_1 }}
-            {% elif absolute_humidity_1 in ('unknown', 'unavailable') %}
-              {{ absolute_humidity_1 }}
-            {% elif absolute_humidity_2 in ('unknown', 'unavailable') %}
-              {{ absolute_humidity_2 }}
-            {% elif absolute_humidity_1 == 0 %}
+            {% if absolute_humidity_1 == 0 %}
               unknown
             {% else %}
               {{ min(100, relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
@@ -520,13 +506,7 @@ template:
       - name: duschbad_ventilate_relative_humidity_simulated
         state: >
           {% macro relative_humidity_simulated(relative_humidity_1, absolute_humidity_1, absolute_humidity_2) %}
-            {% if relative_humidity_1 in ('unknown', 'unavailable') %}
-              {{ relative_humidity_1 }}
-            {% elif absolute_humidity_1 in ('unknown', 'unavailable') %}
-              {{ absolute_humidity_1 }}
-            {% elif absolute_humidity_2 in ('unknown', 'unavailable') %}
-              {{ absolute_humidity_2 }}
-            {% elif absolute_humidity_1 == 0 %}
+            {% if absolute_humidity_1 == 0 %}
               unknown
             {% else %}
               {{ min(100, relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
@@ -544,13 +524,7 @@ template:
       - name: flur_ventilate_relative_humidity_simulated
         state: >
           {% macro relative_humidity_simulated(relative_humidity_1, absolute_humidity_1, absolute_humidity_2) %}
-            {% if relative_humidity_1 in ('unknown', 'unavailable') %}
-              {{ relative_humidity_1 }}
-            {% elif absolute_humidity_1 in ('unknown', 'unavailable') %}
-              {{ absolute_humidity_1 }}
-            {% elif absolute_humidity_2 in ('unknown', 'unavailable') %}
-              {{ absolute_humidity_2 }}
-            {% elif absolute_humidity_1 == 0 %}
+            {% if absolute_humidity_1 == 0 %}
               unknown
             {% else %}
               {{ min(100, relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
@@ -568,13 +542,7 @@ template:
       - name: garage_ventilate_relative_humidity_simulated
         state: >
           {% macro relative_humidity_simulated(relative_humidity_1, absolute_humidity_1, absolute_humidity_2) %}
-            {% if relative_humidity_1 in ('unknown', 'unavailable') %}
-              {{ relative_humidity_1 }}
-            {% elif absolute_humidity_1 in ('unknown', 'unavailable') %}
-              {{ absolute_humidity_1 }}
-            {% elif absolute_humidity_2 in ('unknown', 'unavailable') %}
-              {{ absolute_humidity_2 }}
-            {% elif absolute_humidity_1 == 0 %}
+            {% if absolute_humidity_1 == 0 %}
               unknown
             {% else %}
               {{ min(100, relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
@@ -592,13 +560,7 @@ template:
       - name: keller_ventilate_relative_humidity_simulated
         state: >
           {% macro relative_humidity_simulated(relative_humidity_1, absolute_humidity_1, absolute_humidity_2) %}
-            {% if relative_humidity_1 in ('unknown', 'unavailable') %}
-              {{ relative_humidity_1 }}
-            {% elif absolute_humidity_1 in ('unknown', 'unavailable') %}
-              {{ absolute_humidity_1 }}
-            {% elif absolute_humidity_2 in ('unknown', 'unavailable') %}
-              {{ absolute_humidity_2 }}
-            {% elif absolute_humidity_1 == 0 %}
+            {% if absolute_humidity_1 == 0 %}
               unknown
             {% else %}
               {{ min(100, relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
@@ -616,13 +578,7 @@ template:
       - name: kueche_ventilate_relative_humidity_simulated
         state: >
           {% macro relative_humidity_simulated(relative_humidity_1, absolute_humidity_1, absolute_humidity_2) %}
-            {% if relative_humidity_1 in ('unknown', 'unavailable') %}
-              {{ relative_humidity_1 }}
-            {% elif absolute_humidity_1 in ('unknown', 'unavailable') %}
-              {{ absolute_humidity_1 }}
-            {% elif absolute_humidity_2 in ('unknown', 'unavailable') %}
-              {{ absolute_humidity_2 }}
-            {% elif absolute_humidity_1 == 0 %}
+            {% if absolute_humidity_1 == 0 %}
               unknown
             {% else %}
               {{ min(100, relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
@@ -640,13 +596,7 @@ template:
       - name: nino_ventilate_relative_humidity_simulated
         state: >
           {% macro relative_humidity_simulated(relative_humidity_1, absolute_humidity_1, absolute_humidity_2) %}
-            {% if relative_humidity_1 in ('unknown', 'unavailable') %}
-              {{ relative_humidity_1 }}
-            {% elif absolute_humidity_1 in ('unknown', 'unavailable') %}
-              {{ absolute_humidity_1 }}
-            {% elif absolute_humidity_2 in ('unknown', 'unavailable') %}
-              {{ absolute_humidity_2 }}
-            {% elif absolute_humidity_1 == 0 %}
+            {% if absolute_humidity_1 == 0 %}
               unknown
             {% else %}
               {{ min(100, relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
@@ -664,13 +614,7 @@ template:
       - name: noah_ventilate_relative_humidity_simulated
         state: >
           {% macro relative_humidity_simulated(relative_humidity_1, absolute_humidity_1, absolute_humidity_2) %}
-            {% if relative_humidity_1 in ('unknown', 'unavailable') %}
-              {{ relative_humidity_1 }}
-            {% elif absolute_humidity_1 in ('unknown', 'unavailable') %}
-              {{ absolute_humidity_1 }}
-            {% elif absolute_humidity_2 in ('unknown', 'unavailable') %}
-              {{ absolute_humidity_2 }}
-            {% elif absolute_humidity_1 == 0 %}
+            {% if absolute_humidity_1 == 0 %}
               unknown
             {% else %}
               {{ min(100, relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
@@ -688,13 +632,7 @@ template:
       - name: schlafzimmer_ventilate_relative_humidity_simulated
         state: >
           {% macro relative_humidity_simulated(relative_humidity_1, absolute_humidity_1, absolute_humidity_2) %}
-            {% if relative_humidity_1 in ('unknown', 'unavailable') %}
-              {{ relative_humidity_1 }}
-            {% elif absolute_humidity_1 in ('unknown', 'unavailable') %}
-              {{ absolute_humidity_1 }}
-            {% elif absolute_humidity_2 in ('unknown', 'unavailable') %}
-              {{ absolute_humidity_2 }}
-            {% elif absolute_humidity_1 == 0 %}
+            {% if absolute_humidity_1 == 0 %}
               unknown
             {% else %}
               {{ min(100, relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
@@ -712,13 +650,7 @@ template:
       - name: treppenhaus_ventilate_relative_humidity_simulated
         state: >
           {% macro relative_humidity_simulated(relative_humidity_1, absolute_humidity_1, absolute_humidity_2) %}
-            {% if relative_humidity_1 in ('unknown', 'unavailable') %}
-              {{ relative_humidity_1 }}
-            {% elif absolute_humidity_1 in ('unknown', 'unavailable') %}
-              {{ absolute_humidity_1 }}
-            {% elif absolute_humidity_2 in ('unknown', 'unavailable') %}
-              {{ absolute_humidity_2 }}
-            {% elif absolute_humidity_1 == 0 %}
+            {% if absolute_humidity_1 == 0 %}
               unknown
             {% else %}
               {{ min(100, relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
@@ -736,13 +668,7 @@ template:
       - name: waschraum_ventilate_relative_humidity_simulated
         state: >
           {% macro relative_humidity_simulated(relative_humidity_1, absolute_humidity_1, absolute_humidity_2) %}
-            {% if relative_humidity_1 in ('unknown', 'unavailable') %}
-              {{ relative_humidity_1 }}
-            {% elif absolute_humidity_1 in ('unknown', 'unavailable') %}
-              {{ absolute_humidity_1 }}
-            {% elif absolute_humidity_2 in ('unknown', 'unavailable') %}
-              {{ absolute_humidity_2 }}
-            {% elif absolute_humidity_1 == 0 %}
+            {% if absolute_humidity_1 == 0 %}
               unknown
             {% else %}
               {{ min(100, relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
@@ -760,13 +686,7 @@ template:
       - name: wohnzimmer_ventilate_relative_humidity_simulated
         state: >
           {% macro relative_humidity_simulated(relative_humidity_1, absolute_humidity_1, absolute_humidity_2) %}
-            {% if relative_humidity_1 in ('unknown', 'unavailable') %}
-              {{ relative_humidity_1 }}
-            {% elif absolute_humidity_1 in ('unknown', 'unavailable') %}
-              {{ absolute_humidity_1 }}
-            {% elif absolute_humidity_2 in ('unknown', 'unavailable') %}
-              {{ absolute_humidity_2 }}
-            {% elif absolute_humidity_1 == 0 %}
+            {% if absolute_humidity_1 == 0 %}
               unknown
             {% else %}
               {{ min(100, relative_humidity_1 | float(0) / absolute_humidity_1 | float(0) * absolute_humidity_2 | float(0) ) | round(1) }}
@@ -781,6 +701,68 @@ template:
         device_class: humidity
         unit_of_measurement: "%"
         state_class: measurement
+
+      - name: waschraum_temperature_critical
+        state: >
+          {% macro temperature_critical(temperature_outside, temperature_inside, f_rsi) %}
+            {{ ( temperature_outside | float(0) + f_rsi | float(0) * ( temperature_inside | float(0) - temperature_outside | float(0) )) | round(1) }}
+          {% endmacro %}
+          {{ temperature_critical(states('sensor.weather_temperature'), states('sensor.temperature_sensor_waschraum_temperature'), 0.7) }}
+        availability: >
+          {{
+            (['sensor.weather_temperature', 'sensor.temperature_sensor_waschraum_temperature'] | map("states") | map("is_number") | min)
+          }}
+        device_class: temperature
+        unit_of_measurement: "°C"
+        state_class: measurement
+
+  - select:
+      - name: waschraum_mold_risk
+        options: >
+          {{ ['low', 'medium', 'high', 'critical'] }}
+        select_option: []
+        state: >
+          {% set critical_dew_point_distance = states('sensor.waschraum_temperature_critical') | float(0) - states('sensor.waschraum_dew_point') | float(0) %}
+          {% if critical_dew_point_distance >= 7 %}
+            {{ 'low' }} 
+          {% elif critical_dew_point_distance >= 4 %}
+            {{ 'medium' }} 
+          {% elif critical_dew_point_distance >= 2 %}
+            {{ 'high' }}
+          {% else %}
+            {{ 'critical' }} 
+          {% endif %}
+        availability: >
+          {{
+            (['sensor.waschraum_temperature_critical', 'sensor.waschraum_dew_point'] | map("states") | map("is_number") | min)
+          }}
+      - name: waschraum_ventilate_recommendation
+        options: >
+          {{ ['open', 'close', 'neutral'] }}
+        select_option: []
+        state: >
+          {% macro ventilate_recommendation(mold_risk, relative_humidity, ventilate_less_humid, ventilate_allowed) %}
+            {% if not ventilate_allowed %}
+              "close"
+            {% elif mold_risk == 'critical' %}
+              "open"
+            {% elif mold_risk == 'high' %}
+              {{ "open" if ventilate_less_humid else "close" }}
+            {% elif mold_risk == 'low' %}
+              {% if ventilate_less_humid %}
+                {{ "open" if relative_humidity | float(0) > 60 else "neutral" }}
+              {% else %}
+                "close"
+              {% endif %}
+            {% endif %}
+          {% endmacro %}
+          {{ ventilate_recommendation(states('select.waschraum_mold_risk'), states('sensor.temperature_sensor_waschraum_humidity'), is_state('binary_sensor.waschraum_ventilate_humidity', 'on'), is_state('binary_sensor.waschraum_ventilate_allowed', 'on')) }}
+        availability: >
+          {{
+            (['select.waschraum_mold_risk', 'binary_sensor.waschraum_ventilate_allowed', 'binary_sensor.waschraum_ventilate_humidity', 'sensor.temperature_sensor_waschraum_humidity'] | map("has_value") | min )
+          }}
+        icon: >
+          {{ "mdi:fan" }}
 
 homeassistant:
   customize:
